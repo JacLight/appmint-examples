@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Secrets — every example reads credentials from .env.local, which never ships.
+# .env.example is the tracked template.
+.env
+.env.local
+.env.*.local
+
+# Build output
+.next/
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+# Flutter / Dart
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/android/.gradle/
+**/android/local.properties
