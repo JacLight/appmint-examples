@@ -38,6 +38,13 @@ class _SupportPageState extends State<SupportPage> {
       orgId: appmint.config.orgId,
       user: AppmintChatUser(email: user.email, name: user.displayName),
       token: () async => appmint.http.userToken,
+      // Access tokens last an hour. HTTP calls refresh on a 401 without your
+      // help; a socket handshake cannot, so the package asks — and reconnects
+      // with whatever `token` returns next.
+      onTokenExpired: () async {
+        widget.state.socketLog.outgoing('refresh', 'token refused as expired — refreshing');
+        await appmint.auth.refreshSession();
+      },
       supportName: 'Support',
       welcome: 'Say hello. Somebody on the team will pick this up.',
     ));
@@ -75,15 +82,16 @@ class _SupportPageState extends State<SupportPage> {
     _chat.addListener(_onChat);
   }
 
-  int _seenMine = 0;
+  final _logged = <String>{};
   void _onChat() {
-    final mine = _chat.messages.where((m) => m.senderRole == 'customer').length;
-    if (mine > _seenMine) {
-      final last =
-          _chat.messages.lastWhere((m) => m.senderRole == 'customer');
-      widget.state.socketLog.outgoing('chat-message', _clip(last.content));
+    // A send appears first as an optimistic bubble with a `local-` id, before
+    // the gateway acknowledges it. History never does, so this logs sends and
+    // not the thread loading.
+    for (final m in _chat.messages) {
+      if (m.id.startsWith('local-') && _logged.add(m.id)) {
+        widget.state.socketLog.outgoing('chat-message', _clip(m.content));
+      }
     }
-    _seenMine = mine;
   }
 
   static String _clip(String s) => s.length > 80 ? '${s.substring(0, 80)}…' : s;
