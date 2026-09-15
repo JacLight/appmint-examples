@@ -13,7 +13,7 @@ every other example begins where that one ends.
 |---|---|---|---|
 | [`appmint_flutter_authentication_demo`](appmint_flutter_authentication_demo) | Flutter | App auth, staff vs customer sign-in, verification codes, sessions | **Working** |
 | [`appmint_flutter_payments_demo`](appmint_flutter_payments_demo) | Flutter | Card present, cash, tips, split tenders, refunds, receipts | Scaffolded |
-| [`appmint_flutter_events_demo`](appmint_flutter_events_demo) | Flutter | Create an event, issue a ticket, scan it at the door | Scaffolded |
+| [`appmint_flutter_events_demo`](appmint_flutter_events_demo) | Flutter | Create an event, add a ticket type, issue a ticket, scan it at the door — check in, re-scan, check out | **Working** |
 | [`appmint_flutter_chat_demo`](appmint_flutter_chat_demo) | Flutter | Customer-to-agent chat over the chat gateway | Scaffolded |
 | [`appmint_flutter_crm_demo`](appmint_flutter_crm_demo) | Flutter | Leads, contacts, activity timeline, softphone | Scaffolded |
 | [`appmint_flutter_community_demo`](appmint_flutter_community_demo) | Flutter | Posts, comments and reactions | Scaffolded |

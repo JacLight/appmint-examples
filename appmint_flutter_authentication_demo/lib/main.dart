@@ -126,6 +126,9 @@ class DemoScaffold extends StatelessWidget {
         if (wide) {
           return Scaffold(
             body: Row(
+              // Stretch, or a page that is a scroll view shrink-wraps its
+              // content and the Row centres it halfway down the window.
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(child: SafeArea(child: child)),
                 const VerticalDivider(width: 1),
