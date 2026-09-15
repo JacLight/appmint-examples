@@ -17,7 +17,8 @@ every other example begins where that one ends.
 | [`appmint_flutter_chat_demo`](appmint_flutter_chat_demo) | Flutter | Customer-to-agent chat over the chat gateway | Scaffolded |
 | [`appmint_flutter_crm_demo`](appmint_flutter_crm_demo) | Flutter | Leads, contacts, activity timeline, softphone | Scaffolded |
 | [`appmint_flutter_community_demo`](appmint_flutter_community_demo) | Flutter | Posts, comments and reactions | Scaffolded |
-| [`nextjs-store`](nextjs-store) | Next.js | Storefront on the web | See its README |
+| [`nextjs-store`](nextjs-store) | Next.js 15 | Storefront: catalog, cart, server-priced totals, credentials behind a proxy | **Working** |
+| [`remix-store`](remix-store) | Remix 2 | The same storefront plus appointment booking — no proxy needed | **Working** |
 
 "Scaffolded" means the project exists and is wired to the client, but the app
 itself is still being written. Only what is marked **Working** has been run
@@ -78,8 +79,9 @@ explains it faster than any paragraph.
 
 ## Documentation
 
-- [Example apps](https://docs.appmint.io/docs/flutter-sdk/examples)
-- [Flutter client](https://docs.appmint.io/docs/flutter-sdk/overview)
+- [Example apps](https://docs.appmint.io/docs/client-integration/flutter-examples)
+- [Build a Flutter app — tutorial](https://docs.appmint.io/docs/client-integration/flutter-tutorial)
+- [Flutter client](https://docs.appmint.io/docs/client-integration/flutter-client)
 - [AppEngine API](https://docs.appmint.io/docs/appengine/overview)
 
 ## Licence
