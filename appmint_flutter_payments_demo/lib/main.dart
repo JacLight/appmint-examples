@@ -1,121 +1,200 @@
+import 'dart:async';
+
+import 'package:appmint_flutter_client/appmint_flutter_client.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'call_log.dart';
+import 'payments_api.dart';
+import 'screens/register_page.dart';
+import 'screens/sign_in_page.dart';
+
+/// Credentials come in at build time, so nothing secret lives in the repository:
+///
+///   flutter run -d chrome \
+///     --dart-define=APPMINT_URL=https://appengine.appmint.io \
+///     --dart-define=APPMINT_ORG=your-org \
+///     --dart-define=APPMINT_APP_ID=… --dart-define=APPMINT_APP_KEY=… \
+///     --dart-define=APPMINT_APP_SECRET=…
+const config = AppmintConfig(
+  baseUrl: String.fromEnvironment('APPMINT_URL'),
+  orgId: String.fromEnvironment('APPMINT_ORG'),
+  appId: String.fromEnvironment('APPMINT_APP_ID'),
+  appKey: String.fromEnvironment('APPMINT_APP_KEY'),
+  appSecret: String.fromEnvironment('APPMINT_APP_SECRET'),
+  logRequests: true,
+);
+
+void main() => runApp(const PaymentsDemoApp());
+
+/// One client, the member of staff signed into it, the POS API over it, and
+/// a log of every call. No state-management package — the client does not
+/// ask for one, and an example should not smuggle that choice into your
+/// project.
+class DemoState extends ChangeNotifier {
+  DemoState() {
+    appmint = Appmint(config);
+    appmint.http.onCall = log.add;
+    api = PaymentsApi(appmint);
+    _sub = appmint.auth.changes.listen((u) {
+      user = u;
+      notifyListeners();
+    });
+    appmint.auth.restore();
+  }
+
+  late final Appmint appmint;
+  late final PaymentsApi api;
+  final log = CallLog();
+  AppmintUser? user;
+  StreamSubscription<AppmintUser?>? _sub;
+
+  bool get configured => config.baseUrl.isNotEmpty && config.appKey.isNotEmpty;
+
+  @override
+  void dispose() {
+    _sub?.cancel();
+    appmint.dispose();
+    super.dispose();
+  }
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class PaymentsDemoApp extends StatefulWidget {
+  const PaymentsDemoApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<PaymentsDemoApp> createState() => _PaymentsDemoAppState();
+}
+
+class _PaymentsDemoAppState extends State<PaymentsDemoApp> {
+  final state = DemoState();
+
+  @override
+  void dispose() {
+    state.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Appmint — Payments',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        colorSchemeSeed: const Color(0xFF2E7D32),
+        useMaterial3: true,
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(),
+          isDense: true,
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: AnimatedBuilder(
+        animation: state,
+        builder: (context, _) {
+          final Widget body;
+          if (!state.configured) {
+            body = const _NotConfigured();
+          } else if (state.user == null) {
+            body = SignInPage(state: state);
+          } else {
+            body = RegisterPage(state: state);
+          }
+          return DemoScaffold(state: state, child: body);
+        },
+      ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+/// The screen on the left, what the client did on the right.
+class DemoScaffold extends StatelessWidget {
+  const DemoScaffold({super.key, required this.state, required this.child});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  final DemoState state;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth > 900) {
+          return Scaffold(
+            body: Row(
+              // Stretch, or a page that is a scroll view shrink-wraps its
+              // content and the Row centres it halfway down the window.
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(child: SafeArea(child: child)),
+                const VerticalDivider(width: 1),
+                SizedBox(
+                  width: 380,
+                  child: SafeArea(
+                    child: Material(
+                      color: Theme.of(context).colorScheme.surfaceContainerLow,
+                      child: CallLogPanel(log: state.log),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          );
+        }
+        return Scaffold(
+          body: SafeArea(child: child),
+          bottomSheet: Material(
+            color: Theme.of(context).colorScheme.surfaceContainerLow,
+            child: AnimatedBuilder(
+              animation: state.log,
+              builder: (context, _) => ExpansionTile(
+                title: Text('Requests (${state.log.calls.length})'),
+                children: [
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxHeight: 320),
+                    child: CallLogPanel(log: state.log),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _NotConfigured extends StatelessWidget {
+  const _NotConfigured();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 520),
+        child: Padding(
+          padding: const EdgeInsets.all(28),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('No organization configured',
+                  style: Theme.of(context).textTheme.headlineSmall),
+              const SizedBox(height: 12),
+              const Text(
+                'This app takes its credentials at build time so none are '
+                'committed. Run it with:',
+              ),
+              const SizedBox(height: 12),
+              const SelectableText(
+                'flutter run -d chrome \\\n'
+                '  --dart-define=APPMINT_URL=https://appengine.appmint.io \\\n'
+                '  --dart-define=APPMINT_ORG=your-org \\\n'
+                '  --dart-define=APPMINT_APP_ID=your-app-id \\\n'
+                '  --dart-define=APPMINT_APP_KEY=your-app-key \\\n'
+                '  --dart-define=APPMINT_APP_SECRET=your-app-secret',
+                style: TextStyle(fontFamily: 'monospace', fontSize: 12.5),
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }

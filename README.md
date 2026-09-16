@@ -12,7 +12,7 @@ every other example begins where that one ends.
 | Example | Stack | Shows | Status |
 |---|---|---|---|
 | [`appmint_flutter_authentication_demo`](appmint_flutter_authentication_demo) | Flutter | App auth, staff vs customer sign-in, verification codes, sessions | **Working** |
-| [`appmint_flutter_payments_demo`](appmint_flutter_payments_demo) | Flutter | Card present, cash, tips, split tenders, refunds, receipts | Scaffolded |
+| [`appmint_flutter_payments_demo`](appmint_flutter_payments_demo) | Flutter | Tabs and items, cash with change, card with reference, split tenders, refunds, receipts, Terminal token | **Working** |
 | [`appmint_flutter_events_demo`](appmint_flutter_events_demo) | Flutter | Create an event, add a ticket type, issue a ticket, scan it at the door — check in, re-scan, check out | **Working** |
 | [`appmint_flutter_chat_demo`](appmint_flutter_chat_demo) | Flutter | Customer support chat over the `/chat` socket — queue, agent pick-up, replies, read receipts, with the socket narrated | **Working** |
 | [`appmint_flutter_crm_demo`](appmint_flutter_crm_demo) | Flutter | Leads with the server-written timeline, duplicate check, contacts and journeys, text/call through the org number | **Working** |

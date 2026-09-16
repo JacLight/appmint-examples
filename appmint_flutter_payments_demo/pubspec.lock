@@ -7,7 +7,7 @@ packages:
       path: "../../appmint-client/appmint_flutter_client"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.1.2"
   args:
     dependency: transitive
     description:
