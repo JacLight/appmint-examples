@@ -153,16 +153,20 @@ class _NumberTile extends StatelessWidget {
       if (caps['mms'] == true) 'mms',
     ].join(' · ');
     final assigned = (d['assignedUsers'] as List?)?.join(', ') ?? '';
+    // `/phone/user-phones` answers a flat `{id, phoneNumber, friendlyName,
+    // assignment}`; `/phone/numbers` answers full records. Same tile, so
+    // say what each actually carries.
+    final subtitle = d['assignment'] != null
+        ? 'assigned to you ${d['assignment'] == 'group' ? 'through a group' : 'directly'}'
+        : '${d['provider'] ?? ''} · ${d['status'] ?? ''} · $can'
+            '${assigned.isNotEmpty ? ' · assigned: $assigned' : ' · unassigned'}';
     return ListTile(
       dense: true,
       contentPadding: EdgeInsets.zero,
       leading: Icon(mine ? Icons.phone_in_talk : Icons.phone_outlined,
           color: mine ? theme.colorScheme.primary : theme.colorScheme.outline),
       title: Text('${d['phoneNumber']} · ${d['friendlyName'] ?? ''}'),
-      subtitle: Text(
-        '${d['provider'] ?? ''} · ${d['status'] ?? ''} · $can'
-        '${assigned.isNotEmpty ? ' · assigned: $assigned' : ' · unassigned'}',
-      ),
+      subtitle: Text(subtitle),
     );
   }
 }
