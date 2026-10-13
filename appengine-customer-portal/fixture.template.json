@@ -1,0 +1,8 @@
+{
+  "org": "YOUR_ORGANIZATION",
+  "accountId": "COMPANY_CUSTOMER_SK",
+  "bookingId": "OWN_BOOKING_SK",
+  "definitionId": "BOOKING_DEFINITION_SK",
+  "orderNumber": "OWN_ORDER_NUMBER",
+  "ticketNumber": "OWN_TICKET_NUMBER"
+}

@@ -1,0 +1,7 @@
+{
+  "reservationDefinitionId": "FROM_OWN_BOOKING",
+  "serviceName": "FROM_OWN_BOOKING",
+  "from": "CHOOSE_DATE",
+  "days": 7,
+  "excludeReservationId": "OWN_BOOKING_SK"
+}

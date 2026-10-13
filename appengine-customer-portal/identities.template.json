@@ -1,0 +1,18 @@
+{
+  "dana": {
+    "email": "dana@example.com",
+    "password": "REPLACE_PRIVATELY"
+  },
+  "priya": {
+    "email": "priya@example.com",
+    "password": "REPLACE_PRIVATELY"
+  },
+  "noah": {
+    "email": "noah@example.com",
+    "password": "REPLACE_PRIVATELY"
+  },
+  "elli": {
+    "email": "elli@example.com",
+    "password": "REPLACE_PRIVATELY"
+  }
+}

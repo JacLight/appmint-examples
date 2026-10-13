@@ -1,0 +1,649 @@
+{
+  "info": {
+    "name": "AppEngine Customer Portal \u2014 explicit lifecycle requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Run individually with owned test records. Do NOT Run Collection: writes and notification-capable membership creation are included. Cancellation intentionally uses trusted server example, not a browser/Postman-only preflight. Second-customer isolation: run read requests using other token and inspect exact empty/null/404 shape."
+  },
+  "variable": [
+    {
+      "key": "api",
+      "value": "https://appengine.appmint.io"
+    },
+    {
+      "key": "org",
+      "value": ""
+    },
+    {
+      "key": "customerToken",
+      "value": ""
+    },
+    {
+      "key": "bookingSk",
+      "value": ""
+    },
+    {
+      "key": "definitionSk",
+      "value": ""
+    },
+    {
+      "key": "serviceName",
+      "value": ""
+    },
+    {
+      "key": "day",
+      "value": ""
+    },
+    {
+      "key": "chosenStartTime",
+      "value": ""
+    },
+    {
+      "key": "orderNumber",
+      "value": ""
+    },
+    {
+      "key": "ticketNumber",
+      "value": ""
+    },
+    {
+      "key": "accountId",
+      "value": ""
+    },
+    {
+      "key": "associationId",
+      "value": ""
+    },
+    {
+      "key": "existingBuyerEmail",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "1 Profile identity",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/profile"
+      }
+    },
+    {
+      "name": "2 Profile fields only",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/profile",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phone\": \"+13125550199\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "3 Own bookings",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/reservations"
+      }
+    },
+    {
+      "name": "4 Own booking by sk",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/reservations/{{bookingSk}}"
+      }
+    },
+    {
+      "name": "5 Availability from saved booking",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/crm/reservations/availability",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reservationDefinitionId\": \"{{definitionSk}}\",\n  \"serviceName\": \"{{serviceName}}\",\n  \"from\": \"{{day}}\",\n  \"days\": 7,\n  \"excludeReservationId\": \"{{bookingSk}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "6 Move by owned sk",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/crm/reservations/reschedule/{{bookingSk}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"startTime\": \"{{chosenStartTime}}\",\n  \"reason\": \"Customer requested change\",\n  \"notify\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "7 Verify changed booking",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/reservations/{{bookingSk}}"
+      }
+    },
+    {
+      "name": "8 Own orders",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/orders"
+      }
+    },
+    {
+      "name": "9 Order uses order NUMBER",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/orders/{{orderNumber}}"
+      }
+    },
+    {
+      "name": "10 Create own ticket",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/tickets",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": {\n    \"title\": \"Portal course question\",\n    \"description\": \"Please review my appointment details.\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "11 Ticket by NUMBER returns page",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/tickets/{{ticketNumber}}"
+      }
+    },
+    {
+      "name": "12 Forms with submitted and pending states",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/forms?page=1&limit=20"
+      }
+    },
+    {
+      "name": "13 Manager members",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/shared-accounts/{{accountId}}/members"
+      }
+    },
+    {
+      "name": "14 Manager account orders",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/shared-accounts/{{accountId}}/orders?page=1&limit=20"
+      }
+    },
+    {
+      "name": "15 Manager add existing customer (may notify)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/shared-accounts/{{accountId}}/invites",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{existingBuyerEmail}}\",\n  \"role\": \"buyer\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "16 Manager suspend member",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/shared-accounts/{{accountId}}/members/{{associationId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"suspended\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "17 Manager reactivate member",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/client-data/shared-accounts/{{accountId}}/members/{{associationId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"active\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "18 Switch buyer account and replace session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/profile/customer/shared-account",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"accountId\": \"{{accountId}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.response.code >= 200 && pm.response.code < 300) {",
+              "  const s = pm.response.json();",
+              "  if (!s.token) throw new Error(\"Missing replacement token\");",
+              "  pm.environment.set(\"customerToken\", s.token);",
+              "  pm.environment.set(\"refreshToken\", s.refreshToken || s.refresh_token || \"\");",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "19 Return to personal and replace session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{api}}/profile/customer/shared-account",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.response.code >= 200 && pm.response.code < 300) {",
+              "  const s = pm.response.json();",
+              "  if (!s.token) throw new Error(\"Missing replacement token\");",
+              "  pm.environment.set(\"customerToken\", s.token);",
+              "  pm.environment.set(\"refreshToken\", s.refreshToken || s.refresh_token || \"\");",
+              "}"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
