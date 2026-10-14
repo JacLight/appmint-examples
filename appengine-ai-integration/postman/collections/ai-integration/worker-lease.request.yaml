@@ -1,0 +1,44 @@
+{
+  "$kind": "http-request",
+  "method": "POST",
+  "url": "{{base_url}}/ai-employees/worker/{{employee}}/lease",
+  "order": 15000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "scripts": [
+    {
+      "type": "beforeRequest",
+      "language": "text/javascript",
+      "code": "if(pm.variables.get('enabled_action') !== 'worker-lease') throw new Error('Select only the intended operation and set enabled_action=worker-lease; inspect state before repeating writes.');"
+    },
+    {
+      "type": "afterResponse",
+      "language": "text/javascript",
+      "code": "pm.test('Lease explicitly returns job or reason',()=>{const r=pm.response.json();pm.expect(r).to.have.property('job');if(r.job===null)pm.expect(r.reason).to.be.a('string');});"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "credentials": [
+      {
+        "key": "token",
+        "value": "{{employee_token}}"
+      }
+    ]
+  },
+  "body": {
+    "type": "json",
+    "content": "{\n  \"worker\": \"{{worker_id}}\"\n}"
+  }
+}

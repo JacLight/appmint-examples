@@ -1,0 +1,20 @@
+{
+  "$kind": "http-request",
+  "method": "GET",
+  "url": "{{base_url}}/crm/ai-assistant/tools",
+  "order": 19000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "scripts": []
+}

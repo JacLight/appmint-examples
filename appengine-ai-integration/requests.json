@@ -1,0 +1,200 @@
+[
+  {
+    "name": "configuration",
+    "method": "GET",
+    "path": "/ai-employees/config",
+    "body": null,
+    "identity": "staff"
+  },
+  {
+    "name": "templates",
+    "method": "GET",
+    "path": "/ai-employees/templates",
+    "body": null,
+    "identity": "staff"
+  },
+  {
+    "name": "employee",
+    "method": "GET",
+    "path": "/ai-employees/{{employee}}",
+    "body": null,
+    "identity": "staff"
+  },
+  {
+    "name": "access",
+    "method": "PUT",
+    "path": "/ai-employees/{{employee}}/access",
+    "body": {
+      "groups": [
+        "User"
+      ]
+    },
+    "identity": "staff"
+  },
+  {
+    "name": "provider-status",
+    "method": "GET",
+    "path": "/ai-employees/{{employee}}/provider-status",
+    "body": null,
+    "identity": "staff"
+  },
+  {
+    "name": "work",
+    "method": "GET",
+    "path": "/ai-employees/work?employee={{employee}}",
+    "body": null,
+    "identity": "staff"
+  },
+  {
+    "name": "work-detail",
+    "method": "GET",
+    "path": "/ai-employees/work/{{work_id}}",
+    "body": null,
+    "identity": "staff"
+  },
+  {
+    "name": "give-work",
+    "method": "POST",
+    "path": "/ai-employees/{{employee}}/work",
+    "body": {
+      "title": "Review the internal note",
+      "instructions": "Read the assigned note and report the actual result in our internal Workspace only."
+    },
+    "identity": "staff"
+  },
+  {
+    "name": "assigned-task",
+    "method": "POST",
+    "path": "/workspace/{{workspace_id}}/item",
+    "body": {
+      "type": "task",
+      "title": "Review the internal note",
+      "task": {
+        "description": "Read this task, perform only the described internal update, then use exact status done and verify the saved record.",
+        "assignTo": [
+          "{{employee_email}}"
+        ]
+      }
+    },
+    "identity": "staff"
+  },
+  {
+    "name": "workspace-mention",
+    "method": "POST",
+    "path": "/workspace/{{workspace_id}}/item",
+    "body": {
+      "type": "message",
+      "message": "Read your actual summary and post one brief report here.",
+      "mentions": [
+        "{{employee_email}}"
+      ]
+    },
+    "identity": "staff"
+  },
+  {
+    "name": "workspace-messages",
+    "method": "GET",
+    "path": "/workspace/{{workspace_id}}/items",
+    "body": null,
+    "identity": "staff"
+  },
+  {
+    "name": "human-approve",
+    "method": "POST",
+    "path": "/ai-employees/work/{{work_id}}/decide",
+    "body": {
+      "decision": "approved",
+      "note": "Only the unchanged action described in this work item."
+    },
+    "identity": "staff"
+  },
+  {
+    "name": "human-reject",
+    "method": "POST",
+    "path": "/ai-employees/work/{{work_id}}/decide",
+    "body": {
+      "decision": "rejected",
+      "note": "Do not perform this action."
+    },
+    "identity": "staff"
+  },
+  {
+    "name": "worker-briefing",
+    "method": "GET",
+    "path": "/ai-employees/me/briefing",
+    "body": null,
+    "identity": "employee"
+  },
+  {
+    "name": "worker-lease",
+    "method": "POST",
+    "path": "/ai-employees/worker/{{employee}}/lease",
+    "body": {
+      "worker": "{{worker_id}}"
+    },
+    "identity": "employee"
+  },
+  {
+    "name": "worker-approval",
+    "method": "POST",
+    "path": "/ai-employees/worker/work/{{work_id}}/approval",
+    "body": {
+      "worker": "{{worker_id}}",
+      "action": "other",
+      "summary": "Post the approved internal review note"
+    },
+    "identity": "employee"
+  },
+  {
+    "name": "worker-complete",
+    "method": "POST",
+    "path": "/ai-employees/worker/work/{{work_id}}/complete",
+    "body": {
+      "worker": "{{worker_id}}",
+      "result": "Describe the actual verified result; do not submit this placeholder as completion.",
+      "costUsd": 0
+    },
+    "identity": "employee"
+  },
+  {
+    "name": "worker-fail",
+    "method": "POST",
+    "path": "/ai-employees/worker/work/{{work_id}}/fail",
+    "body": {
+      "worker": "{{worker_id}}",
+      "error": "Describe the actual failure; reconcile possible writes first.",
+      "retry": false
+    },
+    "identity": "employee"
+  },
+  {
+    "name": "assistant-tools",
+    "method": "GET",
+    "path": "/crm/ai-assistant/tools",
+    "body": null,
+    "identity": "staff"
+  },
+  {
+    "name": "assistant-read",
+    "method": "GET",
+    "path": "/crm/ai-assistant/{{assistant_id}}",
+    "body": null,
+    "identity": "staff"
+  },
+  {
+    "name": "assistant-execute",
+    "method": "POST",
+    "path": "/crm/ai-assistant/{{assistant_id}}/execute",
+    "body": {
+      "task": "Use get_ticket to read ticket {{ticket_number}}; report only its actual title and status. Do not change it."
+    },
+    "identity": "staff"
+  },
+  {
+    "name": "assistant-activity",
+    "method": "GET",
+    "path": "/crm/ai-assistant/{{assistant_id}}/activities",
+    "body": null,
+    "identity": "staff"
+  }
+]

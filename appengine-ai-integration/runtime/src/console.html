@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI employee sessions</title>
+<style>
+  :root {
+    --bg: #f6f7fb; --panel: #ffffff; --line: #e6e8ef; --text: #1d2130; --muted: #6b7280; --faint: #9aa1b1;
+    --accent: #6d4aff; --accent-soft: #efeaff; --ok: #0f9f6e; --ok-soft: #e6f7f0; --warn: #b7791f; --warn-soft: #fdf4e3;
+    --bad: #d64545; --bad-soft: #fdecec; --code: #f3f4f8; --shadow: 0 1px 2px rgba(20, 24, 40, .06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1117; --panel: #171a23; --line: #262a36; --text: #e8eaf1; --muted: #9aa1b1; --faint: #6b7280;
+      --accent: #9b85ff; --accent-soft: #231d3d; --ok: #34c796; --ok-soft: #13291f; --warn: #e0a84a; --warn-soft: #2d2413;
+      --bad: #f07272; --bad-soft: #2e1717; --code: #11131a; --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; }
+  header { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--line); background: var(--panel); }
+  header h1 { font-size: 16px; margin: 0; }
+  header .sub { color: var(--muted); font-size: 13px; }
+  .layout { display: grid; grid-template-columns: 300px 260px 1fr; height: calc(100vh - 55px); }
+  .col { overflow: auto; border-right: 1px solid var(--line); }
+  .col h2 { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 14px 16px 8px; }
+  .item { display: block; width: 100%; text-align: left; border: 0; background: none; color: inherit; font: inherit; padding: 10px 16px; border-left: 3px solid transparent; cursor: pointer; }
+  .item:hover { background: var(--accent-soft); }
+  .item.on { background: var(--accent-soft); border-left-color: var(--accent); }
+  .item .t { font-weight: 600; }
+  .item .d { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--code); color: var(--muted); }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .pill.working { background: var(--accent-soft); color: var(--accent); }
+  .pill.idle { background: var(--ok-soft); color: var(--ok); }
+  .pill.locked, .pill.starting { background: var(--warn-soft); color: var(--warn); }
+  .pill.error { background: var(--bad-soft); color: var(--bad); }
+  .main { overflow: auto; padding: 16px 24px 60px; }
+  .empty { color: var(--muted); padding: 40px 0; text-align: center; }
+  .jobhead { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .jobhead h3 { margin: 0; font-size: 17px; }
+  .live { color: var(--accent); font-size: 12px; font-weight: 600; }
+  .live::before { content: "● "; animation: blink 1.2s infinite; }
+  @keyframes blink { 50% { opacity: .3; } }
+  .ev { margin: 10px 0; max-width: 900px; }
+  .turn { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 12px; margin: 22px 0 12px; }
+  .turn::before, .turn::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .say { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; box-shadow: var(--shadow); white-space: pre-wrap; }
+  .tool { border: 1px solid var(--line); border-radius: 10px; background: var(--panel); overflow: hidden; }
+  .tool .cmd { font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; padding: 8px 12px; background: var(--code); white-space: pre-wrap; word-break: break-word; }
+  .tool .cmd b { color: var(--accent); }
+  .tool details { border-top: 1px solid var(--line); }
+  .tool summary { cursor: pointer; padding: 6px 12px; color: var(--muted); font-size: 12px; }
+  .tool pre { margin: 0; padding: 8px 12px 12px; font: 12px/1.5 ui-monospace, Menlo, monospace; white-space: pre-wrap; word-break: break-word; max-height: 360px; overflow: auto; }
+  .tool.err summary { color: var(--bad); }
+  .meta { color: var(--faint); font-size: 11px; margin-top: 3px; }
+  .done { display: inline-block; background: var(--ok-soft); color: var(--ok); border-radius: 8px; padding: 6px 12px; font-size: 13px; }
+  .done.bad { background: var(--bad-soft); color: var(--bad); }
+  .log { font: 12px/1.6 ui-monospace, Menlo, monospace; color: var(--muted); white-space: pre-wrap; padding: 0 16px 16px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; height: auto; } .col { border-right: 0; border-bottom: 1px solid var(--line); max-height: 40vh; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>AI employee sessions</h1>
+  <span class="sub" id="sub">Loading…</span>
+</header>
+<div class="layout">
+  <div class="col"><h2>Agents</h2><div id="agents"></div><h2>Log</h2><div class="log" id="log"></div></div>
+  <div class="col"><h2>Jobs</h2><div id="jobs"></div></div>
+  <div class="main" id="main"><div class="empty">Pick an agent.</div></div>
+</div>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const when = (t) => (t ? new Date(t).toLocaleTimeString() : '');
+const get = async (p) => { const r = await fetch(p, { credentials: 'same-origin' }); if (!r.ok) throw new Error(r.status); return r.json(); };
+let agent = null, job = null, follow = true, seen = 0;
+
+async function loadAgents() {
+  const { data } = await get('/v1/agents');
+  $('sub').textContent = `${data.length} agent${data.length === 1 ? '' : 's'} · ${data.filter((a) => a.state === 'working').length} working`;
+  if (!agent && data[0]) agent = data[0].agentId;
+  $('agents').innerHTML = data.map((a) => `
+    <button class="item ${a.agentId === agent ? 'on' : ''}" data-a="${esc(a.agentId)}">
+      <div class="t">${esc(a.title)} <span class="pill ${esc(a.state)}">${esc(a.state)}</span></div>
+      <div class="d">${esc(a.orgId)} · ${esc(a.employee)} · ${esc(a.model)}</div>
+      <div class="d">${esc(a.detail)}</div>
+    </button>`).join('') || '<div class="empty">No agents. appengine provisions them here.</div>';
+  document.querySelectorAll('[data-a]').forEach((b) => (b.onclick = () => { agent = b.dataset.a; job = null; follow = true; seen = 0; $('main').innerHTML = ''; tick(); }));
+  const a = data.find((x) => x.agentId === agent);
+  if (a) {
+    const full = await get(`/v1/agents/${encodeURIComponent(agent)}`);
+    $('log').textContent = (full.log || []).slice(-12).map((l) => l.replace(/^\S+T(\d\d:\d\d:\d\d)\S*/, '$1')).join('\n');
+  }
+}
+
+async function loadJobs() {
+  if (!agent) return;
+  const { data, current } = await get(`/v1/agents/${encodeURIComponent(agent)}/jobs`);
+  if (follow && current && current.jobId !== job) { job = current.jobId; seen = 0; $('main').innerHTML = ''; }
+  if (!job && data[0]) { job = data[0].jobId; seen = 0; $('main').innerHTML = ''; }
+  $('jobs').innerHTML = data.map((j) => `
+    <button class="item ${j.jobId === job ? 'on' : ''}" data-j="${esc(j.jobId)}">
+      <div class="t">${esc(j.title || j.jobId)}</div>
+      <div class="d">${current?.jobId === j.jobId ? '<span class="live">working</span> · ' : ''}${esc(when(j.lastStartedAt))}${j.turns > 1 ? ` · ${j.turns} turns` : ''}</div>
+    </button>`).join('') || '<div class="empty">No jobs yet.</div>';
+  document.querySelectorAll('[data-j]').forEach((b) => (b.onclick = () => { job = b.dataset.j; follow = false; seen = 0; $('main').innerHTML = ''; loadTranscript(); }));
+}
+
+function render(ev) {
+  if (ev.type === 'turn') return `<div class="turn">${ev.resuming ? 'Resumed after a decision' : 'New job: ' + esc(ev.prompt)} · ${esc(when(ev.at))}</div>`;
+  if (ev.type === 'system' && ev.subtype === 'init') return `<div class="meta">Session ${esc(String(ev.session_id).slice(0, 8))} · ${esc(ev.model)}</div>`;
+  if (ev.type === 'assistant') {
+    return (ev.message?.content || []).map((b) => {
+      if (b.type === 'text' && b.text.trim()) return `<div class="ev"><div class="say">${esc(b.text.trim())}</div><div class="meta">${esc(when(ev.at))}</div></div>`;
+      if (b.type === 'tool_use') {
+        const cmd = b.input?.command || JSON.stringify(b.input);
+        return `<div class="ev tool" id="t-${esc(b.id)}"><div class="cmd"><b>$</b> ${esc(cmd)}</div></div>`;
+      }
+      return '';
+    }).join('');
+  }
+  if (ev.type === 'user') {
+    for (const b of ev.message?.content || []) {
+      if (b.type !== 'tool_result') continue;
+      const out = typeof b.content === 'string' ? b.content : (b.content || []).map((c) => c.text || '').join('\n');
+      const host = document.getElementById('t-' + b.tool_use_id);
+      const html = `<details ${out.length < 400 ? 'open' : ''}><summary>${b.is_error ? 'refused / failed' : 'output'} · ${out.length} chars</summary><pre>${esc(out.slice(0, 20000))}</pre></details>`;
+      if (host) { host.insertAdjacentHTML('beforeend', html); if (b.is_error) host.classList.add('err'); }
+    }
+    return '';
+  }
+  if (ev.type === 'result') return `<div class="ev"><span class="done ${ev.is_error ? 'bad' : ''}">${ev.is_error ? 'Stopped' : 'Turn finished'} · $${Number(ev.total_cost_usd || 0).toFixed(4)} · ${ev.num_turns} steps · ${Math.round((ev.duration_ms || 0) / 1000)}s</span></div>`;
+  return '';
+}
+
+async function loadTranscript() {
+  if (!agent || !job) return;
+  const t = await get(`/v1/agents/${encodeURIComponent(agent)}/jobs/${encodeURIComponent(job)}/transcript?after=${seen}`);
+  const main = $('main');
+  if (!seen) main.innerHTML = `<div class="jobhead"><h3>${esc(document.querySelector('[data-j].on .t')?.textContent || job)}</h3>${t.working ? '<span class="live">live</span>' : ''}</div><div class="meta">Job ${esc(job)}</div><div id="evs"></div>`;
+  const head = main.querySelector('.jobhead');
+  if (head) { const l = head.querySelector('.live'); if (t.working && !l) head.insertAdjacentHTML('beforeend', '<span class="live">live</span>'); if (!t.working && l) l.remove(); }
+  const atBottom = main.scrollTop + main.clientHeight >= main.scrollHeight - 40;
+  const box = $('evs');
+  for (const ev of t.events) box.insertAdjacentHTML('beforeend', render(ev));
+  seen = t.total;
+  if (t.events.length && atBottom) main.scrollTop = main.scrollHeight;
+}
+
+async function tick() {
+  try { await loadAgents(); await loadJobs(); await loadTranscript(); } catch (e) { $('sub').textContent = 'Cannot reach the session manager (' + e.message + ')'; }
+}
+tick();
+setInterval(tick, 1500);
+</script>
+</body>
+</html>

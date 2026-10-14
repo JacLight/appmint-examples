@@ -1,0 +1,29 @@
+{
+  "$kind": "http-request",
+  "method": "GET",
+  "url": "{{base_url}}/ai-employees/me/briefing",
+  "order": 14000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "scripts": [],
+  "auth": {
+    "type": "bearer",
+    "credentials": [
+      {
+        "key": "token",
+        "value": "{{employee_token}}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$kind": "collection",
+  "name": "AppEngine AI integration",
+  "description": "Select individual requests deliberately. Staff and employee sessions are different identities. Not an automatic all-requests scenario. Schemas remain in the maintained reference.",
+  "auth": {
+    "type": "bearer",
+    "credentials": [
+      {
+        "key": "token",
+        "value": "{{staff_token}}"
+      }
+    ]
+  },
+  "variables": [
+    {
+      "key": "base_url",
+      "value": "https://appengine.appmint.io"
+    },
+    {
+      "key": "org",
+      "value": ""
+    },
+    {
+      "key": "staff_token",
+      "value": ""
+    },
+    {
+      "key": "employee_token",
+      "value": ""
+    },
+    {
+      "key": "employee",
+      "value": ""
+    },
+    {
+      "key": "employee_email",
+      "value": ""
+    },
+    {
+      "key": "workspace_id",
+      "value": ""
+    },
+    {
+      "key": "work_id",
+      "value": ""
+    },
+    {
+      "key": "worker_id",
+      "value": "my-owned-runtime"
+    },
+    {
+      "key": "assistant_id",
+      "value": ""
+    },
+    {
+      "key": "ticket_number",
+      "value": ""
+    },
+    {
+      "key": "enabled_action",
+      "value": ""
+    }
+  ]
+}

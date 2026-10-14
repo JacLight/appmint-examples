@@ -1,0 +1,30 @@
+{
+  "$kind": "http-request",
+  "method": "POST",
+  "url": "{{base_url}}/workspace/{{workspace_id}}/item",
+  "order": 9000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "scripts": [
+    {
+      "type": "beforeRequest",
+      "language": "text/javascript",
+      "code": "if(pm.variables.get('enabled_action') !== 'assigned-task') throw new Error('Select only the intended operation and set enabled_action=assigned-task; inspect state before repeating writes.');"
+    }
+  ],
+  "body": {
+    "type": "json",
+    "content": "{\n  \"type\": \"task\",\n  \"title\": \"Review the internal note\",\n  \"task\": {\n    \"description\": \"Read this task, perform only the described internal update, then use exact status done and verify the saved record.\",\n    \"assignTo\": [\n      \"{{employee_email}}\"\n    ]\n  }\n}"
+  }
+}

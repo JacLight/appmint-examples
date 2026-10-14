@@ -1,0 +1,252 @@
+#!/usr/bin/env node
+// `ae` — how an AI employee's session works in appengine. It is the only tool
+// the session may run. It acts as the employee, with the employee's token; it
+// never holds the password or authenticator secret.
+//
+//   ./ae step <thinking|note|action|check|screen|error> <text…>   say what you are doing
+//   ./ae approval <calls|delete|bulkSend|money|usersAndPermissions|other> <amountUsd> <summary…>
+//                                                              ask before acting — prints ALLOWED or WAIT
+//   ./ae file <file-attachment-number>                       read a small UTF-8 text attachment on this job
+//   ./ae api <GET|POST|PUT|DELETE> <path> [json]               any appengine call, as yourself
+//   ./ae conversations                                         your Workspace conversations
+//   ./ae read <conversationId>                                 recent messages in one
+//   ./ae say <workspaceId> [--room <label>] [--reply <itemId>] <text…>   post in a workspace or conversation (a room, or a reply in a thread)
+//   ./ae chat-read <chatId>                                    a Chat conversation's messages
+//   ./ae chat <chatId> <text…>                                 reply in Chat
+//   ./ae staff [search…]                                       who works here (people and AI): name, email, title, department
+//   ./ae dm <email> <text…>                                    message a colleague in Chat (starts the chat if there is none)
+//   ./ae link <datatype> <id>                                  a studio link to a record, to give a person (opens in its app)
+//   Customer chats (Agent Desk) — a customer chat must be yours before you write in it:
+//   ./ae queue                                                 who is waiting
+//   ./ae pick                                                  take the next waiting customer (it becomes yours; the website AI stops)
+//   ./ae takeover <chatId> <customerEmail> [first message…]    take a customer chat from the website AI or another agent
+//   ./ae hand-back <chatId> <customerEmail>                    give it back to the website AI
+//   ./ae transfer <chatId> <toEmail> [note…]                   pass it to a colleague
+//   ./ae close <chatId>                                        end it
+//   Anything that came in (a message, ticket, order, form, social post…) — the record says who has it:
+//   ./ae take <datatype> <id>                                  take it; prints TAKEN, or LEAVE IT with who has it
+//   ./ae done <datatype> <id> <what was done…>                 it is dealt with — one line on what you did
+//   ./ae no-action <datatype> <id> <why…>                      nothing needs doing (spam, already answered…)
+//   ./ae release <datatype> <id> [why…]                        give it back for someone else to take
+//   ./ae handling <datatype> <id>                              who has it, and what happened so far
+//   ./ae docs <what you want to do…>                           search the API documentation
+//   ./ae guide <url>                                           read a documentation page (.md / llms.txt)
+//   ./ae note <text…>                                          write a note for yourself (kept on your own user)
+//   ./ae notes                                                 read your notes
+//   ./ae summary [sinceISO]                                    your work since then, counted by the server (default: 24 hours)
+//   ./ae complete <result…>                                    the job is done
+//   ./ae fail <reason…>                                        you cannot do it
+import fs from 'node:fs';
+import { readAttachment } from '../src/attachment.mjs';
+
+const statePath = process.env.AE_STATE;
+if (!statePath || !fs.existsSync(statePath)) {
+  console.error('ae: no session state (AE_STATE). Run from an employee session.');
+  process.exit(2);
+}
+const st = JSON.parse(fs.readFileSync(statePath, 'utf8'));
+const [cmd, ...args] = process.argv.slice(2);
+const MAX = 20000;
+
+const call = async (method, path, body, auth = true) => {
+  const res = await fetch(`${st.apiBaseUrl}/${String(path).replace(/^\/+/, '')}`, {
+    method,
+    headers: { orgid: st.orgId, 'content-type': 'application/json', ...(auth ? { authorization: `Bearer ${st.token}` } : {}) },
+    body: body === undefined ? undefined : JSON.stringify(body),
+  });
+  const text = await res.text();
+  let json;
+  try {
+    json = text ? JSON.parse(text) : null;
+  } catch {
+    json = text;
+  }
+  return { status: res.status, ok: res.ok, json };
+};
+const show = (r) => {
+  const out = typeof r.json === 'string' ? r.json : JSON.stringify(r.json, null, 2);
+  console.log(`${r.status}${r.ok ? '' : ' (refused)'}\n${out && out.length > MAX ? out.slice(0, MAX) + `\n… (${out.length - MAX} more characters)` : out ?? ''}`);
+  if (!r.ok) process.exitCode = 1;
+};
+const outcome = (o) => fs.writeFileSync(st.outcomeFile, JSON.stringify({ ...o, at: new Date().toISOString() }));
+const text = () => args.join(' ').trim();
+// Who it is: from the session state, else its briefing.
+const me = async () => {
+  if (st.userId && st.name) return st;
+  const b = await call('GET', 'ai-employees/me/briefing');
+  return { name: st.name || b.json?.identity?.handle, userId: st.userId || b.json?.identity?.userId };
+};
+
+const run = async () => {
+  switch (cmd) {
+    case 'step': {
+      const [kind, ...rest] = args;
+      if (!['thinking', 'note', 'action', 'check', 'screen', 'error'].includes(kind) || !rest.join(' ').trim())
+        throw new Error('usage: ae step <thinking|note|action|check|screen|error> <text...>; for example: ae step note "Checked the fictional checklist"');
+      const r = await call('POST', `ai-employees/worker/work/${st.jobId}/step`, { worker: st.worker, kind, text: rest.join(' ') });
+      console.log(r.ok ? 'noted' : `not noted: ${r.status} ${JSON.stringify(r.json)}`);
+      if (!r.ok) process.exitCode = 1;
+      return;
+    }
+    case 'approval': {
+      const [action, amount, ...rest] = args;
+      const ACTIONS = ['calls', 'delete', 'bulkSend', 'money', 'usersAndPermissions', 'other'];
+      if (!ACTIONS.includes(action) || amount === undefined || isNaN(Number(amount)) || !rest.length)
+        throw new Error(`usage: ./ae approval <${ACTIONS.join('|')}> <amountUsd, 0 if none> <what you want to do>\n  e.g. ./ae approval delete 0 "Delete lead 123, created by mistake"`);
+      const r = await call('POST', `ai-employees/worker/work/${st.jobId}/approval`, { worker: st.worker, action, amountUsd: Number(amount) || 0, summary: rest.join(' ') });
+      if (!r.ok) return show(r);
+      if (r.json?.allowed) {
+        console.log('ALLOWED — go ahead.');
+      } else {
+        outcome({ type: 'waiting', summary: rest.join(' ') });
+        console.log('WAIT — a person has to answer. Stop now: say in one line what you asked for and end your turn. You will be woken with the answer.');
+      }
+      return;
+    }
+    case 'file': {
+      if (args.length !== 1) throw new Error('usage: ./ae file <file-attachment-number>');
+      console.log(await readAttachment(st, args[0]));
+      return;
+    }
+    case 'api': {
+      const [method, path, json] = args;
+      if (!method || !path) throw new Error('usage: ae api <METHOD> <path> [json]');
+      return show(await call(method.toUpperCase(), path, json ? JSON.parse(json) : undefined));
+    }
+    case 'conversations':
+      return show(await call('GET', 'workspace'));
+    case 'read':
+      return show(await call('GET', `workspace/${args[0]}/items`));
+    case 'say': {
+      // ./ae say <id> [--room <label>] [--reply <itemId>] <text…>
+      const [id, ...rest] = args;
+      const opt = {};
+      while (rest[0] === '--room' || rest[0] === '--reply') { const k = rest.shift(); opt[k] = rest.shift(); }
+      return show(await call('POST', `workspace/${id}/item`, { message: rest.join(' '), ...(opt['--room'] ? { room: { label: opt['--room'] } } : {}), ...(opt['--reply'] ? { parentItem: opt['--reply'] } : {}) }));
+    }
+    case 'chat-read':
+      return show(await call('GET', `chat/history/${encodeURIComponent(args[0])}`));
+    case 'chat': {
+      const [chatId, ...rest] = args;
+      if (!chatId || !rest.length) throw new Error('usage: ./ae chat <chatId> <message>');
+      const res = await fetch(`${st.local.url}/chat`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-agent-secret': st.local.secret }, body: JSON.stringify({ chatId, content: rest.join(' ') }) });
+      const j = await res.json().catch(() => ({}));
+      console.log(res.ok ? 'sent' : `not sent: ${j.error || res.status}`);
+      if (!res.ok) process.exitCode = 1;
+      return;
+    }
+    case 'staff': {
+      const q = text();
+      return show(await call('GET', `staff-directory${q ? `?search=${encodeURIComponent(q)}` : ''}`));
+    }
+    case 'dm': {
+      // A chat between two people is their two emails, sorted, joined with '|'.
+      const [to, ...rest] = args;
+      if (!to || !to.includes('@') || !rest.length) throw new Error('usage: ./ae dm <email> <message>');
+      const chatId = [String(st.me || '').toLowerCase(), to.toLowerCase()].sort().join('|');
+      const res = await fetch(`${st.local.url}/chat`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-agent-secret': st.local.secret }, body: JSON.stringify({ chatId, content: rest.join(' ') }) });
+      const j = await res.json().catch(() => ({}));
+      console.log(res.ok ? `sent (chat ${chatId})` : `not sent: ${j.error || res.status}`);
+      if (!res.ok) process.exitCode = 1;
+      return;
+    }
+    case 'link': {
+      const [datatype, id] = args;
+      if (!datatype || !id) throw new Error('usage: ./ae link <datatype> <id>');
+      return show(await call('GET', `repository/link/${encodeURIComponent(datatype)}/${encodeURIComponent(id)}`));
+    }
+    case 'queue':
+    case 'pick':
+    case 'takeover':
+    case 'hand-back':
+    case 'transfer':
+    case 'close': {
+      const [a1, a2, ...rest] = args;
+      const act = {
+        queue: ['queue-stats', {}],
+        pick: ['pick-next', a1 ? { queue: a1 } : {}],
+        takeover: ['takeover-chat', { chatId: a1, customerEmail: a2, ...(rest.length ? { message: rest.join(' ') } : {}) }],
+        'hand-back': ['resume-ai', { chatId: a1, customerEmail: a2 }],
+        transfer: ['transfer-chat', { chatId: a1, toAgentEmail: a2, ...(rest.length ? { note: rest.join(' ') } : {}) }],
+        close: ['close-chat', { chatId: a1 }],
+      }[cmd];
+      if (['takeover', 'hand-back', 'transfer'].includes(cmd) && (!a1 || !a2)) throw new Error(`usage: ./ae ${cmd} <chatId> <${cmd === 'transfer' ? 'toEmail' : 'customerEmail'}>`);
+      if (cmd === 'close' && !a1) throw new Error('usage: ./ae close <chatId>');
+      const res = await fetch(`${st.local.url}/desk`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-agent-secret': st.local.secret }, body: JSON.stringify({ event: act[0], data: act[1] }) });
+      const j = await res.json().catch(() => ({}));
+      if (cmd === 'pick' && res.ok && !j.chat) console.log('nobody is waiting');
+      else console.log(JSON.stringify(j, null, 2));
+      if (!res.ok) process.exitCode = 1;
+      return;
+    }
+    case 'docs':
+      return show(await call('GET', `documentation/search?q=${encodeURIComponent(text())}&limit=10`, undefined, false));
+    case 'guide': {
+      let url = args[0];
+      // appengine's documentation, whatever host a link names, is read from the appengine this employee signed in to.
+      try {
+        const u = new URL(url);
+        if (/^\/(documentation|llms\.txt|openapi\.json)/.test(u.pathname)) url = `${st.apiBaseUrl}${u.pathname}${u.search}`;
+      } catch {}
+      if (!/^https:\/\/docs\.(appmint|businessmade)\.io\//.test(url) && !url.startsWith(st.apiBaseUrl)) throw new Error('ae guide reads only the documentation sites and the API documentation.');
+      const res = await fetch(url);
+      const body = await res.text();
+      console.log(body.length > MAX ? body.slice(0, MAX) + `\n… (${body.length - MAX} more characters)` : body);
+      return;
+    }
+    case 'take': {
+      const [dt, id] = args;
+      if (!dt || !id) throw new Error('usage: ./ae take <datatype> <id>');
+      const r = await call('POST', `handling/${dt}/${id}/take`);
+      if (!r.ok) return show(r);
+      console.log(r.json?.taken ? `TAKEN — it is yours. Finish with ./ae done ${dt} ${id} <what you did>.` : `LEAVE IT — ${r.json?.message || 'someone else has it.'}`);
+      return;
+    }
+    case 'done':
+    case 'no-action': {
+      const [dt, id, ...rest] = args;
+      if (!dt || !id || !rest.join(' ').trim()) throw new Error(`usage: ./ae ${cmd} <datatype> <id> <${cmd === 'done' ? 'what was done' : 'why'}…>`);
+      return show(await call('POST', `handling/${dt}/${id}/${cmd}`, cmd === 'done' ? { outcome: rest.join(' ') } : { reason: rest.join(' ') }));
+    }
+    case 'release': {
+      const [dt, id, ...rest] = args;
+      if (!dt || !id) throw new Error('usage: ./ae release <datatype> <id> [why…]');
+      return show(await call('POST', `handling/${dt}/${id}/release`, { reason: rest.join(' ') }));
+    }
+    case 'handling': {
+      const [dt, id] = args;
+      if (!dt || !id) throw new Error('usage: ./ae handling <datatype> <id>');
+      return show(await call('GET', `handling/${dt}/${id}`));
+    }
+    case 'note': {
+      if (!text()) throw new Error('usage: ./ae note <text>');
+      const { userId } = await me();
+      if (!userId) throw new Error('your user id is not in your briefing');
+      return show(await call('POST', `notes/user/${userId}`, { comment: text() }));
+    }
+    case 'notes': {
+      const { userId } = await me();
+      if (!userId) throw new Error('your user id is not in your briefing');
+      return show(await call('GET', `notes/user/${userId}`));
+    }
+    case 'summary': {
+      const { name } = await me();
+      const since = args[0] || new Date(Date.now() - 24 * 3600 * 1000).toISOString();
+      return show(await call('GET', `ai-employees/worker/${encodeURIComponent(name)}/summary?since=${encodeURIComponent(since)}`));
+    }
+    case 'complete':
+      outcome({ type: 'complete', result: text() });
+      console.log('Recorded as done. End your turn.');
+      return;
+    case 'fail':
+      outcome({ type: 'fail', error: text() });
+      console.log('Recorded as not done. End your turn.');
+      return;
+    default:
+      console.log(fs.readFileSync(new URL(import.meta.url)).toString().split('\n').filter((l) => l.startsWith('//')).map((l) => l.slice(3)).join('\n'));
+  }
+};
+run().catch((e) => {
+  console.error(`ae: ${e.message}`);
+  process.exit(1);
+});

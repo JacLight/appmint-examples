@@ -1,0 +1,44 @@
+{
+  "$kind": "http-request",
+  "method": "POST",
+  "url": "{{base_url}}/ai-employees/worker/work/{{work_id}}/approval",
+  "order": 16000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "scripts": [
+    {
+      "type": "beforeRequest",
+      "language": "text/javascript",
+      "code": "if(pm.variables.get('enabled_action') !== 'worker-approval') throw new Error('Select only the intended operation and set enabled_action=worker-approval; inspect state before repeating writes.');"
+    },
+    {
+      "type": "afterResponse",
+      "language": "text/javascript",
+      "code": "pm.test('Decision must be explicit before action',()=>pm.expect(pm.response.json().allowed).to.be.a('boolean'));"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "credentials": [
+      {
+        "key": "token",
+        "value": "{{employee_token}}"
+      }
+    ]
+  },
+  "body": {
+    "type": "json",
+    "content": "{\n  \"worker\": \"{{worker_id}}\",\n  \"action\": \"other\",\n  \"summary\": \"Post the approved internal review note\"\n}"
+  }
+}

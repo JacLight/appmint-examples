@@ -1,0 +1,18 @@
+# Local credentials, fixtures, model sessions and generated state
+.env
+.env.*
+!.env.example
+*.private.json
+fixture.json
+identities.json
+employee-profile.local.json
+assistant.local.json
+__pycache__/
+*.pyc
+node_modules/
+runtime/data/
+.claude/
+*.log
+# This companion includes a built official SDK snapshot.
+!vendor/appmint-js/dist/
+!vendor/appmint-js/dist/**

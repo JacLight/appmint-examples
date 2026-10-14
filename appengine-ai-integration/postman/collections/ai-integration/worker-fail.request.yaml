@@ -1,0 +1,39 @@
+{
+  "$kind": "http-request",
+  "method": "POST",
+  "url": "{{base_url}}/ai-employees/worker/work/{{work_id}}/fail",
+  "order": 18000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "scripts": [
+    {
+      "type": "beforeRequest",
+      "language": "text/javascript",
+      "code": "if(pm.variables.get('enabled_action') !== 'worker-fail') throw new Error('Select only the intended operation and set enabled_action=worker-fail; inspect state before repeating writes.');"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "credentials": [
+      {
+        "key": "token",
+        "value": "{{employee_token}}"
+      }
+    ]
+  },
+  "body": {
+    "type": "json",
+    "content": "{\n  \"worker\": \"{{worker_id}}\",\n  \"error\": \"Describe the actual failure; reconcile possible writes first.\",\n  \"retry\": false\n}"
+  }
+}

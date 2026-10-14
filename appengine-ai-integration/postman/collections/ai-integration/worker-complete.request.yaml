@@ -1,0 +1,39 @@
+{
+  "$kind": "http-request",
+  "method": "POST",
+  "url": "{{base_url}}/ai-employees/worker/work/{{work_id}}/complete",
+  "order": 17000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "scripts": [
+    {
+      "type": "beforeRequest",
+      "language": "text/javascript",
+      "code": "if(pm.variables.get('enabled_action') !== 'worker-complete') throw new Error('Select only the intended operation and set enabled_action=worker-complete; inspect state before repeating writes.');"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "credentials": [
+      {
+        "key": "token",
+        "value": "{{employee_token}}"
+      }
+    ]
+  },
+  "body": {
+    "type": "json",
+    "content": "{\n  \"worker\": \"{{worker_id}}\",\n  \"result\": \"Describe the actual verified result; do not submit this placeholder as completion.\",\n  \"costUsd\": 0\n}"
+  }
+}

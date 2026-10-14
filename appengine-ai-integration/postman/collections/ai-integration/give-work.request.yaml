@@ -1,0 +1,30 @@
+{
+  "$kind": "http-request",
+  "method": "POST",
+  "url": "{{base_url}}/ai-employees/{{employee}}/work",
+  "order": 8000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "scripts": [
+    {
+      "type": "beforeRequest",
+      "language": "text/javascript",
+      "code": "if(pm.variables.get('enabled_action') !== 'give-work') throw new Error('Select only the intended operation and set enabled_action=give-work; inspect state before repeating writes.');"
+    }
+  ],
+  "body": {
+    "type": "json",
+    "content": "{\n  \"title\": \"Review the internal note\",\n  \"instructions\": \"Read the assigned note and report the actual result in our internal Workspace only.\"\n}"
+  }
+}
