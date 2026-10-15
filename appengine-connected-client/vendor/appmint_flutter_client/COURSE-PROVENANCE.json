@@ -1,0 +1,22 @@
+{
+  "officialRepository": "https://github.com/JacLight/appmint-client",
+  "commit": "d7faa369e6c94734b2c3f8342731564d8026beca",
+  "package": "appmint_flutter_client",
+  "version": "0.1.2",
+  "sdkSourceModified": false,
+  "fileSha256": {
+    "CHANGELOG.md": "51f4e30197ba90904224c27d8cb3d27d011dd948aae583bb45241491fd9ebfc5",
+    "README.md": "9dc66b378c54038984ddab6feffc0ad6fda63b5abb46c001f2d9c727d32523bd",
+    "pubspec.yaml": "6561d24213086a3eb583dad09dcae754a3dd48426e1d17f6e3bdf858465bc73a",
+    "lib/appmint_flutter_client.dart": "666d28fc78ef6c7f2185f9e392bd93f80553d85a2f9d4a10d20c3ab09c26f9bb",
+    ".dart_tool/extension_discovery/README.md": "3a3bd9e9d04204c3eeefb4172ed2670a5f294dd58185bc52d4d91f7cf21c0cb6",
+    "lib/src/repository.dart": "fcbcc2a4ed9b0fde1434962c433ec7c68758be6fc88bbd11cfe90353c55c2e5b",
+    "lib/src/config.dart": "f098690b4e57b34e0f7ca01a7edfe23daa3b49bbdaa3156f4eed1db839f31f6d",
+    "lib/src/call.dart": "2ccc5dd09d091c8b815ca3a6d4ec2bef750a1327eb53db3f4d45508c70372c38",
+    "lib/src/http.dart": "588a1f2de296082289c51a086f0f23587c2901eb1f6dd3e7cb7e13aad1ed6910",
+    "lib/src/errors.dart": "d7433afcee5ec557598bfeafed93141209df42dfce8dbecdfcccace0fc523f85",
+    "lib/src/auth/auth.dart": "53420c8f6ce21a1f55319144ffd0502a1c7645a9b37c8394a00ac38d59e2fdec",
+    "lib/src/auth/session_store.dart": "ec72e7e25e114b2b00536b8eb252b5f3fff94fb611ec89dd226f47fc4ab2c531",
+    "lib/src/auth/results.dart": "192febbd66247116a9a1c24fe3eda847cbe690c6e6be5481b06aee79c3ebfbc4"
+  }
+}

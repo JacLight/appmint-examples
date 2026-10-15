@@ -1,0 +1,57 @@
+[
+  {
+    "source": "appmint_go/appmint_mobile/lib/services/softphone_service.dart",
+    "sha256": "ee0fd1a50cfade4e1eee14a30d9c85b324074db1deafaab2ee6bfc01a3bb0c54",
+    "excerpts": [
+      [
+        96,
+        147
+      ],
+      [
+        203,
+        238
+      ],
+      [
+        305,
+        346
+      ]
+    ],
+    "file": "softphone-service.md"
+  },
+  {
+    "source": "appmint_go/appmint_mobile/lib/screens/phone/phone_screen.dart",
+    "sha256": "b18d87519fbeb92ad6cd33be09e919a3160abcba7f5d0e411258cfe1ccc1d07f",
+    "excerpts": [
+      [
+        313,
+        345
+      ],
+      [
+        391,
+        410
+      ],
+      [
+        1109,
+        1138
+      ],
+      [
+        1205,
+        1244
+      ]
+    ],
+    "file": "phone-screen.md"
+  },
+  {
+    "source": "appmint_go/appmint_mobile/pubspec.yaml",
+    "sha256": "26da8e47faee3a98d4623016491f35bee7c67a4d1b8578e747a4b528a6b85448",
+    "observedDependencies": {
+      "twilio_voice": "^0.5.0",
+      "firebase_core": "^4.15.0",
+      "firebase_messaging": "^16.7.0",
+      "device_info_plus": "^13.3.0",
+      "permission_handler": "^13.0.2",
+      "http": "^1.6.0",
+      "shared_preferences": "^2.5.6"
+    }
+  }
+]

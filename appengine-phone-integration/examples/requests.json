@@ -1,0 +1,145 @@
+[
+  {
+    "name": "user-phones",
+    "method": "GET",
+    "path": "/phone/user-phones",
+    "body": null,
+    "sideEffect": false
+  },
+  {
+    "name": "numbers",
+    "method": "GET",
+    "path": "/phone/numbers",
+    "body": null,
+    "sideEffect": false
+  },
+  {
+    "name": "outbound-readiness",
+    "method": "GET",
+    "path": "/phone/voice/app",
+    "body": null,
+    "sideEffect": false
+  },
+  {
+    "name": "devices",
+    "method": "GET",
+    "path": "/phone/voice/devices",
+    "body": null,
+    "sideEffect": false
+  },
+  {
+    "name": "call-history",
+    "method": "GET",
+    "path": "/crm/communications/calls?limit=20",
+    "body": null,
+    "sideEffect": false
+  },
+  {
+    "name": "sms-requirements",
+    "method": "GET",
+    "path": "/phone/numbers/{{phone_id}}/sms-requirements",
+    "body": null,
+    "sideEffect": false
+  },
+  {
+    "name": "sms-status",
+    "method": "GET",
+    "path": "/phone/numbers/sms-status/{{phone_id}}",
+    "body": null,
+    "sideEffect": false
+  },
+  {
+    "name": "register-device",
+    "method": "POST",
+    "path": "/phone/voice/register-device",
+    "body": {
+      "deviceId": "{{device_id}}",
+      "platform": "web",
+      "label": "My browser",
+      "capabilities": [
+        "voice"
+      ]
+    },
+    "sideEffect": true
+  },
+  {
+    "name": "heartbeat",
+    "method": "POST",
+    "path": "/phone/voice/heartbeat",
+    "body": {
+      "deviceId": "{{device_id}}"
+    },
+    "sideEffect": true
+  },
+  {
+    "name": "unregister-device",
+    "method": "POST",
+    "path": "/phone/voice/unregister-device",
+    "body": {
+      "deviceId": "{{device_id}}"
+    },
+    "sideEffect": true
+  },
+  {
+    "name": "provision-outbound",
+    "method": "POST",
+    "path": "/phone/voice/app",
+    "body": {
+      "force": false
+    },
+    "sideEffect": true
+  },
+  {
+    "name": "route-ivr",
+    "method": "POST",
+    "path": "/phone/numbers/{{phone_id}}/routing",
+    "body": {
+      "mode": "ivr"
+    },
+    "sideEffect": true
+  },
+  {
+    "name": "save-draft",
+    "method": "POST",
+    "path": "/crm/inbox/update",
+    "body": {
+      "data": {
+        "deliveryType": "sms",
+        "from": "{{from}}",
+        "to": [
+          "{{to}}"
+        ],
+        "text": "Controlled phone integration test"
+      }
+    },
+    "sideEffect": true
+  },
+  {
+    "name": "send-sms",
+    "method": "POST",
+    "path": "/crm/inbox/update?send=true",
+    "body": {
+      "data": {
+        "deliveryType": "sms",
+        "from": "{{from}}",
+        "to": [
+          "{{to}}"
+        ],
+        "text": "Controlled phone integration test"
+      }
+    },
+    "sideEffect": true
+  },
+  {
+    "name": "call-ai",
+    "method": "POST",
+    "path": "/phone/calls/ai",
+    "body": {
+      "to": "{{to}}",
+      "from": "{{from}}",
+      "assistantId": "{{assistant_id}}",
+      "reason": "Identify yourself as the test assistant, confirm this is the authorized test recipient, then end the test call."
+    },
+    "sideEffect": true
+  }
+]

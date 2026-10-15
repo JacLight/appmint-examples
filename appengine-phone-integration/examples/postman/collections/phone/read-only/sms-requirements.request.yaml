@@ -1,0 +1,16 @@
+{
+  "$kind": "http-request",
+  "name": "sms-requirements",
+  "method": "GET",
+  "url": "{{base_url}}/phone/numbers/{{phone_id}}/sms-requirements",
+  "order": 6000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  }
+}

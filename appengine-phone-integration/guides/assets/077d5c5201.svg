@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="650" viewBox="0 0 1440 650" role="img">
+<title>Read the response at the correct level</title>
+<desc>An empty array is different from a rejected request. Never render an error as an empty account.</desc>
+<rect width="1440" height="650" fill="#f7f6fb"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#252137}.small{font-size:20px;fill:#645d75}.body{font-size:24px}.head{font-size:27px;font-weight:700}</style>
+<text x="55" y="48" class="small">APPMINT · APPENGINE INTEGRATION GUIDE</text>
+<text x="55" y="105" font-size="36" font-weight="700">Read the response at the correct level</text>
+<rect x="55" y="165" width="410" height="320" rx="18" fill="white" stroke="#d5cee4" stroke-width="2"/>
+<circle cx="91" cy="201" r="20" fill="#7135c8"/>
+<text x="91" y="208" text-anchor="middle" style="fill:white;font-size:20px;font-weight:700">1</text>
+<text x="80" y="253" class="head">Request identity</text>
+<text x="80" y="319" class="body">API chooses environment;</text>
+<text x="80" y="349" class="body">orgid chooses organization;</text>
+<text x="80" y="379" class="body">bearer identifies caller.</text>
+<path d="M476 325h25m-10-8 10 8-10 8" fill="none" stroke="#7135c8" stroke-width="3"/>
+<rect x="515" y="165" width="410" height="320" rx="18" fill="white" stroke="#d5cee4" stroke-width="2"/>
+<circle cx="551" cy="201" r="20" fill="#7135c8"/>
+<text x="551" y="208" text-anchor="middle" style="fill:white;font-size:20px;font-weight:700">2</text>
+<text x="540" y="253" class="head">Single profile</text>
+<text x="540" y="319" class="body">GET /client-data/profile: sk</text>
+<text x="540" y="349" class="body">identifies the record; data</text>
+<text x="540" y="379" class="body">holds business fields.</text>
+<path d="M936 325h25m-10-8 10 8-10 8" fill="none" stroke="#7135c8" stroke-width="3"/>
+<rect x="975" y="165" width="410" height="320" rx="18" fill="white" stroke="#d5cee4" stroke-width="2"/>
+<circle cx="1011" cy="201" r="20" fill="#7135c8"/>
+<text x="1011" y="208" text-anchor="middle" style="fill:white;font-size:20px;font-weight:700">3</text>
+<text x="1000" y="253" class="head">Collection response</text>
+<text x="1000" y="319" class="body">GET</text>
+<text x="1000" y="349" class="body">/client-data/reservations:</text>
+<text x="1000" y="379" class="body">inspect total and the data</text>
+<text x="1000" y="409" class="body">array, then each record.data.</text>
+<text x="55" y="546" font-size="23">An empty array is different from a rejected request. Never render an error as an empty account.</text>
+<text x="55" y="622" class="small">Conceptual contract map</text></svg>

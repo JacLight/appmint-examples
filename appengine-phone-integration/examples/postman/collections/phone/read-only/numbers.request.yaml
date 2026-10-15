@@ -1,0 +1,16 @@
+{
+  "$kind": "http-request",
+  "name": "numbers",
+  "method": "GET",
+  "url": "{{base_url}}/phone/numbers",
+  "order": 2000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$kind": "http-request",
+  "name": "outbound-readiness",
+  "method": "GET",
+  "url": "{{base_url}}/phone/voice/app",
+  "order": 3000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$kind": "http-request",
+  "name": "call-ai",
+  "method": "POST",
+  "url": "{{base_url}}/phone/calls/ai",
+  "order": 15000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "body": {
+    "type": "json",
+    "content": "{\n  \"to\": \"{{to}}\",\n  \"from\": \"{{from}}\",\n  \"assistantId\": \"{{assistant_id}}\",\n  \"reason\": \"Identify yourself as the test assistant, confirm this is the authorized test recipient, then end the test call.\"\n}"
+  },
+  "scripts": [
+    {
+      "type": "beforeRequest",
+      "language": "text/javascript",
+      "code": "if (pm.variables.get('enable_side_effects') !== 'true') { throw new Error('Select an owned provider/line and controlled recipient before enabling explicit actions.'); }"
+    }
+  ]
+}

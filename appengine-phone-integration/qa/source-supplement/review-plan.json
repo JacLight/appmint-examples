@@ -1,0 +1,38 @@
+{
+  "status": "completed_by_root_see_final_review",
+  "scope": "Runnable React and Flutter source supplements; labelled simulation is authorized. No carrier calls or messages.",
+  "requirements": {
+    "run": [
+      "React dependencies/start/build and actual browser entry",
+      "Flutter pubspec, main, native/web runners, controller/widget tests",
+      "Portable relative imports and source/reference links"
+    ],
+    "contract": [
+      "Use assigned E.164 caller ID, not phone record ID",
+      "Completed staff context separated from voice credential",
+      "Stable installation identity reused for renewal and unregister",
+      "AppEngine request method/path/body/query consistent with supplied Phone adapter"
+    ],
+    "lifecycle": [
+      "One connect owner; duplicate connect does not leak registrations or Devices",
+      "SDK registered is separate from call accepted",
+      "Listeners installed before accepting incoming call",
+      "Busy incoming call rejected without replacing active call",
+      "Mute, digits, hangup and terminal state remain linked to correct call",
+      "Stop/dispose invalidates late SDK/API callbacks and timers",
+      "Late initial registration or renewal cannot restore logged-out session"
+    ],
+    "communications": [
+      "Save draft versus send query option",
+      "Retain successful send result if readback fails",
+      "Pending/sent/delivered/failed meanings remain distinct",
+      "Reconcile unknown outcome before repeat"
+    ],
+    "truth": [
+      "Persistent simulation label; no microphone/provider/physical push claim",
+      "Production integration code versus fixture-only implementation clearly named",
+      "No hardcoded private organization, record credentials or token logging"
+    ]
+  },
+  "execution": "Only bounded offline checks; heavy browser/build/test queue requires coordination. Current producers still authoring."
+}

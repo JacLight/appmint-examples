@@ -1,0 +1,16 @@
+{
+  "$kind": "http-request",
+  "name": "devices",
+  "method": "GET",
+  "url": "{{base_url}}/phone/voice/devices",
+  "order": 4000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  }
+}

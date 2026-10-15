@@ -1,0 +1,25 @@
+## Number Defaults, Staff Assignments and Direct Call Handling
+
+A business line has several distinct relationships. Its default status influences outbound sender selection. Its assignment identifies the staff or groups who use it. Its incoming route decides what a caller hears and where the call goes. We will configure those relationships explicitly for the Cedar main line.
+
+In **Numbers**, open the line's three-dot menu and choose **Set as Default (calls)** if it should be the organisation's default calling number. Choose **Set as Default SMS** separately when it is the intended eligible SMS sender. The list marks the selected defaults; each choice also has an Unset action. A voice default is not a substitute for an explicitly checked SMS default or SMS registration. Where a default is inherited, inspect what the interface actually says rather than assuming this record owns it.
+
+Choose **Assign to User/Group**, or click the **Assigned To** badge. Use the **Users** or **Groups** selection, search for the intended staff member or team and save the assignment. Reopen the drawer and confirm the selection remains. Then sign in as the assigned employee and check that the line appears among their phone numbers. This second view verifies the relationship from the person who will use it, not only from the administrator's form.
+
+Historical Appmint Mobile Phone view showing No phone assigned to your account (additional repository resource: `../../assets/appmint-phones/12-native-no-number.png`; not included in this client download)
+
+*Inspected earlier Android capture: the employee can open Phone but has no assigned line. This is the failure state the assignment step resolves, not proof of a successful assignment. Return to the administrator’s Users/Groups assignment and verify the same organization. The current local organization has zero numbers, so the configured assignment drawer and successful employee read-back remain uncaptured.*
+
+An AI Employee may also have a phone identity and Phone & Voice configuration. Assign the intended employee/user record and inspect its own Phone & Voice page when that is the chosen operator. Keep that identity distinct from selecting an **AI assistant** as the line's answering route: one links a number to an employee/user, while the other chooses the conversational handler for incoming calls. Check both when the employee should answer by voice.
+
+Open **Configure → Call Handling**. The number supports **Ring my phone**, **AI assistant** and **Forward** without requiring an IVR menu. Choose Ring my phone for the first test. Inspect the ring/failover controls shown for that choice and select the appropriate fallback, such as an actual forwarding destination or voicemail. The fallback is needed when a browser is offline or the staff member does not answer; it is a different result from a successfully connected call.
+
+To configure that optional fallback, enable **Do something if no one answers — or while its AI employee is off**. Set **Ring time first (s)**, then choose **Then…**: forward to a number, hand to the AI assistant, send to voicemail, or say a message and end the call. Complete the destination/message required by that choice and select **Save Changes**. Leaving this checkbox off does not configure an automatic AI fallback. These current source-backed controls require a connected number; they were not available for a saved local example in this review.
+
+For a direct forwarding alternative, choose **Forward**, enter the actual controlled destination in international format and save. Have a participant call the business line and confirm the receiving phone rings, displays the intended caller identity and carries audio in both directions after answer. Forwarding does not require the participant to know the recipient's direct number, but the receiving device still needs to be reachable.
+
+Inspect the caller-ID choice where available: the caller's own number, the business line or a configured alternative affects what the receiving phone displays. Test that display on the real receiving phone. A label in the configuration does not establish that the provider permits every chosen caller ID.
+
+For **AI assistant**, select the intended assistant and provide line-specific context or greeting where offered. The assistant still needs the correct knowledge and capabilities in its own editor. We will tune and test its voice later. For now, keep a simple staff route as the baseline so that a provider or device problem can be diagnosed without also changing an AI configuration.
+
+If a staff member sees no number, inspect the saved user/group assignment and the organisation they are signed into. If a default appears but incoming calls do not ring them, inspect the assignment and Direct Voice route rather than repeatedly changing the default. The finish for this chapter is the correct number in the correct employee's phone view, followed by a controlled incoming call that reaches the configured handler or fallback.

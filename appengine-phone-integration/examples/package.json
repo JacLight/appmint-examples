@@ -1,0 +1,12 @@
+{
+  "name": "appengine-phone-course",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node phone-host.mjs",
+    "test": "node --test test.mjs test-host.mjs",
+    "simulate": "node ../simulation/server.mjs",
+    "test:simulation": "node --test ../simulation/contract-fixture.test.mjs",
+    "test:client": "node --test ../qa/client-lifecycle.test.mjs"
+  }
+}

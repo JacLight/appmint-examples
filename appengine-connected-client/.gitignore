@@ -1,0 +1,9 @@
+*.private.json
+*-defines.json
+public-config.json
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+*.log

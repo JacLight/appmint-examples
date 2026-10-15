@@ -1,0 +1,327 @@
+{
+  "info": {
+    "name": "AppEngine connected customer client",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base",
+      "value": "https://YOUR_APPENGINE_ENDPOINT"
+    },
+    {
+      "key": "org",
+      "value": "YOUR_ORGANIZATION"
+    },
+    {
+      "key": "service",
+      "value": "Private session"
+    },
+    {
+      "key": "formCollectionName",
+      "value": "cc_intake_1011"
+    },
+    {
+      "key": "endTime",
+      "value": "USE_SELECTED_SLOT_END"
+    }
+  ],
+  "item": [
+    {
+      "name": "Customer signup",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "url": "{{base}}/profile/customer/signup",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\",\n  \"firstName\": \"Mira\",\n  \"lastName\": \"Chen\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Customer signin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "url": "{{base}}/profile/customer/signin",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Own profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/client-data/profile",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first."
+      }
+    },
+    {
+      "name": "Definitions",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/definitions",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first."
+      }
+    },
+    {
+      "name": "Configured intake schema",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/collections/{{formCollectionName}}"
+      }
+    },
+    {
+      "name": "Available slots",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/slots",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reservationDefinitionId\": \"{{definition}}\",\n  \"serviceName\": \"{{service}}\",\n  \"serviceDate\": \"{{day}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Create reservation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/client-data/reservations",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reservationDefinitionId\": \"{{definition}}\",\n  \"service\": \"{{service}}\",\n  \"startTime\": \"{{start}}\",\n  \"form\": {\n    \"projectType\": \"Single room\",\n    \"brief\": \"Plan a reading corner with accessible shelving.\",\n    \"contactConsent\": true\n  },\n  \"endTime\": \"{{endTime}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Own bookings",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/client-data/reservations",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first."
+      }
+    },
+    {
+      "name": "Read own booking",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/client-data/reservations/{{booking_id}}",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first."
+      }
+    },
+    {
+      "name": "Reschedule",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/reschedule/{{booking_id}}",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"startTime\": \"{{new_start}}\",\n  \"reason\": \"Customer requested change\",\n  \"notify\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Cancel by email and reference",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/cancel/{{email_encoded}}/{{booking_code}}",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first."
+      }
+    },
+    {
+      "name": "Refresh customer session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          }
+        ],
+        "url": "{{base}}/profile/customer/refresh",
+        "description": "Use only your owned training fixtures. Tokens stay in local sensitive variables. Cancellation is an email+reference capability route; read ownership first.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

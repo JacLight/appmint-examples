@@ -1,0 +1,41 @@
+{
+  "datatype": "collection",
+  "isNew": true,
+  "data": {
+    "name": "cc_intake_1011",
+    "title": "Consultation intake",
+    "type": "custom",
+    "schema": {
+      "type": "object",
+      "title": "Prepare your consultation",
+      "required": [
+        "projectType",
+        "brief",
+        "contactConsent"
+      ],
+      "properties": {
+        "projectType": {
+          "type": "string",
+          "title": "Project type",
+          "enum": [
+            "Single room",
+            "Whole home"
+          ],
+          "description": "Choose the scope so the specialist can prepare."
+        },
+        "brief": {
+          "type": "string",
+          "title": "What would you like help with?",
+          "minLength": 12,
+          "maxLength": 300,
+          "x-control-variant": "textarea"
+        },
+        "contactConsent": {
+          "type": "boolean",
+          "title": "I agree to be contacted about this booking",
+          "const": true
+        }
+      }
+    }
+  }
+}

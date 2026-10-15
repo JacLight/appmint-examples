@@ -1,0 +1,34 @@
+{
+  "datatype": "reservation_definition",
+  "isNew": true,
+  "data": {
+    "name": "juniper-private-sessions",
+    "title": "Juniper Private Sessions",
+    "type": "service",
+    "status": "active",
+    "workDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "officeHours": {
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "timezone": "America/Los_Angeles"
+    },
+    "spots": 1,
+    "services": [
+      {
+        "name": "Private session",
+        "duration": 60,
+        "price": 0,
+        "breakAfter": 0
+      }
+    ],
+    "notifications": [],
+    "notify": [],
+    "hosts": ""
+  }
+}

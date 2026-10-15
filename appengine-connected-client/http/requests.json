@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Customer signup",
+    "method": "POST",
+    "path": "/profile/customer/signup",
+    "body": {
+      "email": "{{email}}",
+      "password": "{{password}}",
+      "firstName": "Mira",
+      "lastName": "Chen"
+    }
+  },
+  {
+    "name": "Customer signin",
+    "method": "POST",
+    "path": "/profile/customer/signin",
+    "body": {
+      "email": "{{email}}",
+      "password": "{{password}}"
+    }
+  },
+  {
+    "name": "Own profile",
+    "method": "GET",
+    "path": "/client-data/profile",
+    "body": null
+  },
+  {
+    "name": "Definitions",
+    "method": "GET",
+    "path": "/crm/reservations/definitions",
+    "body": null
+  },
+  {
+    "name": "Configured intake schema",
+    "method": "GET",
+    "path": "/repository/collections/{{formCollectionName}}",
+    "body": null
+  },
+  {
+    "name": "Available slots",
+    "method": "POST",
+    "path": "/crm/reservations/slots",
+    "body": {
+      "reservationDefinitionId": "{{definition}}",
+      "serviceName": "{{service}}",
+      "serviceDate": "{{day}}"
+    }
+  },
+  {
+    "name": "Create reservation",
+    "method": "POST",
+    "path": "/client-data/reservations",
+    "body": {
+      "reservationDefinitionId": "{{definition}}",
+      "service": "{{service}}",
+      "startTime": "{{start}}",
+      "form": {
+        "projectType": "Single room",
+        "brief": "Plan a reading corner with accessible shelving.",
+        "contactConsent": true
+      },
+      "endTime": "{{endTime}}"
+    }
+  },
+  {
+    "name": "Own bookings",
+    "method": "GET",
+    "path": "/client-data/reservations",
+    "body": null
+  },
+  {
+    "name": "Read own booking",
+    "method": "GET",
+    "path": "/client-data/reservations/{{booking_id}}",
+    "body": null
+  },
+  {
+    "name": "Reschedule",
+    "method": "POST",
+    "path": "/crm/reservations/reschedule/{{booking_id}}",
+    "body": {
+      "startTime": "{{new_start}}",
+      "reason": "Customer requested change",
+      "notify": false
+    }
+  },
+  {
+    "name": "Cancel by email and reference",
+    "method": "DELETE",
+    "path": "/crm/reservations/cancel/{{email_encoded}}/{{booking_code}}",
+    "body": null
+  },
+  {
+    "name": "Refresh customer session",
+    "method": "POST",
+    "path": "/profile/customer/refresh",
+    "body": {
+      "refresh_token": "{{refresh_token}}"
+    }
+  }
+]

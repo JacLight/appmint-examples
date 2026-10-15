@@ -1,0 +1,31 @@
+{
+  "$kind": "http-request",
+  "name": "route-ivr",
+  "method": "POST",
+  "url": "{{base_url}}/phone/numbers/{{phone_id}}/routing",
+  "order": 12000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "body": {
+    "type": "json",
+    "content": "{\n  \"mode\": \"ivr\"\n}"
+  },
+  "scripts": [
+    {
+      "type": "beforeRequest",
+      "language": "text/javascript",
+      "code": "if (pm.variables.get('enable_side_effects') !== 'true') { throw new Error('Select an owned provider/line and controlled recipient before enabling explicit actions.'); }"
+    }
+  ]
+}

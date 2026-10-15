@@ -1,0 +1,52 @@
+{
+  "$kind": "collection",
+  "name": "AppEngine Phone control plane",
+  "description": "Source-reviewed operations. Only readiness reads have been executed in this course. Writes may provision provider resources, change routing, send messages or place paid calls. Voice Device and Socket.IO lifecycles are separate browser modules.",
+  "variables": [
+    {
+      "key": "base_url",
+      "value": "https://appengine.appmint.io"
+    },
+    {
+      "key": "org",
+      "value": ""
+    },
+    {
+      "key": "staff_token",
+      "value": ""
+    },
+    {
+      "key": "phone_id",
+      "value": ""
+    },
+    {
+      "key": "device_id",
+      "value": ""
+    },
+    {
+      "key": "from",
+      "value": ""
+    },
+    {
+      "key": "to",
+      "value": ""
+    },
+    {
+      "key": "assistant_id",
+      "value": ""
+    },
+    {
+      "key": "enable_side_effects",
+      "value": "false"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "credentials": [
+      {
+        "key": "token",
+        "value": "{{staff_token}}"
+      }
+    ]
+  }
+}

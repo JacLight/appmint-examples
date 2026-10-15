@@ -1,0 +1,16 @@
+{
+  "$kind": "http-request",
+  "name": "call-history",
+  "method": "GET",
+  "url": "{{base_url}}/crm/communications/calls?limit=20",
+  "order": 5000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  }
+}
