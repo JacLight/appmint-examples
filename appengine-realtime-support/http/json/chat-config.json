@@ -1,0 +1,21 @@
+{
+  "datatype": "chat_config",
+  "isNew": true,
+  "data": {
+    "name": "${APPENGINE_CONFIG_NAME}",
+    "title": "Integration Support",
+    "status": "online",
+    "ai": "${APPENGINE_ASSISTANT}",
+    "agents": [
+      {
+        "user": "${APPENGINE_STAFF_EMAIL}"
+      }
+    ],
+    "offline": {
+      "showForm": true
+    },
+    "missedChat": {
+      "enabled": false
+    }
+  }
+}

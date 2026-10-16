@@ -1,0 +1,14 @@
+# Local dependencies, generated output and runtime/private state
+node_modules/
+build/
+.dart_tool/
+.flutter-plugins*
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.chat-session*.json
+*private*.json
+*.log
+.DS_Store

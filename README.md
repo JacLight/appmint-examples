@@ -21,6 +21,7 @@ every other example begins where that one ends.
 | [`appengine-ai-integration`](appengine-ai-integration) | JavaScript, TypeScript, Python, curl, Postman | AI Employees and AI Assistant: real runtime, Chat, Workspace tasks, approvals, tools and saved results; browser demo and companion source | **Course companion — verified local walkthrough** |
 | [`appengine-phone-integration`](appengine-phone-integration) | React, Flutter, JavaScript, TypeScript, Python | Embed calling and SMS: client lifecycle, call controls, messages and history, with a labelled local provider simulator | **Course companion — simulated provider** |
 | [`appengine-connected-client`](appengine-connected-client) | Flutter web/iOS, JavaScript, TypeScript, Python | Customer login, configured booking forms, cross-device booking, rescheduling and cancellation | **Course companion — iOS and web walkthrough** |
+| [`appengine-realtime-support`](appengine-realtime-support) | Flutter web, JavaScript, TypeScript, Python, curl, Postman | Official support chat, guest sessions, AI-to-staff handoff, reconnect, attachments and offline ticket intake | **Course companion — verified web walkthrough** |
 | [`nextjs-store`](nextjs-store) | Next.js 15 | Storefront: catalog, cart, server-priced totals, credentials behind a proxy | **Working** |
 | [`remix-store`](remix-store) | Remix 2 | The same storefront plus appointment booking — no proxy needed | **Working** |
 

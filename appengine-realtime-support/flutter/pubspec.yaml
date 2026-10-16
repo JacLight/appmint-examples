@@ -1,0 +1,15 @@
+name: appengine_support_course
+publish_to: none
+version: 1.0.0
+environment:
+  sdk: ^3.7.0
+dependencies:
+  flutter:
+    sdk: flutter
+  appmint_flutter_chat:
+    path: ../../../appmint-client/appmint_flutter_chat
+  file_picker: 8.3.7
+  http: ^1.3.0
+  shared_preferences: ^2.5.3
+flutter:
+  uses-material-design: true

@@ -1,0 +1,211 @@
+{
+  "info": {
+    "name": "AppEngine Support Setup \u2014 explicit individual requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "assistant-create",
+      "request": {
+        "method": "POST",
+        "url": "{{api_base}}/crm/ai-assistant",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "description": "Run individually after reviewing this operation. Create/upload requests mutate your environment.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"{{assistant_name}}\",\n  \"title\": \"Integration Help\",\n  \"description\": \"Controlled support course assistant for AppEngine client integration\",\n  \"personality\": \"Clear, brief and friendly. Use at most two sentences per answer.\",\n  \"behaviorRules\": [\n    \"Answer only from these training facts: appmint_flutter_chat provides the Flutter support chat screen. The customer session token belongs in the Socket.IO handshake. Appmint Studio is the staff administration interface.\",\n    \"If the visitor asks for a person, say that a staff member can take over this conversation. Never invent organization settings or claim to have inspected deployment secrets.\"\n  ],\n  \"tools\": [],\n  \"status\": \"active\"\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "chat-config-create",
+      "request": {
+        "method": "PUT",
+        "url": "{{api_base}}/repository/create",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "description": "Run individually after reviewing this operation. Create/upload requests mutate your environment.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datatype\": \"chat_config\",\n  \"isNew\": true,\n  \"data\": {\n    \"name\": \"{{config_name}}\",\n    \"title\": \"Integration Support\",\n    \"status\": \"online\",\n    \"ai\": \"{{assistant_name}}\",\n    \"agents\": [\n      {\n        \"user\": \"{{staff_email}}\"\n      }\n    ],\n    \"offline\": {\n      \"showForm\": true\n    },\n    \"missedChat\": {\n      \"enabled\": false\n    }\n  }\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "chat-config-get",
+      "request": {
+        "method": "GET",
+        "url": "{{api_base}}/chat/config/{{chat_config_id}}",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          }
+        ],
+        "description": "Run individually after reviewing this operation. Create/upload requests mutate your environment."
+      }
+    },
+    {
+      "name": "guest-auth",
+      "request": {
+        "method": "POST",
+        "url": "{{api_base}}/profile/guest/auth",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "appId",
+            "value": "{{app_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "description": "Executed guest authentication and same-session browser reconnect.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{customer_email}}\",\n  \"firstName\": \"{{guest_first_name}}\",\n  \"lastName\": \"{{guest_last_name}}\"\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "chat-upload",
+      "request": {
+        "method": "POST",
+        "url": "{{api_base}}/chat/upload/{{chat_config_id}}/{{customer_email}}",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          }
+        ],
+        "description": "Run individually after reviewing this operation. Create/upload requests mutate your environment.",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "files",
+              "type": "file",
+              "src": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "assistant-enable-handoff",
+      "request": {
+        "method": "PUT",
+        "url": "{{api_base}}/crm/ai-assistant/{{assistant_id}}",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "description": "Updates the selected training assistant. Replaces its tools and behaviorRules arrays with this exact demonstrated configuration; review before executing.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tools\": [\n    {\n      \"key\": \"transfer_chat_to_agent\",\n      \"enabled\": true\n    }\n  ],\n  \"behaviorRules\": [\n    \"The appmint_flutter_chat package adds a support chat screen to Flutter applications. A custom browser can use Socket.IO on the /chat namespace.\",\n    \"The orgId selects the organization; configId selects the chat configuration. The authentication token must be valid. To resume a guest conversation, retain the chatSessionId from socket authenticate and send it in context on reconnect; do not confuse it with a token.\",\n    \"A human staff member may take over this conversation. Do not claim to perform actions or access other systems.\",\n    \"When the visitor asks for a human, invoke transfer_chat_to_agent with reason and summary. Use priority 0. Do not merely promise a transfer; use the tool and report its actual queue position.\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "offline-ticket-create",
+      "request": {
+        "method": "POST",
+        "url": "{{api_base}}/crm/tickets/chat-request",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{guest_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "description": "Authenticate the current visitor with guest-auth first; store its token privately as guest_token. Widget offline.showForm must be true. Creates a support ticket and can trigger configured workflow/notifications. Check returned sk and staff readback; do not blindly retry a timed-out create. A registered customer or staff token is not this route identity.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": {\n    \"description\": \"{{offline_message}}\",\n    \"configId\": \"{{chat_config_id}}\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "guest_token",
+      "value": ""
+    },
+    {
+      "key": "offline_message",
+      "value": ""
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "set-status": {
+    "status": "available"
+  },
+  "queue-stats": {},
+  "queue-position": {
+    "chatId": "${APPENGINE_CHAT_ID}"
+  },
+  "pick-next": {},
+  "takeover-chat": {
+    "chatId": "${APPENGINE_CHAT_ID}",
+    "customerEmail": "${APPENGINE_CUSTOMER_EMAIL}"
+  },
+  "sendMessage": {
+    "chatId": "${APPENGINE_CHAT_ID}",
+    "to": "${APPENGINE_CUSTOMER_EMAIL}",
+    "content": "${APPENGINE_MESSAGE}",
+    "type": "user"
+  },
+  "resume-ai": {
+    "chatId": "${APPENGINE_CHAT_ID}",
+    "customerEmail": "${APPENGINE_CUSTOMER_EMAIL}",
+    "assistantId": "${APPENGINE_ASSISTANT}"
+  },
+  "close-chat": {
+    "chatId": "${APPENGINE_CHAT_ID}",
+    "sendTranscript": false
+  },
+  "shareStatus": {
+    "from": "${APPENGINE_SENDER_EMAIL}",
+    "to": "${APPENGINE_RECIPIENT_EMAIL}",
+    "status": "typing",
+    "type": "user"
+  },
+  "updateMessageStatus": {
+    "uid": "${APPENGINE_MESSAGE_ID}",
+    "status": "read",
+    "from": "${APPENGINE_SENDER_EMAIL}",
+    "to": "${APPENGINE_RECIPIENT_EMAIL}"
+  },
+  "chat-history": {
+    "chatId": "${APPENGINE_CHAT_ID}"
+  }
+}

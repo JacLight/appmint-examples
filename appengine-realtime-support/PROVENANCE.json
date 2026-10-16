@@ -1,0 +1,16 @@
+[
+  {
+    "repository": "https://github.com/JacLight/appmint-client.git",
+    "commit": "d7faa369e6c94734b2c3f8342731564d8026beca",
+    "used": [
+      "appmint_flutter_chat"
+    ]
+  },
+  {
+    "repository": "https://github.com/JacLight/appmint-examples.git",
+    "commit": "f1a7cf62d0f1d50c4e0400ffbc28cb1802151a6b",
+    "used": [
+      "appmint_flutter_chat_demo: host integration reference"
+    ]
+  }
+]

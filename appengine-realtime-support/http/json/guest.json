@@ -1,0 +1,5 @@
+{
+  "email": "${APPENGINE_CUSTOMER_EMAIL}",
+  "firstName": "${APPENGINE_GUEST_FIRST_NAME}",
+  "lastName": "${APPENGINE_GUEST_LAST_NAME}"
+}

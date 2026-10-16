@@ -1,0 +1,44 @@
+{
+  "assistant-create": {
+    "method": "POST",
+    "path": "/crm/ai-assistant",
+    "body": "assistant.json",
+    "staff": true
+  },
+  "chat-config-create": {
+    "method": "PUT",
+    "path": "/repository/create",
+    "body": "chat-config.json",
+    "staff": true
+  },
+  "chat-config-get": {
+    "method": "GET",
+    "path": "/chat/config/{APPENGINE_CHAT_CONFIG}"
+  },
+  "guest-auth": {
+    "method": "POST",
+    "path": "/profile/guest/auth",
+    "body": "guest.json",
+    "guest": true,
+    "evidence": "Executed: guest authentication, correlated AI reply and saved-session reconnect in the browser."
+  },
+  "chat-upload": {
+    "method": "POST",
+    "path": "/chat/upload/{APPENGINE_CHAT_CONFIG}/{APPENGINE_CUSTOMER_EMAIL}",
+    "multipart": true
+  },
+  "assistant-enable-handoff": {
+    "method": "PUT",
+    "path": "/crm/ai-assistant/{APPENGINE_ASSISTANT_ID}",
+    "body": "assistant-handoff.json",
+    "staff": true,
+    "evidence": "Executed: only transfer_chat_to_agent enabled, guest request queued with AI handoff context, exact guest picked and staff reply saved."
+  },
+  "offline-ticket-create": {
+    "method": "POST",
+    "path": "/crm/tickets/chat-request",
+    "body": "offline-ticket.json",
+    "guestToken": true,
+    "evidence": "Actual official widget guest submission and independent staff saved-ticket readback,16October2026. HTTP examples reproduce the contract; no externalnotificationdeliveryclaim."
+  }
+}

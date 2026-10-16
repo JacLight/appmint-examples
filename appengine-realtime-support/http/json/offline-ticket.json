@@ -1,0 +1,6 @@
+{
+  "data": {
+    "description": "${APPENGINE_MESSAGE}",
+    "configId": "${APPENGINE_CHAT_CONFIG}"
+  }
+}
