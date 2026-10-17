@@ -1,0 +1,664 @@
+{
+  "info": {
+    "name": "AppEngine Business Operations companion",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{STAFF_TOKEN}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "setup-status",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/setup/status"
+      }
+    },
+    {
+      "name": "locations",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/repository/find/location",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {},\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 50\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "products",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/repository/find/sf_product",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.businessLocations\": \"{{LOCATION_NAME}}\"\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 50\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "employees",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/employees?page=1&pageSize=50"
+      }
+    },
+    {
+      "name": "readiness",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/readiness?businessLocationId={{LOCATION_NAME}}"
+      }
+    },
+    {
+      "name": "available-stands",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/checkin/service-point/available?businessLocationId={{LOCATION_NAME}}"
+      }
+    },
+    {
+      "name": "all-stands",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/checkin/service-point?businessLocationId={{LOCATION_NAME}}"
+      }
+    },
+    {
+      "name": "walk-in",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/checkin/walk-in",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"businessLocationId\": \"{{LOCATION_NAME}}\",\n  \"customer\": {\n    \"name\": \"{{CUSTOMER_NAME}}\",\n    \"email\": \"{{CUSTOMER_EMAIL}}\"\n  },\n  \"partySize\": 1,\n  \"quotedWaitMinutes\": 10,\n  \"notes\": \"Tune-up and chain inspection\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "queue",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/checkin/queue?businessLocationId={{LOCATION_NAME}}"
+      }
+    },
+    {
+      "name": "position",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/checkin/queue/position/{{TASK_ID}}"
+      }
+    },
+    {
+      "name": "assign-stand",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/checkin/{{TASK_ID}}/assign",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"servicePointId\": \"{{STAND_ID}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "leave-queue",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/checkin/{{TASK_ID}}/leave",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Customer left before service\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "work-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/work-orders",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"orderNumber\": \"{{WORK_NUMBER}}\",\n  \"title\": \"Bike tune-up\",\n  \"customerId\": \"{{CUSTOMER_ID}}\",\n  \"status\": \"pending\",\n  \"items\": [\n    {\n      \"id\": \"tune\",\n      \"productName\": \"Tune-up\",\n      \"quantity\": 1\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "work-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/work-orders/{{WORK_ID}}"
+      }
+    },
+    {
+      "name": "work-assign",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/work-orders/{{WORK_ID}}/assign",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"assignedTo\": [\n    \"{{EMPLOYEE_RECORD_ID}}\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "work-start",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/work-orders/{{WORK_ID}}/status",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"in_progress\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "work-note",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/notes/bm_work_order/{{WORK_ID}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"comment\": \"Chain replacement approved at the counter.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "work-time",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/work-orders/{{WORK_ID}}/time-entries",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"employeeId\": \"{{EMPLOYEE_RECORD_ID}}\",\n  \"date\": \"{{WORK_DATE}}\",\n  \"hours\": 1.25,\n  \"description\": \"Tune-up and chain replacement\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "work-material",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/work-orders/{{WORK_ID}}/materials",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"{{MATERIAL_ID}}\",\n  \"materialName\": \"Replacement chain\",\n  \"quantity\": 1,\n  \"unit\": \"each\",\n  \"unitCost\": 10,\n  \"totalCost\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "work-complete",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/work-orders/{{WORK_ID}}/status",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"completed\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "customer-jobs",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/work-orders/customer/{{CUSTOMER_ID}}"
+      }
+    },
+    {
+      "name": "tab-open",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tab",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"businessLocationId\": \"{{LOCATION_NAME}}\",\n  \"servicePointId\": \"{{STAND_ID}}\",\n  \"customer\": {\n    \"id\": \"{{CUSTOMER_ID}}\",\n    \"name\": \"{{CUSTOMER_NAME}}\",\n    \"email\": \"{{CUSTOMER_EMAIL}}\"\n  },\n  \"tabLabel\": \"Bike tune-up\",\n  \"requestId\": \"{{OPEN_REQUEST_ID}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "tab-items",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/order/{{TAB_ID}}/items",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"items\": [\n    {\n      \"sku\": \"{{TUNEUP_SKU}}\",\n      \"quantity\": 1\n    },\n    {\n      \"sku\": \"{{CHAIN_SKU}}\",\n      \"quantity\": 1\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "tab-breakdown",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tab/{{TAB_ID}}/breakdown"
+      }
+    },
+    {
+      "name": "tab-cash",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tab/{{TAB_ID}}/settle",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 84.36,\n  \"method\": \"cash\",\n  \"gateway\": \"manual\",\n  \"ref\": \"Training cash record\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "tab-close",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tab/{{TAB_ID}}/close",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "receipt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tab/{{TAB_ID}}/receipt-payload"
+      }
+    },
+    {
+      "name": "stand-clear",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/checkin/service-point/{{STAND_ID}}/clear",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"finalStatus\": \"available\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "closed-tabs",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tabs/closed?businessLocationId={{LOCATION_NAME}}"
+      }
+    }
+  ]
+}

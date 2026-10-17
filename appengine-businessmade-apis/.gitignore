@@ -1,0 +1,5 @@
+.env
+*.local.json
+my-payslip.pdf
+__pycache__/
+node_modules/
