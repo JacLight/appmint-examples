@@ -1,0 +1,291 @@
+{
+  "info": {
+    "name": "AppEngine scoped credentials \u2014 development only",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Do not run the entire collection blindly. Lifecycle requests mutate the selected training key. Keep secrets in private local variables, not shared/exported values."
+  },
+  "variable": [
+    {
+      "key": "api_origin",
+      "value": ""
+    },
+    {
+      "key": "orgid",
+      "value": ""
+    },
+    {
+      "key": "staff_token",
+      "value": ""
+    },
+    {
+      "key": "customer_token",
+      "value": ""
+    },
+    {
+      "key": "job_key",
+      "value": ""
+    },
+    {
+      "key": "key_id",
+      "value": ""
+    },
+    {
+      "key": "future_expiry_iso",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Read one reservation page (not entire export)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{job_key}}"
+          }
+        ],
+        "url": "{{api_origin}}/repository/find/reservation",
+        "description": "Use your own development organization. Read current maintained docs before adapting. This request performs the named real operation.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.status\": \"confirmed\"\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 50\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Read own key metadata (no secret)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          }
+        ],
+        "url": "{{api_origin}}/api-key/{{key_id}}",
+        "description": "Use your own development organization. Read current maintained docs before adapting. This request performs the named real operation."
+      }
+    },
+    {
+      "name": "Read key usage (includes denied attempts)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          }
+        ],
+        "url": "{{api_origin}}/api-key/usage/{{key_id}}",
+        "description": "Use your own development organization. Read current maintained docs before adapting. This request performs the named real operation."
+      }
+    },
+    {
+      "name": "Read current customer devices",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          }
+        ],
+        "url": "{{api_origin}}/profile/security/devices",
+        "description": "Use your own development organization. Read current maintained docs before adapting. This request performs the named real operation."
+      }
+    },
+    {
+      "name": "Create NEW training key \u2014 one-time secret response",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          }
+        ],
+        "url": "{{api_origin}}/api-key/create",
+        "description": "Use your own development organization. Read current maintained docs before adapting. This request performs the named real operation.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"My training export\",\n  \"scopes\": [\n    \"read:data\"\n  ],\n  \"expiresAt\": \"{{future_expiry_iso}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Regenerate OWN training key \u2014 old secret stops immediately",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          }
+        ],
+        "url": "{{api_origin}}/api-key/regenerate/{{key_id}}",
+        "description": "Use your own development organization. Read current maintained docs before adapting. This request performs the named real operation.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Pause OWN training key",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          }
+        ],
+        "url": "{{api_origin}}/api-key/{{key_id}}",
+        "description": "Use your own development organization. Read current maintained docs before adapting. This request performs the named real operation.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"inactive\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Reactivate OWN training key",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          }
+        ],
+        "url": "{{api_origin}}/api-key/{{key_id}}",
+        "description": "Use your own development organization. Read current maintained docs before adapting. This request performs the named real operation.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"active\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Revoke OWN training key \u2014 ConfigAdmin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          }
+        ],
+        "url": "{{api_origin}}/api-key/admin/revoke/{{key_id}}",
+        "description": "Use your own development organization. Read current maintained docs before adapting. This request performs the named real operation.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Training complete\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
