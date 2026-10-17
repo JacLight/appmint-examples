@@ -35,5 +35,6 @@ Find the source matching the course you are watching. Each folder preserves its 
 | AppEngine Business Operations APIs: Check-in, Work Orders and the POS | [appengine-businessmade-apis](appengine-businessmade-apis/) |
 | AppEngine Provider Integrations, OAuth and Webhooks | [appengine-integrations-webhooks](appengine-integrations-webhooks/) |
 | AppEngine as an Identity Provider: Staff Sign-In for Your Other Apps | [appengine-identity-provider](appengine-identity-provider/) |
+| AppEngine Payment and Finance APIs | [appengine-finance-apis](appengine-finance-apis/) |
 
 Credentials are supplied through environment variables or local application setup. Do not commit `.env`, tokens, browser sessions or provider keys. Recorded response fixtures use training identifiers; replace those identifiers before making writes in your own organization.

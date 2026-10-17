@@ -185,6 +185,12 @@
       "title": "AppEngine as an Identity Provider: Staff Sign-In for Your Other Apps",
       "directory": "appengine-identity-provider",
       "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-identity-provider"
+    },
+    {
+      "courseId": "appengine-finance-apis",
+      "title": "AppEngine Payment and Finance APIs",
+      "directory": "appengine-finance-apis",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-finance-apis"
     }
   ]
 }

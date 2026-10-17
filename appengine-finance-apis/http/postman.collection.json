@@ -1,0 +1,1044 @@
+{
+  "info": {
+    "name": "AppEngine Payment and Finance course",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Controlled course examples. Do not run the collection as a batch; operations include non-idempotent financial writes. No credentials supplied."
+  },
+  "variable": [
+    {
+      "key": "APPENGINE_API_ORIGIN",
+      "value": ""
+    },
+    {
+      "key": "APPENGINE_ORG_ID",
+      "value": ""
+    },
+    {
+      "key": "APPENGINE_STAFF_TOKEN",
+      "value": ""
+    },
+    {
+      "key": "APPENGINE_CUSTOMER_TOKEN",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "tab_open",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tab",
+        "description": "Reuse the same requestId for the same intended tab; save the returned sk.\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"businessLocationId\": \"{{LOCATION_ID}}\",\n  \"tabLabel\": \"Training service\",\n  \"requestId\": \"{{REQUEST_ID}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "tab_items",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/order/{{ORDER_ID}}/items",
+        "description": "Server catalogue determines price. Do not blindly repeat item addition.\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"items\": [\n    {\n      \"sku\": \"{{SKU}}\",\n      \"quantity\": 1\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "tab_read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tab/{{ORDER_ID}}/breakdown",
+        "description": "\nCaller: staff. "
+      }
+    },
+    {
+      "name": "record_cash",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tab/{{ORDER_ID}}/settle",
+        "description": "Record only cash actually received; example is labelled training cash.\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 30,\n  \"method\": \"cash\",\n  \"gateway\": \"manual\",\n  \"ref\": \"{{CASH_REFERENCE}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "charge",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payments/charge",
+        "description": "Minor units. Stripe TEST fixture only. Preserve the returned paymentRef before another operation.\nCaller: staff. Verify sandbox provider before sending.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"gateway\": \"stripe\",\n  \"amount\": 5000,\n  \"currency\": \"usd\",\n  \"paymentMethodId\": \"pm_card_visa\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "authorize",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payments/authorize",
+        "description": "Minor units. Stripe TEST fixture only. Preserve the returned paymentRef before another operation.\nCaller: staff. Verify sandbox provider before sending.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"gateway\": \"stripe\",\n  \"amount\": 12000,\n  \"currency\": \"usd\",\n  \"paymentMethodId\": \"pm_card_visa\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "settle_card",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tab/{{ORDER_ID}}/settle",
+        "description": "Major units. Link a verified existing provider payment; do not charge again.\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 50,\n  \"method\": \"card\",\n  \"gateway\": \"stripe\",\n  \"ref\": \"{{PAYMENT_REF}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "refund_tab",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/storefront/pos/tab/{{ORDER_ID}}/refund",
+        "description": "Retry only identical input with this operation key. Changed input returns409.\nCaller: staff. Verify sandbox provider before sending.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"transactionId\": \"{{TRANSACTION_ID}}\",\n  \"amount\": 20,\n  \"operationKey\": \"{{REFUND_KEY}}\",\n  \"reason\": \"Controlled course partial refund\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "capture",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payments/capture",
+        "description": "Minor units, original authorization reference.\nCaller: staff. Verify sandbox provider before sending.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"gateway\": \"stripe\",\n  \"paymentRef\": \"{{PAYMENT_REF}}\",\n  \"amount\": 9500,\n  \"currency\": \"usd\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "void",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payments/void",
+        "description": "For an uncaptured hold.\nCaller: staff. Verify sandbox provider before sending.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"gateway\": \"stripe\",\n  \"paymentRef\": \"{{PAYMENT_REF}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "refund_capture",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payments/refund",
+        "description": "Only the captured test payment. Read existing refunds before retrying.\nCaller: staff. Verify sandbox provider before sending.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"gateway\": \"stripe\",\n  \"paymentRef\": \"{{PAYMENT_REF}}\",\n  \"amount\": 9500,\n  \"currency\": \"usd\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "verify_payment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payments/verify",
+        "description": "Check original provider state before reconciliation.\nCaller: staff. Verify sandbox provider before sending.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"gateway\": \"stripe\",\n  \"paymentRef\": \"{{PAYMENT_REF}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "my_wallet",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_CUSTOMER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/client/finance/wallet",
+        "description": "\nCaller: customer. "
+      }
+    },
+    {
+      "name": "staff_wallet",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/wallets/{{WALLET_ID}}",
+        "description": "\nCaller: staff. "
+      }
+    },
+    {
+      "name": "credit_training",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/wallets/{{WALLET_ID}}/credit",
+        "description": "Not idempotent: inspect the ledger before retrying. Dedicated empty training wallet only.\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 25,\n  \"type\": \"referral\",\n  \"reference\": \"{{CREDIT_REFERENCE}}\",\n  \"description\": \"Controlled training referral\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "hold",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/wallets/{{WALLET_ID}}/hold",
+        "description": "\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 10,\n  \"reason\": \"pending_review\",\n  \"reference\": \"{{HOLD_REFERENCE}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "release",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/wallets/{{WALLET_ID}}/release/{{HOLD_INDEX}}",
+        "description": "Read current holds; use the current matching index, not a stale guessed number.\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "freeze",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/wallets/{{WALLET_ID}}/freeze",
+        "description": "\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Controlled review\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "unfreeze",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/wallets/{{WALLET_ID}}/unfreeze",
+        "description": "\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "methods",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_CUSTOMER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/client/finance/payout-methods",
+        "description": "\nCaller: customer. "
+      }
+    },
+    {
+      "name": "paypal_method",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_CUSTOMER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/client/finance/payout-methods",
+        "description": "Saving an email does not verify the receiver.\nCaller: customer. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"paypal\",\n  \"label\": \"Sandbox receiver\",\n  \"paypal\": {\n    \"email\": \"{{PAYPAL_SANDBOX_EMAIL}}\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "plaid_status",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_CUSTOMER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/client/finance/payout-methods/plaid/status",
+        "description": "\nCaller: customer. "
+      }
+    },
+    {
+      "name": "plaid_link",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_CUSTOMER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/client/finance/payout-methods/plaid/link-token",
+        "description": "Pass the link_token to official Plaid Link; never ship Plaid secrets to the client.\nCaller: customer. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "plaid_exchange",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_CUSTOMER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/client/finance/payout-methods/plaid/exchange",
+        "description": "Use the current Link success callback, then keep only the masked returned method.\nCaller: customer. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"publicToken\": \"{{PLAID_PUBLIC_TOKEN}}\",\n  \"accountId\": \"{{PLAID_ACCOUNT_ID}}\",\n  \"label\": \"Verified bank\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "request_payout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_CUSTOMER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/client/finance/payouts/request",
+        "description": "This reserves available funds. It does not mean paid.\nCaller: customer. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 20,\n  \"methodId\": \"{{METHOD_ID}}\",\n  \"notes\": \"Controlled training request\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "my_payouts",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_CUSTOMER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/client/finance/payouts?page=1&pageSize=20",
+        "description": "\nCaller: customer. "
+      }
+    },
+    {
+      "name": "my_payout",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_CUSTOMER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/client/finance/payouts/{{PAYOUT_ID}}",
+        "description": "\nCaller: customer. "
+      }
+    },
+    {
+      "name": "staff_payout",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payouts/{{PAYOUT_ID}}",
+        "description": "\nCaller: staff. "
+      }
+    },
+    {
+      "name": "approve",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payouts/{{PAYOUT_ID}}/approve",
+        "description": "\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"approvedBy\": \"{{APPROVER_NAME}}\",\n  \"notes\": \"Reviewed sandbox destination\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "cancel",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payouts/{{PAYOUT_ID}}/cancel",
+        "description": "\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Cancelled before processing\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "process_paypal",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payouts/{{PAYOUT_ID}}/process",
+        "description": "Only a request whose destination is PayPal sandbox. Processing is not completed.\nCaller: staff. Verify sandbox provider before sending.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "refresh_payout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payouts/{{PAYOUT_ID}}/refresh-status",
+        "description": "Read authoritative rail state; do not overwrite status.\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "ach_config",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payout-ach-config",
+        "description": "\nCaller: staff. "
+      }
+    },
+    {
+      "name": "ach_eligible",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payout-batches/eligible",
+        "description": "\nCaller: staff. "
+      }
+    },
+    {
+      "name": "ach_build",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payout-batches",
+        "description": "Use synthetic bank account in this example. Building is not transmitting. No sent/settle operation is supplied.\nCaller: staff. ",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"payoutIds\": [\n    \"{{PAYOUT_ID}}\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "ach_file",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{APPENGINE_STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/finance/payout-batches/{{BATCH_ID}}/file",
+        "description": "Contains private bank details. Redirect output to a protected file; never commit it.\nCaller: staff. "
+      }
+    }
+  ]
+}

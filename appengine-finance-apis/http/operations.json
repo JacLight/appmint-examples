@@ -1,0 +1,345 @@
+{
+  "tab_open": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/pos/tab",
+    "note": "Reuse the same requestId for the same intended tab; save the returned sk.",
+    "body": {
+      "businessLocationId": "{LOCATION_ID}",
+      "tabLabel": "Training service",
+      "requestId": "{REQUEST_ID}"
+    }
+  },
+  "tab_items": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/order/{ORDER_ID}/items",
+    "note": "Server catalogue determines price. Do not blindly repeat item addition.",
+    "body": {
+      "items": [
+        {
+          "sku": "{SKU}",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  "tab_read": {
+    "actor": "staff",
+    "method": "GET",
+    "path": "/storefront/pos/tab/{ORDER_ID}/breakdown",
+    "note": ""
+  },
+  "record_cash": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/pos/tab/{ORDER_ID}/settle",
+    "note": "Record only cash actually received; example is labelled training cash.",
+    "body": {
+      "amount": 30,
+      "method": "cash",
+      "gateway": "manual",
+      "ref": "{CASH_REFERENCE}"
+    }
+  },
+  "charge": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payments/charge",
+    "note": "Minor units. Stripe TEST fixture only. Preserve the returned paymentRef before another operation.",
+    "body": {
+      "gateway": "stripe",
+      "amount": 5000,
+      "currency": "usd",
+      "paymentMethodId": "pm_card_visa"
+    },
+    "testOnly": true,
+    "provider": "stripe"
+  },
+  "authorize": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payments/authorize",
+    "note": "Minor units. Stripe TEST fixture only. Preserve the returned paymentRef before another operation.",
+    "body": {
+      "gateway": "stripe",
+      "amount": 12000,
+      "currency": "usd",
+      "paymentMethodId": "pm_card_visa"
+    },
+    "testOnly": true,
+    "provider": "stripe"
+  },
+  "settle_card": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/pos/tab/{ORDER_ID}/settle",
+    "note": "Major units. Link a verified existing provider payment; do not charge again.",
+    "body": {
+      "amount": 50,
+      "method": "card",
+      "gateway": "stripe",
+      "ref": "{PAYMENT_REF}"
+    }
+  },
+  "refund_tab": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/pos/tab/{ORDER_ID}/refund",
+    "note": "Retry only identical input with this operation key. Changed input returns409.",
+    "body": {
+      "transactionId": "{TRANSACTION_ID}",
+      "amount": 20,
+      "operationKey": "{REFUND_KEY}",
+      "reason": "Controlled course partial refund"
+    },
+    "testOnly": true,
+    "provider": "stripe"
+  },
+  "capture": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payments/capture",
+    "note": "Minor units, original authorization reference.",
+    "body": {
+      "gateway": "stripe",
+      "paymentRef": "{PAYMENT_REF}",
+      "amount": 9500,
+      "currency": "usd"
+    },
+    "testOnly": true,
+    "provider": "stripe"
+  },
+  "void": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payments/void",
+    "note": "For an uncaptured hold.",
+    "body": {
+      "gateway": "stripe",
+      "paymentRef": "{PAYMENT_REF}"
+    },
+    "testOnly": true,
+    "provider": "stripe"
+  },
+  "refund_capture": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payments/refund",
+    "note": "Only the captured test payment. Read existing refunds before retrying.",
+    "body": {
+      "gateway": "stripe",
+      "paymentRef": "{PAYMENT_REF}",
+      "amount": 9500,
+      "currency": "usd"
+    },
+    "testOnly": true,
+    "provider": "stripe"
+  },
+  "verify_payment": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payments/verify",
+    "note": "Check original provider state before reconciliation.",
+    "body": {
+      "gateway": "stripe",
+      "paymentRef": "{PAYMENT_REF}"
+    },
+    "testOnly": true,
+    "provider": "stripe"
+  },
+  "my_wallet": {
+    "actor": "customer",
+    "method": "GET",
+    "path": "/client/finance/wallet",
+    "note": ""
+  },
+  "staff_wallet": {
+    "actor": "staff",
+    "method": "GET",
+    "path": "/finance/wallets/{WALLET_ID}",
+    "note": ""
+  },
+  "credit_training": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/wallets/{WALLET_ID}/credit",
+    "note": "Not idempotent: inspect the ledger before retrying. Dedicated empty training wallet only.",
+    "body": {
+      "amount": 25,
+      "type": "referral",
+      "reference": "{CREDIT_REFERENCE}",
+      "description": "Controlled training referral"
+    }
+  },
+  "hold": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/wallets/{WALLET_ID}/hold",
+    "note": "",
+    "body": {
+      "amount": 10,
+      "reason": "pending_review",
+      "reference": "{HOLD_REFERENCE}"
+    }
+  },
+  "release": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/wallets/{WALLET_ID}/release/{HOLD_INDEX}",
+    "note": "Read current holds; use the current matching index, not a stale guessed number.",
+    "body": {}
+  },
+  "freeze": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/wallets/{WALLET_ID}/freeze",
+    "note": "",
+    "body": {
+      "reason": "Controlled review"
+    }
+  },
+  "unfreeze": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/wallets/{WALLET_ID}/unfreeze",
+    "note": "",
+    "body": {}
+  },
+  "methods": {
+    "actor": "customer",
+    "method": "GET",
+    "path": "/client/finance/payout-methods",
+    "note": ""
+  },
+  "paypal_method": {
+    "actor": "customer",
+    "method": "POST",
+    "path": "/client/finance/payout-methods",
+    "note": "Saving an email does not verify the receiver.",
+    "body": {
+      "type": "paypal",
+      "label": "Sandbox receiver",
+      "paypal": {
+        "email": "{PAYPAL_SANDBOX_EMAIL}"
+      }
+    }
+  },
+  "plaid_status": {
+    "actor": "customer",
+    "method": "GET",
+    "path": "/client/finance/payout-methods/plaid/status",
+    "note": ""
+  },
+  "plaid_link": {
+    "actor": "customer",
+    "method": "POST",
+    "path": "/client/finance/payout-methods/plaid/link-token",
+    "note": "Pass the link_token to official Plaid Link; never ship Plaid secrets to the client.",
+    "body": {}
+  },
+  "plaid_exchange": {
+    "actor": "customer",
+    "method": "POST",
+    "path": "/client/finance/payout-methods/plaid/exchange",
+    "note": "Use the current Link success callback, then keep only the masked returned method.",
+    "body": {
+      "publicToken": "{PLAID_PUBLIC_TOKEN}",
+      "accountId": "{PLAID_ACCOUNT_ID}",
+      "label": "Verified bank"
+    }
+  },
+  "request_payout": {
+    "actor": "customer",
+    "method": "POST",
+    "path": "/client/finance/payouts/request",
+    "note": "This reserves available funds. It does not mean paid.",
+    "body": {
+      "amount": 20,
+      "methodId": "{METHOD_ID}",
+      "notes": "Controlled training request"
+    }
+  },
+  "my_payouts": {
+    "actor": "customer",
+    "method": "GET",
+    "path": "/client/finance/payouts?page=1&pageSize=20",
+    "note": ""
+  },
+  "my_payout": {
+    "actor": "customer",
+    "method": "GET",
+    "path": "/client/finance/payouts/{PAYOUT_ID}",
+    "note": ""
+  },
+  "staff_payout": {
+    "actor": "staff",
+    "method": "GET",
+    "path": "/finance/payouts/{PAYOUT_ID}",
+    "note": ""
+  },
+  "approve": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payouts/{PAYOUT_ID}/approve",
+    "note": "",
+    "body": {
+      "approvedBy": "{APPROVER_NAME}",
+      "notes": "Reviewed sandbox destination"
+    }
+  },
+  "cancel": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payouts/{PAYOUT_ID}/cancel",
+    "note": "",
+    "body": {
+      "reason": "Cancelled before processing"
+    }
+  },
+  "process_paypal": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payouts/{PAYOUT_ID}/process",
+    "note": "Only a request whose destination is PayPal sandbox. Processing is not completed.",
+    "body": {},
+    "testOnly": true,
+    "provider": "paypal"
+  },
+  "refresh_payout": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payouts/{PAYOUT_ID}/refresh-status",
+    "note": "Read authoritative rail state; do not overwrite status.",
+    "body": {}
+  },
+  "ach_config": {
+    "actor": "staff",
+    "method": "GET",
+    "path": "/finance/payout-ach-config",
+    "note": ""
+  },
+  "ach_eligible": {
+    "actor": "staff",
+    "method": "GET",
+    "path": "/finance/payout-batches/eligible",
+    "note": ""
+  },
+  "ach_build": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payout-batches",
+    "note": "Use synthetic bank account in this example. Building is not transmitting. No sent/settle operation is supplied.",
+    "body": {
+      "payoutIds": [
+        "{PAYOUT_ID}"
+      ]
+    }
+  },
+  "ach_file": {
+    "actor": "staff",
+    "method": "GET",
+    "path": "/finance/payout-batches/{BATCH_ID}/file",
+    "note": "Contains private bank details. Redirect output to a protected file; never commit it."
+  }
+}
