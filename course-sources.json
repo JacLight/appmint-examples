@@ -197,6 +197,12 @@
       "title": "AppEngine Accounting and Payroll APIs",
       "directory": "appengine-accounting-payroll-apis",
       "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-accounting-payroll-apis"
+    },
+    {
+      "courseId": "appengine-platform-deployment",
+      "title": "AppEngine Platform Deployment: Development Environments, Builds and Hosting",
+      "directory": "appengine-platform-deployment",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-platform-deployment"
     }
   ]
 }
