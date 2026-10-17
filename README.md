@@ -92,3 +92,5 @@ explains it faster than any paragraph.
 ## Licence
 
 MIT.
+
+- [AppEngine Data APIs](./appengine-data-apis-pattern): campaign and customer community client, JavaScript, TypeScript, Python, cURL and Postman examples.

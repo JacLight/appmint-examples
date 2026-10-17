@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+const operations=JSON.parse(fs.readFileSync(new URL('./operations.json',import.meta.url)));
+const op=operations[process.argv[2]];if(!op)throw Error('Choose an operation from operations.json');
+const api=process.env.APPENGINE_API_ORIGIN,org=process.env.APPENGINE_ORG_ID,token=process.env[op.actor==='staff'?'APPENGINE_STAFF_TOKEN':'APPENGINE_CUSTOMER_TOKEN'];
+if(!api||!org||!token)throw Error('Set API origin, organization ID and the required actor token.');
+const substitutions={campaign_id:process.env.CAMPAIGN_ID,page_id:process.env.PAGE_ID,post_id:process.env.POST_ID,reported_customer_id:process.env.REPORTED_CUSTOMER_ID,report_id:process.env.REPORT_ID};
+const replace=s=>s.replace(/\{(\w+)\}/g,(_,key)=>{if(!substitutions[key])throw Error('Set '+key.toUpperCase());return substitutions[key]});
+const path=replace(op.path),body=op.body===undefined?undefined:JSON.stringify(JSON.parse(replace(JSON.stringify(op.body))));
+const response=await fetch(api.replace(/\/$/,'')+path,{method:op.method,headers:{orgid:org,Authorization:'Bearer '+token,'Content-Type':'application/json'},...(body===undefined?{}:{body})});
+const text=await response.text();let result;try{result=JSON.parse(text)}catch{result=text}console.log(JSON.stringify({status:response.status,result},null,2));if(!response.ok)process.exitCode=1;

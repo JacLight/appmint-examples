@@ -1,0 +1,21 @@
+{
+  "campaign-create":{"actor":"staff","method":"POST","path":"/crm/marketing/campaign-manager/create","body":{"name":"Neighbourhood workshop","type":"billboard","budget":300,"budgetType":"lifetime","description":"Printed workshop campaign","platforms":[]}},
+  "campaign-find":{"actor":"staff","method":"POST","path":"/repository/find/campaign","body":{"query":{"data.name":{"$regex":"workshop","$options":"i"}},"options":{"page":1,"pageSize":2,"sort":"data.name","sortType":1}}},
+  "campaign-read":{"actor":"staff","method":"GET","path":"/repository/get/campaign/{campaign_id}"},
+  "campaign-description":{"actor":"staff","method":"POST","path":"/repository/update-partial/campaign/{campaign_id}","body":{"data.description":"Includes the printed workshop schedule"}},
+  "campaign-launch":{"actor":"staff","method":"POST","path":"/crm/marketing/campaign-manager/{campaign_id}/launch","body":{}},
+  "campaign-view":{"actor":"staff","method":"GET","path":"/crm/marketing/campaign-manager/{campaign_id}"},
+  "campaign-pause":{"actor":"staff","method":"POST","path":"/crm/marketing/campaign-manager/{campaign_id}/pause","body":{}},
+  "campaign-resume":{"actor":"staff","method":"POST","path":"/crm/marketing/campaign-manager/{campaign_id}/resume","body":{}},
+  "campaign-complete":{"actor":"staff","method":"POST","path":"/crm/marketing/campaign-manager/{campaign_id}/complete","body":{}},
+  "page-create":{"actor":"customer","method":"POST","path":"/client/community/pages","body":{"title":"Workshop community","type":"group","status":"active","visibility":"public","joinPolicy":"open","postingPolicy":"members","moderationLevel":"none"}},
+  "page-join":{"actor":"customer","method":"POST","path":"/client/community/pages/{page_id}/join","body":{}},
+  "post-create":{"actor":"customer","method":"POST","path":"/client/community/posts","body":{"page":"{page_id}","content":"The Saturday workshop schedule is ready. Which session would you join? #workshop","contentType":"text"}},
+  "feed":{"actor":"customer","method":"GET","path":"/client/community/feed?page={page_id}&pageNum=1&limit=2&sort=latest"},
+  "comment-create":{"actor":"customer","method":"POST","path":"/client/community/posts/{post_id}/comments","body":{"content":"The morning session works for me."}},
+  "comments":{"actor":"customer","method":"GET","path":"/client/community/posts/{post_id}/comments?limit=20"},
+  "report-create":{"actor":"customer","method":"POST","path":"/client/community/reports","body":{"reportedId":"{reported_customer_id}","reason":"other","details":"Training review: confirm the workshop schedule is appropriate.","context":{"source":"post","messageId":"{post_id}"}}},
+  "reports":{"actor":"staff","method":"GET","path":"/community/reports"},
+  "report-review":{"actor":"staff","method":"POST","path":"/community/reports/{report_id}/review","body":{"action":"dismissed","notes":"Training review complete. The workshop schedule is appropriate."}},
+  "report-read":{"actor":"staff","method":"GET","path":"/repository/get/community_block/{report_id}"}
+}

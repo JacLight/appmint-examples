@@ -1,0 +1,581 @@
+{
+  "info": {
+    "name": "AppEngine Data APIs pattern",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "api_origin",
+      "value": ""
+    },
+    {
+      "key": "org_id",
+      "value": ""
+    },
+    {
+      "key": "staff_token",
+      "value": ""
+    },
+    {
+      "key": "customer_token",
+      "value": ""
+    },
+    {
+      "key": "campaign_id",
+      "value": ""
+    },
+    {
+      "key": "page_id",
+      "value": ""
+    },
+    {
+      "key": "post_id",
+      "value": ""
+    },
+    {
+      "key": "report_id",
+      "value": ""
+    },
+    {
+      "key": "reported_customer_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "campaign-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/crm/marketing/campaign-manager/create",
+        "description": "Actual staff session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Neighbourhood workshop\",\n  \"type\": \"billboard\",\n  \"budget\": 300,\n  \"budgetType\": \"lifetime\",\n  \"description\": \"Printed workshop campaign\",\n  \"platforms\": []\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "campaign-find",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/repository/find/campaign",
+        "description": "Actual staff session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.name\": {\n      \"$regex\": \"workshop\",\n      \"$options\": \"i\"\n    }\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 2,\n    \"sort\": \"data.name\",\n    \"sortType\": 1\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "campaign-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/repository/get/campaign/{{campaign_id}}",
+        "description": "Actual staff session required. Check current AppEngine reference before use."
+      }
+    },
+    {
+      "name": "campaign-description",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/repository/update-partial/campaign/{{campaign_id}}",
+        "description": "Actual staff session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data.description\": \"Includes the printed workshop schedule\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "campaign-launch",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/crm/marketing/campaign-manager/{{campaign_id}}/launch",
+        "description": "Actual staff session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "campaign-view",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/crm/marketing/campaign-manager/{{campaign_id}}",
+        "description": "Actual staff session required. Check current AppEngine reference before use."
+      }
+    },
+    {
+      "name": "campaign-pause",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/crm/marketing/campaign-manager/{{campaign_id}}/pause",
+        "description": "Actual staff session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "campaign-resume",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/crm/marketing/campaign-manager/{{campaign_id}}/resume",
+        "description": "Actual staff session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "campaign-complete",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/crm/marketing/campaign-manager/{{campaign_id}}/complete",
+        "description": "Actual staff session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "page-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/client/community/pages",
+        "description": "Actual customer session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Workshop community\",\n  \"type\": \"group\",\n  \"status\": \"active\",\n  \"visibility\": \"public\",\n  \"joinPolicy\": \"open\",\n  \"postingPolicy\": \"members\",\n  \"moderationLevel\": \"none\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "page-join",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/client/community/pages/{{page_id}}/join",
+        "description": "Actual customer session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "post-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/client/community/posts",
+        "description": "Actual customer session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"page\": \"{{page_id}}\",\n  \"content\": \"The Saturday workshop schedule is ready. Which session would you join? #workshop\",\n  \"contentType\": \"text\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "feed",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/client/community/feed?page={{page_id}}&pageNum=1&limit=2&sort=latest",
+        "description": "Actual customer session required. Check current AppEngine reference before use."
+      }
+    },
+    {
+      "name": "comment-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/client/community/posts/{{post_id}}/comments",
+        "description": "Actual customer session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"content\": \"The morning session works for me.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "comments",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/client/community/posts/{{post_id}}/comments?limit=20",
+        "description": "Actual customer session required. Check current AppEngine reference before use."
+      }
+    },
+    {
+      "name": "report-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/client/community/reports",
+        "description": "Actual customer session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reportedId\": \"{{reported_customer_id}}\",\n  \"reason\": \"other\",\n  \"details\": \"Training review: confirm the workshop schedule is appropriate.\",\n  \"context\": {\n    \"source\": \"post\",\n    \"messageId\": \"{{post_id}}\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "reports",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/community/reports",
+        "description": "Actual staff session required. Check current AppEngine reference before use."
+      }
+    },
+    {
+      "name": "report-review",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/community/reports/{{report_id}}/review",
+        "description": "Actual staff session required. Check current AppEngine reference before use.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"action\": \"dismissed\",\n  \"notes\": \"Training review complete. The workshop schedule is appropriate.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "report-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staff_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/repository/get/community_block/{{report_id}}",
+        "description": "Actual staff session required. Check current AppEngine reference before use."
+      }
+    }
+  ]
+}
