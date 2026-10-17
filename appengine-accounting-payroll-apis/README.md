@@ -53,4 +53,4 @@ Import `postman.collection.json` into Postman. Supply credentials in a private l
 
 ## Production status
 
-The companion and its recorded API outcomes are available now. The Accounting course video is still in production; publication of this source does not mean the video has passed its final review. No bank transmission or tax filing was performed.
+The companion and its recorded API outcomes are available independently of the video. The course catalogue tracks video review separately. No bank transmission or tax filing was performed. The client displays a generated file’s adjusted effective date without claiming bank settlement.
