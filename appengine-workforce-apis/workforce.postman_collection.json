@@ -1,0 +1,980 @@
+{
+  "info": {
+    "name": "AppEngine Workforce APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "employee-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/employees",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"employeeId\": \"{{EMPLOYEE_CODE}}\",\n  \"personalInfo\": {\n    \"firstName\": \"{{FIRST_NAME}}\",\n    \"lastName\": \"{{LAST_NAME}}\"\n  },\n  \"contactInfo\": {\n    \"email\": \"{{STAFF_EMAIL}}\",\n    \"phone\": \"555-0142\",\n    \"address\": {\n      \"street\": \"12 Training Lane\",\n      \"city\": \"Austin\",\n      \"state\": \"TX\",\n      \"postalCode\": \"78701\",\n      \"country\": \"US\"\n    },\n    \"emergencyContact\": {\n      \"name\": \"Training Contact\",\n      \"phone\": \"555-0199\"\n    }\n  },\n  \"employment\": {\n    \"hireDate\": \"{{HIRE_DATE}}\",\n    \"jobTitle\": \"Barista\",\n    \"status\": \"active\",\n    \"employmentType\": \"part-time\"\n  },\n  \"compensation\": {\n    \"payType\": \"hourly\",\n    \"hourlyRate\": 17,\n    \"payFrequency\": \"bi-weekly\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "employee-find",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/repository/find/bm_employee",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.employeeId\": \"{{EMPLOYEE_CODE}}\"\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 2\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "employee-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/employees/{{EMPLOYEE_SK}}",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "staff-invite",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/profile/user/employee/create-from-employee",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"employeeId\": \"{{EMPLOYEE_CODE}}\",\n  \"redirectUrl\": \"https://studio.appmint.io\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "link-employee",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/profile/user/employee/link",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"{{USER_SK}}\",\n  \"employeeId\": \"{{EMPLOYEE_CODE}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "my-profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/profile",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "onboarding",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/onboarding/{{EMPLOYEE_CODE}}",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "my-pay-method",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/pay-method",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"payMethod\": \"check\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "my-tax-info",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/tax-info",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "save-training-tax-info",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/tax-info",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"federalTax\": {\n    \"filingStatus\": \"single\",\n    \"formYear\": 2026,\n    \"signedAt\": \"{{SIGNED_AT}}\",\n    \"multipleJobs\": false,\n    \"dependentsAmount\": 0,\n    \"otherIncome\": 0,\n    \"deductions\": 0,\n    \"extraWithholding\": 0\n  },\n  \"stateTax\": {\n    \"state\": \"TX\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "my-policies",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/training/policies",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "policy-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/training/policies/{{POLICY_SK}}",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "policy-viewed",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/training/policies/{{POLICY_SK}}/viewed",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "policy-acknowledge",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/training/policies/{{POLICY_SK}}/acknowledge",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"signature\": {\n    \"typedName\": \"{{SIGNER_NAME}}\",\n    \"consent\": true\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "onboarding-complete",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/onboarding/{{EMPLOYEE_CODE}}/complete",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "schedule-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/schedules",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Workforce training week\",\n  \"periodStart\": \"{{PERIOD_START}}\",\n  \"periodEnd\": \"{{PERIOD_END}}\",\n  \"status\": \"draft\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "shift-add",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/schedules/{{SCHEDULE_SK}}/shifts",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"employeeId\": \"{{EMPLOYEE_CODE}}\",\n  \"date\": \"{{SHIFT_DATE}}\",\n  \"startTime\": \"09:00\",\n  \"endTime\": \"17:00\",\n  \"breakMinutes\": 30,\n  \"position\": \"Barista\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "schedule-publish",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/schedules/{{SCHEDULE_SK}}/publish",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "my-schedule",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/schedule?from={{PERIOD_START}}&to={{PERIOD_END}}",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "accept-shift",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/schedule/{{SCHEDULE_SK}}/shifts/{{SHIFT_ID}}/accept",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "my-timesheet",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/timesheets/current",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "my-timesheets",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/timesheets",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "clock-in",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/timesheets/clock-in",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"notes\": \"Controlled short clock demonstration\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "clock-out",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/timesheets/clock-out",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"notes\": \"End of actual short clock session\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "time-add-training-entry",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/timesheets/{{TIMESHEET_SK}}/entries",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"date\": \"{{SHIFT_DATE}}\",\n  \"hours\": 7.5,\n  \"type\": \"regular\",\n  \"description\": \"Separately entered training shift; not the brief live clock session\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "time-submit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/timesheets/{{TIMESHEET_SK}}/submit",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "time-approve",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/timesheets/{{TIMESHEET_SK}}/approve",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "leave-readiness",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/leave/setup/readiness",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "my-leave",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/time-off",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "leave-cost",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/time-off/cost?startDate={{LEAVE_START}}&endDate={{LEAVE_END}}",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "leave-request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/time-off",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"leaveTypeId\": \"{{LEAVE_TYPE_SK}}\",\n  \"startDate\": \"{{LEAVE_START}}\",\n  \"endDate\": \"{{LEAVE_END}}\",\n  \"reason\": \"Controlled course request\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "leave-approve",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{MANAGER_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/leave/requests/{{REQUEST_SK}}/approve",
+        "description": "Caller: manager. Carry actual saved identifiers between steps. No environment credentials are provided.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Reviewed in the training organization\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "my-payslips",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/payslips",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "my-payslip",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/payslips/{{PAYSLIP_SK}}",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "my-payslip-pdf",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/payslips/{{PAYSLIP_SK}}/pdf",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    },
+    {
+      "name": "my-pay-summary",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/staff-portal/payslips/year/{{YEAR}}/summary",
+        "description": "Caller: staff. Carry actual saved identifiers between steps. No environment credentials are provided."
+      }
+    }
+  ]
+}

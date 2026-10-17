@@ -1,0 +1,334 @@
+[
+  {
+    "id": "employee-create",
+    "actor": "manager",
+    "method": "POST",
+    "path": "/business-made/employees",
+    "body": {
+      "employeeId": "{{EMPLOYEE_CODE}}",
+      "personalInfo": {
+        "firstName": "{{FIRST_NAME}}",
+        "lastName": "{{LAST_NAME}}"
+      },
+      "contactInfo": {
+        "email": "{{STAFF_EMAIL}}",
+        "phone": "555-0142",
+        "address": {
+          "street": "12 Training Lane",
+          "city": "Austin",
+          "state": "TX",
+          "postalCode": "78701",
+          "country": "US"
+        },
+        "emergencyContact": {
+          "name": "Training Contact",
+          "phone": "555-0199"
+        }
+      },
+      "employment": {
+        "hireDate": "{{HIRE_DATE}}",
+        "jobTitle": "Barista",
+        "status": "active",
+        "employmentType": "part-time"
+      },
+      "compensation": {
+        "payType": "hourly",
+        "hourlyRate": 17,
+        "payFrequency": "bi-weekly"
+      }
+    }
+  },
+  {
+    "id": "employee-find",
+    "actor": "manager",
+    "method": "POST",
+    "path": "/repository/find/bm_employee",
+    "body": {
+      "query": {
+        "data.employeeId": "{{EMPLOYEE_CODE}}"
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 2
+      }
+    }
+  },
+  {
+    "id": "employee-read",
+    "actor": "manager",
+    "method": "GET",
+    "path": "/business-made/employees/{{EMPLOYEE_SK}}"
+  },
+  {
+    "id": "staff-invite",
+    "actor": "manager",
+    "method": "POST",
+    "path": "/profile/user/employee/create-from-employee",
+    "body": {
+      "employeeId": "{{EMPLOYEE_CODE}}",
+      "redirectUrl": "https://studio.appmint.io"
+    }
+  },
+  {
+    "id": "link-employee",
+    "actor": "manager",
+    "method": "POST",
+    "path": "/profile/user/employee/link",
+    "body": {
+      "userId": "{{USER_SK}}",
+      "employeeId": "{{EMPLOYEE_CODE}}"
+    }
+  },
+  {
+    "id": "my-profile",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/profile"
+  },
+  {
+    "id": "onboarding",
+    "actor": "manager",
+    "method": "GET",
+    "path": "/business-made/onboarding/{{EMPLOYEE_CODE}}"
+  },
+  {
+    "id": "my-pay-method",
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/staff-portal/pay-method",
+    "body": {
+      "payMethod": "check"
+    }
+  },
+  {
+    "id": "my-tax-info",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/tax-info"
+  },
+  {
+    "id": "save-training-tax-info",
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/staff-portal/tax-info",
+    "body": {
+      "federalTax": {
+        "filingStatus": "single",
+        "formYear": 2026,
+        "signedAt": "{{SIGNED_AT}}",
+        "multipleJobs": false,
+        "dependentsAmount": 0,
+        "otherIncome": 0,
+        "deductions": 0,
+        "extraWithholding": 0
+      },
+      "stateTax": {
+        "state": "TX"
+      }
+    }
+  },
+  {
+    "id": "my-policies",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/training/policies"
+  },
+  {
+    "id": "policy-read",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/training/policies/{{POLICY_SK}}"
+  },
+  {
+    "id": "policy-viewed",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/staff-portal/training/policies/{{POLICY_SK}}/viewed",
+    "body": {}
+  },
+  {
+    "id": "policy-acknowledge",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/staff-portal/training/policies/{{POLICY_SK}}/acknowledge",
+    "body": {
+      "signature": {
+        "typedName": "{{SIGNER_NAME}}",
+        "consent": true
+      }
+    }
+  },
+  {
+    "id": "onboarding-complete",
+    "actor": "manager",
+    "method": "POST",
+    "path": "/business-made/onboarding/{{EMPLOYEE_CODE}}/complete",
+    "body": {}
+  },
+  {
+    "id": "schedule-create",
+    "actor": "manager",
+    "method": "POST",
+    "path": "/business-made/schedules",
+    "body": {
+      "name": "Workforce training week",
+      "periodStart": "{{PERIOD_START}}",
+      "periodEnd": "{{PERIOD_END}}",
+      "status": "draft"
+    }
+  },
+  {
+    "id": "shift-add",
+    "actor": "manager",
+    "method": "POST",
+    "path": "/business-made/schedules/{{SCHEDULE_SK}}/shifts",
+    "body": {
+      "employeeId": "{{EMPLOYEE_CODE}}",
+      "date": "{{SHIFT_DATE}}",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakMinutes": 30,
+      "position": "Barista"
+    }
+  },
+  {
+    "id": "schedule-publish",
+    "actor": "manager",
+    "method": "POST",
+    "path": "/business-made/schedules/{{SCHEDULE_SK}}/publish",
+    "body": {}
+  },
+  {
+    "id": "my-schedule",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/schedule?from={{PERIOD_START}}&to={{PERIOD_END}}"
+  },
+  {
+    "id": "accept-shift",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/staff-portal/schedule/{{SCHEDULE_SK}}/shifts/{{SHIFT_ID}}/accept",
+    "body": {}
+  },
+  {
+    "id": "my-timesheet",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/timesheets/current"
+  },
+  {
+    "id": "my-timesheets",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/timesheets"
+  },
+  {
+    "id": "clock-in",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/staff-portal/timesheets/clock-in",
+    "body": {
+      "notes": "Controlled short clock demonstration"
+    }
+  },
+  {
+    "id": "clock-out",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/staff-portal/timesheets/clock-out",
+    "body": {
+      "notes": "End of actual short clock session"
+    }
+  },
+  {
+    "id": "time-add-training-entry",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/staff-portal/timesheets/{{TIMESHEET_SK}}/entries",
+    "body": {
+      "date": "{{SHIFT_DATE}}",
+      "hours": 7.5,
+      "type": "regular",
+      "description": "Separately entered training shift; not the brief live clock session"
+    }
+  },
+  {
+    "id": "time-submit",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/staff-portal/timesheets/{{TIMESHEET_SK}}/submit",
+    "body": {}
+  },
+  {
+    "id": "time-approve",
+    "actor": "manager",
+    "method": "POST",
+    "path": "/business-made/timesheets/{{TIMESHEET_SK}}/approve",
+    "body": {}
+  },
+  {
+    "id": "leave-readiness",
+    "actor": "manager",
+    "method": "GET",
+    "path": "/business-made/leave/setup/readiness"
+  },
+  {
+    "id": "my-leave",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/time-off"
+  },
+  {
+    "id": "leave-cost",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/time-off/cost?startDate={{LEAVE_START}}&endDate={{LEAVE_END}}"
+  },
+  {
+    "id": "leave-request",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/staff-portal/time-off",
+    "body": {
+      "leaveTypeId": "{{LEAVE_TYPE_SK}}",
+      "startDate": "{{LEAVE_START}}",
+      "endDate": "{{LEAVE_END}}",
+      "reason": "Controlled course request"
+    }
+  },
+  {
+    "id": "leave-approve",
+    "actor": "manager",
+    "method": "POST",
+    "path": "/business-made/leave/requests/{{REQUEST_SK}}/approve",
+    "body": {
+      "note": "Reviewed in the training organization"
+    }
+  },
+  {
+    "id": "my-payslips",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/payslips"
+  },
+  {
+    "id": "my-payslip",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/payslips/{{PAYSLIP_SK}}"
+  },
+  {
+    "id": "my-payslip-pdf",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/payslips/{{PAYSLIP_SK}}/pdf",
+    "binary": true
+  },
+  {
+    "id": "my-pay-summary",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/staff-portal/payslips/year/{{YEAR}}/summary"
+  }
+]

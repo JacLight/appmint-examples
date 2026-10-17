@@ -1,0 +1,3 @@
+Set API origin, organization and the appropriate caller token locally. Import the Postman collection or run client.mjs/client.py with an operation ID. Every {{VARIABLE}} must come from your own session or a prior saved result. Do not commit a populated environment. The example below reads the current employee, without accepting an employee ID.
+
+`leave-cost.sh` uses the employee session and `START_DATE`/`END_DATE` to calculate the selected range. `publish-schedule.sh` is a manager mutation: set `SCHEDULE_ID` to the actual saved draft, then run it only when that schedule should become visible. `my-profile.sh` reads the signed-in employee's profile. These examples do not infer authority from the selected UI view.
