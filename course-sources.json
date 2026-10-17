@@ -179,6 +179,12 @@
       "title": "AppEngine Provider Integrations, OAuth and Webhooks",
       "directory": "appengine-integrations-webhooks",
       "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-integrations-webhooks"
+    },
+    {
+      "courseId": "appengine-identity-provider",
+      "title": "AppEngine as an Identity Provider: Staff Sign-In for Your Other Apps",
+      "directory": "appengine-identity-provider",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-identity-provider"
     }
   ]
 }

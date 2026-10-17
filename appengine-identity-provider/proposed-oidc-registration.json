@@ -1,0 +1,29 @@
+{
+  "name": "AppEngine SSO course",
+  "protocol": "oidc",
+  "emailClaim": "login",
+  "access": {
+    "orgs": [
+      "YOUR_REGISTERED_ORGANIZATION"
+    ],
+    "userTypes": [
+      "user"
+    ]
+  },
+  "oidc": {
+    "redirectUris": [
+      "https://sso-course.appmint.test/auth/callback"
+    ],
+    "postLogoutRedirectUris": [
+      "https://sso-course.appmint.test/"
+    ],
+    "scopes": [
+      "openid",
+      "profile",
+      "email",
+      "org"
+    ],
+    "refreshTokens": true,
+    "publicClient": true
+  }
+}

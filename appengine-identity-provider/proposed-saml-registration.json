@@ -1,0 +1,17 @@
+{
+  "name": "AppEngine SAML course",
+  "protocol": "saml",
+  "access": {
+    "orgs": [
+      "YOUR_REGISTERED_ORGANIZATION"
+    ],
+    "userTypes": [
+      "user"
+    ]
+  },
+  "saml": {
+    "entityId": "https://saml-course.appmint.test/metadata",
+    "acsUrl": "https://saml-course.appmint.test/acs",
+    "nameIdFormat": "persistent"
+  }
+}
