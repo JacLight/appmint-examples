@@ -1,0 +1,812 @@
+{
+  "info": {
+    "name": "AppEngine Accounting and Payroll",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{STAFF_TOKEN}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/books/accounts?page=1&pageSize=100",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "account-map",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/books/account-map",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "employer-readiness",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/employer-setup/readiness",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "employee-profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/profiles/employee/{{EMPLOYEE_CODE}}",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "journal-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/books/journals",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"date\": \"{{ENTRY_DATE}}\",\n  \"memo\": \"Training rent journal\",\n  \"businessLocationId\": \"{{LOCATION_NAME}}\",\n  \"lines\": [\n    {\n      \"account\": \"6000\",\n      \"debit\": 1800,\n      \"credit\": 0\n    },\n    {\n      \"account\": \"1000\",\n      \"debit\": 0,\n      \"credit\": 1800\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "journal-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/books/journals/{{JOURNAL_ID}}",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "journal-post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/books/journals/{{JOURNAL_ID}}/post",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "rent-ledger",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/books/ledger/6000?fromDate={{PERIOD_START}}&toDate={{PERIOD_END}}&businessLocationId={{LOCATION_NAME}}",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "payroll-preview",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/run/preview",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"payPeriodStart\": \"{{PERIOD_START}}\",\n  \"payPeriodEnd\": \"{{PERIOD_END}}\",\n  \"payDate\": \"{{PAY_DATE}}\",\n  \"employeeIds\": [\n    \"{{EMPLOYEE_CODE}}\"\n  ],\n  \"businessLocationId\": \"{{LOCATION_NAME}}\",\n  \"type\": \"regular\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "run-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/runs",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"payPeriodStart\": \"{{PERIOD_START}}\",\n  \"payPeriodEnd\": \"{{PERIOD_END}}\",\n  \"payDate\": \"{{PAY_DATE}}\",\n  \"employeeIds\": [\n    \"{{EMPLOYEE_CODE}}\"\n  ],\n  \"businessLocationId\": \"{{LOCATION_NAME}}\",\n  \"type\": \"regular\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "run-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/runs/{{RUN_ID}}",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "run-calculate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/runs/{{RUN_ID}}/calculate",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "run-submit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/runs/{{RUN_ID}}/submit-for-approval",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"comment\": \"Hours and configured calculation reviewed\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "approval-task",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/approval/task/{{TASK_ID}}",
+        "description": "Caller: assigned approver. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "workflow-position",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/workflow/position/bm_payroll_run/{{RUN_ID}}",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "approval-approve",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/approval/task/{{TASK_ID}}/approve",
+        "description": "Caller: assigned approver. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Current stage reviewed\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "approval-reject",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/approval/task/{{TASK_ID}}/reject",
+        "description": "Caller: assigned approver. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Return for correction\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "run-process",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/runs/{{RUN_ID}}/process",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "run-stubs",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/stubs/run/{{RUN_ID}}?page=1&pageSize=100",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "run-journals",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/repository/find/journal_entry",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.referenceId\": \"{{RUN_ID}}\"\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 100\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "stub-pdf",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/stubs/{{STUB_ID}}/pdf/generate",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "deposit-account",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/profiles/employee/{{EMPLOYEE_CODE}}/bank-accounts",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"bankName\": \"{{BANK_NAME}}\",\n  \"routingNumber\": \"{{ROUTING_NUMBER}}\",\n  \"accountNumber\": \"{{ACCOUNT_NUMBER}}\",\n  \"accountType\": \"checking\",\n  \"isPrimary\": true,\n  \"depositType\": \"remainder\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "deposit-method",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/profiles/employee/{{EMPLOYEE_CODE}}/pay-method",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"paymentMethod\": \"direct_deposit\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "ach-generate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/runs/{{RUN_ID}}/ach/generate",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "ach-transfers",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/ach/transfers?runId={{RUN_ID}}",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "period-settings",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/period-close/settings",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "period-checks",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/period-close/months/{{MONTH}}/checks",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included."
+      }
+    },
+    {
+      "name": "period-lock",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/period-close/months/{{MONTH}}/lock",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "period-reopen",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/period-close/months/{{MONTH}}/reopen",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Controlled demonstration complete; reopen with audit history\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "w2-generate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/tax-forms/w2/{{EMPLOYEE_CODE}}/{{TAX_YEAR}}",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "run-cancel",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{APPENGINE_ORG_ID}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPENGINE_API_ORIGIN}}/business-made/payroll/runs/{{RUN_ID}}/cancel",
+        "description": "Caller: staff. Use the current reference and inspect the result before the next operation. No online payment or filing operation is included.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Unprocessed practice run no longer required\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "ACCOUNT_NUMBER",
+      "value": ""
+    },
+    {
+      "key": "APPENGINE_API_ORIGIN",
+      "value": ""
+    },
+    {
+      "key": "APPENGINE_ORG_ID",
+      "value": ""
+    },
+    {
+      "key": "BANK_NAME",
+      "value": ""
+    },
+    {
+      "key": "EMPLOYEE_CODE",
+      "value": ""
+    },
+    {
+      "key": "ENTRY_DATE",
+      "value": ""
+    },
+    {
+      "key": "JOURNAL_ID",
+      "value": ""
+    },
+    {
+      "key": "LOCATION_NAME",
+      "value": ""
+    },
+    {
+      "key": "MONTH",
+      "value": ""
+    },
+    {
+      "key": "PAY_DATE",
+      "value": ""
+    },
+    {
+      "key": "PERIOD_END",
+      "value": ""
+    },
+    {
+      "key": "PERIOD_START",
+      "value": ""
+    },
+    {
+      "key": "ROUTING_NUMBER",
+      "value": ""
+    },
+    {
+      "key": "RUN_ID",
+      "value": ""
+    },
+    {
+      "key": "STUB_ID",
+      "value": ""
+    },
+    {
+      "key": "TASK_ID",
+      "value": ""
+    },
+    {
+      "key": "TAX_YEAR",
+      "value": ""
+    },
+    {
+      "key": "STAFF_TOKEN",
+      "value": ""
+    }
+  ]
+}

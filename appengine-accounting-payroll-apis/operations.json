@@ -1,0 +1,267 @@
+[
+  {
+    "id": "accounts",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/books/accounts?page=1&pageSize=100"
+  },
+  {
+    "id": "account-map",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/books/account-map"
+  },
+  {
+    "id": "employer-readiness",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/payroll/employer-setup/readiness"
+  },
+  {
+    "id": "employee-profile",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/payroll/profiles/employee/{{EMPLOYEE_CODE}}"
+  },
+  {
+    "id": "journal-create",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/books/journals",
+    "body": {
+      "date": "{{ENTRY_DATE}}",
+      "memo": "Training rent journal",
+      "businessLocationId": "{{LOCATION_NAME}}",
+      "lines": [
+        {
+          "account": "6000",
+          "debit": 1800,
+          "credit": 0
+        },
+        {
+          "account": "1000",
+          "debit": 0,
+          "credit": 1800
+        }
+      ]
+    }
+  },
+  {
+    "id": "journal-read",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/books/journals/{{JOURNAL_ID}}"
+  },
+  {
+    "id": "journal-post",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/books/journals/{{JOURNAL_ID}}/post",
+    "body": {}
+  },
+  {
+    "id": "rent-ledger",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/books/ledger/6000?fromDate={{PERIOD_START}}&toDate={{PERIOD_END}}&businessLocationId={{LOCATION_NAME}}"
+  },
+  {
+    "id": "payroll-preview",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/run/preview",
+    "body": {
+      "payPeriodStart": "{{PERIOD_START}}",
+      "payPeriodEnd": "{{PERIOD_END}}",
+      "payDate": "{{PAY_DATE}}",
+      "employeeIds": [
+        "{{EMPLOYEE_CODE}}"
+      ],
+      "businessLocationId": "{{LOCATION_NAME}}",
+      "type": "regular"
+    }
+  },
+  {
+    "id": "run-create",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/runs",
+    "body": {
+      "payPeriodStart": "{{PERIOD_START}}",
+      "payPeriodEnd": "{{PERIOD_END}}",
+      "payDate": "{{PAY_DATE}}",
+      "employeeIds": [
+        "{{EMPLOYEE_CODE}}"
+      ],
+      "businessLocationId": "{{LOCATION_NAME}}",
+      "type": "regular"
+    }
+  },
+  {
+    "id": "run-read",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/payroll/runs/{{RUN_ID}}"
+  },
+  {
+    "id": "run-calculate",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/runs/{{RUN_ID}}/calculate",
+    "body": {}
+  },
+  {
+    "id": "run-submit",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/runs/{{RUN_ID}}/submit-for-approval",
+    "body": {
+      "comment": "Hours and configured calculation reviewed"
+    }
+  },
+  {
+    "id": "approval-task",
+    "actor": "assigned approver",
+    "method": "GET",
+    "path": "/approval/task/{{TASK_ID}}"
+  },
+  {
+    "id": "workflow-position",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/workflow/position/bm_payroll_run/{{RUN_ID}}"
+  },
+  {
+    "id": "approval-approve",
+    "actor": "assigned approver",
+    "method": "POST",
+    "path": "/approval/task/{{TASK_ID}}/approve",
+    "body": {
+      "note": "Current stage reviewed"
+    }
+  },
+  {
+    "id": "approval-reject",
+    "actor": "assigned approver",
+    "method": "POST",
+    "path": "/approval/task/{{TASK_ID}}/reject",
+    "body": {
+      "note": "Return for correction"
+    }
+  },
+  {
+    "id": "run-process",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/runs/{{RUN_ID}}/process",
+    "body": {}
+  },
+  {
+    "id": "run-stubs",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/payroll/stubs/run/{{RUN_ID}}?page=1&pageSize=100"
+  },
+  {
+    "id": "run-journals",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/repository/find/journal_entry",
+    "body": {
+      "query": {
+        "data.referenceId": "{{RUN_ID}}"
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 100
+      }
+    }
+  },
+  {
+    "id": "stub-pdf",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/stubs/{{STUB_ID}}/pdf/generate",
+    "body": {}
+  },
+  {
+    "id": "deposit-account",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/profiles/employee/{{EMPLOYEE_CODE}}/bank-accounts",
+    "body": {
+      "bankName": "{{BANK_NAME}}",
+      "routingNumber": "{{ROUTING_NUMBER}}",
+      "accountNumber": "{{ACCOUNT_NUMBER}}",
+      "accountType": "checking",
+      "isPrimary": true,
+      "depositType": "remainder"
+    }
+  },
+  {
+    "id": "deposit-method",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/profiles/employee/{{EMPLOYEE_CODE}}/pay-method",
+    "body": {
+      "paymentMethod": "direct_deposit"
+    }
+  },
+  {
+    "id": "ach-generate",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/runs/{{RUN_ID}}/ach/generate",
+    "body": {}
+  },
+  {
+    "id": "ach-transfers",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/payroll/ach/transfers?runId={{RUN_ID}}"
+  },
+  {
+    "id": "period-settings",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/period-close/settings"
+  },
+  {
+    "id": "period-checks",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/period-close/months/{{MONTH}}/checks"
+  },
+  {
+    "id": "period-lock",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/period-close/months/{{MONTH}}/lock",
+    "body": {}
+  },
+  {
+    "id": "period-reopen",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/period-close/months/{{MONTH}}/reopen",
+    "body": {
+      "reason": "Controlled demonstration complete; reopen with audit history"
+    }
+  },
+  {
+    "id": "w2-generate",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/tax-forms/w2/{{EMPLOYEE_CODE}}/{{TAX_YEAR}}",
+    "body": {}
+  },
+  {
+    "id": "run-cancel",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/payroll/runs/{{RUN_ID}}/cancel",
+    "body": {
+      "reason": "Unprocessed practice run no longer required"
+    }
+  }
+]

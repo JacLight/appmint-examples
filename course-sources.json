@@ -191,6 +191,12 @@
       "title": "AppEngine Payment and Finance APIs",
       "directory": "appengine-finance-apis",
       "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-finance-apis"
+    },
+    {
+      "courseId": "appengine-accounting-payroll-apis",
+      "title": "AppEngine Accounting and Payroll APIs",
+      "directory": "appengine-accounting-payroll-apis",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-accounting-payroll-apis"
     }
   ]
 }
