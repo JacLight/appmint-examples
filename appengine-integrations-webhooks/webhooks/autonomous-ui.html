@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AppEngine webhook companion</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      .layout {
+        grid-template-columns: 1.3fr 1fr;
+      }
+      main {
+        padding-top: 25px;
+      }
+      .card {
+        padding: 22px;
+        margin-bottom: 17px;
+      }
+      .callback {
+        font: 16px/1.55 ui-monospace, monospace;
+        overflow-wrap: anywhere;
+        background: #f6f1fd;
+        padding: 17px;
+        border-radius: 10px;
+      }
+      .flow {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .flow span {
+        padding: 15px;
+        background: #eee6f8;
+        border-radius: 9px;
+        flex: 1;
+        text-align: center;
+      }
+      .flow i {
+        color: #9764da;
+      }
+      #events {
+        font-size: 16px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      #events li {
+        padding: 12px 0;
+        border-bottom: 1px solid #ede7f2;
+      }
+      #events small {
+        display: block;
+        color: #887994;
+      }
+      .metrics {
+        grid-template-columns: 2fr 0.65fr 0.9fr 1.2fr;
+      }
+      .metrics b {
+        font-size: 17px;
+      }
+      #result .metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+      #result .metrics b {
+        font-size: 23px;
+      }
+      #transaction {
+        font: 16px ui-monospace, monospace;
+        overflow-wrap: anywhere;
+      }
+      .pending {
+        background: #fff4dc;
+        color: #91671b;
+      }
+      .heading {
+        margin-bottom: 20px;
+      }
+      .note {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <strong>appmint</strong
+        ><small>DEVELOPER COMPANION · NOT APPMINT STUDIO</small>
+      </div>
+      <span class="badge">Stripe TEST · isolated course receiver</span>
+    </header>
+    <main>
+      <div class="heading">
+        <div>
+          <div class="eyebrow">INTEGRATIONS AND WEBHOOKS</div>
+          <h1>From provider delivery to paid order</h1>
+        </div>
+        <span id="phase" class="badge pending">Preparing</span>
+      </div>
+      <div class="layout">
+        <section>
+          <article class="card">
+            <h2>1. Register the dedicated receiver</h2>
+            <p>A temporary HTTPS callback, with one event subscription.</p>
+            <div id="url" class="callback">
+              Starting the restricted HTTPS receiver…
+            </div>
+            <div class="metrics">
+              <div>
+                <small>EVENT TYPE</small><b>payment_intent.succeeded</b>
+              </div>
+              <div><small>MODE</small><b>TEST only</b></div>
+              <div>
+                <small>ENDPOINT</small
+                ><b id="endpoint-status">Not registered</b>
+              </div>
+              <div>
+                <small>SIGNING SECRET</small><b id="secret">Not saved</b>
+              </div>
+            </div>
+            <button id="register" class="primary" onclick="act('register')">
+              Register course endpoint
+            </button>
+          </article>
+          <article class="card">
+            <h2>2. Enable and receive the payment event</h2>
+            <div class="flow">
+              <span>Stripe TEST payment</span><i>→</i
+              ><span>Signed delivery</span><i>→</i><span>AppEngine order</span>
+            </div>
+            <div class="actions">
+              <button id="prepare" onclick="act('prepare')">
+                Prepare $12 order</button
+              ><button id="activate" onclick="act('activate')">
+                Enable course receiver</button
+              ><button id="confirm" class="primary" onclick="act('confirm')">
+                Confirm TEST payment
+              </button>
+            </div>
+            <div class="note">
+              Stripe sends the event automatically. This demonstration does not
+              use the replay button. The restricted receiver verifies the exact
+              signed bytes and forwards only this course payment to AppEngine.
+            </div>
+          </article>
+          <article class="card">
+            <h2>3. Retire this endpoint</h2>
+            <button id="retire" onclick="act('retire')">
+              Delete course endpoint</button
+            ><span id="restored" class="muted"></span>
+          </article>
+        </section>
+        <section>
+          <article class="card" id="result">
+            <h2>Saved business result</h2>
+            <div class="metrics">
+              <div><small>ORDER</small><b id="order">Not created</b></div>
+              <div><small>STATUS</small><b id="status">—</b></div>
+              <div><small>AMOUNT</small><b>$12.00 USD</b></div>
+              <div><small>TRANSACTIONS</small><b id="count">0</b></div>
+            </div>
+            <div id="receipt" class="result" hidden></div>
+            <h3>Transaction</h3>
+            <div id="transaction">No saved payment</div>
+          </article>
+          <article class="card">
+            <h2>Actual delivery and configuration history</h2>
+            <ul id="events"></ul>
+          </article>
+        </section>
+      </div>
+    </main>
+    <script>
+      let working = false;
+      const $ = (id) => document.getElementById(id);
+      async function draw() {
+        const s = await fetch("/state").then((r) => r.json());
+        $("phase").textContent = s.phase;
+        $("url").textContent =
+          s.callbackUrl || "Starting the restricted HTTPS receiver…";
+        $("endpoint-status").textContent = s.deleted
+          ? "Deleted"
+          : s.endpoint?.status || "Not registered";
+        $("secret").textContent = s.connection?.signingSecretConfigured
+          ? "Saved · hidden"
+          : "Not saved";
+        $("order").textContent = s.order?.number || "Not created";
+        $("status").textContent = s.result?.status || s.order?.status || "—";
+        $("count").textContent = s.result?.transactionIds?.length || 0;
+        $("transaction").textContent =
+          s.result?.transactionIds?.join(", ") || "No saved payment";
+        $("restored").textContent = s.restored
+          ? "Original AppEngine connection restored"
+          : "";
+        $("register").disabled = working || !!s.endpoint || !s.callbackUrl;
+        $("prepare").disabled = working || !s.endpoint || !!s.order;
+        $("activate").disabled =
+          working ||
+          !s.order ||
+          s.connection?.status === "active" ||
+          !!s.receipts.length;
+        $("confirm").disabled =
+          working ||
+          s.connection?.status !== "active" ||
+          s.payment?.status === "succeeded";
+        $("retire").disabled = working || !s.endpoint || !!s.deleted;
+        const receipt = s.receipts.at(-1);
+        $("receipt").hidden = !receipt;
+        if (receipt) {
+          $("receipt").replaceChildren();
+          const b = document.createElement("b");
+          b.textContent = "Stripe → AppEngine · HTTP " + receipt.status;
+          const p = document.createElement("p");
+          p.textContent =
+            "Signature verified · " +
+            receipt.type +
+            " · " +
+            new Date(receipt.arrival).toLocaleTimeString();
+          $("receipt").append(b, p);
+        }
+        $("events").replaceChildren(
+          ...s.steps.slice(-7).map((x) => {
+            const li = document.createElement("li");
+            li.textContent = x.text;
+            const small = document.createElement("small");
+            small.textContent = x.detail || new Date(x.at).toLocaleTimeString();
+            li.append(small);
+            return li;
+          })
+        );
+      }
+      async function act(name) {
+        if (working) return;
+        working = true;
+        await draw();
+        try {
+          const r = await fetch("/" + name, { method: "POST" });
+          const j = await r.json();
+          if (!r.ok) alert(j.error);
+        } finally {
+          working = false;
+          await draw();
+        }
+      }
+      setInterval(draw, 700);
+      draw();
+    </script>
+  </body>
+</html>

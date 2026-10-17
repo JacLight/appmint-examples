@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AppEngine Integration Course Companion</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <strong>appmint</strong><small>APPENGINE · DEVELOPER COMPANION</small>
+      </div>
+      <nav>
+        <button data-view="connections" class="active">
+          Provider connections</button
+        ><button data-view="events">Payment event journey</button>
+      </nav>
+      <span id="connection">Connect your account</span>
+    </header>
+    <main>
+      <section id="login" class="card">
+        <h1>Connect the course companion</h1>
+        <p>
+          Use your staff account for the configured development organization.
+          Credentials stay on this server.
+        </p>
+        <form id="login-form">
+          <label
+            >Email<input
+              name="email"
+              type="email"
+              required
+              autocomplete="username" /></label
+          ><label
+            >Password<input
+              name="password"
+              type="password"
+              required
+              autocomplete="current-password" /></label
+          ><button class="primary">Connect staff account</button>
+        </form>
+        <p class="muted">
+          This is a runnable example app. It is not Appmint Studio.
+        </p>
+      </section>
+      <section id="connections" hidden>
+        <div class="heading">
+          <div>
+            <span class="eyebrow"
+              >YOUR ORGANIZATION · YOUR PROVIDER ACCOUNT</span
+            >
+            <h1>Connect an existing service</h1>
+            <p>
+              Discover its contract, select the saved connection and test the
+              account.
+            </p>
+          </div>
+          <a
+            href="https://appengine.appmint.io/documentation"
+            target="_blank"
+            rel="noreferrer"
+            >Current API reference ↗</a
+          >
+        </div>
+        <div class="layout">
+          <aside>
+            <h2>Saved Stripe connections</h2>
+            <div id="config-list"></div>
+            <div class="note">
+              <b>Configuration stays on the server</b>
+              <p>
+                The page receives only safe metadata. No secret key or signing
+                secret is returned.
+              </p>
+            </div>
+          </aside>
+          <div>
+            <section class="card">
+              <div class="row">
+                <h2 id="config-name">Select a test connection</h2>
+                <span id="config-status" class="badge">Not selected</span>
+              </div>
+              <div class="metrics" id="config-metrics"></div>
+              <div class="actions">
+                <button id="test-connection" class="primary">
+                  Test provider connection</button
+                ><button id="inspect-webhooks">
+                  Inspect registered endpoints
+                </button>
+              </div>
+              <div id="test-result"></div>
+              <div id="webhook-result"></div>
+            </section>
+            <section class="card">
+              <div class="row">
+                <h2>Discover the current provider contract</h2>
+                <select id="provider">
+                  <option>StripeProvider</option>
+                  <option>EasyPostProvider</option>
+                  <option>TwilioProvider</option>
+                  <option>FacebookProvider</option>
+                  <option>PayPalProvider</option>
+                </select>
+              </div>
+              <button id="discover">
+                Load configuration fields and operations
+              </button>
+              <div id="schema-result"></div>
+            </section>
+          </div>
+        </div>
+      </section>
+      <section id="events" hidden>
+        <div class="heading">
+          <div>
+            <span class="eyebrow"
+              >PAYMENT → PROVIDER EVENT → SAVED BUSINESS RESULT</span
+            >
+            <h1>Follow one test order</h1>
+            <p>
+              A payment confirmation and a paid AppEngine order are separate
+              checkpoints.
+            </p>
+          </div>
+          <button id="readback">Refresh saved result</button>
+        </div>
+        <div class="journey">
+          <div>
+            <section class="card">
+              <h2>1. Create an unpaid order</h2>
+              <form id="order-form" class="inline">
+                <label
+                  >Existing training customer email<input
+                    name="email"
+                    type="email"
+                    required /></label
+                ><button class="primary">Create $12 test order</button>
+              </form>
+              <p class="muted">
+                Workshop guide · no physical fulfilment · server-calculated
+                price.
+              </p>
+            </section>
+            <section class="card">
+              <h2>2. Confirm the Stripe test payment</h2>
+              <p>Uses Stripe's test payment method. No real card is charged.</p>
+              <button id="confirm-payment" class="primary">
+                Confirm sandbox payment
+              </button>
+              <div id="payment-result"></div>
+            </section>
+            <section class="card">
+              <div class="row">
+                <h2>3. Find the provider's event</h2>
+                <button id="load-events">Load recent succeeded events</button>
+              </div>
+              <div id="event-list"></div>
+              <div class="actions">
+                <button id="event-next" hidden>Next provider page</button
+                ><button id="replay" class="primary">
+                  Replay selected course event</button
+                ><button id="reject-fake">Check unknown event refusal</button>
+              </div>
+              <div id="receiver-result"></div>
+              <p class="muted">
+                ID-only replay uses AppEngine's provider-retrieval branch. With
+                a signing secret, request a fresh signed resend from the
+                provider instead.
+              </p>
+            </section>
+          </div>
+          <aside class="card outcome">
+            <span class="eyebrow">LIVE APPENGINE READBACK</span>
+            <h2 id="order-number">No course order yet</h2>
+            <div id="order-result"></div>
+            <h3>Payment transactions</h3>
+            <div id="transaction-result"><p>None yet</p></div>
+            <h3>Processed event</h3>
+            <div id="processed-result"><p>No selected event yet</p></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <div id="notice" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

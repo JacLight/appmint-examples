@@ -1,0 +1,15 @@
+{
+  "name": "appengine-integrations-webhooks-course",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node browser/server.mjs",
+    "webhook-demo": "node webhooks/automatic-delivery.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "stripe": "12.10.0"
+  }
+}

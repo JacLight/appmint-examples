@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "AppEngine integration and event readback",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{staff_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "api_origin",
+      "value": ""
+    },
+    {
+      "key": "org",
+      "value": ""
+    },
+    {
+      "key": "staff_token",
+      "value": ""
+    },
+    {
+      "key": "config_id",
+      "value": ""
+    },
+    {
+      "key": "event_id",
+      "value": ""
+    },
+    {
+      "key": "created_gte_unix",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Discover Stripe",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/upstream/integration-types/StripeProvider"
+      }
+    },
+    {
+      "name": "Test connection",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/upstream/call/StripeProvider/test",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"configId\": \"{{config_id}}\",\n  \"data\": {}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Recent payment events",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/upstream/call/StripeProvider/listEvents",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"configId\": \"{{config_id}}\",\n  \"data\": {\n    \"types\": [\n      \"payment_intent.succeeded\"\n    ],\n    \"limit\": 20,\n    \"createdGte\": {{created_gte_unix}}\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Processed event record",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{api_origin}}/repository/find/log",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.kind\": \"stripe-webhook-event\",\n    \"data.eventId\": \"{{event_id}}\"\n  },\n  \"options\": {\n    \"pageSize\": 10\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
