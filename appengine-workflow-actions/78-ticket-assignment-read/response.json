@@ -1,0 +1,59 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "_id": "6aca13e3f5d6b011f6e1205b",
+    "pk": "video-lab-mut4jkwd|ticket",
+    "sk": "6aca13e3f5d6b011f6e1205b",
+    "name": "REIF60GU",
+    "datatype": "ticket",
+    "data": {
+      "title": "Workflow API course ticket",
+      "description": "Disposable training example for automatic workflow creation",
+      "priority": "normal",
+      "status": "done",
+      "name": "REIF60GU",
+      "assignBy": "video-lab-mut4jkwd@example.com",
+      "assignTo": "video-lab-mut4jkwd@example.com",
+      "resolution": {
+        "summary": "Controlled API course demonstration completed",
+        "rootCause": null,
+        "resolvedBy": "video-lab-mut4jkwd@example.com"
+      },
+      "resolvedAt": "2026-10-10T10:30:59.412Z",
+      "workflow": {
+        "workflowId": "6ac1d85e19ec5a8a773c9297",
+        "status": "done"
+      }
+    },
+    "version": 0,
+    "author": "video-lab-mut4jkwd@example.com",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "completed",
+    "createdate": "2026-10-10T10:30:59.268Z",
+    "modifydate": "2026-10-10T10:35:01.870Z",
+    "handling": {
+      "status": "done",
+      "since": "2026-10-10T10:30:59.302Z",
+      "channel": "ticket",
+      "title": "New ticket: Workflow API course ticket",
+      "history": [
+        {
+          "status": "open",
+          "at": "2026-10-10T10:30:59.302Z"
+        },
+        {
+          "status": "done",
+          "at": "2026-10-10T10:30:59.423Z",
+          "by": "video-lab-mut4jkwd@example.com",
+          "byName": "video-lab-mut4jkwd@example.com",
+          "note": "Controlled API course demonstration completed"
+        }
+      ],
+      "by": "video-lab-mut4jkwd@example.com",
+      "byName": "video-lab-mut4jkwd@example.com",
+      "doneAt": "2026-10-10T10:30:59.423Z",
+      "outcome": "Controlled API course demonstration completed"
+    }
+  }
+}

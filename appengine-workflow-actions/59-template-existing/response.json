@@ -1,0 +1,135 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "_id": "6ac1d85e19ec5a8a773c9297",
+    "pk": "video-lab-mut4jkwd|workflow_definition",
+    "sk": "6ac1d85e19ec5a8a773c9297",
+    "name": "ticket-support",
+    "datatype": "workflow_definition",
+    "data": {
+      "name": "ticket-support",
+      "title": "Ticket support",
+      "enabled": true,
+      "description": "New \u2192 In progress \u2192 Waiting on customer \u2192 Resolved. First response is due 4 hours after the ticket is opened and the owner is told at 1 day; resolution is due 2 days after work starts. Waiting on customer has no timer.",
+      "collections": [
+        "ticket"
+      ],
+      "notificationTemplate": [
+        "task-status-update",
+        "task-status-update-sms"
+      ],
+      "stages": [
+        {
+          "id": 0,
+          "type": "start",
+          "name": "New",
+          "modelState": "new",
+          "modelStatus": "new",
+          "assignRule": {
+            "type": "roles",
+            "roles": [
+              "Support",
+              "Owner"
+            ],
+            "mode": "any",
+            "fallbackRoles": [
+              "Owner"
+            ]
+          },
+          "notificationTemplate": [
+            "task-assignment",
+            "task-assignment-sms"
+          ],
+          "escalations": [
+            {
+              "escalateAfter": 4,
+              "units": "hours",
+              "notificationTemplate": [
+                "task-reminder",
+                "task-reminder-sms"
+              ]
+            },
+            {
+              "escalateAfter": 1,
+              "units": "days",
+              "escalateRule": {
+                "type": "roles",
+                "roles": [
+                  "Owner"
+                ]
+              },
+              "notificationTemplate": [
+                "task-reminder",
+                "task-reminder-sms"
+              ]
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "type": "intermediate",
+          "name": "In progress",
+          "modelState": "inprogress",
+          "modelStatus": "inprogress",
+          "notificationTemplate": [
+            "task-status-update",
+            "task-status-update-sms"
+          ],
+          "escalations": [
+            {
+              "escalateAfter": 2,
+              "units": "days",
+              "notificationTemplate": [
+                "task-reminder",
+                "task-reminder-sms"
+              ]
+            },
+            {
+              "escalateAfter": 1,
+              "units": "days",
+              "escalateRule": {
+                "type": "roles",
+                "roles": [
+                  "Owner"
+                ]
+              },
+              "notificationTemplate": [
+                "task-reminder",
+                "task-reminder-sms"
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "type": "intermediate",
+          "name": "Waiting on customer",
+          "modelState": "pending",
+          "modelStatus": "pending",
+          "notificationTemplate": [
+            "task-status-update",
+            "task-status-update-sms"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "end",
+          "name": "Resolved",
+          "modelState": "completed",
+          "modelStatus": "done",
+          "notificationTemplate": [
+            "task-status-update",
+            "task-status-update-sms"
+          ]
+        }
+      ]
+    },
+    "version": 0,
+    "author": "system",
+    "created_by": "system",
+    "state": "draft",
+    "createdate": "2026-10-04T04:38:54.877Z",
+    "modifydate": "2026-10-04T06:04:03.827Z"
+  }
+}

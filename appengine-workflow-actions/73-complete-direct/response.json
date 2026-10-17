@@ -1,0 +1,50 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "_id": "6aca14d5f5d6b011f6e12099",
+    "pk": "video-lab-mut4jkwd|task",
+    "sk": "6aca14d5f5d6b011f6e12099",
+    "name": "qp74ac9fgi",
+    "datatype": "task",
+    "data": {
+      "name": "qp74ac9fgi",
+      "title": "Completed assignment example",
+      "note": "",
+      "workflowId": "6aca13a4f5d6b011f6e12033",
+      "workflowName": "api-review-1010",
+      "stageId": 2,
+      "status": "done",
+      "assignTo": [
+        "video-lab-mut4jkwd@example.com"
+      ],
+      "payload": {
+        "requesterEmail": "video-lab-mut4jkwd@example.com",
+        "requesterName": "Video Lab"
+      },
+      "escalationTier": 0,
+      "dueDate": null,
+      "completedAt": "2026-10-10T10:35:01.497Z",
+      "history": [
+        {
+          "stageId": 0,
+          "status": "new",
+          "dueDate": "2026-10-10T11:35:01.336Z",
+          "note": "",
+          "modified": "2026-10-10T10:35:01.495Z",
+          "modifiedBy": null
+        }
+      ]
+    },
+    "version": 0,
+    "owner": {
+      "datatype": "workflow_lab_1010",
+      "id": "6aca14d5f5d6b011f6e12097",
+      "name": "Completed assignment example"
+    },
+    "state": "completed",
+    "created_by": "system",
+    "createdate": "2026-10-10T10:35:01.352Z",
+    "modifydate": "2026-10-10T10:35:01.633Z"
+  }
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "name": "event",
+    "method": "GET",
+    "path": "/events/{{event_id}}",
+    "body": null
+  },
+  {
+    "name": "types",
+    "method": "GET",
+    "path": "/events/{{event_id}}/ticket-types",
+    "body": null
+  },
+  {
+    "name": "tickets",
+    "method": "GET",
+    "path": "/events/{{event_id}}/tickets",
+    "body": null
+  },
+  {
+    "name": "occupancy",
+    "method": "GET",
+    "path": "/events/{{event_id}}/occupancy",
+    "body": null
+  },
+  {
+    "name": "admit",
+    "method": "POST",
+    "path": "/events/checkin",
+    "body": {
+      "eventId": "{{event_id}}",
+      "zone": "{{zone}}",
+      "checkpoint": "{{entrance}}",
+      "code": "{{ticket_code}}"
+    }
+  },
+  {
+    "name": "exit",
+    "method": "POST",
+    "path": "/events/checkout",
+    "body": {
+      "eventId": "{{event_id}}",
+      "zone": "{{zone}}",
+      "checkpoint": "{{entrance}}",
+      "code": "{{ticket_code}}"
+    }
+  },
+  {
+    "name": "benefit-preview",
+    "method": "POST",
+    "path": "/events/verify-scan",
+    "body": {
+      "eventId": "{{event_id}}",
+      "zone": "{{zone}}",
+      "checkpoint": "{{benefit_point}}",
+      "code": "{{ticket_code}}",
+      "redeem": false
+    }
+  },
+  {
+    "name": "benefit-redeem",
+    "method": "POST",
+    "path": "/events/verify-scan",
+    "body": {
+      "eventId": "{{event_id}}",
+      "zone": "{{zone}}",
+      "checkpoint": "{{benefit_point}}",
+      "code": "{{ticket_code}}",
+      "redeem": true
+    }
+  },
+  {
+    "name": "perks",
+    "method": "GET",
+    "path": "/events/tickets/{{ticket_id}}/perks",
+    "body": null
+  },
+  {
+    "name": "fresh-qr",
+    "method": "GET",
+    "path": "/events/tickets/{{ticket_id}}/qr",
+    "body": null
+  },
+  {
+    "name": "badge",
+    "method": "GET",
+    "path": "/events/tickets/{{ticket_id}}/badge",
+    "body": null
+  },
+  {
+    "name": "stats",
+    "method": "GET",
+    "path": "/events/{{event_id}}/checkin-stats",
+    "body": null
+  },
+  {
+    "name": "credential-import",
+    "method": "POST",
+    "path": "/events/{{event_id}}/credentials/import",
+    "body": {
+      "codes": [
+        "{{credential_code}}"
+      ],
+      "type": "wristband",
+      "codeFormat": "barcode"
+    }
+  },
+  {
+    "name": "credential-assign",
+    "method": "POST",
+    "path": "/events/credentials/assign",
+    "body": {
+      "credentialCode": "{{credential_code}}",
+      "ticketId": "{{ticket_id}}"
+    }
+  },
+  {
+    "name": "credential-revoke",
+    "method": "POST",
+    "path": "/events/credentials/{{credential_code}}/revoke",
+    "body": {
+      "reason": "Training credential retired"
+    }
+  },
+  {
+    "name": "crew-history",
+    "method": "GET",
+    "path": "/access-control/credentials/{{crew_credential_id}}/history",
+    "body": null
+  },
+  {
+    "name": "credential-admit",
+    "method": "POST",
+    "path": "/events/checkin",
+    "body": {
+      "eventId": "{{event_id}}",
+      "zone": "{{zone}}",
+      "checkpoint": "{{credential_entrance}}",
+      "code": "{{credential_code}}"
+    }
+  }
+]

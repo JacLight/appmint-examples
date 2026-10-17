@@ -1,0 +1,12 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "decision": "pending",
+    "requestId": "6aca13e3f5d6b011f6e12061",
+    "taskId": "6aca13e3f5d6b011f6e12062",
+    "approvers": [],
+    "approverNames": [],
+    "escalatesAt": "2026-10-13T10:30:59.505Z"
+  }
+}

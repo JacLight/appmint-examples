@@ -1,0 +1,42 @@
+{
+  "startedAt": "2026-10-10T10:30:30.439331+00:00",
+  "durationSeconds": 0.0198,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "datatype": "schedule_marks_1010",
+      "isNew": true,
+      "data": {
+        "reference": "SCHEDULE-1010-B",
+        "status": "waiting"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "datatype": "schedule_marks_1010",
+      "data": {
+        "reference": "SCHEDULE-1010-B",
+        "status": "waiting"
+      },
+      "name": null,
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|schedule_marks_1010",
+      "createdate": "2026-10-10T10:30:30.455Z",
+      "modifydate": "2026-10-10T10:30:30.455Z",
+      "version": 0,
+      "sk": "6aca13c6f5d6b011f6e12051",
+      "id": "6aca13c6f5d6b011f6e12051"
+    }
+  }
+}

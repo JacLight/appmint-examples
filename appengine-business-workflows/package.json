@@ -1,0 +1,1 @@
+{"name":"appengine-business-workflow-course","private":true,"type":"module","scripts":{"start":"node server.mjs","journey":"node journey.mjs","journey:typescript":"node --experimental-strip-types journey.ts","test":"node --test event-adapter.test.mjs"},"engines":{"node":">=24"}}

@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "path": "/crm/forms/submissions?formId=wf-usecase-1011-warranty&page=1&pageSize=20",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  }
+}

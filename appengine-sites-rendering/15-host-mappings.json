@@ -1,0 +1,48 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/site/get-site-host-mappings/vidsite",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "total": 1,
+      "datatype": "site_domain",
+      "pageSize": 50,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-04T01:10:33.846Z",
+      "data": [
+        {
+          "_id": "6ac1a7896cf55d217cabf05b",
+          "pk": "fundu|site_domain",
+          "sk": "6ac1a7896cf55d217cabf05b",
+          "name": "site_domain-1791076233843-cwi3upx6",
+          "datatype": "site_domain",
+          "data": {
+            "domainName": "YOUR_SITE_HOST",
+            "orgId": "video-lab-mut4jkwd",
+            "siteId": "6ac1a7896cf55d217cabf059",
+            "siteName": "vidsite",
+            "status": "active",
+            "name": "site_domain-1791076233843-cwi3upx6"
+          },
+          "version": 0,
+          "created_by": "system",
+          "state": "draft",
+          "createdate": "2026-10-04T01:10:33.846Z",
+          "modifydate": "2026-10-04T01:10:33.846Z"
+        }
+      ]
+    }
+  }
+}

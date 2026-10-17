@@ -1,0 +1,50 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "request": [
+      {
+        "label": "Part of my job",
+        "description": "My role needs this screen for day-to-day work"
+      },
+      {
+        "label": "Covering for someone",
+        "description": "Filling in while a colleague is away"
+      },
+      {
+        "label": "New responsibility",
+        "description": "I have been given new duties"
+      },
+      {
+        "label": "One-off task",
+        "description": "I need it for a single job, then I am done"
+      },
+      {
+        "label": "Fixing a problem",
+        "description": "Something is wrong and I need to look at it"
+      }
+    ],
+    "decline": [
+      {
+        "label": "Not needed for this role",
+        "description": "The work can be done without it"
+      },
+      {
+        "label": "Ask your manager first",
+        "description": "Your manager should agree before access is given"
+      },
+      {
+        "label": "Someone else will do it",
+        "description": "This task belongs to another person or team"
+      },
+      {
+        "label": "Too much access",
+        "description": "A narrower role or group fits better"
+      },
+      {
+        "label": "Need more detail",
+        "description": "Say what you need it for, then ask again"
+      }
+    ]
+  }
+}

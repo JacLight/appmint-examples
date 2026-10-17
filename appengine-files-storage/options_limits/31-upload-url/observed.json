@@ -1,0 +1,40 @@
+{
+  "startedAt": "2026-10-10T01:59:34.308151+00:00",
+  "durationSeconds": 1.4597,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/upload-url",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+      "location": "course-files-1009/imported",
+      "name": "cedar-import.png",
+      "isPrivate": true,
+      "thumbnails": true
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "raw": {
+        "Key": "video-lab-mut4jkwd/course-files-1009/imported/cedar-import.png",
+        "LastModified": "2026-10-10T01:59:34.776Z",
+        "ETag": "\"7dd84b24dd1de837688715f2ab001174\"",
+        "ChecksumAlgorithm": [],
+        "Size": 52048,
+        "StorageClass": "STANDARD"
+      },
+      "path": "video-lab-mut4jkwd/course-files-1009/imported/cedar-import.png",
+      "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/imported/cedar-import.png?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED",
+      "xs": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/imported/cedar-import_xs.png?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED",
+      "sm": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/imported/cedar-import_sm.png?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED",
+      "md": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/imported/cedar-import_md.png?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED"
+    }
+  }
+}

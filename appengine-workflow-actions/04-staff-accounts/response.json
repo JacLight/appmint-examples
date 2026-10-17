@@ -1,0 +1,94 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "total": 2,
+    "datatype": "user",
+    "pageSize": 50,
+    "page": 1,
+    "sort": "modifydate",
+    "sortType": -1,
+    "lastPage": 1,
+    "hasNext": false,
+    "fromCache": false,
+    "lastItem": "2026-10-04T18:30:23.662Z",
+    "data": [
+      {
+        "_id": "6ac1a7896cf55d217cabf056",
+        "datatype": "user",
+        "pk": "video-lab-mut4jkwd|user",
+        "sk": "6ac1a7896cf55d217cabf056",
+        "name": "f_admin",
+        "version": 0,
+        "data": {
+          "firstName": "Video",
+          "lastName": "Lab",
+          "email": "video-lab-mut4jkwd@example.com",
+          "username": "video-lab-mut4jkwd@example.com",
+          "groups": [
+            "ConfigAdmin",
+            "ContentAdmin",
+            "User"
+          ],
+          "lockout": null,
+          "account": null,
+          "audit": {
+            "lastLogin": "2026-10-10T10:28:24.430Z"
+          },
+          "roles": [
+            "ConfigAdmin",
+            "ContentAdmin",
+            "User",
+            "Owner"
+          ]
+        },
+        "createdate": "2026-10-04T01:10:33.731Z",
+        "modifydate": "2026-10-10T10:28:24.430Z"
+      },
+      {
+        "_id": "6ac29b3f78bf7a375c8ec898",
+        "pk": "video-lab-mut4jkwd|user",
+        "sk": "6ac29b3f78bf7a375c8ec898",
+        "name": "bm-clock-course@example.invalid",
+        "version": 1,
+        "datatype": "user",
+        "data": {
+          "groups": [
+            "User"
+          ],
+          "username": "bm-clock-course@example.invalid",
+          "email": "bm-clock-course@example.invalid",
+          "firstName": "BM Course",
+          "lastName": "Clock",
+          "employeeId": "EMP-K7ESAX",
+          "permissions": {
+            "content": [
+              "read",
+              "create"
+            ],
+            "component": [
+              "view"
+            ],
+            "menu": {
+              "User": {
+                "menuInclude": [],
+                "menuExclude": [],
+                "default": "everyone"
+              }
+            }
+          },
+          "roles": [
+            "User"
+          ],
+          "temporaryPassword": "[redacted]",
+          "temporaryPasswordCreatedAt": "[redacted]"
+        },
+        "created_by": "system",
+        "state": "draft",
+        "createdate": "2026-10-04T18:30:23.018Z",
+        "modifydate": "2026-10-04T18:30:23.662Z",
+        "modified_by": "system"
+      }
+    ]
+  }
+}

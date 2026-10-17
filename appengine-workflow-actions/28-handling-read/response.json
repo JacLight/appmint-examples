@@ -1,0 +1,28 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "by": "video-lab-mut4jkwd@example.com",
+    "byName": "Video",
+    "history": [
+      {
+        "status": "in_progress",
+        "at": "2026-10-10T10:29:56.362Z",
+        "by": "video-lab-mut4jkwd@example.com",
+        "byName": "Video"
+      },
+      {
+        "status": "done",
+        "at": "2026-10-10T10:29:56.606Z",
+        "by": "video-lab-mut4jkwd@example.com",
+        "byName": "Video",
+        "note": "API connection checked"
+      }
+    ],
+    "since": "2026-10-10T10:29:56.362Z",
+    "status": "done",
+    "takenAt": "2026-10-10T10:29:56.362Z",
+    "doneAt": "2026-10-10T10:29:56.606Z",
+    "outcome": "API connection checked"
+  }
+}

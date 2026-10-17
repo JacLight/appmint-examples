@@ -1,0 +1,266 @@
+{
+  "environment": "Isolated controlled training organization",
+  "request": {
+    "method": "POST",
+    "path": "/storefront/cart/update/6acaca3a8c597416cfbe7f28",
+    "identity": "controlled customer",
+    "body": {
+      "datatype": "sf_cart",
+      "data": {
+        "productItems": [
+          {
+            "sku": "HEADLESS-OPTIONS-1010",
+            "quantity": 1,
+            "unitPrice": 25,
+            "amount": 25,
+            "discount": 2.5,
+            "deposit": 0,
+            "depositWaived": false,
+            "itemType": "product",
+            "parentSku": "HEADLESS-OPTIONS-1010",
+            "waived": false,
+            "options": [
+              {
+                "name": "size",
+                "value": "large"
+              }
+            ],
+            "feesTotal": 0,
+            "lineTotal": 25,
+            "originalPrice": 25,
+            "finalPrice": 25,
+            "totalPrice": 25,
+            "tierDiscount": 0,
+            "discountPercent": 0,
+            "currency": "USD",
+            "priceDelta": 0,
+            "variationSku": "HEADLESS-OPTIONS-LARGE-1010",
+            "categories": []
+          }
+        ],
+        "rentalItems": [],
+        "rentalSubtotal": 0,
+        "rentalDeposit": 0,
+        "rentalDiscount": 0,
+        "rentalTax": 0,
+        "rentalDeliveryFee": 0,
+        "rentalFees": 0,
+        "rentalFeesList": [],
+        "rentalTotal": 0,
+        "rentalCount": 0,
+        "productSubtotal": 25,
+        "productDiscount": 2.5,
+        "productTax": 0,
+        "productShipping": 6.5,
+        "productTotal": 29,
+        "productCount": 1,
+        "subtotal": 25,
+        "discount": 2.5,
+        "tax": 0,
+        "deposit": 0,
+        "total": 29,
+        "shippingMethod": "flat",
+        "depositWaived": false,
+        "freeShipping": false,
+        "freeDelivery": false,
+        "freeReturnPickup": false,
+        "discounts": [
+          {
+            "code": "HCOPTION10",
+            "name": "Headless option10",
+            "amount": 2.5,
+            "type": "percent",
+            "message": "10% off",
+            "discountId": "6acaca428c597416cfbe7f2f"
+          }
+        ],
+        "valid": true,
+        "cartId": "6acaca3a8c597416cfbe7f28",
+        "email": "nina.gateway1010@example.invalid",
+        "source": "website",
+        "shippingAddress": {
+          "name": "Nina Course",
+          "street1": "123 Course Lane",
+          "city": "Chicago",
+          "state": "IL",
+          "zip": "60601",
+          "country": "US",
+          "email": "nina.gateway1010@example.invalid"
+        },
+        "couponCode": "HCOPTION10"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "_id": "6acaca3a8c597416cfbe7f28",
+      "pk": "video-lab-mut4jkwd|sf_cart",
+      "sk": "6acaca3a8c597416cfbe7f28",
+      "name": "nina.gateway1010@example.invalid",
+      "datatype": "sf_cart",
+      "data": {
+        "productItems": [
+          {
+            "sku": "HEADLESS-OPTIONS-1010",
+            "quantity": 1,
+            "unitPrice": 25,
+            "amount": 25,
+            "discount": 2.5,
+            "deposit": 0,
+            "depositWaived": false,
+            "itemType": "product",
+            "parentSku": "HEADLESS-OPTIONS-1010",
+            "waived": false,
+            "options": [
+              {
+                "name": "size",
+                "value": "large"
+              }
+            ],
+            "feesTotal": 0,
+            "lineTotal": 25,
+            "originalPrice": 25,
+            "finalPrice": 25,
+            "totalPrice": 25,
+            "tierDiscount": 0,
+            "discountPercent": 0,
+            "currency": "USD",
+            "priceDelta": 0,
+            "variationSku": "HEADLESS-OPTIONS-LARGE-1010",
+            "categories": []
+          }
+        ],
+        "rentalItems": [],
+        "rentalSubtotal": 0,
+        "rentalDeposit": 0,
+        "rentalDiscount": 0,
+        "rentalTax": 0,
+        "rentalDeliveryFee": 0,
+        "rentalFees": 0,
+        "rentalFeesList": [],
+        "rentalTotal": 0,
+        "rentalCount": 0,
+        "productSubtotal": 25,
+        "productDiscount": 2.5,
+        "productTax": 0,
+        "productShipping": 6.5,
+        "productTotal": 29,
+        "productCount": 1,
+        "subtotal": 25,
+        "discount": 2.5,
+        "tax": 0,
+        "deposit": 0,
+        "total": 29,
+        "shippingMethod": "flat",
+        "depositWaived": false,
+        "freeShipping": false,
+        "freeDelivery": false,
+        "freeReturnPickup": false,
+        "discounts": [
+          {
+            "code": "HCOPTION10",
+            "name": "Headless option10",
+            "amount": 2.5,
+            "type": "percent",
+            "message": "10% off",
+            "discountId": "6acaca428c597416cfbe7f2f"
+          }
+        ],
+        "valid": true,
+        "cartId": "6acaca3a8c597416cfbe7f28",
+        "email": "nina.gateway1010@example.invalid",
+        "source": "website",
+        "shippingAddress": {
+          "name": "Nina Course",
+          "street1": "123 Course Lane",
+          "city": "Chicago",
+          "state": "IL",
+          "zip": "60601",
+          "country": "US",
+          "email": "nina.gateway1010@example.invalid"
+        },
+        "couponCode": "HCOPTION10"
+      },
+      "version": null,
+      "author": "nina.gateway1010@example.invalid",
+      "created_by": "nina.gateway1010@example.invalid",
+      "state": "draft",
+      "createdate": "2026-10-10T23:28:58.744Z",
+      "modifydate": "2026-10-10T23:29:54.072Z",
+      "modified_by": "nina.gateway1010@example.invalid",
+      "cartId": "6acaca3a8c597416cfbe7f28",
+      "calculated": {
+        "productItems": [
+          {
+            "sku": "HEADLESS-OPTIONS-1010",
+            "quantity": 1,
+            "unitPrice": 25,
+            "amount": 25,
+            "discount": 2.5,
+            "deposit": 0,
+            "depositWaived": false,
+            "itemType": "product",
+            "parentSku": "HEADLESS-OPTIONS-1010",
+            "waived": false,
+            "options": [
+              {
+                "name": "size",
+                "value": "large"
+              }
+            ],
+            "feesTotal": 0,
+            "lineTotal": 25,
+            "originalPrice": 25,
+            "finalPrice": 25,
+            "totalPrice": 25,
+            "tierDiscount": 0,
+            "discountPercent": 0,
+            "currency": "USD",
+            "priceDelta": 0,
+            "variationSku": "HEADLESS-OPTIONS-LARGE-1010",
+            "categories": []
+          }
+        ],
+        "rentalItems": [],
+        "rentalSubtotal": 0,
+        "rentalDeposit": 0,
+        "rentalDiscount": 0,
+        "rentalTax": 0,
+        "rentalDeliveryFee": 0,
+        "rentalFees": 0,
+        "rentalFeesList": [],
+        "rentalTotal": 0,
+        "rentalCount": 0,
+        "productSubtotal": 25,
+        "productDiscount": 2.5,
+        "productTax": 0,
+        "productShipping": 6.5,
+        "productTotal": 29,
+        "productCount": 1,
+        "subtotal": 25,
+        "discount": 2.5,
+        "tax": 0,
+        "deposit": 0,
+        "total": 29,
+        "shippingMethod": "flat",
+        "depositWaived": false,
+        "freeShipping": false,
+        "freeDelivery": false,
+        "freeReturnPickup": false,
+        "discounts": [
+          {
+            "code": "HCOPTION10",
+            "name": "Headless option10",
+            "amount": 2.5,
+            "type": "percent",
+            "message": "10% off",
+            "discountId": "6acaca428c597416cfbe7f2f"
+          }
+        ],
+        "valid": true,
+        "cartId": "6acaca3a8c597416cfbe7f28"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "provider": "StripeProvider",
+    "sourceOrganization": "demo",
+    "sourceConfig": "66863b794ae877f15cb9aec3",
+    "sourceName": "stripe_demo",
+    "destinationOrganization": "video-lab-mut4jkwd",
+    "config": "6acac4ffbdaec2942121c0f8",
+    "name": "Headless course Stripe sandbox",
+    "testMode": true,
+    "connectionTest": {
+      "success": true,
+      "livemode": false,
+      "message": "Connected to Stripe (test mode)"
+    }
+  },
+  {
+    "provider": "PayPalProvider",
+    "sourceOrganization": "demo",
+    "sourceConfig": "668c56713ec3028373774bea",
+    "sourceName": "appmint-demo",
+    "destinationOrganization": "video-lab-mut4jkwd",
+    "config": "6acac500bdaec2942121c0f9",
+    "name": "Headless course PayPal sandbox",
+    "testMode": true,
+    "connectionTest": {
+      "success": true,
+      "message": "PayPal credentials authenticated successfully."
+    }
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "jsonrpc": "2.0",
+  "id": 5,
+  "method": "tools/call",
+  "params": {
+    "name": "call_service",
+    "arguments": {
+      "service": "TimesheetService",
+      "method": "approveTimesheet",
+      "args": [
+        "6acb2e18ba781cd23c2f758f",
+        "rosa.mcp-usecase-1011@training.local"
+      ]
+    }
+  }
+}

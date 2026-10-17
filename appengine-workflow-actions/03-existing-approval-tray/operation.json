@@ -1,0 +1,10 @@
+{
+  "method": "GET",
+  "path": "/approval/tray",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": null
+}

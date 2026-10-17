@@ -1,0 +1,684 @@
+{
+  "info": {
+    "name": "AppEngine Scheduled Jobs \u2014 use case",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Choose one request deliberately. Mutations affect your organization. Do not Run Collection blindly. Use an owned practice pipeline."
+  },
+  "variable": [
+    {
+      "key": "APPMINT_BASE",
+      "value": "https://appengine.appmint.io"
+    },
+    {
+      "key": "ORG_ID",
+      "value": ""
+    },
+    {
+      "key": "STAFF_TOKEN",
+      "value": ""
+    },
+    {
+      "key": "PREFIX",
+      "value": "my-job-course"
+    },
+    {
+      "key": "PIPELINE_ID",
+      "value": ""
+    },
+    {
+      "key": "LEAD_ID",
+      "value": ""
+    },
+    {
+      "key": "JOB_ID",
+      "value": ""
+    },
+    {
+      "key": "QUEUE_JOB_ID",
+      "value": ""
+    },
+    {
+      "key": "MARKER_DATATYPE",
+      "value": ""
+    },
+    {
+      "key": "MARKER_ID",
+      "value": ""
+    },
+    {
+      "key": "SCHEDULE_ID",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "inspect",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/jobs/scheduled"
+      }
+    },
+    {
+      "name": "create-pipeline",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/crm/leads/pipelines",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"{{PREFIX}} Follow-up\",\n  \"isDefault\": false,\n  \"stages\": [\n    {\n      \"id\": \"new\",\n      \"name\": \"New enquiry\",\n      \"order\": 0\n    },\n    {\n      \"id\": \"contacted\",\n      \"name\": \"Contacted\",\n      \"order\": 1\n    },\n    {\n      \"id\": \"followup\",\n      \"name\": \"Follow-up ready\",\n      \"order\": 2\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const r=pm.response.json();",
+              "if(pm.response.code<300 && r.sk) pm.collectionVariables.set('PIPELINE_ID',r.sk);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "create-lead",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/crm/leads/detail",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"{{PREFIX}}-rowan\",\n  \"fullName\": \"Rowan Bennett\",\n  \"pipelineId\": \"{{PIPELINE_ID}}\",\n  \"stageId\": \"contacted\",\n  \"source\": \"other\",\n  \"status\": \"new\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const r=pm.response.json();",
+              "if(pm.response.code<300 && r.sk) pm.collectionVariables.set('LEAD_ID',r.sk);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "set-rule",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/crm/leads/pipelines/stages/{{PIPELINE_ID}}/contacted",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sla\": {\n    \"duration\": 24,\n    \"action\": \"create_task\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "age-practice-lead",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/repository/update-partial/lead/{{LEAD_ID}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data.stageChangedAt\": \"{{PAST_25H}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.collectionVariables.set('PAST_25H',new Date(Date.now()-25*3600000).toISOString()); pm.collectionVariables.set('FUTURE_1H',new Date(Date.now()+3600000).toISOString());"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "run",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/jobs/scheduled/lead-stage-sla/run",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const r=pm.response.json();",
+              "if(pm.response.code<300 && r.result?.jobId) pm.collectionVariables.set('JOB_ID',r.result?.jobId);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "get-lead",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/crm/leads/detail/{{LEAD_ID}}"
+      }
+    },
+    {
+      "name": "get-job",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/jobs/{{JOB_ID}}"
+      }
+    },
+    {
+      "name": "get-tasks",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/repository/search/task",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.relatedTo.id\": \"{{LEAD_ID}}\",\n    \"data.source\": \"lead-sla\"\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 20\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "history",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/jobs?kind=scheduled:lead-stage-sla&page=1&pageSize=20"
+      }
+    },
+    {
+      "name": "pause",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/jobs/scheduled/lead-stage-sla",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"enabled\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "hourly",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/jobs/scheduled/lead-stage-sla",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"enabled\": true,\n  \"intervalMinutes\": 60\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "retry",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/jobs/{{JOB_ID}}/retry",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const r=pm.response.json();",
+              "if(pm.response.code<300 && r.sk) pm.collectionVariables.set('JOB_ID',r.sk);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "auto-move",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/crm/leads/pipelines/stages/{{PIPELINE_ID}}/contacted",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sla\": {\n    \"duration\": 24,\n    \"action\": \"auto_move\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "cancel-schedule",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/schedule-control/cancel-job",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jobId\": \"{{QUEUE_JOB_ID}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "create-marker",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datatype\": \"{{MARKER_DATATYPE}}\",\n  \"isNew\": true,\n  \"data\": {\n    \"reference\": \"{{PREFIX}}-release\",\n    \"status\": \"waiting\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const r=pm.response.json();",
+              "if(pm.response.code<300 && r.sk) pm.collectionVariables.set('MARKER_ID',r.sk);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "create-custom-schedule",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datatype\": \"schedule\",\n  \"isNew\": true,\n  \"data\": {\n    \"name\": \"{{PREFIX}}-release\",\n    \"title\": \"One-time follow-up preparation\",\n    \"type\": \"simple\",\n    \"status\": \"active\",\n    \"target\": [\n      {\n        \"datatype\": \"{{MARKER_DATATYPE}}\",\n        \"id\": \"{{MARKER_ID}}\"\n      }\n    ],\n    \"start\": {\n      \"date\": \"{{FUTURE_1H}}\",\n      \"action\": \"update-status\",\n      \"actionArgs\": \"ready\"\n    }\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const r=pm.response.json();",
+              "if(pm.response.code<300 && r.sk) pm.collectionVariables.set('SCHEDULE_ID',r.sk);"
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.collectionVariables.set('PAST_25H',new Date(Date.now()-25*3600000).toISOString()); pm.collectionVariables.set('FUTURE_1H',new Date(Date.now()+3600000).toISOString());"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "queue",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/queue-manager/org-schedules"
+      }
+    },
+    {
+      "name": "get-schedule",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/repository/get/schedule/{{SCHEDULE_ID}}"
+      }
+    },
+    {
+      "name": "get-marker",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{ORG_ID}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{STAFF_TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{APPMINT_BASE}}/repository/get/{{MARKER_DATATYPE}}/{{MARKER_ID}}"
+      }
+    }
+  ]
+}

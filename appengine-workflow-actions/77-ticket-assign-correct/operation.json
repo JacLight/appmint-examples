@@ -1,0 +1,13 @@
+{
+  "method": "PATCH",
+  "path": "/crm/tickets/assign/6aca13e3f5d6b011f6e1205b",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "assignTo": "video-lab-mut4jkwd@example.com",
+    "note": "Correct assigned-person field"
+  }
+}

@@ -1,0 +1,806 @@
+{
+  "configuration": {
+    "sourceOrg": "demo",
+    "sourceName": "easy-test",
+    "id": "6acaca1f8c597416cfbe7f23",
+    "name": "Headless course EasyPost test",
+    "testKeyVerified": true
+  },
+  "request": {
+    "method": "POST",
+    "path": "/shipping/rates",
+    "body": {
+      "fromAddress": {
+        "name": "Course dispatch",
+        "street1": "417 Montgomery St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94104",
+        "country": "US",
+        "phone": "2025550108"
+      },
+      "toAddress": {
+        "name": "Course test recipient",
+        "street1": "388 Townsend St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94107",
+        "country": "US",
+        "phone": "2025550109"
+      },
+      "parcel": {
+        "length": 16,
+        "width": 12,
+        "height": 1,
+        "weight": 1,
+        "weightUnit": "lb",
+        "dimensionUnit": "in"
+      },
+      "items": [
+        {
+          "sku": "HEADLESS-CEDAR-1010",
+          "quantity": 2
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "shipmentId": "shp_f1234bdd60b84df5806400c228ab0413",
+      "rates": [
+        {
+          "id": "rate_9cf31b1d0b8f4934a8e2327f39a16edf",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "Priority",
+          "carrier": "USPS",
+          "rate": "8.01",
+          "currency": "USD",
+          "retail_rate": "11.50",
+          "retail_currency": "USD",
+          "list_rate": "9.44",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": null,
+          "delivery_date_guaranteed": false,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_a1a035bbaf714599a0737bdd769978bf",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "GroundAdvantage",
+          "carrier": "USPS",
+          "rate": "6.57",
+          "currency": "USD",
+          "retail_rate": "10.05",
+          "retail_currency": "USD",
+          "list_rate": "8.01",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": null,
+          "delivery_date_guaranteed": false,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_7ceda3709dc846b081575e19b599af9d",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "Express",
+          "carrier": "USPS",
+          "rate": "32.99",
+          "currency": "USD",
+          "retail_rate": "37.30",
+          "retail_currency": "USD",
+          "list_rate": "32.99",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 1,
+          "delivery_date": null,
+          "delivery_date_guaranteed": false,
+          "est_delivery_days": 1,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_ca979a38bea34497bd6c7db84b53671b",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "FIRST_OVERNIGHT",
+          "carrier": "FedExDefault",
+          "rate": "127.36",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "128.15",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": "2026-10-12T08:00:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_5dc4c94342824d2cb08ea0370a9fc45d",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "PRIORITY_OVERNIGHT",
+          "carrier": "FedExDefault",
+          "rate": "62.12",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "87.31",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": "2026-10-12T10:30:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_3a861a94d7eb442b88b6150603215cc2",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "STANDARD_OVERNIGHT",
+          "carrier": "FedExDefault",
+          "rate": "57.92",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "84.31",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": "2026-10-12T17:00:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_69c3613400b845b4a7c34dc9c223ccd7",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "FEDEX_2_DAY_AM",
+          "carrier": "FedExDefault",
+          "rate": "66.74",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "67.43",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 3,
+          "delivery_date": "2026-10-13T10:30:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 3,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_d72d0d5bd9a94e099d7e7cc94338a4cc",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "FEDEX_2_DAY",
+          "carrier": "FedExDefault",
+          "rate": "45.34",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "63.23",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 3,
+          "delivery_date": "2026-10-13T17:00:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 3,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_7efffb8f12704ee38fc1652a07d58085",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "FEDEX_GROUND",
+          "carrier": "FedExDefault",
+          "rate": "21.25",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "22.27",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 1,
+          "delivery_date": "2026-10-13T23:59:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 1,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_1f04710fdd0645aa9be03b3dbc67dd15",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "SMART_POST",
+          "carrier": "FedExDefault",
+          "rate": "10.31",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "26.54",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": "2026-10-13T23:59:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_5ccd45f5de144433a5166a8409115dc2",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:28:32Z",
+          "updated_at": "2026-10-10T23:28:32Z",
+          "mode": "test",
+          "service": "FEDEX_EXPRESS_SAVER",
+          "carrier": "FedExDefault",
+          "rate": "21.46",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "37.86",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 4,
+          "delivery_date": "2026-10-14T17:00:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 4,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Course test recipient",
+                "street1": "388 Townsend St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94107",
+                "country": "US",
+                "company": "",
+                "phone": "2025550109",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        }
+      ],
+      "fromAddress": {
+        "name": "Course dispatch",
+        "street1": "417 Montgomery St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94104",
+        "country": "US",
+        "phone": "2025550108"
+      },
+      "toAddress": {
+        "name": "Course test recipient",
+        "street1": "388 Townsend St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94107",
+        "country": "US",
+        "phone": "2025550109"
+      },
+      "parcel": {
+        "length": 16,
+        "width": 12,
+        "height": 1,
+        "weight": 1,
+        "weightUnit": "lb",
+        "dimensionUnit": "in"
+      },
+      "items": [
+        {
+          "sku": "HEADLESS-CEDAR-1010",
+          "quantity": 2
+        }
+      ],
+      "isSharedOrg": false,
+      "declined": [
+        {
+          "carrier": "DhlEcs",
+          "message": "shipment.options.merchant_id is required"
+        },
+        {
+          "carrier": "CanadaPost",
+          "message": "['Unable to get rates for shipments originating outside of Canada.']"
+        },
+        {
+          "carrier": "UPSDAP",
+          "message": "The request was understood, but cannot be processed."
+        }
+      ]
+    }
+  }
+}

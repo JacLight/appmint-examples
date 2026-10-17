@@ -1,0 +1,4 @@
+{
+  "method": "GET",
+  "path": "/storefront/inventory/intakes?q=northwind%3Asupplier-usecase-1011-CANCEL"
+}

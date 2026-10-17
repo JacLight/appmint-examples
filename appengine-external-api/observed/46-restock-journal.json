@@ -1,0 +1,88 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/journal_entry",
+    "body": {
+      "query": {
+        "data.referenceId": "6acb1841ba781cd23c2f6fa0"
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 10
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 1,
+      "datatype": "journal_entry",
+      "pageSize": 10,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-11T05:01:53.574Z",
+      "data": [
+        {
+          "_id": "6acb1841ba781cd23c2f6fa1",
+          "pk": "video-lab-mut4jkwd|journal_entry",
+          "sk": "6acb1841ba781cd23c2f6fa1",
+          "name": "journal_entry-1791694913350-cdnjygm8",
+          "datatype": "journal_entry",
+          "data": {
+            "entryNumber": "ZQV7Y89DSE",
+            "entryDate": "2026-10-11",
+            "effectiveDate": "2026-10-11",
+            "entryType": "standard",
+            "source": "bill",
+            "description": "Bill B-INT-GECK8W0T",
+            "lineItems": [
+              {
+                "ledgerAccountId": "6ac28220956d627d1db74dde",
+                "ledgerAccountCode": "1200",
+                "ledgerAccountName": "Inventory",
+                "debit": 1250,
+                "credit": 0,
+                "description": "Inventory purchased"
+              },
+              {
+                "ledgerAccountId": "6ac28220956d627d1db74de0",
+                "ledgerAccountCode": "2000",
+                "ledgerAccountName": "Accounts Payable",
+                "debit": 0,
+                "credit": 1250,
+                "description": "Owed to vendor"
+              }
+            ],
+            "totalDebits": 1250,
+            "totalCredits": 1250,
+            "currency": "USD",
+            "isBalanced": true,
+            "status": "posted",
+            "referenceType": "bill",
+            "referenceId": "6acb1841ba781cd23c2f6fa0",
+            "businessLocationId": "supplier-usecase-1011",
+            "requiresApproval": false,
+            "createdBy": "video-lab-mut4jkwd@example.com",
+            "autoPost": false,
+            "postingQueuedAt": "2026-10-11T05:01:53.350Z",
+            "name": "journal_entry-1791694913350-cdnjygm8",
+            "postingStartedAt": "2026-10-11T05:01:53.388Z",
+            "postedBy": "video-lab-mut4jkwd@example.com",
+            "postedAt": "2026-10-11T05:01:53.538Z"
+          },
+          "version": 2,
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T05:01:53.361Z",
+          "modifydate": "2026-10-11T05:01:53.574Z",
+          "modified_by": "video-lab-mut4jkwd@example.com"
+        }
+      ]
+    }
+  }
+}

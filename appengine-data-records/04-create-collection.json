@@ -1,0 +1,68 @@
+{
+  "method": "PUT",
+  "path": "/repository/create",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "datatype": "collection",
+    "isNew": true,
+    "data": {
+      "name": "design_video_1009",
+      "title": "Design Requests \u2014 API course",
+      "enableVersioning": true,
+      "enableIndexing": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "requestCode": {
+            "type": "string",
+            "title": "Request code",
+            "unique": true
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "customer": {
+            "type": "string",
+            "title": "Customer",
+            "x-control": "selectMany",
+            "dataSource": {
+              "source": "collection",
+              "collection": "customer",
+              "value": "sk",
+              "label": [
+                "email"
+              ]
+            }
+          },
+          "roomCount": {
+            "type": "number",
+            "title": "Rooms"
+          },
+          "projectNotes": {
+            "type": "string",
+            "title": "Project notes"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "enum": [
+              "new",
+              "reviewing",
+              "closed"
+            ]
+          }
+        },
+        "required": [
+          "requestCode",
+          "title",
+          "status"
+        ]
+      }
+    }
+  }
+}

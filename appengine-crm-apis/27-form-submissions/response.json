@@ -1,0 +1,99 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "data": [
+      {
+        "_id": "6aca830637ff863efff476cb",
+        "pk": "video-lab-mut4jkwd|form_submission",
+        "sk": "6aca830637ff863efff476cb",
+        "name": "form_submission-1791656710450-umtqvevk",
+        "datatype": "form_submission",
+        "data": {
+          "formId": "6aca830637ff863efff476ca",
+          "values": {
+            "fullName": "Mira CRM Course",
+            "email": "mira.crm1010@example.invalid",
+            "request": "Send the developer guide"
+          },
+          "status": "new",
+          "authentication": {
+            "method": "none",
+            "status": "used",
+            "email": "mira.crm1010@example.invalid",
+            "admittedBy": "open",
+            "verified": false,
+            "submittedAt": "2026-10-10T18:25:10.450Z",
+            "client": {},
+            "tokenIssued": "[redacted]"
+          },
+          "name": "form_submission-1791656710450-umtqvevk"
+        },
+        "version": 0,
+        "author": "mira.crm1010@example.invalid",
+        "client": {},
+        "created_by": "mira.crm1010@example.invalid",
+        "state": "draft",
+        "createdate": "2026-10-10T18:25:10.460Z",
+        "modifydate": "2026-10-10T18:25:10.460Z",
+        "handling": {
+          "status": "open",
+          "since": "2026-10-10T18:25:10.487Z",
+          "channel": "form",
+          "title": "Form submitted: CRM API Intake by mira.crm1010@example.invalid",
+          "history": [
+            {
+              "status": "open",
+              "at": "2026-10-10T18:25:10.487Z"
+            }
+          ]
+        },
+        "form": {
+          "sk": "6aca830637ff863efff476ca",
+          "name": "crm-intake-1010",
+          "title": "CRM API Intake",
+          "status": "active",
+          "authenticationType": "none",
+          "isPublic": true,
+          "collection": null,
+          "workflow": null,
+          "fieldCount": 3,
+          "labels": {
+            "fullName": "Full name",
+            "email": "Email",
+            "request": "Request"
+          },
+          "participantCount": 0,
+          "startDate": null,
+          "endDate": null,
+          "notifyEmail": null,
+          "templates": [],
+          "participant": null
+        },
+        "workflowInfo": null,
+        "meta": {
+          "createdate": "2026-10-10T18:25:10.460Z",
+          "modifydate": "2026-10-10T18:25:10.460Z",
+          "author": "mira.crm1010@example.invalid",
+          "createdBy": "mira.crm1010@example.invalid",
+          "modifiedBy": null,
+          "version": 0,
+          "authentication": {
+            "method": "none",
+            "status": "used",
+            "email": "mira.crm1010@example.invalid",
+            "admittedBy": "open",
+            "verified": false,
+            "submittedAt": "2026-10-10T18:25:10.450Z",
+            "client": {},
+            "tokenIssued": "[redacted]"
+          },
+          "client": {}
+        }
+      }
+    ],
+    "total": 1,
+    "page": 1,
+    "pageSize": 10
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "total": 0,
+    "datatype": "message",
+    "pageSize": 50,
+    "page": 1,
+    "sort": "createdate",
+    "sortType": 1,
+    "lastPage": 1,
+    "hasNext": false,
+    "fromCache": false,
+    "data": []
+  }
+}

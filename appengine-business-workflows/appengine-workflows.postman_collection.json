@@ -1,0 +1,1362 @@
+{
+  "info": {
+    "name": "AppEngine Event-driven Business Workflows",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base",
+      "value": "YOUR_APPENGINE_ENDPOINT"
+    },
+    {
+      "key": "orgid",
+      "value": "YOUR_ORGANIZATION_ID"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_STAFF_TOKEN"
+    }
+  ],
+  "item": [
+    {
+      "name": "01-staff-signin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/profile/user/signin",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"video-lab-mut4jkwd@example.com\",\n  \"password\": \"YOUR_PRIVATE_VALUE\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "03-create-priya",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/profile/user/signup",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"priya.wf-usecase-1011@training.local\",\n  \"password\": \"YOUR_PRIVATE_VALUE\",\n  \"firstName\": \"Priya\",\n  \"lastName\": \"Reviewer\",\n  \"groups\": [\n    \"User\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "03-create-sam",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/profile/user/signup",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"sam.wf-usecase-1011@training.local\",\n  \"password\": \"YOUR_PRIVATE_VALUE\",\n  \"firstName\": \"Sam\",\n  \"lastName\": \"Reviewer\",\n  \"groups\": [\n    \"User\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "04-signin-priya",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/profile/user/signin",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"priya.wf-usecase-1011@training.local\",\n  \"password\": \"YOUR_PRIVATE_VALUE\",\n  \"token\": \"YOUR_PRIVATE_VALUE\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "04-signin-sam",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/profile/user/signin",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"sam.wf-usecase-1011@training.local\",\n  \"password\": \"YOUR_PRIVATE_VALUE\",\n  \"token\": \"YOUR_PRIVATE_VALUE\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "05-create-workflow",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/definition",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"wf-usecase-1011-warranty\",\n  \"title\": \"Warranty Claim Approval\",\n  \"enabled\": true,\n  \"notificationTemplate\": [],\n  \"stages\": [\n    {\n      \"id\": 0,\n      \"type\": \"start\",\n      \"name\": \"Waiting for approval\",\n      \"modelState\": \"inprogress\",\n      \"modelStatus\": \"new\",\n      \"assignRule\": {\n        \"type\": \"users\",\n        \"users\": [\n          \"priya.wf-usecase-1011@training.local\"\n        ],\n        \"fallbackRoles\": [\n          \"Owner\"\n        ]\n      },\n      \"notificationTemplate\": [],\n      \"escalations\": [\n        {\n          \"escalateAfter\": 2,\n          \"units\": \"days\",\n          \"escalateRule\": {\n            \"type\": \"users\",\n            \"users\": [\n              \"sam.wf-usecase-1011@training.local\"\n            ]\n          },\n          \"notificationTemplate\": []\n        }\n      ]\n    },\n    {\n      \"id\": 1,\n      \"type\": \"done\",\n      \"name\": \"Approved\",\n      \"modelState\": \"completed\",\n      \"modelStatus\": \"approved\",\n      \"notificationTemplate\": []\n    },\n    {\n      \"id\": 2,\n      \"type\": \"done\",\n      \"name\": \"Rejected\",\n      \"modelState\": \"completed\",\n      \"modelStatus\": \"rejected\",\n      \"notificationTemplate\": []\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "06-create-form",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datatype\": \"crm_form\",\n  \"isNew\": true,\n  \"data\": {\n    \"name\": \"wf-usecase-1011-warranty\",\n    \"title\": \"Warranty claim\",\n    \"status\": \"open\",\n    \"authenticationType\": \"email\",\n    \"allowGuest\": true,\n    \"workflow\": \"wf-usecase-1011-warranty\",\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"fullName\": {\n          \"type\": \"string\",\n          \"title\": \"Full name\"\n        },\n        \"email\": {\n          \"type\": \"string\",\n          \"title\": \"Email\",\n          \"format\": \"email\"\n        },\n        \"orderNumber\": {\n          \"type\": \"string\",\n          \"title\": \"Order number\"\n        },\n        \"bikeModel\": {\n          \"type\": \"string\",\n          \"title\": \"Bike model\"\n        },\n        \"problem\": {\n          \"type\": \"string\",\n          \"title\": \"Problem\"\n        }\n      },\n      \"required\": [\n        \"fullName\",\n        \"email\",\n        \"orderNumber\",\n        \"bikeModel\",\n        \"problem\"\n      ]\n    }\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "07-open-form",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/wf-usecase-1011-warranty?email=dana.wf-usecase-1011%40training.local"
+      }
+    },
+    {
+      "name": "07-open-needs-email",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/wf-usecase-1011-warranty"
+      }
+    },
+    {
+      "name": "08-missing-field",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/wf-usecase-1011-warranty/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Dana Ruiz\",\n  \"email\": \"dana.wf-usecase-1011@training.local\",\n  \"bikeModel\": \"Harbor Trail 2\",\n  \"problem\": \"Frame crack after three weeks\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "09-missing-email",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/wf-usecase-1011-warranty/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Dana Ruiz\",\n  \"orderNumber\": \"HC-1042\",\n  \"bikeModel\": \"Harbor Trail 2\",\n  \"problem\": \"Frame crack after three weeks\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "10-submit-claim",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/wf-usecase-1011-warranty/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Dana Ruiz\",\n  \"email\": \"dana.wf-usecase-1011@training.local\",\n  \"orderNumber\": \"HC-1042\",\n  \"bikeModel\": \"Harbor Trail 2\",\n  \"problem\": \"Frame crack after three weeks\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "11-position",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb15d0ba781cd23c2f6e52"
+      }
+    },
+    {
+      "name": "12-priya-tray",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/tray"
+      }
+    },
+    {
+      "name": "13-wrong-reviewer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/task/6acb15d0ba781cd23c2f6e53/approve",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Attempt by a reviewer not assigned to this task\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "14-read-claim",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/get/form_submission/6acb15d0ba781cd23c2f6e52"
+      }
+    },
+    {
+      "name": "15-approve",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/task/6acb15d0ba781cd23c2f6e53/approve",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Frame defect covered. Replacement frame approved.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "16-approved-record",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/get/form_submission/6acb15d0ba781cd23c2f6e52"
+      }
+    },
+    {
+      "name": "17-approved-position",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb15d0ba781cd23c2f6e52"
+      }
+    },
+    {
+      "name": "18-already-decided",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/task/6acb15d0ba781cd23c2f6e53/approve",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Repeated browser submission\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "20-rejection-position",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1605ba781cd23c2f6e72"
+      }
+    },
+    {
+      "name": "20-rejection-submit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/wf-usecase-1011-warranty/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Dana Ruiz\",\n  \"email\": \"dana.wf-usecase-1011@training.local\",\n  \"orderNumber\": \"HC-1043\",\n  \"bikeModel\": \"Harbor Trail 2\",\n  \"problem\": \"Frame crack after three weeks\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "21-reject",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/task/6acb1605ba781cd23c2f6e73/reject",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Impact damage is outside this warranty.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "22-rejected-record",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/get/form_submission/6acb1605ba781cd23c2f6e72"
+      }
+    },
+    {
+      "name": "23-handoff-position",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1605ba781cd23c2f6e76"
+      }
+    },
+    {
+      "name": "23-handoff-submit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/wf-usecase-1011-warranty/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Dana Ruiz\",\n  \"email\": \"dana.wf-usecase-1011@training.local\",\n  \"orderNumber\": \"HC-1044\",\n  \"bikeModel\": \"Harbor Trail 2\",\n  \"problem\": \"Frame crack after three weeks\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "24-reassign",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/task/6acb1605ba781cd23c2f6e78/reassign",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"assignTo\": [\n    \"sam.wf-usecase-1011@training.local\"\n  ],\n  \"note\": \"Sam will finish the review.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "25-sam-tray",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/tray"
+      }
+    },
+    {
+      "name": "26-sam-approve",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/task/6acb1605ba781cd23c2f6e78/approve",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Warranty evidence checked.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "27-handoff-history",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1605ba781cd23c2f6e76"
+      }
+    },
+    {
+      "name": "28-escalation-position",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1606ba781cd23c2f6e7d"
+      }
+    },
+    {
+      "name": "28-escalation-submit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/wf-usecase-1011-warranty/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Dana Ruiz\",\n  \"email\": \"dana.wf-usecase-1011@training.local\",\n  \"orderNumber\": \"HC-1045\",\n  \"bikeModel\": \"Harbor Trail 2\",\n  \"problem\": \"Frame crack after three weeks\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "29-escalate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/task/6acb1606ba781cd23c2f6e7f/escalate",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "30-after-escalation",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1606ba781cd23c2f6e7d"
+      }
+    },
+    {
+      "name": "31-escalated-decision",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/task/6acb1606ba781cd23c2f6e7f/reject",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Escalated review complete.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "32-all-reviewers-definition",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/definition",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"wf-usecase-1011-warranty-both\",\n  \"title\": \"Warranty \\u2014 Two Reviewers\",\n  \"enabled\": true,\n  \"notificationTemplate\": [],\n  \"stages\": [\n    {\n      \"id\": 0,\n      \"type\": \"start\",\n      \"name\": \"Waiting for approval\",\n      \"modelState\": \"inprogress\",\n      \"modelStatus\": \"new\",\n      \"assignRule\": {\n        \"type\": \"users\",\n        \"users\": [\n          \"priya.wf-usecase-1011@training.local\",\n          \"sam.wf-usecase-1011@training.local\"\n        ],\n        \"mode\": \"all\"\n      },\n      \"notificationTemplate\": [],\n      \"escalations\": [\n        {\n          \"escalateAfter\": 2,\n          \"units\": \"days\",\n          \"escalateRule\": {\n            \"type\": \"users\",\n            \"users\": [\n              \"sam.wf-usecase-1011@training.local\"\n            ]\n          },\n          \"notificationTemplate\": []\n        }\n      ]\n    },\n    {\n      \"id\": 1,\n      \"type\": \"done\",\n      \"name\": \"Approved\",\n      \"modelState\": \"completed\",\n      \"modelStatus\": \"approved\",\n      \"notificationTemplate\": []\n    },\n    {\n      \"id\": 2,\n      \"type\": \"done\",\n      \"name\": \"Rejected\",\n      \"modelState\": \"completed\",\n      \"modelStatus\": \"rejected\",\n      \"notificationTemplate\": []\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "33-all-reviewers-form",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datatype\": \"crm_form\",\n  \"isNew\": true,\n  \"data\": {\n    \"name\": \"wf-usecase-1011-warranty-both\",\n    \"title\": \"Warranty \\u2014 Two Reviewers\",\n    \"status\": \"open\",\n    \"authenticationType\": \"email\",\n    \"workflow\": \"wf-usecase-1011-warranty-both\",\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"fullName\": {\n          \"type\": \"string\",\n          \"title\": \"Full name\"\n        },\n        \"email\": {\n          \"type\": \"string\",\n          \"title\": \"Email\",\n          \"format\": \"email\"\n        },\n        \"orderNumber\": {\n          \"type\": \"string\",\n          \"title\": \"Order number\"\n        },\n        \"bikeModel\": {\n          \"type\": \"string\",\n          \"title\": \"Bike model\"\n        },\n        \"problem\": {\n          \"type\": \"string\",\n          \"title\": \"Problem\"\n        }\n      },\n      \"required\": [\n        \"fullName\",\n        \"email\",\n        \"orderNumber\",\n        \"bikeModel\",\n        \"problem\"\n      ]\n    }\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "34-both-position",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1606ba781cd23c2f6e85"
+      }
+    },
+    {
+      "name": "34-both-submit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/wf-usecase-1011-warranty-both/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Dana Ruiz\",\n  \"email\": \"dana.wf-usecase-1011@training.local\",\n  \"orderNumber\": \"HC-1046\",\n  \"bikeModel\": \"Harbor Trail 2\",\n  \"problem\": \"Frame crack after three weeks\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "35-first-approval",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/task/6acb1606ba781cd23c2f6e86/approve",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"First reviewer confirms the evidence.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "36-still-waiting",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1606ba781cd23c2f6e85"
+      }
+    },
+    {
+      "name": "37-final-approval",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/approval/task/6acb1606ba781cd23c2f6e86/approve",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Second reviewer approves.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "38-both-complete",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1606ba781cd23c2f6e85"
+      }
+    },
+    {
+      "name": "39-disable-owned-workflow",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/definition/6acb15c8ba781cd23c2f6e42",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"enabled\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "40-submit-while-disabled",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/wf-usecase-1011-warranty/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Dana Ruiz\",\n  \"email\": \"dana.wf-usecase-1011@training.local\",\n  \"orderNumber\": \"HC-1047\",\n  \"bikeModel\": \"Harbor Trail 2\",\n  \"problem\": \"Frame crack after three weeks\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "41-position-without-task",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1606ba781cd23c2f6e8a"
+      }
+    },
+    {
+      "name": "42-enable-owned-workflow",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/definition/6acb15c8ba781cd23c2f6e42",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"enabled\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "43-recover-saved-claim",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/fire",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datatype\": \"form_submission\",\n  \"id\": \"6acb1606ba781cd23c2f6e8a\",\n  \"workflowId\": \"6acb15c8ba781cd23c2f6e42\",\n  \"title\": \"Recovered warranty claim HC-1047\",\n  \"data\": {\n    \"requesterEmail\": \"dana.wf-usecase-1011@training.local\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "44-recovered-position",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1606ba781cd23c2f6e8a"
+      }
+    },
+    {
+      "name": "45-all-submissions",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/crm/forms/submissions?formId=wf-usecase-1011-warranty&page=1&pageSize=20"
+      }
+    },
+    {
+      "name": "46-all-reviewers-source",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/get/form_submission/6acb1606ba781cd23c2f6e85"
+      }
+    },
+    {
+      "name": "47-filmed-claim",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/find/form_submission",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.formId\": \"6acb15c8ba781cd23c2f6e43\",\n    \"data.values.orderNumber\": \"HC-1051\"\n  },\n  \"options\": {\n    \"pageSize\": 10\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "48-filmed-history",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/workflow/position/form_submission/6acb1817ba781cd23c2f6f97"
+      }
+    }
+  ]
+}

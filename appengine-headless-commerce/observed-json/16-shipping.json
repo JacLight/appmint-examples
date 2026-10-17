@@ -1,0 +1,56 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/shipping/options",
+    "body": {
+      "items": [
+        {
+          "sku": "HEADLESS-CEDAR-1010",
+          "quantity": 2
+        }
+      ],
+      "toAddress": {
+        "name": "Mira-Lin Chen",
+        "street1": "123 Course Lane",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60601",
+        "country": "US"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "served": true,
+      "options": [
+        {
+          "config": "headless-1010-shipping",
+          "label": "US standard delivery",
+          "method": "flat",
+          "amount": 6.5,
+          "currency": "USD",
+          "freeShipping": false,
+          "breakdown": {
+            "base": 6.5,
+            "handling": 0,
+            "markup": 0,
+            "forced": 0
+          },
+          "groups": [
+            {
+              "config": "headless-1010-shipping",
+              "label": "US standard delivery",
+              "method": "flat",
+              "amount": 6.5,
+              "items": [
+                "HEADLESS-CEDAR-1010"
+              ]
+            }
+          ]
+        }
+      ],
+      "currency": "USD"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "method": "POST",
+  "path": "/approval/ask",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "target": {
+      "kind": "screen",
+      "app": "appmint",
+      "path": "/course-training-only"
+    },
+    "request": {
+      "label": "Course training screen",
+      "reason": "Demonstrate an isolated request lifecycle without granting access"
+    }
+  }
+}

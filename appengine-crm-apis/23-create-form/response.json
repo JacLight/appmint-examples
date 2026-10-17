@@ -1,0 +1,47 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "datatype": "crm_form",
+    "data": {
+      "name": "crm-intake-1010",
+      "title": "CRM API Intake",
+      "status": "active",
+      "authenticationType": "none",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "title": "Full name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email"
+          },
+          "request": {
+            "type": "string",
+            "title": "Request"
+          }
+        },
+        "required": [
+          "fullName",
+          "email",
+          "request"
+        ]
+      },
+      "submitMessage": "Your request was saved"
+    },
+    "author": "video-lab-mut4jkwd@example.com",
+    "name": "crm-intake-1010",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "pk": "video-lab-mut4jkwd|crm_form",
+    "createdate": "2026-10-10T18:25:10.385Z",
+    "modifydate": "2026-10-10T18:25:10.385Z",
+    "version": 0,
+    "sk": "6aca830637ff863efff476ca",
+    "id": "6aca830637ff863efff476ca"
+  }
+}

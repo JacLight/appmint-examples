@@ -1,0 +1,27 @@
+{
+  "startedAt": "2026-10-10T01:58:55.576234+00:00",
+  "durationSeconds": 0.0111,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/update-partial/sf_product/6ac99bdff5d6b011f6e10eeb",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "data.images": [
+        {
+          "path": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+          "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png"
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "text/html; charset=utf-8",
+    "body": true
+  }
+}

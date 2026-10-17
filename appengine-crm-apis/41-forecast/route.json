@@ -1,0 +1,6 @@
+{
+  "method": "GET",
+  "path": "/crm/leads/forecast?pipelineId=6aca82e237ff863efff476aa&months=3",
+  "identity": "staff",
+  "observedStatus": 200
+}

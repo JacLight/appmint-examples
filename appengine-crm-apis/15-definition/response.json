@@ -1,0 +1,52 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "datatype": "reservation_definition",
+    "data": {
+      "name": "crm-api-consultation-1010",
+      "title": "CRM API Consultation",
+      "type": "service",
+      "status": "active",
+      "services": [
+        {
+          "name": "API consultation",
+          "duration": 30,
+          "price": 0,
+          "breakAfter": 0
+        }
+      ],
+      "workDays": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "officeHours": {
+        "startTime": "09:00",
+        "endTime": "17:00",
+        "timezone": "America/Chicago"
+      },
+      "spots": 1,
+      "hosts": [],
+      "notifications": [
+        {
+          "timeBefore": 1,
+          "unit": "days",
+          "type": "email"
+        }
+      ]
+    },
+    "author": "video-lab-mut4jkwd@example.com",
+    "name": "crm-api-consultation-1010",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "pk": "video-lab-mut4jkwd|reservation_definition",
+    "createdate": "2026-10-10T18:24:35.137Z",
+    "modifydate": "2026-10-10T18:24:35.137Z",
+    "version": 0,
+    "sk": "6aca82e337ff863efff476b7",
+    "id": "6aca82e337ff863efff476b7"
+  }
+}

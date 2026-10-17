@@ -1,0 +1,107 @@
+{
+  "startedAt": "2026-10-10T01:59:35.768083+00:00",
+  "durationSeconds": 0.4358,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/index",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "course-files-1009/",
+      "recursive": true,
+      "skipExisting": true
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "files": [
+        {
+          "raw": {
+            "Key": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+            "LastModified": "2026-10-10T01:57:56.165Z",
+            "ETag": "\"7dd84b24dd1de837688715f2ab001174\"",
+            "ChecksumAlgorithm": [],
+            "Size": 52048,
+            "StorageClass": "STANDARD"
+          },
+          "path": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+          "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+          "md": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/cedar-botanical-print_md.png?AWSAccessKeyId=REDACTED&Expires=2106957576&Signature=REDACTED"
+        },
+        {
+          "raw": {
+            "Key": "video-lab-mut4jkwd/course-files-1009/empty/",
+            "LastModified": "2026-10-10T01:59:33.166Z",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "ChecksumAlgorithm": [],
+            "Size": 0,
+            "StorageClass": "STANDARD"
+          },
+          "path": "video-lab-mut4jkwd/course-files-1009/empty/",
+          "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/empty/"
+        },
+        {
+          "raw": {
+            "Key": "video-lab-mut4jkwd/course-files-1009/imported/cedar-import.png",
+            "LastModified": "2026-10-10T01:59:34.776Z",
+            "ETag": "\"7dd84b24dd1de837688715f2ab001174\"",
+            "ChecksumAlgorithm": [],
+            "Size": 52048,
+            "StorageClass": "STANDARD"
+          },
+          "path": "video-lab-mut4jkwd/course-files-1009/imported/cedar-import.png",
+          "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/imported/cedar-import.png?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED",
+          "xs": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/imported/cedar-import_xs.png?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED",
+          "sm": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/imported/cedar-import_sm.png?AWSAccessKeyId=REDACTED&Expires=1791598476&Signature=REDACTED",
+          "md": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/imported/cedar-import_md.png?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED"
+        },
+        {
+          "raw": {
+            "Key": "video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt",
+            "LastModified": "2026-10-10T01:57:57.905Z",
+            "ETag": "\"a3d7c539b4f6215730b2b51e74c0651f\"",
+            "ChecksumAlgorithm": [],
+            "Size": 142,
+            "StorageClass": "STANDARD"
+          },
+          "path": "video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt",
+          "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED"
+        },
+        {
+          "raw": {
+            "Key": "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf",
+            "LastModified": "2026-10-10T01:59:31.064Z",
+            "ETag": "\"2affbcd6b2519107c4f2247f05ad8160\"",
+            "ChecksumAlgorithm": [],
+            "Size": 777,
+            "StorageClass": "STANDARD"
+          },
+          "path": "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf",
+          "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED"
+        },
+        {
+          "raw": {
+            "Key": "video-lab-mut4jkwd/course-files-1009/work/supplier-notes-moved.txt",
+            "LastModified": "2026-10-10T01:59:32.058Z",
+            "ETag": "\"a3d7c539b4f6215730b2b51e74c0651f\"",
+            "ChecksumAlgorithm": [],
+            "Size": 142,
+            "StorageClass": "STANDARD"
+          },
+          "path": "video-lab-mut4jkwd/course-files-1009/work/supplier-notes-moved.txt",
+          "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/work/supplier-notes-moved.txt?AWSAccessKeyId=REDACTED&Expires=1791598476&Signature=REDACTED"
+        }
+      ],
+      "hasMore": false,
+      "startPage": 1,
+      "prefix": "video-lab-mut4jkwd/course-files-1009/",
+      "pageNumber": 1
+    }
+  }
+}

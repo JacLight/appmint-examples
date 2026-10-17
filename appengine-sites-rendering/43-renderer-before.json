@@ -1,0 +1,28 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/update-partial/post/6aca144df5d6b011f6e1207e",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "data": {
+        "title": "A calmer room starts with light",
+        "name": "room-lighting-1010",
+        "slug": "room-lighting-1010",
+        "summary": "Three ways to make a room feel brighter, without changing its footprint.",
+        "content": "<p>Start with the window. Keep the space around it clear, then layer one task light with a warm accent.</p><p>Natural materials soften the contrast and bring the room together.</p>",
+        "author": {
+          "name": "Cedar & Form"
+        },
+        "categories": []
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": true
+  }
+}

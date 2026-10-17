@@ -1,0 +1,6 @@
+{
+  "method": "GET",
+  "path": "/crm/tickets/list?search=CRM%20API%20course&page=1&pageSize=10",
+  "identity": "staff",
+  "observedStatus": 200
+}

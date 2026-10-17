@@ -1,0 +1,46 @@
+{
+  "startedAt": "2026-10-10T07:31:17.998175+00:00",
+  "durationSeconds": 0.0307,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "datatype": "baas_submissions_1010",
+      "isNew": true,
+      "data": {
+        "reference": "BAAS-1010-A",
+        "title": "Application submission with attachment",
+        "attachmentPath": "video-lab-mut4jkwd/course-baas-1010/submission-notes.txt",
+        "status": "new"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "datatype": "baas_submissions_1010",
+      "data": {
+        "reference": "BAAS-1010-A",
+        "title": "Application submission with attachment",
+        "attachmentPath": "video-lab-mut4jkwd/course-baas-1010/submission-notes.txt",
+        "status": "new"
+      },
+      "name": "Application submission with attachment",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|baas_submissions_1010",
+      "createdate": "2026-10-10T07:31:18.027Z",
+      "modifydate": "2026-10-10T07:31:18.027Z",
+      "version": 0,
+      "sk": "6ac9e9c6f5d6b011f6e11a28",
+      "id": "6ac9e9c6f5d6b011f6e11a28"
+    }
+  }
+}

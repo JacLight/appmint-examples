@@ -1,0 +1,18 @@
+{
+  "jsonrpc": "2.0",
+  "id": 7,
+  "method": "tools/call",
+  "params": {
+    "name": "call_service",
+    "arguments": {
+      "service": "StorefrontOrderService",
+      "method": "orderHold",
+      "args": [
+        "MCP1010A",
+        {
+          "reason": "Controlled MCP course hold"
+        }
+      ]
+    }
+  }
+}

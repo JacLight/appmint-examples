@@ -1,0 +1,10 @@
+{
+  "status": 400,
+  "body": {
+    "statusCode": 400,
+    "error": "Please fill in Order number.",
+    "path": "/client/forms/wf-usecase-1011-warranty/submit",
+    "method": "POST",
+    "timeStamp": "2026-10-11T04:52:21.593Z"
+  }
+}

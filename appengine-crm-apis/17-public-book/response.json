@@ -1,0 +1,61 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "pk": "video-lab-mut4jkwd|reservation",
+    "sk": "6aca830537ff863efff476c2",
+    "name": "SVFZHC3N",
+    "datatype": "reservation",
+    "data": {
+      "reservationDefinitionId": "6aca82e337ff863efff476b7",
+      "service": "API consultation",
+      "startTime": "2026-10-13T14:00:00.000Z",
+      "customer": {
+        "email": "mira.crm1010@example.invalid",
+        "name": "Mira CRM Course",
+        "phone": null,
+        "id": "6aca82e237ff863efff476ab"
+      },
+      "name": "SVFZHC3N",
+      "endTime": "2026-10-13T14:30:00.000Z",
+      "customerId": "6aca82e237ff863efff476ab",
+      "status": "new",
+      "timezone": "America/Chicago",
+      "locationType": "virtual",
+      "address": "",
+      "meetingInfo": "",
+      "meetingLink": ""
+    },
+    "version": 0,
+    "author": "mira.crm1010@example.invalid",
+    "created_by": "mira.crm1010@example.invalid",
+    "state": "draft",
+    "createdate": "2026-10-10T18:25:09.949Z",
+    "modifydate": "2026-10-10T18:25:09.949Z",
+    "id": "6aca830537ff863efff476c2",
+    "notices": [
+      {
+        "audience": "customer",
+        "channel": "email",
+        "to": [
+          "mira.crm1010@example.invalid"
+        ],
+        "templates": [
+          "reservation-confirmation"
+        ],
+        "status": "queued"
+      },
+      {
+        "audience": "staff",
+        "channel": "email",
+        "to": [
+          "video-lab-mut4jkwd@example.com"
+        ],
+        "templates": [
+          "reservation-confirmation"
+        ],
+        "status": "queued"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-10-10T10:30:30.597268+00:00",
+  "durationSeconds": 0.0315,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/schedule-control/cancel-job",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "jobId": "video-lab-mut4jkwd-6aca13c6f5d6b011f6e12052-start"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "jobId": "video-lab-mut4jkwd-6aca13c6f5d6b011f6e12052-start",
+      "scheduleId": "6aca13c6f5d6b011f6e12052",
+      "status": "cancelled"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "startedAt": "2026-10-10T01:58:55.587520+00:00",
+  "durationSeconds": 0.012,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/get/sf_product/6ac99bdff5d6b011f6e10eeb",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "_id": "6ac99bdff5d6b011f6e10eeb",
+      "datatype": "sf_product",
+      "data": {
+        "name": "Cedar Botanical Print \u2014 File API course",
+        "sku": "FILES-CEDAR-1009",
+        "description": "Harmless training product for file attachment demonstration",
+        "status": "draft",
+        "price": 12,
+        "images": [
+          {
+            "path": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+            "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png"
+          }
+        ]
+      },
+      "author": "video-lab-mut4jkwd@example.com",
+      "name": "Cedar Botanical Print \u2014 File API course",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|sf_product",
+      "createdate": "2026-10-10T01:58:55.563Z",
+      "modifydate": "2026-10-10T01:58:55.585Z",
+      "version": 0,
+      "sk": "6ac99bdff5d6b011f6e10eeb"
+    }
+  }
+}

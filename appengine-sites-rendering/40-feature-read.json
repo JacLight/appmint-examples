@@ -1,0 +1,35 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/get/page/6aca1652f5d6b011f6e120fb",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6aca1652f5d6b011f6e120fb",
+      "datatype": "page",
+      "data": {
+        "site": "sites-course-1010",
+        "name": "feature-links",
+        "slug": "feature-links",
+        "title": "Feature link example",
+        "html": "<html><head></head><body><header><nav><a href=\"/\">Home</a></nav></header><main><h1>Our studio</h1></main><footer><a href=\"/\">Home</a><a href=\"/consultation-form\">Contact us</a></footer></body></html>"
+      },
+      "author": "video-lab-mut4jkwd@example.com",
+      "name": "feature-links",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|page",
+      "createdate": "2026-10-10T10:41:22.323Z",
+      "modifydate": "2026-10-10T10:41:22.356Z",
+      "version": 1,
+      "sk": "6aca1652f5d6b011f6e120fb",
+      "modified_by": "video-lab-mut4jkwd@example.com"
+    }
+  }
+}

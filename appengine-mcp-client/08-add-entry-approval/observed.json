@@ -1,0 +1,14 @@
+{
+  "status": 201,
+  "body": {
+    "id": "te-1791700504296-26jbkt",
+    "timeSheetId": "6acb2e18ba781cd23c2f757e",
+    "date": "2026-10-05",
+    "hours": 8,
+    "type": "regular",
+    "description": "Synthetic training hours",
+    "approved": false,
+    "createdAt": "2026-10-11T06:35:04.296Z",
+    "countedHours": 8
+  }
+}

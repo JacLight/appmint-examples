@@ -1,0 +1,16 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/storefront/inventory/intakes?q=supplier-usecase-1011"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": [],
+      "total": 0,
+      "page": 1,
+      "pageSize": 50
+    }
+  }
+}

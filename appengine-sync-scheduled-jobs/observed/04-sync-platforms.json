@@ -1,0 +1,297 @@
+{
+  "startedAt": "2026-10-10T10:28:20.364895+00:00",
+  "durationSeconds": 0.0188,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/sync/platforms",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": [
+      {
+        "platform": "facebook",
+        "description": "Sync Facebook/Instagram data including posts, insights, comments, messages, leads, ads, etc.",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "posts",
+          "feed",
+          "messages",
+          "comments",
+          "insights",
+          "reactions",
+          "likes",
+          "engagement",
+          "notifications",
+          "leads",
+          "ads",
+          "campaigns"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "linkedin",
+        "description": "Sync LinkedIn data including profile, posts, insights, followers, and ad campaigns",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "posts",
+          "profile",
+          "insights",
+          "analytics",
+          "followers",
+          "leads",
+          "ads",
+          "campaigns",
+          "engagement"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "google-ads",
+        "description": "Sync Google Ads campaigns, metrics, ad groups, keywords, and conversions",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "campaigns",
+          "ads",
+          "analytics",
+          "leads"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "google",
+        "description": "Sync Google services including YouTube channels, videos, analytics, subscribers, playlists, and merchant products",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "profile",
+          "channels",
+          "videos",
+          "comments",
+          "analytics",
+          "subscribers",
+          "playlists",
+          "products",
+          "business"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "youtube",
+        "description": "Sync YouTube channels, videos, comments, analytics, subscribers, and playlists",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "channels",
+          "videos",
+          "comments",
+          "analytics",
+          "subscribers",
+          "playlists"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "pinterest",
+        "description": "Sync Pinterest boards, pins, and analytics data",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "posts",
+          "analytics",
+          "engagement",
+          "leads",
+          "ads",
+          "campaigns"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "snapchat",
+        "description": "Sync Snapchat ad campaigns and performance metrics",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "posts",
+          "ads",
+          "campaigns",
+          "analytics",
+          "leads",
+          "engagement"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "tiktok",
+        "description": "Sync TikTok content and advertising data",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "posts",
+          "analytics",
+          "ads",
+          "campaigns",
+          "leads",
+          "engagement"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "twitter",
+        "description": "Sync Twitter posts, mentions, and engagement metrics",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "posts",
+          "messages",
+          "engagement",
+          "followers",
+          "leads",
+          "ads",
+          "campaigns",
+          "analytics"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "telegram",
+        "description": "Sync Telegram bot updates, messages, channels, chats, and webhook data",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "bot",
+          "updates",
+          "messages",
+          "channels",
+          "chats",
+          "webhook",
+          "analytics"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "discord",
+        "description": "Sync Discord guilds, channels, members, messages, webhooks, and bot commands",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "users",
+          "guilds",
+          "servers",
+          "channels",
+          "members",
+          "messages",
+          "webhooks",
+          "commands",
+          "analytics"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "twitch",
+        "description": "Sync Twitch streams, videos, clips, followers, subscriptions, games, and analytics",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "users",
+          "streams",
+          "videos",
+          "clips",
+          "channels",
+          "followers",
+          "subscriptions",
+          "games",
+          "analytics",
+          "eventsub",
+          "markers"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "slack",
+        "description": "Sync Slack team, users, channels, messages, files, presence, and search data",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "team",
+          "users",
+          "channels",
+          "messages",
+          "files",
+          "presence",
+          "search",
+          "replies",
+          "analytics",
+          "reactions"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "reddit",
+        "description": "Sync Reddit user data, karma, subreddits, posts, comments, history, and preferences",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "users",
+          "karma",
+          "subreddits",
+          "posts",
+          "comments",
+          "history",
+          "search",
+          "analytics",
+          "preferences"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "external-mail",
+        "description": "Sync external email accounts and messages",
+        "enabled": true,
+        "syncTypes": [
+          "all",
+          "messages",
+          "leads"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "escalation",
+        "description": "Escalate overdue workflow tasks (runs as the workflow-escalation scheduled job)",
+        "enabled": true,
+        "syncTypes": [
+          "all"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "notifications",
+        "description": "Process notification queue and delivery",
+        "enabled": true,
+        "syncTypes": [
+          "all"
+        ],
+        "connected": false
+      },
+      {
+        "platform": "all-social",
+        "description": "Trigger all available social media platform syncs simultaneously",
+        "enabled": true,
+        "syncTypes": [
+          "all"
+        ],
+        "connected": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "path": "/repository/collections/customer?enriched=false",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": null
+}

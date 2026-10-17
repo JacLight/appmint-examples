@@ -1,0 +1,26 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/crm/reservations/slots",
+    "headers": {
+      "content-type": "application/json",
+      "orgid": "video-lab-mut4jkwd"
+    },
+    "body": {
+      "reservationDefinitionId": "6acb2ce0ba781cd23c2f74f6",
+      "serviceName": "Follow-up",
+      "serviceDate": "2026-10-22"
+    }
+  },
+  "response": {
+    "status": 400,
+    "body": {
+      "statusCode": 400,
+      "error": "Service type \"Follow-up\" not found.",
+      "path": "/crm/reservations/slots",
+      "method": "POST",
+      "timeStamp": "2026-10-11T06:39:08.167Z"
+    }
+  }
+}

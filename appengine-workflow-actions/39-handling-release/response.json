@@ -1,0 +1,33 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "released": true,
+    "handling": {
+      "history": [
+        {
+          "status": "in_progress",
+          "at": "2026-10-10T10:29:56.362Z",
+          "by": "video-lab-mut4jkwd@example.com",
+          "byName": "Video"
+        },
+        {
+          "status": "done",
+          "at": "2026-10-10T10:29:56.606Z",
+          "by": "video-lab-mut4jkwd@example.com",
+          "byName": "Video",
+          "note": "API connection checked"
+        },
+        {
+          "status": "open",
+          "at": "2026-10-10T10:30:28.566Z",
+          "by": "video-lab-mut4jkwd@example.com",
+          "byName": "Video",
+          "note": "Return this training record to the queue"
+        }
+      ],
+      "since": "2026-10-10T10:30:28.566Z",
+      "status": "open"
+    }
+  }
+}

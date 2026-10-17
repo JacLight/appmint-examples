@@ -1,0 +1,5 @@
+# Application findings (not hidden production gaps)
+
+1. Lead SLA handler does not call ctx.cancelled(), though job controller copy promises per-item cancellation. Pause future recurring scans works; no claim that Cancel stops this current handler. No source patch made.
+2. create_task uses title as generated unique name. Separate leads with identical fullName in the same stage produce the same task name; second creation fails. Actual scheduled run had ok:true and failed:1 with name-collision reason (lab/finding-task-name-collision.json). The failed lead's SLA stamp is restored. This is a product limitation, not a scheduler outage. Main training fixtures now use distinct people; do not imply changing real customer names is the fix. Document conflict and use another suitable SLA action/resolve task naming at application layer before retry. No patch made.
+3. Jobs header says whoever started a job is emailed; scheduled job records explicitly notify.email:false and UI shows Nothing was sent. Course follows actual record, not blanket header claim.

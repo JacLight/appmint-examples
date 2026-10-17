@@ -1,0 +1,14 @@
+{
+  "query": {
+    "data.sku": {
+      "$in": [
+        "SUPPLIER-OAK-1011",
+        "SUPPLIER-WAL-1011"
+      ]
+    }
+  },
+  "options": {
+    "page": 1,
+    "pageSize": 5
+  }
+}

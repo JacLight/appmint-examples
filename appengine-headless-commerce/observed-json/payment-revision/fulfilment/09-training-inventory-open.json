@@ -1,0 +1,40 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/storefront/inventory",
+    "identity": "staff",
+    "body": {
+      "sku": "HEADLESS-CEDAR-1010",
+      "locationId": "bm-checkout-course",
+      "quantity": 30,
+      "reservedQuantity": 0,
+      "unitCost": 0,
+      "currency": "USD"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "_id": "6acad4cb8c597416cfbe80d4",
+      "pk": "video-lab-mut4jkwd|sf_inventory",
+      "sk": "6acad4cb8c597416cfbe80d4",
+      "search": "0 USD HEADLESS CEDAR 1010 bm checkout course 30 0 30",
+      "version": 0,
+      "datatype": "sf_inventory",
+      "author": "video-lab-mut4jkwd@example.com",
+      "createdate": "2026-10-11T00:14:03.518Z",
+      "modifydate": "2026-10-11T00:14:03.518Z",
+      "data": {
+        "unitCost": 0,
+        "currency": "USD",
+        "sku": "HEADLESS-CEDAR-1010",
+        "locationId": "bm-checkout-course",
+        "quantity": 30,
+        "reservedQuantity": 0,
+        "availableQuantity": 30,
+        "movementRevision": 2,
+        "pendingMovements": []
+      }
+    }
+  }
+}

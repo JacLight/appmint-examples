@@ -1,0 +1,71 @@
+{
+  "status": 200,
+  "body": {
+    "_id": "6acb2e18ba781cd23c2f7589",
+    "pk": "video-lab-mut4jkwd|bm_timesheet",
+    "sk": "6acb2e18ba781cd23c2f7589",
+    "name": "bm_timesheet-1791700504473-qhwjxtvz",
+    "datatype": "bm_timesheet",
+    "data": {
+      "employeeId": "6acb2e18ba781cd23c2f757d",
+      "payPeriodStart": "2026-10-19",
+      "payPeriodEnd": "2026-10-25",
+      "notes": "Synthetic course demonstration. No payroll run or payment.",
+      "status": "submitted",
+      "timeEntries": [
+        {
+          "id": "te-1791700504493-kkv34n",
+          "timeSheetId": "6acb2e18ba781cd23c2f7589",
+          "date": "2026-10-19",
+          "hours": 8,
+          "type": "regular",
+          "description": "Synthetic training hours",
+          "approved": false,
+          "createdAt": "2026-10-11T06:35:04.493Z",
+          "countedHours": 8
+        },
+        {
+          "id": "te-1791700504513-dqmp7i",
+          "timeSheetId": "6acb2e18ba781cd23c2f7589",
+          "date": "2026-10-20",
+          "hours": 2,
+          "type": "overtime",
+          "description": "Synthetic overtime condition",
+          "approved": false,
+          "createdAt": "2026-10-11T06:35:04.513Z",
+          "countedHours": 2
+        }
+      ],
+      "name": "bm_timesheet-1791700504473-qhwjxtvz",
+      "totalHours": 10,
+      "regularHours": 10,
+      "overtimeHours": 0,
+      "doubleTimeHours": 0,
+      "ptoHours": 0,
+      "holidayHours": 0,
+      "sickHours": 0,
+      "appliedPolicy": {
+        "matchedBy": "default",
+        "rounding": "exact"
+      },
+      "recordedWorkedHours": 10,
+      "breakDeductedHours": 0,
+      "submittedAt": "2026-10-11T06:35:04.531Z",
+      "submittedById": "video-lab-mut4jkwd@example.com",
+      "overlaps": [],
+      "paidState": {
+        "paid": false,
+        "unpaidEntryIds": [],
+        "unpaidHours": 0,
+        "unpaidDays": []
+      }
+    },
+    "version": 3,
+    "author": "video-lab-mut4jkwd@example.com",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "createdate": "2026-10-11T06:35:04.477Z",
+    "modifydate": "2026-10-11T06:35:04.534Z",
+    "modified_by": "system"
+  }
+}

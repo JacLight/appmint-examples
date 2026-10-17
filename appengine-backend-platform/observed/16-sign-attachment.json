@@ -1,0 +1,28 @@
+{
+  "startedAt": "2026-10-10T07:32:22.312390+00:00",
+  "durationSeconds": 0.016,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/signurl",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "video-lab-mut4jkwd/course-baas-1010/submission-notes.txt",
+      "options": {
+        "expiry": 900
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-baas-1010/submission-notes.txt?AWSAccessKeyId=REDACTED&Expires=1791618442&Signature=REDACTED",
+      "raw": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-baas-1010/submission-notes.txt?AWSAccessKeyId=REDACTED&Expires=1791618442&Signature=REDACTED"
+    }
+  }
+}

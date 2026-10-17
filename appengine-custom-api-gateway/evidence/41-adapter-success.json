@@ -1,0 +1,9 @@
+{
+  "mode": "success",
+  "sku": "RS-TEA-24",
+  "exitCode": 0,
+  "stdout": "{\n  \"sku\": \"RS-TEA-24\",\n  \"available\": 12,\n  \"leadTimeWeeks\": 3,\n  \"checkedAt\": \"2026-10-10T19:30:47.233Z\",\n  \"noteVerified\": true\n}",
+  "error": null,
+  "notesBefore": 0,
+  "notesAfter": 1
+}

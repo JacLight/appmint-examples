@@ -1,0 +1,60 @@
+{
+  "startedAt": "2026-10-10T02:01:11.050492+00:00",
+  "durationSeconds": 0.7741,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/flatlist",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "prefix": "course-files-1009/",
+      "pageNumber": 1,
+      "maxKeys": 2,
+      "recursive": true,
+      "checkPrivacy": true
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "files": [
+        {
+          "raw": {
+            "Key": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+            "LastModified": "2026-10-10T01:57:56.165Z",
+            "ETag": "\"7dd84b24dd1de837688715f2ab001174\"",
+            "ChecksumAlgorithm": [],
+            "Size": 52048,
+            "StorageClass": "STANDARD"
+          },
+          "path": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+          "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+          "md": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/cedar-botanical-print_md.png?AWSAccessKeyId=REDACTED&Expires=2106957671&Signature=REDACTED",
+          "isPrivate": false
+        },
+        {
+          "raw": {
+            "Key": "video-lab-mut4jkwd/course-files-1009/empty/",
+            "LastModified": "2026-10-10T01:59:33.166Z",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "ChecksumAlgorithm": [],
+            "Size": 0,
+            "StorageClass": "STANDARD"
+          },
+          "path": "video-lab-mut4jkwd/course-files-1009/empty/",
+          "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/empty/",
+          "isPrivate": false
+        }
+      ],
+      "hasMore": true,
+      "startPage": 1,
+      "prefix": "video-lab-mut4jkwd/course-files-1009/",
+      "pageNumber": 1
+    }
+  }
+}

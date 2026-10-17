@@ -1,0 +1,14 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/update-partial/sf_product/6acb1715ba781cd23c2f6ee9",
+    "body": {
+      "data.supplierSku": "RETIRED-DUPLICATE-1011"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": true
+  }
+}

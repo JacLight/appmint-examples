@@ -1,0 +1,231 @@
+{
+  "info": {
+    "name": "AppEngine Custom Gateway \u00b7 customer cookie session",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "gateway_base",
+      "value": "http://127.0.0.1:4320"
+    },
+    {
+      "key": "customer_email",
+      "value": ""
+    },
+    {
+      "key": "customer_password",
+      "value": ""
+    },
+    {
+      "key": "reservation_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "20-missing-session",
+      "request": {
+        "method": "GET",
+        "url": "{{gateway_base}}/api/profile",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "21-signin-mira",
+      "request": {
+        "method": "POST",
+        "url": "{{gateway_base}}/auth/signin",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{customer_email}}\",\n  \"password\": \"{{customer_password}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "22-mira-profile",
+      "request": {
+        "method": "GET",
+        "url": "{{gateway_base}}/api/profile",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "23-mira-reservations",
+      "request": {
+        "method": "GET",
+        "url": "{{gateway_base}}/api/reservations",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "24-mira-own-booking",
+      "request": {
+        "method": "GET",
+        "url": "{{gateway_base}}/api/reservations/{{reservation_id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "25-signin-nina",
+      "request": {
+        "method": "POST",
+        "url": "{{gateway_base}}/auth/signin",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{customer_email}}\",\n  \"password\": \"{{customer_password}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "26-nina-profile",
+      "request": {
+        "method": "GET",
+        "url": "{{gateway_base}}/api/profile",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "27-nina-bookings",
+      "request": {
+        "method": "GET",
+        "url": "{{gateway_base}}/api/reservations",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "28-nina-other-booking",
+      "request": {
+        "method": "GET",
+        "url": "{{gateway_base}}/api/reservations/{{reservation_id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "29-blocked-repository",
+      "request": {
+        "method": "GET",
+        "url": "{{gateway_base}}/api/repository/find/customer",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "30-blocked-method",
+      "request": {
+        "method": "POST",
+        "url": "{{gateway_base}}/api/reservations",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "31-logout",
+      "request": {
+        "method": "POST",
+        "url": "{{gateway_base}}/auth/logout",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "32-after-logout",
+      "request": {
+        "method": "GET",
+        "url": "{{gateway_base}}/api/profile",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    }
+  ]
+}

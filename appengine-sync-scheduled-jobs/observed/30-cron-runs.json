@@ -1,0 +1,65 @@
+{
+  "startedAt": "2026-10-10T10:32:20.607550+00:00",
+  "durationSeconds": 0.0344,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/queue-manager/schedule-runs/6aca13c6f5d6b011f6e12059",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "scheduleId": "6aca13c6f5d6b011f6e12059",
+      "totalRuns": 3,
+      "runs": [
+        {
+          "id": "6aca142af5d6b011f6e12077",
+          "scheduleId": "6aca13c6f5d6b011f6e12059",
+          "timestamp": "2026-10-10T10:32:10.405Z",
+          "status": "success",
+          "type": "update",
+          "comment": "Schedule ended: Course bounded repeat \u2014 API course",
+          "meta": {
+            "action": null,
+            "jobId": "video-lab-mut4jkwd-6aca13c6f5d6b011f6e12059-end"
+          }
+        },
+        {
+          "id": "6aca1420f5d6b011f6e12074",
+          "scheduleId": "6aca13c6f5d6b011f6e12059",
+          "timestamp": "2026-10-10T10:32:00.544Z",
+          "status": "success",
+          "type": "update",
+          "comment": "Cron schedule executed: Course bounded repeat \u2014 API course",
+          "meta": {
+            "cronExpression": "* * * * *",
+            "timezone": "America/Chicago",
+            "nextRun": null,
+            "jobId": "repeat:f67d9ac4f3e7ef2f24e8b4d6cff49e5e:1791628320000"
+          }
+        },
+        {
+          "id": "6aca13e4f5d6b011f6e12066",
+          "scheduleId": "6aca13c6f5d6b011f6e12059",
+          "timestamp": "2026-10-10T10:31:00.531Z",
+          "status": "success",
+          "type": "update",
+          "comment": "Cron schedule executed: Course bounded repeat \u2014 API course",
+          "meta": {
+            "cronExpression": "* * * * *",
+            "timezone": "America/Chicago",
+            "nextRun": "2026-10-10T10:32:00.000Z",
+            "jobId": "repeat:f67d9ac4f3e7ef2f24e8b4d6cff49e5e:1791628260000"
+          }
+        }
+      ]
+    }
+  }
+}

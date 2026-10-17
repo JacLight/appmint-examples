@@ -1,0 +1,39 @@
+{
+  "datatype": "reservation_definition",
+  "isNew": true,
+  "data": {
+    "name": "crm-api-consultation-1010",
+    "title": "CRM API Consultation",
+    "type": "service",
+    "status": "active",
+    "services": [
+      {
+        "name": "API consultation",
+        "duration": 30,
+        "price": 0,
+        "breakAfter": 0
+      }
+    ],
+    "workDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "officeHours": {
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "timezone": "America/Chicago"
+    },
+    "spots": 1,
+    "hosts": [],
+    "notifications": [
+      {
+        "timeBefore": 1,
+        "unit": "days",
+        "type": "email"
+      }
+    ]
+  }
+}

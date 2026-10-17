@@ -1,0 +1,87 @@
+{
+  "startedAt": "2026-10-11T04:53:33.240Z",
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/jobs/scheduled/lead-stage-sla/run",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "application/json"
+    },
+    "body": {}
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "result": {
+        "at": "2026-10-11T04:53:33.246Z",
+        "trigger": "manual",
+        "ok": true,
+        "ms": 14,
+        "summary": {
+          "stages": 2,
+          "processed": 1,
+          "breached": 0,
+          "failed": 2,
+          "actions": {},
+          "errors": [
+            {
+              "item": "6acb15caba781cd23c2f6e47",
+              "reason": "create_task on Contacted: A task with name \"Chase Casey Morgan — stalled in Contacted\" already exists."
+            },
+            {
+              "item": "6acb15afba781cd23c2f6e14:Invalid imported stage",
+              "reason": "Stage \"Invalid imported stage\" of pipeline \"job-usecase-1011 Follow-up\" has no usable id, so it was skipped"
+            }
+          ]
+        },
+        "by": "video-lab-mut4jkwd@example.com",
+        "jobId": "6acb164dba781cd23c2f6ea2"
+      },
+      "job": {
+        "job": "lead-stage-sla",
+        "group": "crm",
+        "label": "Lead stage follow-up",
+        "description": "Finds leads that have sat in a pipeline stage longer than the stage allows and does what the stage says: tell the owner, escalate to their manager, create a follow-up task, or move the lead on. Each stalled lead is handled once per stage.",
+        "kind": "interval",
+        "enabled": true,
+        "available": true,
+        "inUse": true,
+        "intervalMinutes": 60,
+        "timezone": "America/Chicago",
+        "timezoneSetting": "",
+        "schedule": "Every 1 hour",
+        "cron": "17 * * * *",
+        "scheduleId": "6ac1e4b319ec5a8a773c95a7",
+        "queued": true,
+        "nextRun": "2026-10-11T05:17:00.000Z",
+        "lastRun": {
+          "at": "2026-10-11T04:53:33.246Z",
+          "trigger": "manual",
+          "ok": true,
+          "ms": 14,
+          "summary": {
+            "stages": 2,
+            "processed": 1,
+            "breached": 0,
+            "failed": 2,
+            "actions": {},
+            "errors": [
+              {
+                "item": "6acb15caba781cd23c2f6e47",
+                "reason": "create_task on Contacted: A task with name \"Chase Casey Morgan — stalled in Contacted\" already exists."
+              },
+              {
+                "item": "6acb15afba781cd23c2f6e14:Invalid imported stage",
+                "reason": "Stage \"Invalid imported stage\" of pipeline \"job-usecase-1011 Follow-up\" has no usable id, so it was skipped"
+              }
+            ]
+          },
+          "by": "video-lab-mut4jkwd@example.com",
+          "jobId": "6acb164dba781cd23c2f6ea2"
+        }
+      }
+    }
+  }
+}

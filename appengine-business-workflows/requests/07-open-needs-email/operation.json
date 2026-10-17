@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "path": "/client/forms/wf-usecase-1011-warranty",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json"
+  }
+}

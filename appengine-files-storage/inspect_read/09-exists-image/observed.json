@@ -1,0 +1,32 @@
+{
+  "startedAt": "2026-10-10T01:58:55.041415+00:00",
+  "durationSeconds": 0.225,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/exists",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "exists": true,
+      "raw": {
+        "AcceptRanges": "bytes",
+        "LastModified": "2026-10-10T01:57:56.000Z",
+        "ContentLength": 52048,
+        "ETag": "\"7dd84b24dd1de837688715f2ab001174\"",
+        "ContentType": "image/png",
+        "Metadata": {}
+      }
+    }
+  }
+}

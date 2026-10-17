@@ -1,0 +1,28 @@
+{
+  "startedAt": "2026-10-10T01:59:31.209192+00:00",
+  "durationSeconds": 0.0179,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/signurl",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf",
+      "options": {
+        "expiry": 5
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf?AWSAccessKeyId=REDACTED&Expires=1791597576&Signature=REDACTED",
+      "raw": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf?AWSAccessKeyId=REDACTED&Expires=1791597576&Signature=REDACTED"
+    }
+  }
+}

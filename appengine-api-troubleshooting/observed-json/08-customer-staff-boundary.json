@@ -1,0 +1,22 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/org/video-lab-mut4jkwd",
+    "headers": {
+      "content-type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 403,
+    "body": {
+      "statusCode": 403,
+      "error": "Forbidden",
+      "path": "/repository/org/video-lab-mut4jkwd",
+      "method": "GET",
+      "timeStamp": "2026-10-11T06:39:08.215Z"
+    }
+  }
+}

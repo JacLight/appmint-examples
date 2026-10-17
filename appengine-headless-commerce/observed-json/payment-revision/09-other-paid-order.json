@@ -1,0 +1,11 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/client-data/orders/HS851V342",
+    "identity": "Nina"
+  },
+  "response": {
+    "status": 200,
+    "body": null
+  }
+}

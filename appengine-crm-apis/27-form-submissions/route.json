@@ -1,0 +1,6 @@
+{
+  "method": "GET",
+  "path": "/crm/forms/submissions?formId=crm-intake-1010&page=1&pageSize=10",
+  "identity": "staff",
+  "observedStatus": 200
+}

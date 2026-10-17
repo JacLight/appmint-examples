@@ -1,0 +1,12 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "title": "internal",
+    "message": "Checked the API guide for this request",
+    "status": "visible",
+    "pinned": false,
+    "isEdited": false,
+    "reportCount": 0
+  }
+}

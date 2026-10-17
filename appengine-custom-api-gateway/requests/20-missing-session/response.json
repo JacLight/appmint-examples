@@ -1,0 +1,7 @@
+{
+  "status": 401,
+  "body": {
+    "error": "Sign in required"
+  },
+  "setCookie": "gateway_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0"
+}

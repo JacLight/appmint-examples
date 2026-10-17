@@ -1,0 +1,63 @@
+{
+  "method": "POST",
+  "path": "/repository/create",
+  "identity": "staff",
+  "mutation": true,
+  "body": {
+    "isNew": true,
+    "datatype": "sf_product",
+    "data": {
+      "name": "YOUR_UNIQUE_PRODUCT_NAME",
+      "sku": "YOUR_UNIQUE_BASE_SKU",
+      "slug": "YOUR_UNIQUE_PRODUCT_SLUG",
+      "description": "Controlled headless option and coupon exercise",
+      "status": "active",
+      "available": true,
+      "price": 20,
+      "trackInventory": true,
+      "stock": 12,
+      "attributes": [
+        {
+          "name": "size",
+          "title": "Size",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small",
+              "price": "0"
+            },
+            {
+              "value": "large",
+              "label": "Large",
+              "price": "+5"
+            }
+          ]
+        }
+      ],
+      "variations": [
+        {
+          "sku": "YOUR_UNIQUE_LARGE_VARIATION_SKU",
+          "options": [
+            {
+              "name": "size",
+              "value": "large"
+            }
+          ],
+          "price": 25,
+          "stock": 6
+        }
+      ],
+      "shipping": {
+        "config": "YOUR_SAVED_SHIPPING_CONFIG_NAME"
+      },
+      "parcel": {
+        "weight": 0.5,
+        "weightUnit": "lb",
+        "length": 12,
+        "width": 9,
+        "height": 1,
+        "dimensionUnit": "in"
+      }
+    }
+  }
+}

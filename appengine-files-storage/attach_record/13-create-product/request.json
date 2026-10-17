@@ -1,0 +1,12 @@
+{
+  "datatype": "sf_product",
+  "isNew": true,
+  "data": {
+    "name": "Cedar Botanical Print \u2014 File API course",
+    "sku": "FILES-CEDAR-1009",
+    "description": "Harmless training product for file attachment demonstration",
+    "status": "draft",
+    "price": 12,
+    "images": []
+  }
+}

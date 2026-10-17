@@ -1,0 +1,14 @@
+{
+  "method": "POST",
+  "path": "/repository/create",
+  "body": {
+    "datatype": "baas_submissions_1010",
+    "isNew": true,
+    "data": {
+      "reference": "BAAS-1010-A",
+      "title": "Application submission with attachment",
+      "attachmentPath": "video-lab-mut4jkwd/course-baas-1010/submission-notes.txt",
+      "status": "new"
+    }
+  }
+}

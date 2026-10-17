@@ -1,0 +1,14 @@
+{
+  "datatype": "sf_order",
+  "isNew": true,
+  "data": {
+    "number": "YOUR_UNIQUE_ORDER_NUMBER",
+    "name": "MCP course controlled order",
+    "status": "processing",
+    "email": "YOUR_TRAINING_EMAIL",
+    "currency": "USD",
+    "productItems": [],
+    "statusHistory": [],
+    "total": 0
+  }
+}

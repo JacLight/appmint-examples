@@ -1,0 +1,37 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "pk": "video-lab-mut4jkwd|form_submission",
+    "sk": "6aca830637ff863efff476cb",
+    "name": "form_submission-1791656710450-umtqvevk",
+    "datatype": "form_submission",
+    "data": {
+      "formId": "6aca830637ff863efff476ca",
+      "values": {
+        "fullName": "Mira CRM Course",
+        "email": "mira.crm1010@example.invalid",
+        "request": "Send the developer guide"
+      },
+      "status": "new",
+      "authentication": {
+        "method": "none",
+        "status": "used",
+        "email": "mira.crm1010@example.invalid",
+        "admittedBy": "open",
+        "verified": false,
+        "submittedAt": "2026-10-10T18:25:10.450Z",
+        "client": {}
+      },
+      "name": "form_submission-1791656710450-umtqvevk"
+    },
+    "version": 0,
+    "author": "mira.crm1010@example.invalid",
+    "client": {},
+    "created_by": "mira.crm1010@example.invalid",
+    "state": "draft",
+    "createdate": "2026-10-10T18:25:10.460Z",
+    "modifydate": "2026-10-10T18:25:10.460Z",
+    "id": "6aca830637ff863efff476cb"
+  }
+}

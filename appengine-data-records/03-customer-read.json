@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "path": "/repository/find/customer",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "query": {
+      "data.firstName": "Mira-Lin"
+    },
+    "options": {
+      "page": 1,
+      "pageSize": 5
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "method": "POST",
+  "path": "/repository/find/lead_pipeline",
+  "identity": "staff",
+  "observedStatus": 201
+}

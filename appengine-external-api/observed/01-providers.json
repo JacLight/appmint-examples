@@ -1,0 +1,279 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/upstream/integration-use-cases/Product%20Sync"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "name": "AmazonProvider",
+        "configSchema": {
+          "type": "object",
+          "properties": {
+            "accessToken": "[redacted]",
+            "refreshToken": "[redacted]",
+            "sellerId": {
+              "type": "string",
+              "description": "Amazon Seller ID"
+            },
+            "marketplaceId": {
+              "type": "string",
+              "description": "Marketplace ID (e.g., ATVPDKIKX0DER for US)"
+            }
+          },
+          "required": [
+            "accessToken",
+            "sellerId"
+          ]
+        },
+        "operation": [
+          "syncProducts",
+          "deleteProduct",
+          "getProduct",
+          "listOrders",
+          "updateInventory",
+          "listProducts"
+        ],
+        "type": "Marketplace",
+        "useCases": [
+          "Amazon",
+          "E-commerce",
+          "Marketplace",
+          "Product Sync"
+        ]
+      },
+      {
+        "name": "EbayProvider",
+        "configSchema": {
+          "type": "object",
+          "properties": {
+            "accessToken": "[redacted]",
+            "refreshToken": "[redacted]",
+            "marketplaceId": {
+              "type": "string",
+              "description": "eBay marketplace (e.g., EBAY_US)"
+            },
+            "contentLanguage": {
+              "type": "string",
+              "description": "Listing language (e.g., en-US)"
+            }
+          },
+          "required": [
+            "accessToken"
+          ]
+        },
+        "operation": [
+          "getAuthUrl",
+          "syncProducts",
+          "deleteProduct",
+          "getProduct",
+          "listProducts",
+          "listOrders",
+          "updateInventory"
+        ],
+        "type": "Marketplace",
+        "useCases": [
+          "eBay",
+          "E-commerce",
+          "Marketplace",
+          "Product Sync"
+        ]
+      },
+      {
+        "name": "EtsyProvider",
+        "configSchema": {
+          "type": "object",
+          "properties": {
+            "accessToken": "[redacted]",
+            "refreshToken": "[redacted]",
+            "shopId": {
+              "type": "string",
+              "description": "Etsy Shop ID"
+            },
+            "shippingProfileId": {
+              "type": "string",
+              "description": "Default Shipping Profile ID"
+            }
+          },
+          "required": [
+            "accessToken",
+            "shopId"
+          ]
+        },
+        "operation": [
+          "getAuthUrl",
+          "syncProducts",
+          "deleteProduct",
+          "getListing",
+          "getShopListings",
+          "listOrders",
+          "updateInventory"
+        ],
+        "type": "Marketplace",
+        "useCases": [
+          "Etsy",
+          "E-commerce",
+          "Marketplace",
+          "Product Sync",
+          "Handmade"
+        ]
+      },
+      {
+        "name": "ShopifyProvider",
+        "configSchema": {
+          "type": "object",
+          "properties": {
+            "accessToken": "[redacted]",
+            "shopDomain": {
+              "type": "string",
+              "description": "Shop domain (e.g., mystore.myshopify.com)"
+            },
+            "locationId": {
+              "type": "string",
+              "description": "Inventory location ID (defaults to the first active location)"
+            }
+          },
+          "required": [
+            "accessToken",
+            "shopDomain"
+          ]
+        },
+        "operation": [
+          "getAuthUrl",
+          "listOrders",
+          "updateInventory",
+          "syncProducts",
+          "deleteProduct",
+          "getProducts",
+          "getProduct",
+          "listProducts"
+        ],
+        "type": "Marketplace",
+        "useCases": [
+          "Shopify",
+          "E-commerce",
+          "Product Sync"
+        ]
+      },
+      {
+        "name": "WooCommerceProvider",
+        "configSchema": {
+          "type": "object",
+          "properties": {
+            "storeUrl": {
+              "type": "string",
+              "description": "WooCommerce Store URL (e.g., https://mystore.com)"
+            },
+            "consumerKey": {
+              "type": "string",
+              "description": "WooCommerce REST API Consumer Key"
+            },
+            "consumerSecret": "[redacted]"
+          },
+          "required": [
+            "storeUrl",
+            "consumerKey",
+            "consumerSecret"
+          ]
+        },
+        "operation": [
+          "syncProducts",
+          "deleteProduct",
+          "getProducts",
+          "getProduct"
+        ],
+        "type": "Marketplace",
+        "useCases": [
+          "WooCommerce",
+          "WordPress",
+          "E-commerce",
+          "Product Sync"
+        ]
+      },
+      {
+        "name": "WalmartProvider",
+        "configSchema": {
+          "type": "object",
+          "properties": {
+            "accessToken": "[redacted]",
+            "consumerId": {
+              "type": "string",
+              "description": "Walmart Consumer ID"
+            },
+            "privateKey": {
+              "type": "string",
+              "description": "Walmart Private Key for signing"
+            },
+            "channelType": {
+              "type": "string",
+              "description": "Channel Type ID"
+            }
+          },
+          "required": [
+            "accessToken",
+            "consumerId"
+          ]
+        },
+        "operation": [
+          "syncProducts",
+          "deleteProduct",
+          "getItem",
+          "getFeedStatus",
+          "updateInventory",
+          "listOrders",
+          "listProducts"
+        ],
+        "type": "Marketplace",
+        "useCases": [
+          "Walmart",
+          "Marketplace",
+          "E-commerce",
+          "Product Sync"
+        ]
+      },
+      {
+        "name": "BingProvider",
+        "configSchema": {
+          "type": "object",
+          "properties": {
+            "accessToken": "[redacted]",
+            "merchantId": {
+              "type": "string",
+              "description": "Microsoft Merchant Center ID"
+            },
+            "refreshToken": "[redacted]",
+            "customerId": {
+              "type": "string",
+              "description": "Microsoft Advertising customer ID"
+            },
+            "customerAccountId": {
+              "type": "string",
+              "description": "Microsoft Advertising account ID"
+            }
+          },
+          "required": [
+            "accessToken",
+            "merchantId"
+          ]
+        },
+        "operation": [
+          "getAuthUrl",
+          "updateInventory",
+          "syncProducts",
+          "deleteProduct",
+          "getProduct",
+          "listProducts"
+        ],
+        "type": "Marketplace",
+        "useCases": [
+          "Bing Shopping",
+          "Microsoft Ads",
+          "E-commerce",
+          "Product Sync"
+        ]
+      }
+    ]
+  }
+}

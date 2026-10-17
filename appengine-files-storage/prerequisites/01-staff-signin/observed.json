@@ -1,0 +1,111 @@
+{
+  "startedAt": "2026-10-10T01:57:26.608089+00:00",
+  "durationSeconds": 2.5157,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/profile/user/signin",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd"
+    },
+    "body": {
+      "email": "video-lab-mut4jkwd@example.com",
+      "password": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "user": {
+        "_id": "6ac1a7896cf55d217cabf056",
+        "datatype": "user",
+        "pk": "video-lab-mut4jkwd|user",
+        "sk": "6ac1a7896cf55d217cabf056",
+        "name": "f_admin",
+        "version": 0,
+        "data": {
+          "firstName": "Video",
+          "lastName": "Lab",
+          "email": "video-lab-mut4jkwd@example.com",
+          "username": "video-lab-mut4jkwd@example.com",
+          "groups": [
+            "ConfigAdmin",
+            "ContentAdmin",
+            "User"
+          ],
+          "lockout": null,
+          "account": null,
+          "audit": {
+            "lastLogin": "2026-10-10T00:49:25.077Z",
+            "meta": {
+              "ip": "::1",
+              "host": "localhost:3300",
+              "country": null,
+              "city": null,
+              "state": null,
+              "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36"
+            }
+          },
+          "roles": [
+            "ConfigAdmin",
+            "ContentAdmin",
+            "User",
+            "Owner"
+          ],
+          "meta": {
+            "onboarding": {
+              "welcomedAt": "2026-10-04T02:37:34.894Z"
+            }
+          },
+          "permissions": {
+            "content": [
+              "read",
+              "create",
+              "update",
+              "delete",
+              "review",
+              "approve"
+            ],
+            "component": [
+              "view",
+              "add",
+              "remove",
+              "configure"
+            ],
+            "menu": {
+              "ConfigAdmin": {
+                "menuInclude": [],
+                "menuExclude": [],
+                "default": "admin"
+              },
+              "ContentAdmin": {
+                "menuInclude": [],
+                "menuExclude": [],
+                "default": "manager"
+              },
+              "User": {
+                "menuInclude": [],
+                "menuExclude": [],
+                "default": "everyone"
+              },
+              "Owner": {
+                "menuInclude": [],
+                "menuExclude": [],
+                "default": "all"
+              }
+            }
+          }
+        },
+        "createdate": "2026-10-04T01:10:33.731Z",
+        "modifydate": "2026-10-10T00:49:25.084Z"
+      },
+      "orgId": "video-lab-mut4jkwd",
+      "rootOrg": "fundu",
+      "sharedOrg": "localhost",
+      "token": "[redacted]",
+      "refreshToken": "[redacted]"
+    }
+  }
+}

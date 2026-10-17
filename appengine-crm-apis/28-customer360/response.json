@@ -1,0 +1,92 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "query": {
+      "phone": null,
+      "email": "mira.crm1010@example.invalid"
+    },
+    "who": {
+      "name": "Mira CRM Course",
+      "email": "mira.crm1010@example.invalid",
+      "phone": null,
+      "customers": [
+        {
+          "id": "6aca82e237ff863efff476ab",
+          "name": "Mira CRM Course",
+          "email": "mira.crm1010@example.invalid",
+          "phone": null,
+          "since": "2026-10-10T18:24:34.881Z"
+        }
+      ],
+      "leads": [
+        {
+          "id": "6aca82e237ff863efff476ad",
+          "name": "Mira CRM Course",
+          "email": "mira.crm1010@example.invalid",
+          "phone": null,
+          "status": "converted",
+          "since": "2026-10-10T18:24:34.907Z"
+        }
+      ]
+    },
+    "summary": {
+      "lastContactAt": "2026-10-10T18:25:10.181Z",
+      "calls": 0,
+      "messages": 3,
+      "orders": 0,
+      "invoices": 0,
+      "tickets": 0,
+      "reservations": 1
+    },
+    "calls": [],
+    "messages": [
+      {
+        "id": "6aca830637ff863efff476cc",
+        "at": "2026-10-10T18:25:10.546Z",
+        "channel": "email",
+        "direction": "to them",
+        "subject": "vidsite-video-lab-mut4jkwd.localhost:3200 - CRM API Intake - Form Submission Received",
+        "preview": null,
+        "status": "pending"
+      },
+      {
+        "id": "6aca830637ff863efff476c9",
+        "at": "2026-10-10T18:25:10.374Z",
+        "channel": "email",
+        "direction": "to them",
+        "subject": "vidsite-video-lab-mut4jkwd.localhost:3200 - Reservation #SVFZHC3N cancelled",
+        "preview": null,
+        "status": "failed"
+      },
+      {
+        "id": "6aca830637ff863efff476c4",
+        "at": "2026-10-10T18:25:10.181Z",
+        "channel": "email",
+        "direction": "to them",
+        "subject": "vidsite-video-lab-mut4jkwd.localhost:3200 - Reservation confirmed #SVFZHC3N",
+        "preview": null,
+        "status": "failed"
+      }
+    ],
+    "orders": [],
+    "invoices": [],
+    "tickets": [],
+    "reservations": [
+      {
+        "id": "6aca830537ff863efff476c2",
+        "title": "SVFZHC3N",
+        "start": "2026-10-13T14:30:00.000Z",
+        "status": "cancelled"
+      }
+    ],
+    "aiWork": [],
+    "web": {
+      "totalEvents": 0,
+      "sessions": 0,
+      "firstSeen": null,
+      "lastSeen": null,
+      "engagementScore": 0
+    }
+  }
+}

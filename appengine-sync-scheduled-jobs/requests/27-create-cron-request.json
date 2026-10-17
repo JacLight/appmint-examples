@@ -1,0 +1,34 @@
+{
+  "method": "POST",
+  "path": "/repository/create",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "datatype": "schedule",
+    "isNew": true,
+    "data": {
+      "name": "course-cron-1010",
+      "title": "Course bounded repeat \u2014 API course",
+      "type": "cron",
+      "status": "active",
+      "target": [
+        {
+          "datatype": "schedule_marks_1010",
+          "id": "6aca13c6f5d6b011f6e12058"
+        }
+      ],
+      "cron": {
+        "value": "* * * * *",
+        "timezone": "America/Chicago",
+        "action": "update-status",
+        "actionArgs": "ready"
+      },
+      "end": {
+        "date": "2026-10-10T10:32:10.387Z"
+      }
+    }
+  },
+  "note": "Historical observed request; replace dates and IDs before use."
+}

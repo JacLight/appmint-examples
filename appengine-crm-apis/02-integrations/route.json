@@ -1,0 +1,6 @@
+{
+  "method": "POST",
+  "path": "/repository/find/integration",
+  "identity": "staff",
+  "observedStatus": 201
+}

@@ -1,0 +1,139 @@
+{
+  "startedAt": "2026-10-10T01:59:36.204137+00:00",
+  "durationSeconds": 0.0116,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/fileinfo",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "query": {
+        "data.path": {
+          "$regex": "course-files-1009/"
+        }
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 20
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "total": 6,
+      "datatype": "fileinfo",
+      "pageSize": 20,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-10T01:59:36.170Z",
+      "data": [
+        {
+          "_id": "6ac99c08f5d6b011f6e10ef6",
+          "pk": "video-lab-mut4jkwd|fileinfo",
+          "sk": "6ac99c08f5d6b011f6e10ef6",
+          "name": "video-lab-mut4jkwd/course-files-1009/imported/cedar-import.png",
+          "datatype": "fileinfo",
+          "data": {
+            "path": "video-lab-mut4jkwd/course-files-1009/imported/cedar-import.png",
+            "content": null,
+            "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/imported/cedar-import.png?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED",
+            "name": "fileinfo-1791597576171-m6w9cthu"
+          },
+          "version": 0,
+          "createdate": "2026-10-10T01:59:36.171Z",
+          "modifydate": "2026-10-10T01:59:36.171Z"
+        },
+        {
+          "_id": "6ac99c08f5d6b011f6e10ef7",
+          "pk": "video-lab-mut4jkwd|fileinfo",
+          "sk": "6ac99c08f5d6b011f6e10ef7",
+          "name": "video-lab-mut4jkwd/course-files-1009/work/supplier-notes-moved.txt",
+          "datatype": "fileinfo",
+          "data": {
+            "path": "video-lab-mut4jkwd/course-files-1009/work/supplier-notes-moved.txt",
+            "content": null,
+            "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/work/supplier-notes-moved.txt?AWSAccessKeyId=REDACTED&Expires=1791598476&Signature=REDACTED",
+            "name": "fileinfo-1791597576171-qds2u2im"
+          },
+          "version": 0,
+          "createdate": "2026-10-10T01:59:36.171Z",
+          "modifydate": "2026-10-10T01:59:36.171Z"
+        },
+        {
+          "_id": "6ac99c08f5d6b011f6e10ef5",
+          "pk": "video-lab-mut4jkwd|fileinfo",
+          "sk": "6ac99c08f5d6b011f6e10ef5",
+          "name": "video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt",
+          "datatype": "fileinfo",
+          "data": {
+            "path": "video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt",
+            "content": null,
+            "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED",
+            "name": "fileinfo-1791597576170-er2ha0pn"
+          },
+          "version": 0,
+          "createdate": "2026-10-10T01:59:36.170Z",
+          "modifydate": "2026-10-10T01:59:36.170Z"
+        },
+        {
+          "_id": "6ac99c08f5d6b011f6e10ef3",
+          "pk": "video-lab-mut4jkwd|fileinfo",
+          "sk": "6ac99c08f5d6b011f6e10ef3",
+          "name": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+          "datatype": "fileinfo",
+          "data": {
+            "path": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+            "content": null,
+            "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+            "name": "fileinfo-1791597576170-lvx6k3l7"
+          },
+          "version": 0,
+          "createdate": "2026-10-10T01:59:36.170Z",
+          "modifydate": "2026-10-10T01:59:36.170Z"
+        },
+        {
+          "_id": "6ac99c08f5d6b011f6e10ef2",
+          "pk": "video-lab-mut4jkwd|fileinfo",
+          "sk": "6ac99c08f5d6b011f6e10ef2",
+          "name": "video-lab-mut4jkwd/course-files-1009/empty/",
+          "datatype": "fileinfo",
+          "data": {
+            "path": "video-lab-mut4jkwd/course-files-1009/empty/",
+            "content": null,
+            "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/empty/",
+            "name": "fileinfo-1791597576170-nn1heju3"
+          },
+          "version": 0,
+          "createdate": "2026-10-10T01:59:36.170Z",
+          "modifydate": "2026-10-10T01:59:36.170Z"
+        },
+        {
+          "_id": "6ac99c08f5d6b011f6e10ef4",
+          "pk": "video-lab-mut4jkwd|fileinfo",
+          "sk": "6ac99c08f5d6b011f6e10ef4",
+          "name": "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf",
+          "datatype": "fileinfo",
+          "data": {
+            "path": "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf",
+            "content": null,
+            "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf?AWSAccessKeyId=REDACTED&Expires=1791598475&Signature=REDACTED",
+            "name": "fileinfo-1791597576170-ynirascj"
+          },
+          "version": 0,
+          "createdate": "2026-10-10T01:59:36.170Z",
+          "modifydate": "2026-10-10T01:59:36.170Z"
+        }
+      ]
+    }
+  }
+}

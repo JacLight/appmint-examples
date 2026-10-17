@@ -1,0 +1,22 @@
+{
+  "jsonrpc": "2.0",
+  "id": 19,
+  "method": "tools/call",
+  "params": {
+    "name": "call_service",
+    "arguments": {
+      "service": "RepositoryCrudService",
+      "method": "find",
+      "args": [
+        "workflow_lab_1010",
+        {
+          "data.status": "approved"
+        },
+        {
+          "page": 1,
+          "pageSize": 5
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "method": "GET",
+  "path": "/business-made/timesheets/6acb2e18ba781cd23c2f757e",
+  "status": 200,
+  "response": {
+    "_id": "6acb2e18ba781cd23c2f757e",
+    "pk": "video-lab-mut4jkwd|bm_timesheet",
+    "sk": "6acb2e18ba781cd23c2f757e",
+    "name": "bm_timesheet-1791700504256-g5wzzuar",
+    "datatype": "bm_timesheet",
+    "data": {
+      "employeeId": "6acb2e18ba781cd23c2f757d",
+      "payPeriodStart": "2026-10-05",
+      "payPeriodEnd": "2026-10-11",
+      "notes": "Synthetic course demonstration. No payroll run or payment.",
+      "status": "approved",
+      "timeEntries": [
+        {
+          "id": "te-1791700504296-26jbkt",
+          "timeSheetId": "6acb2e18ba781cd23c2f757e",
+          "date": "2026-10-05",
+          "hours": 8,
+          "type": "regular",
+          "description": "Synthetic training hours",
+          "approved": true,
+          "createdAt": "2026-10-11T06:35:04.296Z",
+          "countedHours": 8,
+          "approvedById": "rosa.mcp-usecase-1011@training.local",
+          "approvedAt": "2026-10-11T06:36:28.164Z"
+        }
+      ],
+      "name": "bm_timesheet-1791700504256-g5wzzuar",
+      "totalHours": 8,
+      "regularHours": 8,
+      "overtimeHours": 0,
+      "doubleTimeHours": 0,
+      "ptoHours": 0,
+      "holidayHours": 0,
+      "sickHours": 0,
+      "appliedPolicy": {
+        "matchedBy": "default",
+        "rounding": "exact"
+      },
+      "recordedWorkedHours": 8,
+      "breakDeductedHours": 0,
+      "submittedAt": "2026-10-11T06:35:04.361Z",
+      "submittedById": "video-lab-mut4jkwd@example.com",
+      "approvedAt": "2026-10-11T06:36:28.164Z",
+      "approvedById": "rosa.mcp-usecase-1011@training.local",
+      "overlaps": [],
+      "paidState": {
+        "paid": false,
+        "unpaidEntryIds": [],
+        "unpaidHours": 0,
+        "unpaidDays": []
+      }
+    },
+    "version": 3,
+    "author": "video-lab-mut4jkwd@example.com",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "createdate": "2026-10-11T06:35:04.262Z",
+    "modifydate": "2026-10-11T06:36:28.172Z",
+    "modified_by": "system"
+  }
+}

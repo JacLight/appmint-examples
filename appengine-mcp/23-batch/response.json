@@ -1,0 +1,75 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": [
+    {
+      "jsonrpc": "2.0",
+      "id": "a",
+      "result": {}
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": "b",
+      "result": {
+        "tools": [
+          {
+            "name": "list_services",
+            "title": "List services",
+            "description": "List every backend service exposed to MCP, with a one-line description and the method names each offers. Call this first when you do not already know what is available.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": false
+            }
+          },
+          {
+            "name": "describe_service",
+            "title": "Describe a service",
+            "description": "Return method signatures for one service \u2014 parameter names, types, whether they are required, and the return shape. Required reading before calling an unfamiliar method, because call_service takes POSITIONAL arguments.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "service": {
+                  "type": "string",
+                  "description": "Service class name exactly as returned by list_services (e.g. \"PayrollRunEngineService\")."
+                }
+              },
+              "required": [
+                "service"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "name": "call_service",
+            "title": "Call a service method",
+            "description": "Invoke a method on a registered service. REQUIRES AUTHENTICATION: the request must carry an `orgid` header and an `Authorization: Bearer <token>` header, and the caller needs content permissions in that org. Unlike list_services/describe_service, this one will refuse without them. A token comes from POST /user/signin (body: email, password, with the orgid header) or from an org API key. Arguments are POSITIONAL, in declaration order, with orgId omitted \u2014 the server injects orgId and the current user from the authenticated session, and passing your own would be ignored. For a method declared (orgId, body) pass args: [body]; for (orgId, input, author) pass args: [input, author]. Service errors are returned verbatim so you can read them and adjust.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "service": {
+                  "type": "string",
+                  "description": "Service class name."
+                },
+                "method": {
+                  "type": "string",
+                  "description": "Method name. Must be marked @AiCallable or the call is rejected."
+                },
+                "args": {
+                  "type": "array",
+                  "description": "Positional arguments in declared order, with orgId omitted.",
+                  "items": {}
+                }
+              },
+              "required": [
+                "service",
+                "method"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

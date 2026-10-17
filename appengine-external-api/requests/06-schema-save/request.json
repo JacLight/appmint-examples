@@ -1,0 +1,2092 @@
+{
+  "pk": "sf_product",
+  "sk": "sf_product",
+  "name": "sf_product",
+  "data": {
+    "name": "sf_product",
+    "title": "Store Product",
+    "description": "Store Product",
+    "type": "Concrete",
+    "enablePost": true,
+    "enableWorkflow": true,
+    "enableVersioning": true,
+    "enableIndexing": true,
+    "enableSubSchema": true,
+    "permission": {},
+    "validations": {},
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "label": "Title",
+          "group": "name"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-zA-Z_\\-0-9]*$",
+          "default": "{{name}}",
+          "transform": [
+            "uri",
+            "lowercase",
+            "suffix-",
+            "random-string"
+          ],
+          "textSearch": true,
+          "group": "name"
+        },
+        "sku": {
+          "type": "string",
+          "pattern": "^[a-zA-Z_\\-0-9]*$",
+          "minLength": 3,
+          "maxLength": 50,
+          "unique": true,
+          "textSearch": true,
+          "placeholder": "Made from the name if left blank",
+          "group": "slug"
+        },
+        "price": {
+          "type": "number",
+          "group": "price"
+        },
+        "cost": {
+          "type": "number",
+          "group": "price",
+          "hideIn": [
+            "public"
+          ],
+          "description": "Total unit cost \u2014 the sum of costComponents when those are used. Margin is price less this."
+        },
+        "costComponents": {
+          "type": "array",
+          "title": "Cost breakdown",
+          "hideIn": [
+            "public"
+          ],
+          "collapsible": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "e.g. purchase, freight in, packaging, handling, prep labour"
+              },
+              "amount": {
+                "type": "number"
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          },
+          "group": "price"
+        },
+        "tax": {
+          "type": "boolean",
+          "group": "price"
+        },
+        "hide": {
+          "type": "boolean",
+          "x-control-variant": "checkbox",
+          "group": "price"
+        },
+        "tiers": {
+          "type": "array",
+          "collapsible": true,
+          "description": "Pricing tiers (volume discounts, group pricing)",
+          "items": {
+            "type": "object",
+            "properties": {
+              "minQuantity": {
+                "type": "number",
+                "minimum": 1,
+                "description": "Minimum quantity for this tier"
+              },
+              "maxQuantity": {
+                "type": "number",
+                "description": "Maximum quantity (empty = unlimited)"
+              },
+              "price": {
+                "type": "number",
+                "description": "Price per unit at this tier"
+              },
+              "discountPercent": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100,
+                "description": "Or % discount from base price"
+              },
+              "groups": {
+                "type": "array",
+                "description": "Limit to specific groups (empty = all customers)",
+                "x-control": "selectMany",
+                "x-control-variant": "chip",
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "customer_group",
+                  "value": "name",
+                  "label": "name"
+                },
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "group": "price"
+        },
+        "brand": {
+          "type": "string",
+          "x-control": "selectMany",
+          "dataSource": {
+            "source": "collection",
+            "collection": "sf_brand",
+            "value": "name",
+            "label": "name"
+          },
+          "group": "status"
+        },
+        "plan": {
+          "type": "string",
+          "x-control": "selectMany",
+          "dataSource": {
+            "source": "collection",
+            "collection": "sf_subscription_plan",
+            "value": "name",
+            "label": "name"
+          },
+          "group": "status"
+        },
+        "status": {
+          "type": "string",
+          "group": "status",
+          "enum": [
+            "draft",
+            "new",
+            "pre-order",
+            "available",
+            "sold-out",
+            "discontinued",
+            "not-for-sale"
+          ]
+        },
+        "stock": {
+          "type": "number",
+          "group": "stock"
+        },
+        "available": {
+          "type": "boolean",
+          "group": "stock"
+        },
+        "isbn": {
+          "type": "string",
+          "group": "stock"
+        },
+        "discount": {
+          "type": "string",
+          "group": "discount"
+        },
+        "points": {
+          "type": "number",
+          "group": "discount"
+        },
+        "download": {
+          "type": "string",
+          "group": "discount"
+        },
+        "description": {
+          "type": "string",
+          "hideLabel": true,
+          "x-control": "richtext",
+          "textSearch": true
+        },
+        "sold": {
+          "type": "number",
+          "hidden": true
+        },
+        "image": {
+          "type": "string",
+          "hidden": true
+        },
+        "images": {
+          "type": "array",
+          "x-control": "file",
+          "items": {
+            "type": "object",
+            "readOnly": true,
+            "x-control": "file",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string",
+                "hidden": true,
+                "hideIn": [
+                  "generator"
+                ]
+              },
+              "contentType": {
+                "type": "string",
+                "hideIn": [
+                  "generator"
+                ]
+              },
+              "url": {
+                "type": "string",
+                "x-render": "file"
+              },
+              "isPublic": {
+                "type": "boolean",
+                "hidden": true,
+                "hideIn": [
+                  "generator"
+                ]
+              },
+              "meta": {
+                "type": "object",
+                "hidden": true,
+                "hideIn": [
+                  "generator"
+                ],
+                "properties": {
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  },
+                  "size": {
+                    "type": "number"
+                  },
+                  "xs": {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "sm": {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "md": {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "hideLabel": true
+        },
+        "preview": {
+          "type": "object",
+          "collapsible": true,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Show a live design preview on the product page."
+            },
+            "views": {
+              "type": "array",
+              "description": "One entry per angle/side (Front, Back, \u2026), each with its own mockup image and zones.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Label for this view, e.g. \"Front\"."
+                  },
+                  "baseImage": {
+                    "type": "array",
+                    "x-control": "file",
+                    "description": "The mockup image for this view (the blank shirt). Single file.",
+                    "items": {
+                      "type": "object",
+                      "readOnly": true,
+                      "x-control": "file",
+                      "properties": {
+                        "path": {
+                          "type": "string"
+                        },
+                        "content": {
+                          "type": "string",
+                          "hidden": true,
+                          "hideIn": [
+                            "generator"
+                          ]
+                        },
+                        "contentType": {
+                          "type": "string",
+                          "hideIn": [
+                            "generator"
+                          ]
+                        },
+                        "url": {
+                          "type": "string",
+                          "x-render": "file"
+                        },
+                        "isPublic": {
+                          "type": "boolean",
+                          "hidden": true,
+                          "hideIn": [
+                            "generator"
+                          ]
+                        },
+                        "meta": {
+                          "type": "object",
+                          "hidden": true,
+                          "hideIn": [
+                            "generator"
+                          ],
+                          "properties": {
+                            "width": {
+                              "type": "number"
+                            },
+                            "height": {
+                              "type": "number"
+                            },
+                            "size": {
+                              "type": "number"
+                            },
+                            "xs": {
+                              "type": "object",
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "sm": {
+                              "type": "object",
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "md": {
+                              "type": "object",
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "zones": {
+                    "type": "array",
+                    "description": "Where uploaded artwork is placed on this view.",
+                    "items": {
+                      "type": "object",
+                      "layout": "horizontal",
+                      "properties": {
+                        "attribute": {
+                          "type": "string",
+                          "description": "Name of the file-type attribute whose upload fills this zone (e.g. \"artwork\").",
+                          "x-control": "selectMany",
+                          "dataSource": {
+                            "source": "collection",
+                            "collection": "sf_attribute",
+                            "value": "name",
+                            "label": "name"
+                          }
+                        },
+                        "label": {
+                          "type": "string",
+                          "description": "Human label for the zone, e.g. \"Chest logo\"."
+                        },
+                        "x": {
+                          "type": "number",
+                          "description": "Left offset, % of image width (0\u2013100)."
+                        },
+                        "y": {
+                          "type": "number",
+                          "description": "Top offset, % of image height (0\u2013100)."
+                        },
+                        "width": {
+                          "type": "number",
+                          "description": "Zone width, % of image width."
+                        },
+                        "height": {
+                          "type": "number",
+                          "description": "Zone height, % of image height."
+                        },
+                        "rotation": {
+                          "type": "number",
+                          "description": "Rotation in degrees (default 0)."
+                        },
+                        "fit": {
+                          "type": "string",
+                          "enum": [
+                            "contain",
+                            "cover",
+                            "fill"
+                          ],
+                          "description": "How the uploaded art fits the zone box."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "salesChannels": {
+          "type": "array",
+          "x-control": "selectMany",
+          "x-control-variant": "chip",
+          "group": "channels",
+          "dataSource": {
+            "source": "function",
+            "value": "getSalesChannels"
+          },
+          "items": {
+            "type": "string"
+          }
+        },
+        "parcel": {
+          "type": "object",
+          "collapsible": true,
+          "properties": {
+            "weight": {
+              "type": "number",
+              "group": "weight"
+            },
+            "weightUnit": {
+              "type": "string",
+              "enum": [
+                "oz",
+                "lb",
+                "g",
+                "kg"
+              ],
+              "default": "lb",
+              "group": "weight"
+            },
+            "length": {
+              "type": "number",
+              "group": "dimensions"
+            },
+            "height": {
+              "type": "number",
+              "group": "dimensions"
+            },
+            "width": {
+              "type": "number",
+              "group": "dimensions"
+            },
+            "dimensionUnit": {
+              "type": "string",
+              "enum": [
+                "in",
+                "cm"
+              ],
+              "default": "in",
+              "group": "dimensions"
+            }
+          }
+        },
+        "shipping": {
+          "type": "object",
+          "collapsible": true,
+          "properties": {
+            "shipsAs": {
+              "type": "string",
+              "enum": [
+                "freight",
+                "oversize",
+                "fragile",
+                "hazmat",
+                "refrigerated"
+              ],
+              "x-control": "selectSingle",
+              "description": "How this ships. Empty for ordinary goods.",
+              "group": "shipping-config"
+            },
+            "config": {
+              "type": "string",
+              "description": "Shipping configuration to price this product (empty = the site default)",
+              "notes": "Rarely needed. Say what the product is with Ships As instead of pointing it at a rate.",
+              "x-control": "selectSingle",
+              "dataSource": {
+                "source": "collection",
+                "collection": "sf_shipping_config",
+                "value": "name",
+                "label": "title"
+              },
+              "group": "shipping-config"
+            },
+            "override": {
+              "type": "string",
+              "enum": [
+                "",
+                "free",
+                "flat"
+              ],
+              "description": "Quick override: free shipping or flat rate",
+              "group": "shipping-config"
+            },
+            "flatRate": {
+              "type": "number",
+              "description": "Flat rate amount (when override is flat)",
+              "rules": [
+                {
+                  "operation": "notEqual",
+                  "valueA": "{{override}}",
+                  "valueB": "flat",
+                  "action": "hide"
+                }
+              ],
+              "group": "shipping-config"
+            },
+            "currency": {
+              "type": "string",
+              "default": "USD",
+              "group": "shipping-config"
+            },
+            "boxSizes": {
+              "type": "array",
+              "title": "Packaging (overrides the configuration)",
+              "collapsible": true,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "What to call this box"
+                  },
+                  "quantity": {
+                    "type": "number",
+                    "default": 1,
+                    "description": "Units of this product per box"
+                  },
+                  "length": {
+                    "type": "number"
+                  },
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  },
+                  "dimensionUnit": {
+                    "type": "string",
+                    "enum": [
+                      "in",
+                      "cm"
+                    ],
+                    "default": "in"
+                  },
+                  "weight": {
+                    "type": "number",
+                    "description": "Weight of the empty box, if it matters"
+                  },
+                  "maxWeight": {
+                    "type": "number"
+                  },
+                  "weightUnit": {
+                    "type": "string",
+                    "enum": [
+                      "lb",
+                      "kg"
+                    ],
+                    "default": "lb"
+                  }
+                }
+              },
+              "group": "shipping-packaging"
+            },
+            "shipsAlone": {
+              "type": "boolean",
+              "default": false,
+              "description": "Always ships in its own package",
+              "group": "shipping-packaging"
+            },
+            "shipsFrom": {
+              "type": "string",
+              "description": "Ship from location (overrides config origin)",
+              "x-control": "selectSingle",
+              "dataSource": {
+                "source": "collection",
+                "collection": "location",
+                "value": "name",
+                "label": "name"
+              }
+            },
+            "restrictions": {
+              "type": "object",
+              "collapsible": true,
+              "properties": {
+                "excludeCountries": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Countries where this product cannot be shipped",
+                  "x-control": "selectMany",
+                  "x-control-variant": "chip",
+                  "dataSource": {
+                    "source": "json",
+                    "json": [
+                      {
+                        "label": "United States",
+                        "value": "us"
+                      },
+                      {
+                        "label": "Canada",
+                        "value": "ca"
+                      },
+                      {
+                        "label": "Andorra",
+                        "value": "ad"
+                      },
+                      {
+                        "label": "United Arab Emirates",
+                        "value": "ae"
+                      },
+                      {
+                        "label": "Afghanistan",
+                        "value": "af"
+                      },
+                      {
+                        "label": "Antigua and Barbuda",
+                        "value": "ag"
+                      },
+                      {
+                        "label": "Anguilla",
+                        "value": "ai"
+                      },
+                      {
+                        "label": "Albania",
+                        "value": "al"
+                      },
+                      {
+                        "label": "Armenia",
+                        "value": "am"
+                      },
+                      {
+                        "label": "Angola",
+                        "value": "ao"
+                      },
+                      {
+                        "label": "Antarctica",
+                        "value": "aq"
+                      },
+                      {
+                        "label": "Argentina",
+                        "value": "ar"
+                      },
+                      {
+                        "label": "American Samoa",
+                        "value": "as"
+                      },
+                      {
+                        "label": "Austria",
+                        "value": "at"
+                      },
+                      {
+                        "label": "Australia",
+                        "value": "au"
+                      },
+                      {
+                        "label": "Aruba",
+                        "value": "aw"
+                      },
+                      {
+                        "label": "\u00c5land",
+                        "value": "ax"
+                      },
+                      {
+                        "label": "Azerbaijan",
+                        "value": "az"
+                      },
+                      {
+                        "label": "Bosnia and Herzegovina",
+                        "value": "ba"
+                      },
+                      {
+                        "label": "Barbados",
+                        "value": "bb"
+                      },
+                      {
+                        "label": "Bangladesh",
+                        "value": "bd"
+                      },
+                      {
+                        "label": "Belgium",
+                        "value": "be"
+                      },
+                      {
+                        "label": "Burkina Faso",
+                        "value": "bf"
+                      },
+                      {
+                        "label": "Bulgaria",
+                        "value": "bg"
+                      },
+                      {
+                        "label": "Bahrain",
+                        "value": "bh"
+                      },
+                      {
+                        "label": "Burundi",
+                        "value": "bi"
+                      },
+                      {
+                        "label": "Benin",
+                        "value": "bj"
+                      },
+                      {
+                        "label": "Saint Barth\u00e9lemy",
+                        "value": "bl"
+                      },
+                      {
+                        "label": "Bermuda",
+                        "value": "bm"
+                      },
+                      {
+                        "label": "Brunei",
+                        "value": "bn"
+                      },
+                      {
+                        "label": "Bolivia",
+                        "value": "bo"
+                      },
+                      {
+                        "label": "Bonaire",
+                        "value": "bq"
+                      },
+                      {
+                        "label": "Brazil",
+                        "value": "br"
+                      },
+                      {
+                        "label": "Bahamas",
+                        "value": "bs"
+                      },
+                      {
+                        "label": "Bhutan",
+                        "value": "bt"
+                      },
+                      {
+                        "label": "Bouvet Island",
+                        "value": "bv"
+                      },
+                      {
+                        "label": "Botswana",
+                        "value": "bw"
+                      },
+                      {
+                        "label": "Belarus",
+                        "value": "by"
+                      },
+                      {
+                        "label": "Belize",
+                        "value": "bz"
+                      },
+                      {
+                        "label": "Cocos [Keeling] Islands",
+                        "value": "cc"
+                      },
+                      {
+                        "label": "Democratic Republic of the Congo",
+                        "value": "cd"
+                      },
+                      {
+                        "label": "Central African Republic",
+                        "value": "cf"
+                      },
+                      {
+                        "label": "Republic of the Congo",
+                        "value": "cg"
+                      },
+                      {
+                        "label": "Switzerland",
+                        "value": "ch"
+                      },
+                      {
+                        "label": "Ivory Coast",
+                        "value": "ci"
+                      },
+                      {
+                        "label": "Cook Islands",
+                        "value": "ck"
+                      },
+                      {
+                        "label": "Chile",
+                        "value": "cl"
+                      },
+                      {
+                        "label": "Cameroon",
+                        "value": "cm"
+                      },
+                      {
+                        "label": "China",
+                        "value": "cn"
+                      },
+                      {
+                        "label": "Colombia",
+                        "value": "co"
+                      },
+                      {
+                        "label": "Costa Rica",
+                        "value": "cr"
+                      },
+                      {
+                        "label": "Cuba",
+                        "value": "cu"
+                      },
+                      {
+                        "label": "Cape Verde",
+                        "value": "cv"
+                      },
+                      {
+                        "label": "Curacao",
+                        "value": "cw"
+                      },
+                      {
+                        "label": "Christmas Island",
+                        "value": "cx"
+                      },
+                      {
+                        "label": "Cyprus",
+                        "value": "cy"
+                      },
+                      {
+                        "label": "Czech Republic",
+                        "value": "cz"
+                      },
+                      {
+                        "label": "Germany",
+                        "value": "de"
+                      },
+                      {
+                        "label": "Djibouti",
+                        "value": "dj"
+                      },
+                      {
+                        "label": "Denmark",
+                        "value": "dk"
+                      },
+                      {
+                        "label": "Dominica",
+                        "value": "dm"
+                      },
+                      {
+                        "label": "Dominican Republic",
+                        "value": "do"
+                      },
+                      {
+                        "label": "Algeria",
+                        "value": "dz"
+                      },
+                      {
+                        "label": "Ecuador",
+                        "value": "ec"
+                      },
+                      {
+                        "label": "Estonia",
+                        "value": "ee"
+                      },
+                      {
+                        "label": "Egypt",
+                        "value": "eg"
+                      },
+                      {
+                        "label": "Western Sahara",
+                        "value": "eh"
+                      },
+                      {
+                        "label": "Eritrea",
+                        "value": "er"
+                      },
+                      {
+                        "label": "Spain",
+                        "value": "es"
+                      },
+                      {
+                        "label": "Ethiopia",
+                        "value": "et"
+                      },
+                      {
+                        "label": "Finland",
+                        "value": "fi"
+                      },
+                      {
+                        "label": "Fiji",
+                        "value": "fj"
+                      },
+                      {
+                        "label": "Falkland Islands",
+                        "value": "fk"
+                      },
+                      {
+                        "label": "Micronesia",
+                        "value": "fm"
+                      },
+                      {
+                        "label": "Faroe Islands",
+                        "value": "fo"
+                      },
+                      {
+                        "label": "France",
+                        "value": "fr"
+                      },
+                      {
+                        "label": "Gabon",
+                        "value": "ga"
+                      },
+                      {
+                        "label": "United Kingdom",
+                        "value": "gb"
+                      },
+                      {
+                        "label": "Grenada",
+                        "value": "gd"
+                      },
+                      {
+                        "label": "Georgia",
+                        "value": "ge"
+                      },
+                      {
+                        "label": "French Guiana",
+                        "value": "gf"
+                      },
+                      {
+                        "label": "Guernsey",
+                        "value": "gg"
+                      },
+                      {
+                        "label": "Ghana",
+                        "value": "gh"
+                      },
+                      {
+                        "label": "Gibraltar",
+                        "value": "gi"
+                      },
+                      {
+                        "label": "Greenland",
+                        "value": "gl"
+                      },
+                      {
+                        "label": "Gambia",
+                        "value": "gm"
+                      },
+                      {
+                        "label": "Guinea",
+                        "value": "gn"
+                      },
+                      {
+                        "label": "Guadeloupe",
+                        "value": "gp"
+                      },
+                      {
+                        "label": "Equatorial Guinea",
+                        "value": "gq"
+                      },
+                      {
+                        "label": "Greece",
+                        "value": "gr"
+                      },
+                      {
+                        "label": "South Georgia and the South Sandwich Islands",
+                        "value": "gs"
+                      },
+                      {
+                        "label": "Guatemala",
+                        "value": "gt"
+                      },
+                      {
+                        "label": "Guam",
+                        "value": "gu"
+                      },
+                      {
+                        "label": "Guinea-Bissau",
+                        "value": "gw"
+                      },
+                      {
+                        "label": "Guyana",
+                        "value": "gy"
+                      },
+                      {
+                        "label": "Hong Kong",
+                        "value": "hk"
+                      },
+                      {
+                        "label": "Heard Island and McDonald Islands",
+                        "value": "hm"
+                      },
+                      {
+                        "label": "Honduras",
+                        "value": "hn"
+                      },
+                      {
+                        "label": "Croatia",
+                        "value": "hr"
+                      },
+                      {
+                        "label": "Haiti",
+                        "value": "ht"
+                      },
+                      {
+                        "label": "Hungary",
+                        "value": "hu"
+                      },
+                      {
+                        "label": "Indonesia",
+                        "value": "id"
+                      },
+                      {
+                        "label": "Ireland",
+                        "value": "ie"
+                      },
+                      {
+                        "label": "Israel",
+                        "value": "il"
+                      },
+                      {
+                        "label": "Isle of Man",
+                        "value": "im"
+                      },
+                      {
+                        "label": "India",
+                        "value": "in"
+                      },
+                      {
+                        "label": "British Indian Ocean Territory",
+                        "value": "io"
+                      },
+                      {
+                        "label": "Iraq",
+                        "value": "iq"
+                      },
+                      {
+                        "label": "Iran",
+                        "value": "ir"
+                      },
+                      {
+                        "label": "Iceland",
+                        "value": "is"
+                      },
+                      {
+                        "label": "Italy",
+                        "value": "it"
+                      },
+                      {
+                        "label": "Jersey",
+                        "value": "je"
+                      },
+                      {
+                        "label": "Jamaica",
+                        "value": "jm"
+                      },
+                      {
+                        "label": "Jordan",
+                        "value": "jo"
+                      },
+                      {
+                        "label": "Japan",
+                        "value": "jp"
+                      },
+                      {
+                        "label": "Kenya",
+                        "value": "ke"
+                      },
+                      {
+                        "label": "Kyrgyzstan",
+                        "value": "kg"
+                      },
+                      {
+                        "label": "Cambodia",
+                        "value": "kh"
+                      },
+                      {
+                        "label": "Kiribati",
+                        "value": "ki"
+                      },
+                      {
+                        "label": "Comoros",
+                        "value": "km"
+                      },
+                      {
+                        "label": "Saint Kitts and Nevis",
+                        "value": "kn"
+                      },
+                      {
+                        "label": "North Korea",
+                        "value": "kp"
+                      },
+                      {
+                        "label": "South Korea",
+                        "value": "kr"
+                      },
+                      {
+                        "label": "Kuwait",
+                        "value": "kw"
+                      },
+                      {
+                        "label": "Cayman Islands",
+                        "value": "ky"
+                      },
+                      {
+                        "label": "Kazakhstan",
+                        "value": "kz"
+                      },
+                      {
+                        "label": "Laos",
+                        "value": "la"
+                      },
+                      {
+                        "label": "Lebanon",
+                        "value": "lb"
+                      },
+                      {
+                        "label": "Saint Lucia",
+                        "value": "lc"
+                      },
+                      {
+                        "label": "Liechtenstein",
+                        "value": "li"
+                      },
+                      {
+                        "label": "Sri Lanka",
+                        "value": "lk"
+                      },
+                      {
+                        "label": "Liberia",
+                        "value": "lr"
+                      },
+                      {
+                        "label": "Lesotho",
+                        "value": "ls"
+                      },
+                      {
+                        "label": "Lithuania",
+                        "value": "lt"
+                      },
+                      {
+                        "label": "Luxembourg",
+                        "value": "lu"
+                      },
+                      {
+                        "label": "Latvia",
+                        "value": "lv"
+                      },
+                      {
+                        "label": "Libya",
+                        "value": "ly"
+                      },
+                      {
+                        "label": "Morocco",
+                        "value": "ma"
+                      },
+                      {
+                        "label": "Monaco",
+                        "value": "mc"
+                      },
+                      {
+                        "label": "Moldova",
+                        "value": "md"
+                      },
+                      {
+                        "label": "Montenegro",
+                        "value": "me"
+                      },
+                      {
+                        "label": "Saint Martin",
+                        "value": "mf"
+                      },
+                      {
+                        "label": "Madagascar",
+                        "value": "mg"
+                      },
+                      {
+                        "label": "Marshall Islands",
+                        "value": "mh"
+                      },
+                      {
+                        "label": "North Macedonia",
+                        "value": "mk"
+                      },
+                      {
+                        "label": "Mali",
+                        "value": "ml"
+                      },
+                      {
+                        "label": "Myanmar [Burma]",
+                        "value": "mm"
+                      },
+                      {
+                        "label": "Mongolia",
+                        "value": "mn"
+                      },
+                      {
+                        "label": "Macao",
+                        "value": "mo"
+                      },
+                      {
+                        "label": "Northern Mariana Islands",
+                        "value": "mp"
+                      },
+                      {
+                        "label": "Martinique",
+                        "value": "mq"
+                      },
+                      {
+                        "label": "Mauritania",
+                        "value": "mr"
+                      },
+                      {
+                        "label": "Montserrat",
+                        "value": "ms"
+                      },
+                      {
+                        "label": "Malta",
+                        "value": "mt"
+                      },
+                      {
+                        "label": "Mauritius",
+                        "value": "mu"
+                      },
+                      {
+                        "label": "Maldives",
+                        "value": "mv"
+                      },
+                      {
+                        "label": "Malawi",
+                        "value": "mw"
+                      },
+                      {
+                        "label": "Mexico",
+                        "value": "mx"
+                      },
+                      {
+                        "label": "Malaysia",
+                        "value": "my"
+                      },
+                      {
+                        "label": "Mozambique",
+                        "value": "mz"
+                      },
+                      {
+                        "label": "Namibia",
+                        "value": "na"
+                      },
+                      {
+                        "label": "New Caledonia",
+                        "value": "nc"
+                      },
+                      {
+                        "label": "Niger",
+                        "value": "ne"
+                      },
+                      {
+                        "label": "Norfolk Island",
+                        "value": "nf"
+                      },
+                      {
+                        "label": "Nigeria",
+                        "value": "ng"
+                      },
+                      {
+                        "label": "Nicaragua",
+                        "value": "ni"
+                      },
+                      {
+                        "label": "Netherlands",
+                        "value": "nl"
+                      },
+                      {
+                        "label": "Norway",
+                        "value": "no"
+                      },
+                      {
+                        "label": "Nepal",
+                        "value": "np"
+                      },
+                      {
+                        "label": "Nauru",
+                        "value": "nr"
+                      },
+                      {
+                        "label": "Niue",
+                        "value": "nu"
+                      },
+                      {
+                        "label": "New Zealand",
+                        "value": "nz"
+                      },
+                      {
+                        "label": "Oman",
+                        "value": "om"
+                      },
+                      {
+                        "label": "Panama",
+                        "value": "pa"
+                      },
+                      {
+                        "label": "Peru",
+                        "value": "pe"
+                      },
+                      {
+                        "label": "French Polynesia",
+                        "value": "pf"
+                      },
+                      {
+                        "label": "Papua New Guinea",
+                        "value": "pg"
+                      },
+                      {
+                        "label": "Philippines",
+                        "value": "ph"
+                      },
+                      {
+                        "label": "Pakistan",
+                        "value": "pk"
+                      },
+                      {
+                        "label": "Poland",
+                        "value": "pl"
+                      },
+                      {
+                        "label": "Saint Pierre and Miquelon",
+                        "value": "pm"
+                      },
+                      {
+                        "label": "Pitcairn Islands",
+                        "value": "pn"
+                      },
+                      {
+                        "label": "Puerto Rico",
+                        "value": "pr"
+                      },
+                      {
+                        "label": "Palestine",
+                        "value": "ps"
+                      },
+                      {
+                        "label": "Portugal",
+                        "value": "pt"
+                      },
+                      {
+                        "label": "Palau",
+                        "value": "pw"
+                      },
+                      {
+                        "label": "Paraguay",
+                        "value": "py"
+                      },
+                      {
+                        "label": "Qatar",
+                        "value": "qa"
+                      },
+                      {
+                        "label": "R\u00e9union",
+                        "value": "re"
+                      },
+                      {
+                        "label": "Romania",
+                        "value": "ro"
+                      },
+                      {
+                        "label": "Serbia",
+                        "value": "rs"
+                      },
+                      {
+                        "label": "Russia",
+                        "value": "ru"
+                      },
+                      {
+                        "label": "Rwanda",
+                        "value": "rw"
+                      },
+                      {
+                        "label": "Saudi Arabia",
+                        "value": "sa"
+                      },
+                      {
+                        "label": "Solomon Islands",
+                        "value": "sb"
+                      },
+                      {
+                        "label": "Seychelles",
+                        "value": "sc"
+                      },
+                      {
+                        "label": "Sudan",
+                        "value": "sd"
+                      },
+                      {
+                        "label": "Sweden",
+                        "value": "se"
+                      },
+                      {
+                        "label": "Singapore",
+                        "value": "sg"
+                      },
+                      {
+                        "label": "Saint Helena",
+                        "value": "sh"
+                      },
+                      {
+                        "label": "Slovenia",
+                        "value": "si"
+                      },
+                      {
+                        "label": "Svalbard and Jan Mayen",
+                        "value": "sj"
+                      },
+                      {
+                        "label": "Slovakia",
+                        "value": "sk"
+                      },
+                      {
+                        "label": "Sierra Leone",
+                        "value": "sl"
+                      },
+                      {
+                        "label": "San Marino",
+                        "value": "sm"
+                      },
+                      {
+                        "label": "Senegal",
+                        "value": "sn"
+                      },
+                      {
+                        "label": "Somalia",
+                        "value": "so"
+                      },
+                      {
+                        "label": "Suriname",
+                        "value": "sr"
+                      },
+                      {
+                        "label": "South Sudan",
+                        "value": "ss"
+                      },
+                      {
+                        "label": "S\u00e3o Tom\u00e9 and Pr\u00edncipe",
+                        "value": "st"
+                      },
+                      {
+                        "label": "El Salvador",
+                        "value": "sv"
+                      },
+                      {
+                        "label": "Sint Maarten",
+                        "value": "sx"
+                      },
+                      {
+                        "label": "Syria",
+                        "value": "sy"
+                      },
+                      {
+                        "label": "Swaziland",
+                        "value": "sz"
+                      },
+                      {
+                        "label": "Turks and Caicos Islands",
+                        "value": "tc"
+                      },
+                      {
+                        "label": "Chad",
+                        "value": "td"
+                      },
+                      {
+                        "label": "French Southern Territories",
+                        "value": "tf"
+                      },
+                      {
+                        "label": "Togo",
+                        "value": "tg"
+                      },
+                      {
+                        "label": "Thailand",
+                        "value": "th"
+                      },
+                      {
+                        "label": "Tajikistan",
+                        "value": "tj"
+                      },
+                      {
+                        "label": "Tokelau",
+                        "value": "tk"
+                      },
+                      {
+                        "label": "East Timor",
+                        "value": "tl"
+                      },
+                      {
+                        "label": "Turkmenistan",
+                        "value": "tm"
+                      },
+                      {
+                        "label": "Tunisia",
+                        "value": "tn"
+                      },
+                      {
+                        "label": "Tonga",
+                        "value": "to"
+                      },
+                      {
+                        "label": "Turkey",
+                        "value": "tr"
+                      },
+                      {
+                        "label": "Trinidad and Tobago",
+                        "value": "tt"
+                      },
+                      {
+                        "label": "Tuvalu",
+                        "value": "tv"
+                      },
+                      {
+                        "label": "Taiwan",
+                        "value": "tw"
+                      },
+                      {
+                        "label": "Tanzania",
+                        "value": "tz"
+                      },
+                      {
+                        "label": "Ukraine",
+                        "value": "ua"
+                      },
+                      {
+                        "label": "Uganda",
+                        "value": "ug"
+                      },
+                      {
+                        "label": "U.S. Minor Outlying Islands",
+                        "value": "um"
+                      },
+                      {
+                        "label": "Uruguay",
+                        "value": "uy"
+                      },
+                      {
+                        "label": "Uzbekistan",
+                        "value": "uz"
+                      },
+                      {
+                        "label": "Vatican City",
+                        "value": "va"
+                      },
+                      {
+                        "label": "Saint Vincent and the Grenadines",
+                        "value": "vc"
+                      },
+                      {
+                        "label": "Venezuela",
+                        "value": "ve"
+                      },
+                      {
+                        "label": "British Virgin Islands",
+                        "value": "vg"
+                      },
+                      {
+                        "label": "U.S. Virgin Islands",
+                        "value": "vi"
+                      },
+                      {
+                        "label": "Vietnam",
+                        "value": "vn"
+                      },
+                      {
+                        "label": "Vanuatu",
+                        "value": "vu"
+                      },
+                      {
+                        "label": "Wallis and Futuna",
+                        "value": "wf"
+                      },
+                      {
+                        "label": "Samoa",
+                        "value": "ws"
+                      },
+                      {
+                        "label": "Kosovo",
+                        "value": "xk"
+                      },
+                      {
+                        "label": "Yemen",
+                        "value": "ye"
+                      },
+                      {
+                        "label": "Mayotte",
+                        "value": "yt"
+                      },
+                      {
+                        "label": "South Africa",
+                        "value": "za"
+                      },
+                      {
+                        "label": "Zambia",
+                        "value": "zm"
+                      },
+                      {
+                        "label": "Zimbabwe",
+                        "value": "zw"
+                      }
+                    ]
+                  }
+                },
+                "excludeStates": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "States/regions where this product cannot be shipped"
+                },
+                "requiresSignature": {
+                  "type": "boolean",
+                  "default": false,
+                  "group": "shipping-rules"
+                },
+                "isHazmat": {
+                  "type": "boolean",
+                  "default": false,
+                  "group": "shipping-rules"
+                },
+                "isFragile": {
+                  "type": "boolean",
+                  "default": false,
+                  "group": "shipping-rules"
+                }
+              }
+            }
+          }
+        },
+        "attributes": {
+          "type": "array",
+          "showIndex": true,
+          "collapsible": true,
+          "items": {
+            "type": "object",
+            "layout": "horizontal",
+            "properties": {
+              "name": {
+                "type": "string",
+                "x-control": "selectMany",
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "sf_attribute",
+                  "value": "name",
+                  "label": "name"
+                },
+                "group": "attribute"
+              },
+              "required": {
+                "type": "boolean",
+                "group": "attribute",
+                "default": true,
+                "hint": "Shopper must provide this attribute on THIS product before checkout. Off = optional."
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "group": "option"
+                    },
+                    "value": {
+                      "type": "string",
+                      "group": "option"
+                    },
+                    "param": {
+                      "type": "string",
+                      "group": "option"
+                    },
+                    "price": {
+                      "type": "number",
+                      "group": "option"
+                    }
+                  }
+                },
+                "group": "attribute",
+                "x-control": "selectMany",
+                "x-control-variant": "chip",
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "sf_attribute",
+                  "filter": {
+                    "data.name": "{{name}}"
+                  },
+                  "value": "options",
+                  "label": "options",
+                  "valueAsOption": true
+                }
+              }
+            }
+          }
+        },
+        "variations": {
+          "type": "array",
+          "hideLabel": true,
+          "showIndex": true,
+          "collapsible": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "sku": {
+                "type": "string",
+                "disabled": true,
+                "group": "sku"
+              },
+              "price": {
+                "type": "number",
+                "group": "sku"
+              },
+              "stock": {
+                "type": "number",
+                "group": "sku"
+              },
+              "options": {
+                "type": "array",
+                "title": "Options",
+                "readOnly": true,
+                "displayStyle": "card",
+                "items": {
+                  "type": "object",
+                  "layout": "horizontal",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "disabled": true,
+                      "group": "option"
+                    },
+                    "label": {
+                      "type": "string",
+                      "disabled": true,
+                      "group": "option"
+                    },
+                    "value": {
+                      "type": "string",
+                      "disabled": true,
+                      "group": "option"
+                    }
+                  }
+                }
+              },
+              "image": {
+                "type": "string"
+              },
+              "images": {
+                "type": "array",
+                "x-control": "file",
+                "items": {
+                  "type": "object",
+                  "readOnly": true,
+                  "x-control": "file",
+                  "properties": {
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string",
+                      "hidden": true,
+                      "hideIn": [
+                        "generator"
+                      ]
+                    },
+                    "contentType": {
+                      "type": "string",
+                      "hideIn": [
+                        "generator"
+                      ]
+                    },
+                    "url": {
+                      "type": "string",
+                      "x-render": "file"
+                    },
+                    "isPublic": {
+                      "type": "boolean",
+                      "hidden": true,
+                      "hideIn": [
+                        "generator"
+                      ]
+                    },
+                    "meta": {
+                      "type": "object",
+                      "hidden": true,
+                      "hideIn": [
+                        "generator"
+                      ],
+                      "properties": {
+                        "width": {
+                          "type": "number"
+                        },
+                        "height": {
+                          "type": "number"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "xs": {
+                          "type": "object",
+                          "properties": {
+                            "path": {
+                              "type": "string"
+                            },
+                            "url": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "sm": {
+                          "type": "object",
+                          "properties": {
+                            "path": {
+                              "type": "string"
+                            },
+                            "url": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "md": {
+                          "type": "object",
+                          "properties": {
+                            "path": {
+                              "type": "string"
+                            },
+                            "url": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "hideLabel": true
+              }
+            }
+          }
+        },
+        "extraInfo": {
+          "type": "array",
+          "displayStyle": "table",
+          "hideLabel": true,
+          "collapsible": true,
+          "operations": [
+            "pick",
+            "add",
+            "edit",
+            "delete"
+          ],
+          "dataSource": {
+            "source": "collection",
+            "collection": "post"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "group": "bundle",
+                "type": "string"
+              },
+              "id": {
+                "type": "string",
+                "group": "bundle"
+              },
+              "content": {
+                "type": "string",
+                "x-control": "richtext"
+              }
+            }
+          }
+        },
+        "giftCard": {
+          "type": "object",
+          "group": "gift-card",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "This product is a gift card: buying it issues one."
+            },
+            "denominations": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "description": "Fixed values the shopper can pick, e.g. 25, 50, 100. Empty means only the product price."
+            },
+            "allowCustomAmount": {
+              "type": "boolean"
+            },
+            "minAmount": {
+              "type": "number"
+            },
+            "maxAmount": {
+              "type": "number"
+            },
+            "cardType": {
+              "type": "string",
+              "enum": [
+                "digital",
+                "physical"
+              ],
+              "default": "digital"
+            },
+            "expiresAfterDays": {
+              "type": "number",
+              "description": "Days from purchase until the card expires. Empty means never \u2014 the default for purchased cards."
+            },
+            "collectRecipient": {
+              "type": "boolean",
+              "default": true,
+              "description": "Ask for a recipient name, email and message at checkout."
+            },
+            "allowScheduledDelivery": {
+              "type": "boolean",
+              "default": true,
+              "description": "Let the shopper pick a date for the card email."
+            }
+          }
+        },
+        "bundle": {
+          "type": "array",
+          "displayStyle": "table",
+          "hideLabel": true,
+          "collapsible": true,
+          "dataSource": {
+            "source": "collection",
+            "collection": "sf_product"
+          },
+          "operations": [
+            "pick"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "sk": {
+                "type": "string",
+                "group": "bundle"
+              },
+              "sku": {
+                "type": "string",
+                "group": "bundle"
+              },
+              "name": {
+                "type": "string",
+                "group": "bundle"
+              }
+            }
+          }
+        },
+        "restriction": {
+          "type": "object",
+          "group": "restriction",
+          "collapsible": true,
+          "properties": {
+            "ageRestricted": {
+              "type": "boolean",
+              "default": false,
+              "description": "Age-restricted product (alcohol, tobacco\u2026)"
+            },
+            "minimumAge": {
+              "type": "number",
+              "description": "Minimum customer age, e.g. 21"
+            },
+            "permissionScope": {
+              "type": "string",
+              "description": "POS permission the seller needs, e.g. alcohol. Matches a requirement rule\u2019s POS permission scope. Empty with age-restricted on = age_restricted"
+            }
+          }
+        },
+        "affiliateEligible": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether this product is eligible for affiliate commissions",
+          "group": "affiliate"
+        },
+        "affiliateCommission": {
+          "type": "number",
+          "description": "Product-specific commission rate (percentage). Overrides program default. Leave empty to use program rate.",
+          "group": "affiliate"
+        },
+        "workflow": {
+          "type": "object",
+          "description": "The product's own publishing/approval workflow \u2014 the workflow a product goes through to be approved and published into the catalog. It has nothing to do with orders: order lines are prepared by their prepStation option and fired to prep-pipeline.",
+          "collapsible": true,
+          "properties": {
+            "workflowId": {
+              "type": "string",
+              "description": "Workflow definition that approves/publishes this product into the catalog (not a kitchen or prep station)",
+              "x-control": "selectMany",
+              "dataSource": {
+                "source": "collection",
+                "collection": "workflow_definition",
+                "value": "sk",
+                "label": "name"
+              },
+              "group": "workflow"
+            },
+            "defaultCourse": {
+              "type": "string",
+              "description": "Default course/grouping (appetizer, main, dessert, drinks, etc.)",
+              "group": "workflow"
+            }
+          }
+        },
+        "source": {
+          "type": "string"
+        },
+        "sourceUrl": {
+          "type": "string"
+        },
+        "batch": {
+          "type": "string"
+        },
+        "supplierSku": {
+          "type": "string",
+          "title": "Supplier SKU",
+          "description": "External supplier product identifier used by the server-side adapter."
+        }
+      },
+      "required": [
+        "name",
+        "sku"
+      ]
+    }
+  },
+  "datatype": "collection",
+  "version": 0
+}

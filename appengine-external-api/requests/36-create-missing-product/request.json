@@ -1,0 +1,14 @@
+{
+  "isNew": true,
+  "datatype": "sf_product",
+  "data": {
+    "name": "Training ash plank",
+    "sku": "SUPPLIER-ASH-1011",
+    "supplierSku": "NW-ASH-30",
+    "price": 61,
+    "available": false,
+    "hidden": true,
+    "status": "inactive",
+    "trackInventory": true
+  }
+}

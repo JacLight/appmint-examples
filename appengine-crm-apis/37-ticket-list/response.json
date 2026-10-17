@@ -1,0 +1,157 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "data": [
+      {
+        "_id": "6aca833237ff863efff476ce",
+        "pk": "video-lab-mut4jkwd|ticket",
+        "sk": "6aca833237ff863efff476ce",
+        "name": "Q3CHB319",
+        "datatype": "ticket",
+        "data": {
+          "title": "CRM API course request",
+          "description": "Please confirm the integration guide",
+          "reportedByEmail": "mira.chen.foundations@training.local",
+          "reportedBy": "Mira-Lin Chen",
+          "status": "done",
+          "priority": "medium",
+          "channel": "web",
+          "name": "Q3CHB319",
+          "metadata": {
+            "realIp": "::ffff:127.0.0.1",
+            "socketIp": "::ffff:127.0.0.1",
+            "forwardIp": "",
+            "clientIp": "::ffff:127.0.0.1",
+            "referrer": "",
+            "host": "127.0.0.1:3300",
+            "clientHost": "",
+            "protocol": "http",
+            "domain": "127.0.0.1:3300",
+            "url": "/crm/tickets/create",
+            "userAgentString": "Python-urllib/3.14"
+          },
+          "assignBy": "video-lab-mut4jkwd@example.com",
+          "assignTo": "video-lab-mut4jkwd@example.com",
+          "resolution": {
+            "summary": "Developer guide confirmed",
+            "rootCause": null,
+            "resolvedBy": "video-lab-mut4jkwd@example.com"
+          },
+          "resolvedAt": "2026-10-10T18:25:54.320Z",
+          "workflow": {
+            "workflowId": "6ac1d85e19ec5a8a773c9297",
+            "status": "done"
+          }
+        },
+        "version": 0,
+        "author": "mira.chen.foundations@training.local",
+        "created_by": "mira.chen.foundations@training.local",
+        "state": "completed",
+        "createdate": "2026-10-10T18:25:54.010Z",
+        "modifydate": "2026-10-10T18:25:54.345Z",
+        "handling": {
+          "status": "done",
+          "since": "2026-10-10T18:25:54.261Z",
+          "channel": "ticket",
+          "title": "New ticket: CRM API course request",
+          "history": [
+            {
+              "status": "open",
+              "at": "2026-10-10T18:25:54.095Z"
+            },
+            {
+              "status": "in_progress",
+              "at": "2026-10-10T18:25:54.261Z",
+              "by": "video-lab-mut4jkwd@example.com",
+              "byName": "Video Lab"
+            },
+            {
+              "status": "done",
+              "at": "2026-10-10T18:25:54.344Z",
+              "by": "video-lab-mut4jkwd@example.com",
+              "byName": "Video Lab",
+              "note": "Developer guide confirmed"
+            }
+          ],
+          "by": "video-lab-mut4jkwd@example.com",
+          "byName": "Video Lab",
+          "takenAt": "2026-10-10T18:25:54.261Z",
+          "doneAt": "2026-10-10T18:25:54.344Z",
+          "outcome": "Developer guide confirmed"
+        },
+        "workflowInfo": {
+          "taskSk": "6aca833237ff863efff476cf",
+          "workflowName": "ticket-support",
+          "workflowTitle": "Ticket support",
+          "stageId": 3,
+          "stageName": "Resolved",
+          "stageType": "end",
+          "stages": [
+            {
+              "id": 0,
+              "name": "New",
+              "type": "start",
+              "modelState": "new",
+              "modelStatus": "new",
+              "current": false
+            },
+            {
+              "id": 1,
+              "name": "In progress",
+              "type": "intermediate",
+              "modelState": "inprogress",
+              "modelStatus": "inprogress",
+              "current": false
+            },
+            {
+              "id": 2,
+              "name": "Waiting on customer",
+              "type": "intermediate",
+              "modelState": "pending",
+              "modelStatus": "pending",
+              "current": false
+            },
+            {
+              "id": 3,
+              "name": "Resolved",
+              "type": "end",
+              "modelState": "completed",
+              "modelStatus": "done",
+              "current": true
+            }
+          ],
+          "isFinal": true,
+          "taskStatus": "done",
+          "assignTo": [
+            "video-lab-mut4jkwd@example.com"
+          ],
+          "dueDate": null,
+          "overdue": false,
+          "escalationTier": 0,
+          "startedAt": "2026-10-10T18:25:54.059Z",
+          "updatedAt": "2026-10-10T18:25:54.336Z",
+          "history": [
+            {
+              "stageName": "New",
+              "left": true,
+              "at": "2026-10-10T18:25:54.332Z",
+              "by": "video-lab-mut4jkwd@example.com",
+              "note": null
+            },
+            {
+              "stageName": "Resolved",
+              "left": false,
+              "at": "2026-10-10T18:25:54.336Z",
+              "by": null,
+              "note": null
+            }
+          ]
+        }
+      }
+    ],
+    "total": 1,
+    "page": 1,
+    "pageSize": 10
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "method": "POST",
+  "path": "/repository/find/user",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "query": {},
+    "options": {
+      "page": 1,
+      "pageSize": 50
+    }
+  }
+}

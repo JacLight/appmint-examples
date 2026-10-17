@@ -1,0 +1,22 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": [
+    {
+      "stageId": 0,
+      "status": "new",
+      "dueDate": "2026-10-10T12:29:56.289Z",
+      "note": "Confirm the connection and record the review outcome.",
+      "modified": "2026-10-10T10:29:56.431Z",
+      "modifiedBy": "video-lab-mut4jkwd@example.com"
+    },
+    {
+      "stageId": 1,
+      "status": "inprogress",
+      "dueDate": null,
+      "note": "Confirm the connection and record the review outcome.",
+      "modified": "2026-10-10T10:29:56.561Z",
+      "modifiedBy": "video-lab-mut4jkwd@example.com"
+    }
+  ]
+}

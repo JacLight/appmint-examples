@@ -1,0 +1,58 @@
+{
+  "startedAt": "2026-10-10T07:30:40.524911+00:00",
+  "durationSeconds": 0.0299,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/collections/baas_receipts_1010?enriched=false",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": [
+      {
+        "_id": "6ac9e9a0f5d6b011f6e11a12",
+        "datatype": "collection",
+        "data": {
+          "name": "baas_receipts_1010",
+          "title": "Event receipts \u2014 Backend course",
+          "enableVersioning": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "submissionId": {
+                "type": "string",
+                "title": "Submission ID"
+              },
+              "reference": {
+                "type": "string",
+                "title": "Reference"
+              },
+              "message": {
+                "type": "string",
+                "title": "Message"
+              }
+            },
+            "required": [
+              "reference"
+            ]
+          }
+        },
+        "name": "baas_receipts_1010",
+        "created_by": "video-lab-mut4jkwd@example.com",
+        "state": "draft",
+        "pk": "video-lab-mut4jkwd|collection",
+        "createdate": "2026-10-10T07:30:40.502Z",
+        "modifydate": "2026-10-10T07:30:40.502Z",
+        "version": 0,
+        "sk": "6ac9e9a0f5d6b011f6e11a12"
+      }
+    ]
+  }
+}

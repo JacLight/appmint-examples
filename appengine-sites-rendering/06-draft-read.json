@@ -1,0 +1,21 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/site/page/sites-course-1010.YOUR_RENDERER_HOST/sites-course-1010/journal/room-lighting-1010",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 404,
+    "body": {
+      "statusCode": 404,
+      "error": "Page journal not found",
+      "path": "/site/page/sites-course-1010.YOUR_RENDERER_HOST/sites-course-1010/journal/room-lighting-1010",
+      "method": "GET",
+      "timeStamp": "2026-10-10T10:32:49.350Z"
+    }
+  }
+}

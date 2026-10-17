@@ -1,0 +1,21 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "datatype": "workflow_lab_1010",
+    "data": {
+      "title": "API decision: reject",
+      "status": "draft"
+    },
+    "author": "video-lab-mut4jkwd@example.com",
+    "name": "API decision: reject",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "pk": "video-lab-mut4jkwd|workflow_lab_1010",
+    "createdate": "2026-10-10T10:30:28.852Z",
+    "modifydate": "2026-10-10T10:30:28.852Z",
+    "version": 0,
+    "sk": "6aca13c4f5d6b011f6e1204c",
+    "id": "6aca13c4f5d6b011f6e1204c"
+  }
+}

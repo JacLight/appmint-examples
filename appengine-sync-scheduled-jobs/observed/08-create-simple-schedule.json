@@ -1,0 +1,78 @@
+{
+  "startedAt": "2026-10-10T10:28:20.490092+00:00",
+  "durationSeconds": 0.0297,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "datatype": "schedule",
+      "isNew": true,
+      "data": {
+        "name": "course-status-window-1010",
+        "title": "Course status window \u2014 API course",
+        "type": "simple",
+        "status": "active",
+        "target": [
+          {
+            "datatype": "schedule_marks_1010",
+            "id": "6aca1344f5d6b011f6e12028"
+          }
+        ],
+        "start": {
+          "date": "2026-10-10T10:29:20.490Z",
+          "action": "update-status",
+          "actionArgs": "ready"
+        },
+        "end": {
+          "date": "2026-10-10T10:30:20.490Z",
+          "action": "update-status",
+          "actionArgs": "finished"
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "datatype": "schedule",
+      "data": {
+        "name": "course-status-window-1010",
+        "title": "Course status window \u2014 API course",
+        "type": "simple",
+        "status": "active",
+        "target": [
+          {
+            "datatype": "schedule_marks_1010",
+            "id": "6aca1344f5d6b011f6e12028"
+          }
+        ],
+        "start": {
+          "date": "2026-10-10T10:29:20.490Z",
+          "action": "update-status",
+          "actionArgs": "ready"
+        },
+        "end": {
+          "date": "2026-10-10T10:30:20.490Z",
+          "action": "update-status",
+          "actionArgs": "finished"
+        }
+      },
+      "name": "course-status-window-1010",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|schedule",
+      "createdate": "2026-10-10T10:28:20.507Z",
+      "modifydate": "2026-10-10T10:28:20.507Z",
+      "version": 0,
+      "sk": "6aca1344f5d6b011f6e12029",
+      "id": "6aca1344f5d6b011f6e12029"
+    }
+  }
+}

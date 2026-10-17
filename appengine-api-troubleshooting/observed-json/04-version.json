@@ -1,0 +1,18 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/version",
+    "headers": {
+      "content-type": "application/json",
+      "orgid": "video-lab-mut4jkwd"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "name": "appengine",
+      "version": "0.144.4"
+    }
+  }
+}

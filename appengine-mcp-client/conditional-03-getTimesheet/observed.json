@@ -1,0 +1,13 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"_id\": \"6acb2e18ba781cd23c2f7589\",\n  \"pk\": \"video-lab-mut4jkwd|bm_timesheet\",\n  \"sk\": \"6acb2e18ba781cd23c2f7589\",\n  \"name\": \"bm_timesheet-1791700504473-qhwjxtvz\",\n  \"datatype\": \"bm_timesheet\",\n  \"data\": {\n    \"employeeId\": \"6acb2e18ba781cd23c2f757d\",\n    \"payPeriodStart\": \"2026-10-19\",\n    \"payPeriodEnd\": \"2026-10-25\",\n    \"notes\": \"Synthetic course demonstration. No payroll run or payment.\",\n    \"status\": \"submitted\",\n    \"timeEntries\": [\n      {\n        \"id\": \"te-1791700504493-kkv34n\",\n        \"timeSheetId\": \"6acb2e18ba781cd23c2f7589\",\n        \"date\": \"2026-10-19\",\n        \"hours\": 8,\n        \"type\": \"regular\",\n        \"description\": \"Synthetic training hours\",\n        \"approved\": false,\n        \"createdAt\": \"2026-10-11T06:35:04.493Z\",\n        \"countedHours\": 8\n      },\n      {\n        \"id\": \"te-1791700504513-dqmp7i\",\n        \"timeSheetId\": \"6acb2e18ba781cd23c2f7589\",\n        \"date\": \"2026-10-20\",\n        \"hours\": 2,\n        \"type\": \"overtime\",\n        \"description\": \"Synthetic overtime condition\",\n        \"approved\": false,\n        \"createdAt\": \"2026-10-11T06:35:04.513Z\",\n        \"countedHours\": 2\n      }\n    ],\n    \"name\": \"bm_timesheet-1791700504473-qhwjxtvz\",\n    \"totalHours\": 10,\n    \"regularHours\": 10,\n    \"overtimeHours\": 0,\n    \"doubleTimeHours\": 0,\n    \"ptoHours\": 0,\n    \"holidayHours\": 0,\n    \"sickHours\": 0,\n    \"appliedPolicy\": {\n      \"matchedBy\": \"default\",\n      \"rounding\": \"exact\"\n    },\n    \"recordedWorkedHours\": 10,\n    \"breakDeductedHours\": 0,\n    \"submittedAt\": \"2026-10-11T06:35:04.531Z\",\n    \"submittedById\": \"video-lab-mut4jkwd@example.com\"\n  },\n  \"version\": 3,\n  \"author\": \"video-lab-mut4jkwd@example.com\",\n  \"created_by\": \"video-lab-mut4jkwd@example.com\",\n  \"state\": \"draft\",\n  \"createdate\": \"2026-10-11T06:35:04.477Z\",\n  \"modifydate\": \"2026-10-11T06:35:04.534Z\",\n  \"modified_by\": \"system\"\n}"
+      }
+    ],
+    "structured_content": null
+  },
+  "error": null,
+  "hostEventStatus": "completed"
+}

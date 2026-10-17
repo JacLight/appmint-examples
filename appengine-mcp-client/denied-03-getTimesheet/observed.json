@@ -1,0 +1,13 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Not permitted: visitor.mcp-usecase-1011@training.local lacks content permissions in org video-lab-mut4jkwd."
+      }
+    ],
+    "structured_content": null
+  },
+  "error": null,
+  "hostEventStatus": "failed"
+}

@@ -1,0 +1,44 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/storefront/inventory/sku/SUPPLIER-OAK-1011"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "locations": [
+        {
+          "_id": "6acb15e0ba781cd23c2f6e58",
+          "pk": "video-lab-mut4jkwd|sf_inventory",
+          "sk": "6acb15e0ba781cd23c2f6e58",
+          "version": 0,
+          "datatype": "sf_inventory",
+          "author": "video-lab-mut4jkwd@example.com",
+          "createdate": "2026-10-11T04:51:44.732Z",
+          "modifydate": "2026-10-11T05:01:53.230Z",
+          "data": {
+            "sku": "SUPPLIER-OAK-1011",
+            "productName": "Training white oak plank",
+            "locationId": "supplier-usecase-1011",
+            "locationName": "Supplier Course Receiving",
+            "quantity": 60,
+            "reservedQuantity": 0,
+            "unitCost": 39.5,
+            "currency": "USD",
+            "metadata": {
+              "openedBy": "intake",
+              "intakeNumber": "INT-P3QZ0EAQ"
+            },
+            "availableQuantity": 60,
+            "movementRevision": 6,
+            "pendingMovements": [],
+            "lastRestockDate": "2026-10-11T05:01:53.204Z"
+          }
+        }
+      ],
+      "totalQuantity": 60,
+      "totalAvailable": 60
+    }
+  }
+}

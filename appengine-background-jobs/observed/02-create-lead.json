@@ -1,0 +1,55 @@
+{
+  "startedAt": "2026-10-11T04:50:55.826Z",
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/crm/leads/detail",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "name": "job-usecase-1011-02-create-lead",
+      "fullName": "Rowan Bennett",
+      "pipelineId": "6acb15afba781cd23c2f6e14",
+      "stageId": "contacted",
+      "source": "other",
+      "status": "new"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "pk": "video-lab-mut4jkwd|lead",
+      "sk": "6acb15afba781cd23c2f6e15",
+      "name": "job-usecase-1011-02-create-lead",
+      "datatype": "lead",
+      "data": {
+        "name": "job-usecase-1011-02-create-lead",
+        "fullName": "Rowan Bennett",
+        "pipelineId": "6acb15afba781cd23c2f6e14",
+        "stageId": "contacted",
+        "source": "other",
+        "status": "new",
+        "id": "lead_1791694255834_k3l8ku3z",
+        "firstName": "Rowan",
+        "lastName": "Bennett",
+        "score": 10,
+        "temperature": "cold",
+        "createdAt": "2026-10-11T04:50:55.834Z",
+        "updatedAt": "2026-10-11T04:50:55.834Z",
+        "leadInformation": {
+          "leadScore": 10
+        }
+      },
+      "version": 0,
+      "author": "video-lab-mut4jkwd@example.com",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "createdate": "2026-10-11T04:50:55.836Z",
+      "modifydate": "2026-10-11T04:50:55.836Z",
+      "id": "6acb15afba781cd23c2f6e15"
+    }
+  }
+}

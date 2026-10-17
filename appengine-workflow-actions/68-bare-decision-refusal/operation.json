@@ -1,0 +1,10 @@
+{
+  "method": "POST",
+  "path": "/workflow/task/6aca13e3f5d6b011f6e12062/complete",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {}
+}

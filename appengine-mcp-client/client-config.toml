@@ -1,0 +1,5 @@
+[mcp_servers.appengine]
+url = "https://YOUR_APPENGINE_HOST/mcp"
+bearer_token_env_var = "STAFF_TOKEN"
+http_headers = { orgid = "YOUR_ORGANIZATION_ID" }
+enabled_tools = ["list_services", "describe_service", "call_service"]

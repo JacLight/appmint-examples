@@ -1,0 +1,14 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/version",
+    "headers": {
+      "content-type": "application/json"
+    }
+  },
+  "response": {
+    "status": 404,
+    "body": "Not Found"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "target": {
+    "kind": "screen",
+    "app": "appmint",
+    "path": "/course-training-only"
+  },
+  "request": {
+    "label": "Course training screen",
+    "reason": "Demonstrate an isolated request lifecycle without granting access"
+  }
+}

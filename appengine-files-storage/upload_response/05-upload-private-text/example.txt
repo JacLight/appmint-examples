@@ -1,0 +1,8 @@
+POST {{base}}{{route}}
+Headers: orgid + Authorization
+
+Body → form-data
+file       File  supplier-notes.txt
+location   Text  course-files-1009/private
+isPrivate  Text  true
+Let Postman create Content-Type.

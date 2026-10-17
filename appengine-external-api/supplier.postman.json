@@ -1,0 +1,1165 @@
+{
+  "info": {
+    "name": "AppEngine External API Integration and Data Mapping",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base",
+      "value": "https://YOUR_APPENGINE_HOST"
+    },
+    {
+      "key": "orgid",
+      "value": ""
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "record_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01-providers",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/upstream/integration-use-cases/Product%20Sync"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "02-locations",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/find/location",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.name\": \"supplier-usecase-1011\"\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 5\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "03-intakes",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes?q=supplier-usecase-1011"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "04-products",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/find/sf_product",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.sku\": {\n      \"$in\": [\n        \"SUPPLIER-OAK-1011\",\n        \"SUPPLIER-WAL-1011\"\n      ]\n    }\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 5\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "05-product-schema",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/collections/sf_product?enriched=false"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "06-schema-save",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/update/sf_product",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"pk\": \"sf_product\",\n  \"sk\": \"sf_product\",\n  \"name\": \"sf_product\",\n  \"data\": {\n    \"name\": \"sf_product\",\n    \"title\": \"Store Product\",\n    \"description\": \"Store Product\",\n    \"type\": \"Concrete\",\n    \"enablePost\": true,\n    \"enableWorkflow\": true,\n    \"enableVersioning\": true,\n    \"enableIndexing\": true,\n    \"enableSubSchema\": true,\n    \"permission\": {},\n    \"validations\": {},\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\",\n          \"label\": \"Title\",\n          \"group\": \"name\"\n        },\n        \"slug\": {\n          \"type\": \"string\",\n          \"pattern\": \"^[a-zA-Z_\\\\-0-9]*$\",\n          \"default\": \"{{name}}\",\n          \"transform\": [\n            \"uri\",\n            \"lowercase\",\n            \"suffix-\",\n            \"random-string\"\n          ],\n          \"textSearch\": true,\n          \"group\": \"name\"\n        },\n        \"sku\": {\n          \"type\": \"string\",\n          \"pattern\": \"^[a-zA-Z_\\\\-0-9]*$\",\n          \"minLength\": 3,\n          \"maxLength\": 50,\n          \"unique\": true,\n          \"textSearch\": true,\n          \"placeholder\": \"Made from the name if left blank\",\n          \"group\": \"slug\"\n        },\n        \"price\": {\n          \"type\": \"number\",\n          \"group\": \"price\"\n        },\n        \"cost\": {\n          \"type\": \"number\",\n          \"group\": \"price\",\n          \"hideIn\": [\n            \"public\"\n          ],\n          \"description\": \"Total unit cost \\u2014 the sum of costComponents when those are used. Margin is price less this.\"\n        },\n        \"costComponents\": {\n          \"type\": \"array\",\n          \"title\": \"Cost breakdown\",\n          \"hideIn\": [\n            \"public\"\n          ],\n          \"collapsible\": true,\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"name\": {\n                \"type\": \"string\",\n                \"description\": \"e.g. purchase, freight in, packaging, handling, prep labour\"\n              },\n              \"amount\": {\n                \"type\": \"number\"\n              },\n              \"note\": {\n                \"type\": \"string\"\n              }\n            }\n          },\n          \"group\": \"price\"\n        },\n        \"tax\": {\n          \"type\": \"boolean\",\n          \"group\": \"price\"\n        },\n        \"hide\": {\n          \"type\": \"boolean\",\n          \"x-control-variant\": \"checkbox\",\n          \"group\": \"price\"\n        },\n        \"tiers\": {\n          \"type\": \"array\",\n          \"collapsible\": true,\n          \"description\": \"Pricing tiers (volume discounts, group pricing)\",\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"minQuantity\": {\n                \"type\": \"number\",\n                \"minimum\": 1,\n                \"description\": \"Minimum quantity for this tier\"\n              },\n              \"maxQuantity\": {\n                \"type\": \"number\",\n                \"description\": \"Maximum quantity (empty = unlimited)\"\n              },\n              \"price\": {\n                \"type\": \"number\",\n                \"description\": \"Price per unit at this tier\"\n              },\n              \"discountPercent\": {\n                \"type\": \"number\",\n                \"minimum\": 0,\n                \"maximum\": 100,\n                \"description\": \"Or % discount from base price\"\n              },\n              \"groups\": {\n                \"type\": \"array\",\n                \"description\": \"Limit to specific groups (empty = all customers)\",\n                \"x-control\": \"selectMany\",\n                \"x-control-variant\": \"chip\",\n                \"dataSource\": {\n                  \"source\": \"collection\",\n                  \"collection\": \"customer_group\",\n                  \"value\": \"name\",\n                  \"label\": \"name\"\n                },\n                \"items\": {\n                  \"type\": \"string\"\n                }\n              }\n            }\n          },\n          \"group\": \"price\"\n        },\n        \"brand\": {\n          \"type\": \"string\",\n          \"x-control\": \"selectMany\",\n          \"dataSource\": {\n            \"source\": \"collection\",\n            \"collection\": \"sf_brand\",\n            \"value\": \"name\",\n            \"label\": \"name\"\n          },\n          \"group\": \"status\"\n        },\n        \"plan\": {\n          \"type\": \"string\",\n          \"x-control\": \"selectMany\",\n          \"dataSource\": {\n            \"source\": \"collection\",\n            \"collection\": \"sf_subscription_plan\",\n            \"value\": \"name\",\n            \"label\": \"name\"\n          },\n          \"group\": \"status\"\n        },\n        \"status\": {\n          \"type\": \"string\",\n          \"group\": \"status\",\n          \"enum\": [\n            \"draft\",\n            \"new\",\n            \"pre-order\",\n            \"available\",\n            \"sold-out\",\n            \"discontinued\",\n            \"not-for-sale\"\n          ]\n        },\n        \"stock\": {\n          \"type\": \"number\",\n          \"group\": \"stock\"\n        },\n        \"available\": {\n          \"type\": \"boolean\",\n          \"group\": \"stock\"\n        },\n        \"isbn\": {\n          \"type\": \"string\",\n          \"group\": \"stock\"\n        },\n        \"discount\": {\n          \"type\": \"string\",\n          \"group\": \"discount\"\n        },\n        \"points\": {\n          \"type\": \"number\",\n          \"group\": \"discount\"\n        },\n        \"download\": {\n          \"type\": \"string\",\n          \"group\": \"discount\"\n        },\n        \"description\": {\n          \"type\": \"string\",\n          \"hideLabel\": true,\n          \"x-control\": \"richtext\",\n          \"textSearch\": true\n        },\n        \"sold\": {\n          \"type\": \"number\",\n          \"hidden\": true\n        },\n        \"image\": {\n          \"type\": \"string\",\n          \"hidden\": true\n        },\n        \"images\": {\n          \"type\": \"array\",\n          \"x-control\": \"file\",\n          \"items\": {\n            \"type\": \"object\",\n            \"readOnly\": true,\n            \"x-control\": \"file\",\n            \"properties\": {\n              \"path\": {\n                \"type\": \"string\"\n              },\n              \"content\": {\n                \"type\": \"string\",\n                \"hidden\": true,\n                \"hideIn\": [\n                  \"generator\"\n                ]\n              },\n              \"contentType\": {\n                \"type\": \"string\",\n                \"hideIn\": [\n                  \"generator\"\n                ]\n              },\n              \"url\": {\n                \"type\": \"string\",\n                \"x-render\": \"file\"\n              },\n              \"isPublic\": {\n                \"type\": \"boolean\",\n                \"hidden\": true,\n                \"hideIn\": [\n                  \"generator\"\n                ]\n              },\n              \"meta\": {\n                \"type\": \"object\",\n                \"hidden\": true,\n                \"hideIn\": [\n                  \"generator\"\n                ],\n                \"properties\": {\n                  \"width\": {\n                    \"type\": \"number\"\n                  },\n                  \"height\": {\n                    \"type\": \"number\"\n                  },\n                  \"size\": {\n                    \"type\": \"number\"\n                  },\n                  \"xs\": {\n                    \"type\": \"object\",\n                    \"properties\": {\n                      \"path\": {\n                        \"type\": \"string\"\n                      },\n                      \"url\": {\n                        \"type\": \"string\"\n                      }\n                    }\n                  },\n                  \"sm\": {\n                    \"type\": \"object\",\n                    \"properties\": {\n                      \"path\": {\n                        \"type\": \"string\"\n                      },\n                      \"url\": {\n                        \"type\": \"string\"\n                      }\n                    }\n                  },\n                  \"md\": {\n                    \"type\": \"object\",\n                    \"properties\": {\n                      \"path\": {\n                        \"type\": \"string\"\n                      },\n                      \"url\": {\n                        \"type\": \"string\"\n                      }\n                    }\n                  }\n                }\n              }\n            }\n          },\n          \"hideLabel\": true\n        },\n        \"preview\": {\n          \"type\": \"object\",\n          \"collapsible\": true,\n          \"properties\": {\n            \"enabled\": {\n              \"type\": \"boolean\",\n              \"description\": \"Show a live design preview on the product page.\"\n            },\n            \"views\": {\n              \"type\": \"array\",\n              \"description\": \"One entry per angle/side (Front, Back, \\u2026), each with its own mockup image and zones.\",\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"name\": {\n                    \"type\": \"string\",\n                    \"description\": \"Label for this view, e.g. \\\"Front\\\".\"\n                  },\n                  \"baseImage\": {\n                    \"type\": \"array\",\n                    \"x-control\": \"file\",\n                    \"description\": \"The mockup image for this view (the blank shirt). Single file.\",\n                    \"items\": {\n                      \"type\": \"object\",\n                      \"readOnly\": true,\n                      \"x-control\": \"file\",\n                      \"properties\": {\n                        \"path\": {\n                          \"type\": \"string\"\n                        },\n                        \"content\": {\n                          \"type\": \"string\",\n                          \"hidden\": true,\n                          \"hideIn\": [\n                            \"generator\"\n                          ]\n                        },\n                        \"contentType\": {\n                          \"type\": \"string\",\n                          \"hideIn\": [\n                            \"generator\"\n                          ]\n                        },\n                        \"url\": {\n                          \"type\": \"string\",\n                          \"x-render\": \"file\"\n                        },\n                        \"isPublic\": {\n                          \"type\": \"boolean\",\n                          \"hidden\": true,\n                          \"hideIn\": [\n                            \"generator\"\n                          ]\n                        },\n                        \"meta\": {\n                          \"type\": \"object\",\n                          \"hidden\": true,\n                          \"hideIn\": [\n                            \"generator\"\n                          ],\n                          \"properties\": {\n                            \"width\": {\n                              \"type\": \"number\"\n                            },\n                            \"height\": {\n                              \"type\": \"number\"\n                            },\n                            \"size\": {\n                              \"type\": \"number\"\n                            },\n                            \"xs\": {\n                              \"type\": \"object\",\n                              \"properties\": {\n                                \"path\": {\n                                  \"type\": \"string\"\n                                },\n                                \"url\": {\n                                  \"type\": \"string\"\n                                }\n                              }\n                            },\n                            \"sm\": {\n                              \"type\": \"object\",\n                              \"properties\": {\n                                \"path\": {\n                                  \"type\": \"string\"\n                                },\n                                \"url\": {\n                                  \"type\": \"string\"\n                                }\n                              }\n                            },\n                            \"md\": {\n                              \"type\": \"object\",\n                              \"properties\": {\n                                \"path\": {\n                                  \"type\": \"string\"\n                                },\n                                \"url\": {\n                                  \"type\": \"string\"\n                                }\n                              }\n                            }\n                          }\n                        }\n                      }\n                    }\n                  },\n                  \"zones\": {\n                    \"type\": \"array\",\n                    \"description\": \"Where uploaded artwork is placed on this view.\",\n                    \"items\": {\n                      \"type\": \"object\",\n                      \"layout\": \"horizontal\",\n                      \"properties\": {\n                        \"attribute\": {\n                          \"type\": \"string\",\n                          \"description\": \"Name of the file-type attribute whose upload fills this zone (e.g. \\\"artwork\\\").\",\n                          \"x-control\": \"selectMany\",\n                          \"dataSource\": {\n                            \"source\": \"collection\",\n                            \"collection\": \"sf_attribute\",\n                            \"value\": \"name\",\n                            \"label\": \"name\"\n                          }\n                        },\n                        \"label\": {\n                          \"type\": \"string\",\n                          \"description\": \"Human label for the zone, e.g. \\\"Chest logo\\\".\"\n                        },\n                        \"x\": {\n                          \"type\": \"number\",\n                          \"description\": \"Left offset, % of image width (0\\u2013100).\"\n                        },\n                        \"y\": {\n                          \"type\": \"number\",\n                          \"description\": \"Top offset, % of image height (0\\u2013100).\"\n                        },\n                        \"width\": {\n                          \"type\": \"number\",\n                          \"description\": \"Zone width, % of image width.\"\n                        },\n                        \"height\": {\n                          \"type\": \"number\",\n                          \"description\": \"Zone height, % of image height.\"\n                        },\n                        \"rotation\": {\n                          \"type\": \"number\",\n                          \"description\": \"Rotation in degrees (default 0).\"\n                        },\n                        \"fit\": {\n                          \"type\": \"string\",\n                          \"enum\": [\n                            \"contain\",\n                            \"cover\",\n                            \"fill\"\n                          ],\n                          \"description\": \"How the uploaded art fits the zone box.\"\n                        }\n                      }\n                    }\n                  }\n                }\n              }\n            }\n          }\n        },\n        \"salesChannels\": {\n          \"type\": \"array\",\n          \"x-control\": \"selectMany\",\n          \"x-control-variant\": \"chip\",\n          \"group\": \"channels\",\n          \"dataSource\": {\n            \"source\": \"function\",\n            \"value\": \"getSalesChannels\"\n          },\n          \"items\": {\n            \"type\": \"string\"\n          }\n        },\n        \"parcel\": {\n          \"type\": \"object\",\n          \"collapsible\": true,\n          \"properties\": {\n            \"weight\": {\n              \"type\": \"number\",\n              \"group\": \"weight\"\n            },\n            \"weightUnit\": {\n              \"type\": \"string\",\n              \"enum\": [\n                \"oz\",\n                \"lb\",\n                \"g\",\n                \"kg\"\n              ],\n              \"default\": \"lb\",\n              \"group\": \"weight\"\n            },\n            \"length\": {\n              \"type\": \"number\",\n              \"group\": \"dimensions\"\n            },\n            \"height\": {\n              \"type\": \"number\",\n              \"group\": \"dimensions\"\n            },\n            \"width\": {\n              \"type\": \"number\",\n              \"group\": \"dimensions\"\n            },\n            \"dimensionUnit\": {\n              \"type\": \"string\",\n              \"enum\": [\n                \"in\",\n                \"cm\"\n              ],\n              \"default\": \"in\",\n              \"group\": \"dimensions\"\n            }\n          }\n        },\n        \"shipping\": {\n          \"type\": \"object\",\n          \"collapsible\": true,\n          \"properties\": {\n            \"shipsAs\": {\n              \"type\": \"string\",\n              \"enum\": [\n                \"freight\",\n                \"oversize\",\n                \"fragile\",\n                \"hazmat\",\n                \"refrigerated\"\n              ],\n              \"x-control\": \"selectSingle\",\n              \"description\": \"How this ships. Empty for ordinary goods.\",\n              \"group\": \"shipping-config\"\n            },\n            \"config\": {\n              \"type\": \"string\",\n              \"description\": \"Shipping configuration to price this product (empty = the site default)\",\n              \"notes\": \"Rarely needed. Say what the product is with Ships As instead of pointing it at a rate.\",\n              \"x-control\": \"selectSingle\",\n              \"dataSource\": {\n                \"source\": \"collection\",\n                \"collection\": \"sf_shipping_config\",\n                \"value\": \"name\",\n                \"label\": \"title\"\n              },\n              \"group\": \"shipping-config\"\n            },\n            \"override\": {\n              \"type\": \"string\",\n              \"enum\": [\n                \"\",\n                \"free\",\n                \"flat\"\n              ],\n              \"description\": \"Quick override: free shipping or flat rate\",\n              \"group\": \"shipping-config\"\n            },\n            \"flatRate\": {\n              \"type\": \"number\",\n              \"description\": \"Flat rate amount (when override is flat)\",\n              \"rules\": [\n                {\n                  \"operation\": \"notEqual\",\n                  \"valueA\": \"{{override}}\",\n                  \"valueB\": \"flat\",\n                  \"action\": \"hide\"\n                }\n              ],\n              \"group\": \"shipping-config\"\n            },\n            \"currency\": {\n              \"type\": \"string\",\n              \"default\": \"USD\",\n              \"group\": \"shipping-config\"\n            },\n            \"boxSizes\": {\n              \"type\": \"array\",\n              \"title\": \"Packaging (overrides the configuration)\",\n              \"collapsible\": true,\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"name\": {\n                    \"type\": \"string\",\n                    \"description\": \"What to call this box\"\n                  },\n                  \"quantity\": {\n                    \"type\": \"number\",\n                    \"default\": 1,\n                    \"description\": \"Units of this product per box\"\n                  },\n                  \"length\": {\n                    \"type\": \"number\"\n                  },\n                  \"width\": {\n                    \"type\": \"number\"\n                  },\n                  \"height\": {\n                    \"type\": \"number\"\n                  },\n                  \"dimensionUnit\": {\n                    \"type\": \"string\",\n                    \"enum\": [\n                      \"in\",\n                      \"cm\"\n                    ],\n                    \"default\": \"in\"\n                  },\n                  \"weight\": {\n                    \"type\": \"number\",\n                    \"description\": \"Weight of the empty box, if it matters\"\n                  },\n                  \"maxWeight\": {\n                    \"type\": \"number\"\n                  },\n                  \"weightUnit\": {\n                    \"type\": \"string\",\n                    \"enum\": [\n                      \"lb\",\n                      \"kg\"\n                    ],\n                    \"default\": \"lb\"\n                  }\n                }\n              },\n              \"group\": \"shipping-packaging\"\n            },\n            \"shipsAlone\": {\n              \"type\": \"boolean\",\n              \"default\": false,\n              \"description\": \"Always ships in its own package\",\n              \"group\": \"shipping-packaging\"\n            },\n            \"shipsFrom\": {\n              \"type\": \"string\",\n              \"description\": \"Ship from location (overrides config origin)\",\n              \"x-control\": \"selectSingle\",\n              \"dataSource\": {\n                \"source\": \"collection\",\n                \"collection\": \"location\",\n                \"value\": \"name\",\n                \"label\": \"name\"\n              }\n            },\n            \"restrictions\": {\n              \"type\": \"object\",\n              \"collapsible\": true,\n              \"properties\": {\n                \"excludeCountries\": {\n                  \"type\": \"array\",\n                  \"items\": {\n                    \"type\": \"string\"\n                  },\n                  \"description\": \"Countries where this product cannot be shipped\",\n                  \"x-control\": \"selectMany\",\n                  \"x-control-variant\": \"chip\",\n                  \"dataSource\": {\n                    \"source\": \"json\",\n                    \"json\": [\n                      {\n                        \"label\": \"United States\",\n                        \"value\": \"us\"\n                      },\n                      {\n                        \"label\": \"Canada\",\n                        \"value\": \"ca\"\n                      },\n                      {\n                        \"label\": \"Andorra\",\n                        \"value\": \"ad\"\n                      },\n                      {\n                        \"label\": \"United Arab Emirates\",\n                        \"value\": \"ae\"\n                      },\n                      {\n                        \"label\": \"Afghanistan\",\n                        \"value\": \"af\"\n                      },\n                      {\n                        \"label\": \"Antigua and Barbuda\",\n                        \"value\": \"ag\"\n                      },\n                      {\n                        \"label\": \"Anguilla\",\n                        \"value\": \"ai\"\n                      },\n                      {\n                        \"label\": \"Albania\",\n                        \"value\": \"al\"\n                      },\n                      {\n                        \"label\": \"Armenia\",\n                        \"value\": \"am\"\n                      },\n                      {\n                        \"label\": \"Angola\",\n                        \"value\": \"ao\"\n                      },\n                      {\n                        \"label\": \"Antarctica\",\n                        \"value\": \"aq\"\n                      },\n                      {\n                        \"label\": \"Argentina\",\n                        \"value\": \"ar\"\n                      },\n                      {\n                        \"label\": \"American Samoa\",\n                        \"value\": \"as\"\n                      },\n                      {\n                        \"label\": \"Austria\",\n                        \"value\": \"at\"\n                      },\n                      {\n                        \"label\": \"Australia\",\n                        \"value\": \"au\"\n                      },\n                      {\n                        \"label\": \"Aruba\",\n                        \"value\": \"aw\"\n                      },\n                      {\n                        \"label\": \"\\u00c5land\",\n                        \"value\": \"ax\"\n                      },\n                      {\n                        \"label\": \"Azerbaijan\",\n                        \"value\": \"az\"\n                      },\n                      {\n                        \"label\": \"Bosnia and Herzegovina\",\n                        \"value\": \"ba\"\n                      },\n                      {\n                        \"label\": \"Barbados\",\n                        \"value\": \"bb\"\n                      },\n                      {\n                        \"label\": \"Bangladesh\",\n                        \"value\": \"bd\"\n                      },\n                      {\n                        \"label\": \"Belgium\",\n                        \"value\": \"be\"\n                      },\n                      {\n                        \"label\": \"Burkina Faso\",\n                        \"value\": \"bf\"\n                      },\n                      {\n                        \"label\": \"Bulgaria\",\n                        \"value\": \"bg\"\n                      },\n                      {\n                        \"label\": \"Bahrain\",\n                        \"value\": \"bh\"\n                      },\n                      {\n                        \"label\": \"Burundi\",\n                        \"value\": \"bi\"\n                      },\n                      {\n                        \"label\": \"Benin\",\n                        \"value\": \"bj\"\n                      },\n                      {\n                        \"label\": \"Saint Barth\\u00e9lemy\",\n                        \"value\": \"bl\"\n                      },\n                      {\n                        \"label\": \"Bermuda\",\n                        \"value\": \"bm\"\n                      },\n                      {\n                        \"label\": \"Brunei\",\n                        \"value\": \"bn\"\n                      },\n                      {\n                        \"label\": \"Bolivia\",\n                        \"value\": \"bo\"\n                      },\n                      {\n                        \"label\": \"Bonaire\",\n                        \"value\": \"bq\"\n                      },\n                      {\n                        \"label\": \"Brazil\",\n                        \"value\": \"br\"\n                      },\n                      {\n                        \"label\": \"Bahamas\",\n                        \"value\": \"bs\"\n                      },\n                      {\n                        \"label\": \"Bhutan\",\n                        \"value\": \"bt\"\n                      },\n                      {\n                        \"label\": \"Bouvet Island\",\n                        \"value\": \"bv\"\n                      },\n                      {\n                        \"label\": \"Botswana\",\n                        \"value\": \"bw\"\n                      },\n                      {\n                        \"label\": \"Belarus\",\n                        \"value\": \"by\"\n                      },\n                      {\n                        \"label\": \"Belize\",\n                        \"value\": \"bz\"\n                      },\n                      {\n                        \"label\": \"Cocos [Keeling] Islands\",\n                        \"value\": \"cc\"\n                      },\n                      {\n                        \"label\": \"Democratic Republic of the Congo\",\n                        \"value\": \"cd\"\n                      },\n                      {\n                        \"label\": \"Central African Republic\",\n                        \"value\": \"cf\"\n                      },\n                      {\n                        \"label\": \"Republic of the Congo\",\n                        \"value\": \"cg\"\n                      },\n                      {\n                        \"label\": \"Switzerland\",\n                        \"value\": \"ch\"\n                      },\n                      {\n                        \"label\": \"Ivory Coast\",\n                        \"value\": \"ci\"\n                      },\n                      {\n                        \"label\": \"Cook Islands\",\n                        \"value\": \"ck\"\n                      },\n                      {\n                        \"label\": \"Chile\",\n                        \"value\": \"cl\"\n                      },\n                      {\n                        \"label\": \"Cameroon\",\n                        \"value\": \"cm\"\n                      },\n                      {\n                        \"label\": \"China\",\n                        \"value\": \"cn\"\n                      },\n                      {\n                        \"label\": \"Colombia\",\n                        \"value\": \"co\"\n                      },\n                      {\n                        \"label\": \"Costa Rica\",\n                        \"value\": \"cr\"\n                      },\n                      {\n                        \"label\": \"Cuba\",\n                        \"value\": \"cu\"\n                      },\n                      {\n                        \"label\": \"Cape Verde\",\n                        \"value\": \"cv\"\n                      },\n                      {\n                        \"label\": \"Curacao\",\n                        \"value\": \"cw\"\n                      },\n                      {\n                        \"label\": \"Christmas Island\",\n                        \"value\": \"cx\"\n                      },\n                      {\n                        \"label\": \"Cyprus\",\n                        \"value\": \"cy\"\n                      },\n                      {\n                        \"label\": \"Czech Republic\",\n                        \"value\": \"cz\"\n                      },\n                      {\n                        \"label\": \"Germany\",\n                        \"value\": \"de\"\n                      },\n                      {\n                        \"label\": \"Djibouti\",\n                        \"value\": \"dj\"\n                      },\n                      {\n                        \"label\": \"Denmark\",\n                        \"value\": \"dk\"\n                      },\n                      {\n                        \"label\": \"Dominica\",\n                        \"value\": \"dm\"\n                      },\n                      {\n                        \"label\": \"Dominican Republic\",\n                        \"value\": \"do\"\n                      },\n                      {\n                        \"label\": \"Algeria\",\n                        \"value\": \"dz\"\n                      },\n                      {\n                        \"label\": \"Ecuador\",\n                        \"value\": \"ec\"\n                      },\n                      {\n                        \"label\": \"Estonia\",\n                        \"value\": \"ee\"\n                      },\n                      {\n                        \"label\": \"Egypt\",\n                        \"value\": \"eg\"\n                      },\n                      {\n                        \"label\": \"Western Sahara\",\n                        \"value\": \"eh\"\n                      },\n                      {\n                        \"label\": \"Eritrea\",\n                        \"value\": \"er\"\n                      },\n                      {\n                        \"label\": \"Spain\",\n                        \"value\": \"es\"\n                      },\n                      {\n                        \"label\": \"Ethiopia\",\n                        \"value\": \"et\"\n                      },\n                      {\n                        \"label\": \"Finland\",\n                        \"value\": \"fi\"\n                      },\n                      {\n                        \"label\": \"Fiji\",\n                        \"value\": \"fj\"\n                      },\n                      {\n                        \"label\": \"Falkland Islands\",\n                        \"value\": \"fk\"\n                      },\n                      {\n                        \"label\": \"Micronesia\",\n                        \"value\": \"fm\"\n                      },\n                      {\n                        \"label\": \"Faroe Islands\",\n                        \"value\": \"fo\"\n                      },\n                      {\n                        \"label\": \"France\",\n                        \"value\": \"fr\"\n                      },\n                      {\n                        \"label\": \"Gabon\",\n                        \"value\": \"ga\"\n                      },\n                      {\n                        \"label\": \"United Kingdom\",\n                        \"value\": \"gb\"\n                      },\n                      {\n                        \"label\": \"Grenada\",\n                        \"value\": \"gd\"\n                      },\n                      {\n                        \"label\": \"Georgia\",\n                        \"value\": \"ge\"\n                      },\n                      {\n                        \"label\": \"French Guiana\",\n                        \"value\": \"gf\"\n                      },\n                      {\n                        \"label\": \"Guernsey\",\n                        \"value\": \"gg\"\n                      },\n                      {\n                        \"label\": \"Ghana\",\n                        \"value\": \"gh\"\n                      },\n                      {\n                        \"label\": \"Gibraltar\",\n                        \"value\": \"gi\"\n                      },\n                      {\n                        \"label\": \"Greenland\",\n                        \"value\": \"gl\"\n                      },\n                      {\n                        \"label\": \"Gambia\",\n                        \"value\": \"gm\"\n                      },\n                      {\n                        \"label\": \"Guinea\",\n                        \"value\": \"gn\"\n                      },\n                      {\n                        \"label\": \"Guadeloupe\",\n                        \"value\": \"gp\"\n                      },\n                      {\n                        \"label\": \"Equatorial Guinea\",\n                        \"value\": \"gq\"\n                      },\n                      {\n                        \"label\": \"Greece\",\n                        \"value\": \"gr\"\n                      },\n                      {\n                        \"label\": \"South Georgia and the South Sandwich Islands\",\n                        \"value\": \"gs\"\n                      },\n                      {\n                        \"label\": \"Guatemala\",\n                        \"value\": \"gt\"\n                      },\n                      {\n                        \"label\": \"Guam\",\n                        \"value\": \"gu\"\n                      },\n                      {\n                        \"label\": \"Guinea-Bissau\",\n                        \"value\": \"gw\"\n                      },\n                      {\n                        \"label\": \"Guyana\",\n                        \"value\": \"gy\"\n                      },\n                      {\n                        \"label\": \"Hong Kong\",\n                        \"value\": \"hk\"\n                      },\n                      {\n                        \"label\": \"Heard Island and McDonald Islands\",\n                        \"value\": \"hm\"\n                      },\n                      {\n                        \"label\": \"Honduras\",\n                        \"value\": \"hn\"\n                      },\n                      {\n                        \"label\": \"Croatia\",\n                        \"value\": \"hr\"\n                      },\n                      {\n                        \"label\": \"Haiti\",\n                        \"value\": \"ht\"\n                      },\n                      {\n                        \"label\": \"Hungary\",\n                        \"value\": \"hu\"\n                      },\n                      {\n                        \"label\": \"Indonesia\",\n                        \"value\": \"id\"\n                      },\n                      {\n                        \"label\": \"Ireland\",\n                        \"value\": \"ie\"\n                      },\n                      {\n                        \"label\": \"Israel\",\n                        \"value\": \"il\"\n                      },\n                      {\n                        \"label\": \"Isle of Man\",\n                        \"value\": \"im\"\n                      },\n                      {\n                        \"label\": \"India\",\n                        \"value\": \"in\"\n                      },\n                      {\n                        \"label\": \"British Indian Ocean Territory\",\n                        \"value\": \"io\"\n                      },\n                      {\n                        \"label\": \"Iraq\",\n                        \"value\": \"iq\"\n                      },\n                      {\n                        \"label\": \"Iran\",\n                        \"value\": \"ir\"\n                      },\n                      {\n                        \"label\": \"Iceland\",\n                        \"value\": \"is\"\n                      },\n                      {\n                        \"label\": \"Italy\",\n                        \"value\": \"it\"\n                      },\n                      {\n                        \"label\": \"Jersey\",\n                        \"value\": \"je\"\n                      },\n                      {\n                        \"label\": \"Jamaica\",\n                        \"value\": \"jm\"\n                      },\n                      {\n                        \"label\": \"Jordan\",\n                        \"value\": \"jo\"\n                      },\n                      {\n                        \"label\": \"Japan\",\n                        \"value\": \"jp\"\n                      },\n                      {\n                        \"label\": \"Kenya\",\n                        \"value\": \"ke\"\n                      },\n                      {\n                        \"label\": \"Kyrgyzstan\",\n                        \"value\": \"kg\"\n                      },\n                      {\n                        \"label\": \"Cambodia\",\n                        \"value\": \"kh\"\n                      },\n                      {\n                        \"label\": \"Kiribati\",\n                        \"value\": \"ki\"\n                      },\n                      {\n                        \"label\": \"Comoros\",\n                        \"value\": \"km\"\n                      },\n                      {\n                        \"label\": \"Saint Kitts and Nevis\",\n                        \"value\": \"kn\"\n                      },\n                      {\n                        \"label\": \"North Korea\",\n                        \"value\": \"kp\"\n                      },\n                      {\n                        \"label\": \"South Korea\",\n                        \"value\": \"kr\"\n                      },\n                      {\n                        \"label\": \"Kuwait\",\n                        \"value\": \"kw\"\n                      },\n                      {\n                        \"label\": \"Cayman Islands\",\n                        \"value\": \"ky\"\n                      },\n                      {\n                        \"label\": \"Kazakhstan\",\n                        \"value\": \"kz\"\n                      },\n                      {\n                        \"label\": \"Laos\",\n                        \"value\": \"la\"\n                      },\n                      {\n                        \"label\": \"Lebanon\",\n                        \"value\": \"lb\"\n                      },\n                      {\n                        \"label\": \"Saint Lucia\",\n                        \"value\": \"lc\"\n                      },\n                      {\n                        \"label\": \"Liechtenstein\",\n                        \"value\": \"li\"\n                      },\n                      {\n                        \"label\": \"Sri Lanka\",\n                        \"value\": \"lk\"\n                      },\n                      {\n                        \"label\": \"Liberia\",\n                        \"value\": \"lr\"\n                      },\n                      {\n                        \"label\": \"Lesotho\",\n                        \"value\": \"ls\"\n                      },\n                      {\n                        \"label\": \"Lithuania\",\n                        \"value\": \"lt\"\n                      },\n                      {\n                        \"label\": \"Luxembourg\",\n                        \"value\": \"lu\"\n                      },\n                      {\n                        \"label\": \"Latvia\",\n                        \"value\": \"lv\"\n                      },\n                      {\n                        \"label\": \"Libya\",\n                        \"value\": \"ly\"\n                      },\n                      {\n                        \"label\": \"Morocco\",\n                        \"value\": \"ma\"\n                      },\n                      {\n                        \"label\": \"Monaco\",\n                        \"value\": \"mc\"\n                      },\n                      {\n                        \"label\": \"Moldova\",\n                        \"value\": \"md\"\n                      },\n                      {\n                        \"label\": \"Montenegro\",\n                        \"value\": \"me\"\n                      },\n                      {\n                        \"label\": \"Saint Martin\",\n                        \"value\": \"mf\"\n                      },\n                      {\n                        \"label\": \"Madagascar\",\n                        \"value\": \"mg\"\n                      },\n                      {\n                        \"label\": \"Marshall Islands\",\n                        \"value\": \"mh\"\n                      },\n                      {\n                        \"label\": \"North Macedonia\",\n                        \"value\": \"mk\"\n                      },\n                      {\n                        \"label\": \"Mali\",\n                        \"value\": \"ml\"\n                      },\n                      {\n                        \"label\": \"Myanmar [Burma]\",\n                        \"value\": \"mm\"\n                      },\n                      {\n                        \"label\": \"Mongolia\",\n                        \"value\": \"mn\"\n                      },\n                      {\n                        \"label\": \"Macao\",\n                        \"value\": \"mo\"\n                      },\n                      {\n                        \"label\": \"Northern Mariana Islands\",\n                        \"value\": \"mp\"\n                      },\n                      {\n                        \"label\": \"Martinique\",\n                        \"value\": \"mq\"\n                      },\n                      {\n                        \"label\": \"Mauritania\",\n                        \"value\": \"mr\"\n                      },\n                      {\n                        \"label\": \"Montserrat\",\n                        \"value\": \"ms\"\n                      },\n                      {\n                        \"label\": \"Malta\",\n                        \"value\": \"mt\"\n                      },\n                      {\n                        \"label\": \"Mauritius\",\n                        \"value\": \"mu\"\n                      },\n                      {\n                        \"label\": \"Maldives\",\n                        \"value\": \"mv\"\n                      },\n                      {\n                        \"label\": \"Malawi\",\n                        \"value\": \"mw\"\n                      },\n                      {\n                        \"label\": \"Mexico\",\n                        \"value\": \"mx\"\n                      },\n                      {\n                        \"label\": \"Malaysia\",\n                        \"value\": \"my\"\n                      },\n                      {\n                        \"label\": \"Mozambique\",\n                        \"value\": \"mz\"\n                      },\n                      {\n                        \"label\": \"Namibia\",\n                        \"value\": \"na\"\n                      },\n                      {\n                        \"label\": \"New Caledonia\",\n                        \"value\": \"nc\"\n                      },\n                      {\n                        \"label\": \"Niger\",\n                        \"value\": \"ne\"\n                      },\n                      {\n                        \"label\": \"Norfolk Island\",\n                        \"value\": \"nf\"\n                      },\n                      {\n                        \"label\": \"Nigeria\",\n                        \"value\": \"ng\"\n                      },\n                      {\n                        \"label\": \"Nicaragua\",\n                        \"value\": \"ni\"\n                      },\n                      {\n                        \"label\": \"Netherlands\",\n                        \"value\": \"nl\"\n                      },\n                      {\n                        \"label\": \"Norway\",\n                        \"value\": \"no\"\n                      },\n                      {\n                        \"label\": \"Nepal\",\n                        \"value\": \"np\"\n                      },\n                      {\n                        \"label\": \"Nauru\",\n                        \"value\": \"nr\"\n                      },\n                      {\n                        \"label\": \"Niue\",\n                        \"value\": \"nu\"\n                      },\n                      {\n                        \"label\": \"New Zealand\",\n                        \"value\": \"nz\"\n                      },\n                      {\n                        \"label\": \"Oman\",\n                        \"value\": \"om\"\n                      },\n                      {\n                        \"label\": \"Panama\",\n                        \"value\": \"pa\"\n                      },\n                      {\n                        \"label\": \"Peru\",\n                        \"value\": \"pe\"\n                      },\n                      {\n                        \"label\": \"French Polynesia\",\n                        \"value\": \"pf\"\n                      },\n                      {\n                        \"label\": \"Papua New Guinea\",\n                        \"value\": \"pg\"\n                      },\n                      {\n                        \"label\": \"Philippines\",\n                        \"value\": \"ph\"\n                      },\n                      {\n                        \"label\": \"Pakistan\",\n                        \"value\": \"pk\"\n                      },\n                      {\n                        \"label\": \"Poland\",\n                        \"value\": \"pl\"\n                      },\n                      {\n                        \"label\": \"Saint Pierre and Miquelon\",\n                        \"value\": \"pm\"\n                      },\n                      {\n                        \"label\": \"Pitcairn Islands\",\n                        \"value\": \"pn\"\n                      },\n                      {\n                        \"label\": \"Puerto Rico\",\n                        \"value\": \"pr\"\n                      },\n                      {\n                        \"label\": \"Palestine\",\n                        \"value\": \"ps\"\n                      },\n                      {\n                        \"label\": \"Portugal\",\n                        \"value\": \"pt\"\n                      },\n                      {\n                        \"label\": \"Palau\",\n                        \"value\": \"pw\"\n                      },\n                      {\n                        \"label\": \"Paraguay\",\n                        \"value\": \"py\"\n                      },\n                      {\n                        \"label\": \"Qatar\",\n                        \"value\": \"qa\"\n                      },\n                      {\n                        \"label\": \"R\\u00e9union\",\n                        \"value\": \"re\"\n                      },\n                      {\n                        \"label\": \"Romania\",\n                        \"value\": \"ro\"\n                      },\n                      {\n                        \"label\": \"Serbia\",\n                        \"value\": \"rs\"\n                      },\n                      {\n                        \"label\": \"Russia\",\n                        \"value\": \"ru\"\n                      },\n                      {\n                        \"label\": \"Rwanda\",\n                        \"value\": \"rw\"\n                      },\n                      {\n                        \"label\": \"Saudi Arabia\",\n                        \"value\": \"sa\"\n                      },\n                      {\n                        \"label\": \"Solomon Islands\",\n                        \"value\": \"sb\"\n                      },\n                      {\n                        \"label\": \"Seychelles\",\n                        \"value\": \"sc\"\n                      },\n                      {\n                        \"label\": \"Sudan\",\n                        \"value\": \"sd\"\n                      },\n                      {\n                        \"label\": \"Sweden\",\n                        \"value\": \"se\"\n                      },\n                      {\n                        \"label\": \"Singapore\",\n                        \"value\": \"sg\"\n                      },\n                      {\n                        \"label\": \"Saint Helena\",\n                        \"value\": \"sh\"\n                      },\n                      {\n                        \"label\": \"Slovenia\",\n                        \"value\": \"si\"\n                      },\n                      {\n                        \"label\": \"Svalbard and Jan Mayen\",\n                        \"value\": \"sj\"\n                      },\n                      {\n                        \"label\": \"Slovakia\",\n                        \"value\": \"sk\"\n                      },\n                      {\n                        \"label\": \"Sierra Leone\",\n                        \"value\": \"sl\"\n                      },\n                      {\n                        \"label\": \"San Marino\",\n                        \"value\": \"sm\"\n                      },\n                      {\n                        \"label\": \"Senegal\",\n                        \"value\": \"sn\"\n                      },\n                      {\n                        \"label\": \"Somalia\",\n                        \"value\": \"so\"\n                      },\n                      {\n                        \"label\": \"Suriname\",\n                        \"value\": \"sr\"\n                      },\n                      {\n                        \"label\": \"South Sudan\",\n                        \"value\": \"ss\"\n                      },\n                      {\n                        \"label\": \"S\\u00e3o Tom\\u00e9 and Pr\\u00edncipe\",\n                        \"value\": \"st\"\n                      },\n                      {\n                        \"label\": \"El Salvador\",\n                        \"value\": \"sv\"\n                      },\n                      {\n                        \"label\": \"Sint Maarten\",\n                        \"value\": \"sx\"\n                      },\n                      {\n                        \"label\": \"Syria\",\n                        \"value\": \"sy\"\n                      },\n                      {\n                        \"label\": \"Swaziland\",\n                        \"value\": \"sz\"\n                      },\n                      {\n                        \"label\": \"Turks and Caicos Islands\",\n                        \"value\": \"tc\"\n                      },\n                      {\n                        \"label\": \"Chad\",\n                        \"value\": \"td\"\n                      },\n                      {\n                        \"label\": \"French Southern Territories\",\n                        \"value\": \"tf\"\n                      },\n                      {\n                        \"label\": \"Togo\",\n                        \"value\": \"tg\"\n                      },\n                      {\n                        \"label\": \"Thailand\",\n                        \"value\": \"th\"\n                      },\n                      {\n                        \"label\": \"Tajikistan\",\n                        \"value\": \"tj\"\n                      },\n                      {\n                        \"label\": \"Tokelau\",\n                        \"value\": \"tk\"\n                      },\n                      {\n                        \"label\": \"East Timor\",\n                        \"value\": \"tl\"\n                      },\n                      {\n                        \"label\": \"Turkmenistan\",\n                        \"value\": \"tm\"\n                      },\n                      {\n                        \"label\": \"Tunisia\",\n                        \"value\": \"tn\"\n                      },\n                      {\n                        \"label\": \"Tonga\",\n                        \"value\": \"to\"\n                      },\n                      {\n                        \"label\": \"Turkey\",\n                        \"value\": \"tr\"\n                      },\n                      {\n                        \"label\": \"Trinidad and Tobago\",\n                        \"value\": \"tt\"\n                      },\n                      {\n                        \"label\": \"Tuvalu\",\n                        \"value\": \"tv\"\n                      },\n                      {\n                        \"label\": \"Taiwan\",\n                        \"value\": \"tw\"\n                      },\n                      {\n                        \"label\": \"Tanzania\",\n                        \"value\": \"tz\"\n                      },\n                      {\n                        \"label\": \"Ukraine\",\n                        \"value\": \"ua\"\n                      },\n                      {\n                        \"label\": \"Uganda\",\n                        \"value\": \"ug\"\n                      },\n                      {\n                        \"label\": \"U.S. Minor Outlying Islands\",\n                        \"value\": \"um\"\n                      },\n                      {\n                        \"label\": \"Uruguay\",\n                        \"value\": \"uy\"\n                      },\n                      {\n                        \"label\": \"Uzbekistan\",\n                        \"value\": \"uz\"\n                      },\n                      {\n                        \"label\": \"Vatican City\",\n                        \"value\": \"va\"\n                      },\n                      {\n                        \"label\": \"Saint Vincent and the Grenadines\",\n                        \"value\": \"vc\"\n                      },\n                      {\n                        \"label\": \"Venezuela\",\n                        \"value\": \"ve\"\n                      },\n                      {\n                        \"label\": \"British Virgin Islands\",\n                        \"value\": \"vg\"\n                      },\n                      {\n                        \"label\": \"U.S. Virgin Islands\",\n                        \"value\": \"vi\"\n                      },\n                      {\n                        \"label\": \"Vietnam\",\n                        \"value\": \"vn\"\n                      },\n                      {\n                        \"label\": \"Vanuatu\",\n                        \"value\": \"vu\"\n                      },\n                      {\n                        \"label\": \"Wallis and Futuna\",\n                        \"value\": \"wf\"\n                      },\n                      {\n                        \"label\": \"Samoa\",\n                        \"value\": \"ws\"\n                      },\n                      {\n                        \"label\": \"Kosovo\",\n                        \"value\": \"xk\"\n                      },\n                      {\n                        \"label\": \"Yemen\",\n                        \"value\": \"ye\"\n                      },\n                      {\n                        \"label\": \"Mayotte\",\n                        \"value\": \"yt\"\n                      },\n                      {\n                        \"label\": \"South Africa\",\n                        \"value\": \"za\"\n                      },\n                      {\n                        \"label\": \"Zambia\",\n                        \"value\": \"zm\"\n                      },\n                      {\n                        \"label\": \"Zimbabwe\",\n                        \"value\": \"zw\"\n                      }\n                    ]\n                  }\n                },\n                \"excludeStates\": {\n                  \"type\": \"array\",\n                  \"items\": {\n                    \"type\": \"string\"\n                  },\n                  \"description\": \"States/regions where this product cannot be shipped\"\n                },\n                \"requiresSignature\": {\n                  \"type\": \"boolean\",\n                  \"default\": false,\n                  \"group\": \"shipping-rules\"\n                },\n                \"isHazmat\": {\n                  \"type\": \"boolean\",\n                  \"default\": false,\n                  \"group\": \"shipping-rules\"\n                },\n                \"isFragile\": {\n                  \"type\": \"boolean\",\n                  \"default\": false,\n                  \"group\": \"shipping-rules\"\n                }\n              }\n            }\n          }\n        },\n        \"attributes\": {\n          \"type\": \"array\",\n          \"showIndex\": true,\n          \"collapsible\": true,\n          \"items\": {\n            \"type\": \"object\",\n            \"layout\": \"horizontal\",\n            \"properties\": {\n              \"name\": {\n                \"type\": \"string\",\n                \"x-control\": \"selectMany\",\n                \"dataSource\": {\n                  \"source\": \"collection\",\n                  \"collection\": \"sf_attribute\",\n                  \"value\": \"name\",\n                  \"label\": \"name\"\n                },\n                \"group\": \"attribute\"\n              },\n              \"required\": {\n                \"type\": \"boolean\",\n                \"group\": \"attribute\",\n                \"default\": true,\n                \"hint\": \"Shopper must provide this attribute on THIS product before checkout. Off = optional.\"\n              },\n              \"options\": {\n                \"type\": \"array\",\n                \"items\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"label\": {\n                      \"type\": \"string\",\n                      \"group\": \"option\"\n                    },\n                    \"value\": {\n                      \"type\": \"string\",\n                      \"group\": \"option\"\n                    },\n                    \"param\": {\n                      \"type\": \"string\",\n                      \"group\": \"option\"\n                    },\n                    \"price\": {\n                      \"type\": \"number\",\n                      \"group\": \"option\"\n                    }\n                  }\n                },\n                \"group\": \"attribute\",\n                \"x-control\": \"selectMany\",\n                \"x-control-variant\": \"chip\",\n                \"dataSource\": {\n                  \"source\": \"collection\",\n                  \"collection\": \"sf_attribute\",\n                  \"filter\": {\n                    \"data.name\": \"{{name}}\"\n                  },\n                  \"value\": \"options\",\n                  \"label\": \"options\",\n                  \"valueAsOption\": true\n                }\n              }\n            }\n          }\n        },\n        \"variations\": {\n          \"type\": \"array\",\n          \"hideLabel\": true,\n          \"showIndex\": true,\n          \"collapsible\": true,\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"sku\": {\n                \"type\": \"string\",\n                \"disabled\": true,\n                \"group\": \"sku\"\n              },\n              \"price\": {\n                \"type\": \"number\",\n                \"group\": \"sku\"\n              },\n              \"stock\": {\n                \"type\": \"number\",\n                \"group\": \"sku\"\n              },\n              \"options\": {\n                \"type\": \"array\",\n                \"title\": \"Options\",\n                \"readOnly\": true,\n                \"displayStyle\": \"card\",\n                \"items\": {\n                  \"type\": \"object\",\n                  \"layout\": \"horizontal\",\n                  \"properties\": {\n                    \"name\": {\n                      \"type\": \"string\",\n                      \"disabled\": true,\n                      \"group\": \"option\"\n                    },\n                    \"label\": {\n                      \"type\": \"string\",\n                      \"disabled\": true,\n                      \"group\": \"option\"\n                    },\n                    \"value\": {\n                      \"type\": \"string\",\n                      \"disabled\": true,\n                      \"group\": \"option\"\n                    }\n                  }\n                }\n              },\n              \"image\": {\n                \"type\": \"string\"\n              },\n              \"images\": {\n                \"type\": \"array\",\n                \"x-control\": \"file\",\n                \"items\": {\n                  \"type\": \"object\",\n                  \"readOnly\": true,\n                  \"x-control\": \"file\",\n                  \"properties\": {\n                    \"path\": {\n                      \"type\": \"string\"\n                    },\n                    \"content\": {\n                      \"type\": \"string\",\n                      \"hidden\": true,\n                      \"hideIn\": [\n                        \"generator\"\n                      ]\n                    },\n                    \"contentType\": {\n                      \"type\": \"string\",\n                      \"hideIn\": [\n                        \"generator\"\n                      ]\n                    },\n                    \"url\": {\n                      \"type\": \"string\",\n                      \"x-render\": \"file\"\n                    },\n                    \"isPublic\": {\n                      \"type\": \"boolean\",\n                      \"hidden\": true,\n                      \"hideIn\": [\n                        \"generator\"\n                      ]\n                    },\n                    \"meta\": {\n                      \"type\": \"object\",\n                      \"hidden\": true,\n                      \"hideIn\": [\n                        \"generator\"\n                      ],\n                      \"properties\": {\n                        \"width\": {\n                          \"type\": \"number\"\n                        },\n                        \"height\": {\n                          \"type\": \"number\"\n                        },\n                        \"size\": {\n                          \"type\": \"number\"\n                        },\n                        \"xs\": {\n                          \"type\": \"object\",\n                          \"properties\": {\n                            \"path\": {\n                              \"type\": \"string\"\n                            },\n                            \"url\": {\n                              \"type\": \"string\"\n                            }\n                          }\n                        },\n                        \"sm\": {\n                          \"type\": \"object\",\n                          \"properties\": {\n                            \"path\": {\n                              \"type\": \"string\"\n                            },\n                            \"url\": {\n                              \"type\": \"string\"\n                            }\n                          }\n                        },\n                        \"md\": {\n                          \"type\": \"object\",\n                          \"properties\": {\n                            \"path\": {\n                              \"type\": \"string\"\n                            },\n                            \"url\": {\n                              \"type\": \"string\"\n                            }\n                          }\n                        }\n                      }\n                    }\n                  }\n                },\n                \"hideLabel\": true\n              }\n            }\n          }\n        },\n        \"extraInfo\": {\n          \"type\": \"array\",\n          \"displayStyle\": \"table\",\n          \"hideLabel\": true,\n          \"collapsible\": true,\n          \"operations\": [\n            \"pick\",\n            \"add\",\n            \"edit\",\n            \"delete\"\n          ],\n          \"dataSource\": {\n            \"source\": \"collection\",\n            \"collection\": \"post\"\n          },\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"title\": {\n                \"group\": \"bundle\",\n                \"type\": \"string\"\n              },\n              \"id\": {\n                \"type\": \"string\",\n                \"group\": \"bundle\"\n              },\n              \"content\": {\n                \"type\": \"string\",\n                \"x-control\": \"richtext\"\n              }\n            }\n          }\n        },\n        \"giftCard\": {\n          \"type\": \"object\",\n          \"group\": \"gift-card\",\n          \"properties\": {\n            \"enabled\": {\n              \"type\": \"boolean\",\n              \"description\": \"This product is a gift card: buying it issues one.\"\n            },\n            \"denominations\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"number\"\n              },\n              \"description\": \"Fixed values the shopper can pick, e.g. 25, 50, 100. Empty means only the product price.\"\n            },\n            \"allowCustomAmount\": {\n              \"type\": \"boolean\"\n            },\n            \"minAmount\": {\n              \"type\": \"number\"\n            },\n            \"maxAmount\": {\n              \"type\": \"number\"\n            },\n            \"cardType\": {\n              \"type\": \"string\",\n              \"enum\": [\n                \"digital\",\n                \"physical\"\n              ],\n              \"default\": \"digital\"\n            },\n            \"expiresAfterDays\": {\n              \"type\": \"number\",\n              \"description\": \"Days from purchase until the card expires. Empty means never \\u2014 the default for purchased cards.\"\n            },\n            \"collectRecipient\": {\n              \"type\": \"boolean\",\n              \"default\": true,\n              \"description\": \"Ask for a recipient name, email and message at checkout.\"\n            },\n            \"allowScheduledDelivery\": {\n              \"type\": \"boolean\",\n              \"default\": true,\n              \"description\": \"Let the shopper pick a date for the card email.\"\n            }\n          }\n        },\n        \"bundle\": {\n          \"type\": \"array\",\n          \"displayStyle\": \"table\",\n          \"hideLabel\": true,\n          \"collapsible\": true,\n          \"dataSource\": {\n            \"source\": \"collection\",\n            \"collection\": \"sf_product\"\n          },\n          \"operations\": [\n            \"pick\"\n          ],\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"sk\": {\n                \"type\": \"string\",\n                \"group\": \"bundle\"\n              },\n              \"sku\": {\n                \"type\": \"string\",\n                \"group\": \"bundle\"\n              },\n              \"name\": {\n                \"type\": \"string\",\n                \"group\": \"bundle\"\n              }\n            }\n          }\n        },\n        \"restriction\": {\n          \"type\": \"object\",\n          \"group\": \"restriction\",\n          \"collapsible\": true,\n          \"properties\": {\n            \"ageRestricted\": {\n              \"type\": \"boolean\",\n              \"default\": false,\n              \"description\": \"Age-restricted product (alcohol, tobacco\\u2026)\"\n            },\n            \"minimumAge\": {\n              \"type\": \"number\",\n              \"description\": \"Minimum customer age, e.g. 21\"\n            },\n            \"permissionScope\": {\n              \"type\": \"string\",\n              \"description\": \"POS permission the seller needs, e.g. alcohol. Matches a requirement rule\\u2019s POS permission scope. Empty with age-restricted on = age_restricted\"\n            }\n          }\n        },\n        \"affiliateEligible\": {\n          \"type\": \"boolean\",\n          \"default\": true,\n          \"description\": \"Whether this product is eligible for affiliate commissions\",\n          \"group\": \"affiliate\"\n        },\n        \"affiliateCommission\": {\n          \"type\": \"number\",\n          \"description\": \"Product-specific commission rate (percentage). Overrides program default. Leave empty to use program rate.\",\n          \"group\": \"affiliate\"\n        },\n        \"workflow\": {\n          \"type\": \"object\",\n          \"description\": \"The product's own publishing/approval workflow \\u2014 the workflow a product goes through to be approved and published into the catalog. It has nothing to do with orders: order lines are prepared by their prepStation option and fired to prep-pipeline.\",\n          \"collapsible\": true,\n          \"properties\": {\n            \"workflowId\": {\n              \"type\": \"string\",\n              \"description\": \"Workflow definition that approves/publishes this product into the catalog (not a kitchen or prep station)\",\n              \"x-control\": \"selectMany\",\n              \"dataSource\": {\n                \"source\": \"collection\",\n                \"collection\": \"workflow_definition\",\n                \"value\": \"sk\",\n                \"label\": \"name\"\n              },\n              \"group\": \"workflow\"\n            },\n            \"defaultCourse\": {\n              \"type\": \"string\",\n              \"description\": \"Default course/grouping (appetizer, main, dessert, drinks, etc.)\",\n              \"group\": \"workflow\"\n            }\n          }\n        },\n        \"source\": {\n          \"type\": \"string\"\n        },\n        \"sourceUrl\": {\n          \"type\": \"string\"\n        },\n        \"batch\": {\n          \"type\": \"string\"\n        },\n        \"supplierSku\": {\n          \"type\": \"string\",\n          \"title\": \"Supplier SKU\",\n          \"description\": \"External supplier product identifier used by the server-side adapter.\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"sku\"\n      ]\n    }\n  },\n  \"datatype\": \"collection\",\n  \"version\": 0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "07-schema-readback",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/collections/sf_product?enriched=false"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "10-location",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"isNew\": true,\n  \"datatype\": \"location\",\n  \"data\": {\n    \"name\": \"supplier-usecase-1011\",\n    \"title\": \"Supplier Course Receiving\",\n    \"currency\": \"USD\",\n    \"status\": \"active\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "11-SUPPLIER-OAK-1011",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"isNew\": true,\n  \"datatype\": \"sf_product\",\n  \"data\": {\n    \"name\": \"Training white oak plank\",\n    \"sku\": \"SUPPLIER-OAK-1011\",\n    \"supplierSku\": \"NW-OAK-24\",\n    \"price\": 38.5,\n    \"available\": false,\n    \"status\": \"inactive\",\n    \"hidden\": true,\n    \"trackInventory\": true,\n    \"description\": \"Synthetic supplier integration course fixture; not offered for sale.\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "11-SUPPLIER-WAL-1011",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"isNew\": true,\n  \"datatype\": \"sf_product\",\n  \"data\": {\n    \"name\": \"Training walnut board\",\n    \"sku\": \"SUPPLIER-WAL-1011\",\n    \"supplierSku\": \"NW-WAL-18\",\n    \"price\": 61,\n    \"available\": false,\n    \"status\": \"inactive\",\n    \"hidden\": true,\n    \"trackInventory\": true,\n    \"description\": \"Synthetic supplier integration course fixture; not offered for sale.\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "12-mapping-read",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/find/sf_product",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.supplierSku\": {\n      \"$in\": [\n        \"NW-OAK-24\",\n        \"NW-WAL-18\"\n      ]\n    }\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 20\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "20-create-request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vendorName\": \"Northwind Timber \\u2014 teaching supplier\",\n  \"locationId\": \"supplier-usecase-1011\",\n  \"items\": [\n    {\n      \"sku\": \"SUPPLIER-OAK-1011\",\n      \"quantity\": 40,\n      \"unitCost\": 38.5\n    },\n    {\n      \"sku\": \"SUPPLIER-WAL-1011\",\n      \"quantity\": 12,\n      \"unitCost\": 61\n    }\n  ],\n  \"reference\": \"northwind:supplier-usecase-1011-PRIMARY\",\n  \"expectedDate\": \"2026-10-15\",\n  \"notes\": \"Synthetic course shipment. Source purchase order COURSE-PO-1011; NW-OAK-24 \\u2192 SUPPLIER-OAK-1011; NW-WAL-18 \\u2192 SUPPLIER-WAL-1011\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "24-pending-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "25-stock-before",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/sku/SUPPLIER-OAK-1011"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "26-receive",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}/receive"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "27-receive-repeat",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}/receive"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "28-stock",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/sku/SUPPLIER-OAK-1011"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "29-transactions",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/sku/SUPPLIER-OAK-1011/transactions?locationId=supplier-usecase-1011"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "30-bill",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/get/bm_bill/{{record_id}}"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "31-journal",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/find/journal_entry",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.referenceId\": \"6acb15e0ba781cd23c2f6e5c\"\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 10\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "32-restock-pending",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vendorName\": \"Northwind Timber \\u2014 teaching supplier\",\n  \"locationId\": \"supplier-usecase-1011\",\n  \"items\": [\n    {\n      \"sku\": \"SUPPLIER-OAK-1011\",\n      \"quantity\": 20,\n      \"unitCost\": 41.5\n    },\n    {\n      \"sku\": \"SUPPLIER-WAL-1011\",\n      \"quantity\": 6,\n      \"unitCost\": 70\n    }\n  ],\n  \"reference\": \"northwind:supplier-usecase-1011-RESTOCK\",\n  \"notes\": \"Synthetic teaching restock; demonstrate weighted cost and actual receipt.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "33-cancel-pending",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vendorName\": \"Northwind Timber \\u2014 teaching supplier\",\n  \"locationId\": \"supplier-usecase-1011\",\n  \"items\": [\n    {\n      \"sku\": \"SUPPLIER-OAK-1011\",\n      \"quantity\": 20,\n      \"unitCost\": 41.5\n    },\n    {\n      \"sku\": \"SUPPLIER-WAL-1011\",\n      \"quantity\": 6,\n      \"unitCost\": 70\n    }\n  ],\n  \"reference\": \"northwind:supplier-usecase-1011-CANCEL\",\n  \"notes\": \"Synthetic teaching restock; demonstrate weighted cost and actual receipt.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "34-cancel-empty-reason",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}/cancel",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "36-create-missing-product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"isNew\": true,\n  \"datatype\": \"sf_product\",\n  \"data\": {\n    \"name\": \"Training ash plank\",\n    \"sku\": \"SUPPLIER-ASH-1011\",\n    \"supplierSku\": \"NW-ASH-30\",\n    \"price\": 61,\n    \"available\": false,\n    \"hidden\": true,\n    \"status\": \"inactive\",\n    \"trackInventory\": true\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "38-duplicate-mapping-fixture",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"isNew\": true,\n  \"datatype\": \"sf_product\",\n  \"data\": {\n    \"name\": \"Training duplicate mapping check\",\n    \"sku\": \"SUPPLIER-DUPLICATE-1011\",\n    \"supplierSku\": \"NW-OAK-24\",\n    \"price\": 0,\n    \"available\": false,\n    \"hidden\": true,\n    \"status\": \"inactive\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "40-clear-duplicate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/update-partial/sf_product/{{record_id}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data.supplierSku\": \"RETIRED-DUPLICATE-1011\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "41-no-failure-intakes",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes?q=supplier-usecase-1011"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "42-restock-received",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "43-restock-stock",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/sku/SUPPLIER-OAK-1011"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "44-restock-transactions",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/sku/SUPPLIER-OAK-1011/transactions?locationId=supplier-usecase-1011"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "45-restock-bill",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/get/bm_bill/{{record_id}}"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "46-restock-journal",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/find/journal_entry",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.referenceId\": \"6acb1841ba781cd23c2f6fa0\"\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 10\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "47-restock-repeat",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}/receive"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "48-restock-repeat-stock",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/sku/SUPPLIER-OAK-1011"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "49-restock-bill-count",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/find/bm_bill",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.intakeId\": \"6acb163bba781cd23c2f6e9c\"\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 10\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "50-cancel-received-refused",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}/cancel",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Controlled invalid transition test; received intake must remain received.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "51-cancelled-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "52-receive-cancelled-refused",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}/receive"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "53-corrected-intake",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vendorName\": \"Northwind Timber \\u2014 teaching supplier\",\n  \"locationId\": \"supplier-usecase-1011\",\n  \"reference\": \"northwind:supplier-usecase-1011-CANCEL\",\n  \"items\": [\n    {\n      \"sku\": \"SUPPLIER-OAK-1011\",\n      \"quantity\": 18,\n      \"unitCost\": 41.5\n    },\n    {\n      \"sku\": \"SUPPLIER-WAL-1011\",\n      \"quantity\": 6,\n      \"unitCost\": 70\n    }\n  ],\n  \"notes\": \"Corrected counted quantities; original pending intake cancelled with a reason.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "54-replacement-search",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes?q=northwind%3Asupplier-usecase-1011-CANCEL"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "58-uncertain-intakes",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes?q=supplier-usecase-1011-UNCERTAIN"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "60-corrected-receive",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}/receive"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "61-corrected-receive-readback",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    },
+    {
+      "name": "62-original-still-cancelled",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/storefront/inventory/intakes/{{record_id}}"
+      },
+      "description": "Recorded example. Replace all sample identifiers, SKUs and names with your own. Check intended effect before sending."
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "path": "/repository/update-partial/baas_submissions_1010/6ac9e9c6f5d6b011f6e11a28",
+  "body": {
+    "data.status": "reviewed"
+  }
+}

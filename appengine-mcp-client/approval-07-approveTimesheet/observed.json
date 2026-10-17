@@ -1,0 +1,13 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"_id\": \"6acb2e18ba781cd23c2f757e\",\n  \"pk\": \"video-lab-mut4jkwd|bm_timesheet\",\n  \"sk\": \"6acb2e18ba781cd23c2f757e\",\n  \"name\": \"bm_timesheet-1791700504256-g5wzzuar\",\n  \"datatype\": \"bm_timesheet\",\n  \"data\": {\n    \"employeeId\": \"6acb2e18ba781cd23c2f757d\",\n    \"payPeriodStart\": \"2026-10-05\",\n    \"payPeriodEnd\": \"2026-10-11\",\n    \"notes\": \"Synthetic course demonstration. No payroll run or payment.\",\n    \"status\": \"approved\",\n    \"timeEntries\": [\n      {\n        \"id\": \"te-1791700504296-26jbkt\",\n        \"timeSheetId\": \"6acb2e18ba781cd23c2f757e\",\n        \"date\": \"2026-10-05\",\n        \"hours\": 8,\n        \"type\": \"regular\",\n        \"description\": \"Synthetic training hours\",\n        \"approved\": true,\n        \"createdAt\": \"2026-10-11T06:35:04.296Z\",\n        \"countedHours\": 8,\n        \"approvedById\": \"rosa.mcp-usecase-1011@training.local\",\n        \"approvedAt\": \"2026-10-11T06:36:28.164Z\"\n      }\n    ],\n    \"name\": \"bm_timesheet-1791700504256-g5wzzuar\",\n    \"totalHours\": 8,\n    \"regularHours\": 8,\n    \"overtimeHours\": 0,\n    \"doubleTimeHours\": 0,\n    \"ptoHours\": 0,\n    \"holidayHours\": 0,\n    \"sickHours\": 0,\n    \"appliedPolicy\": {\n      \"matchedBy\": \"default\",\n      \"rounding\": \"exact\"\n    },\n    \"recordedWorkedHours\": 8,\n    \"breakDeductedHours\": 0,\n    \"submittedAt\": \"2026-10-11T06:35:04.361Z\",\n    \"submittedById\": \"video-lab-mut4jkwd@example.com\",\n    \"approvedAt\": \"2026-10-11T06:36:28.164Z\",\n    \"approvedById\": \"rosa.mcp-usecase-1011@training.local\"\n  },\n  \"version\": 3,\n  \"author\": \"video-lab-mut4jkwd@example.com\",\n  \"created_by\": \"video-lab-mut4jkwd@example.com\",\n  \"state\": \"draft\",\n  \"createdate\": \"2026-10-11T06:35:04.262Z\",\n  \"modifydate\": \"2026-10-11T06:36:28.172Z\",\n  \"modified_by\": \"system\"\n}"
+      }
+    ],
+    "structured_content": null
+  },
+  "error": null,
+  "hostEventStatus": "completed"
+}

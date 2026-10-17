@@ -1,0 +1,24 @@
+{
+  "method": "POST",
+  "path": "/repository/create",
+  "identity": "staff",
+  "mutation": true,
+  "body": {
+    "isNew": true,
+    "datatype": "location",
+    "data": {
+      "name": "YOUR_UNIQUE_LOCATION_NAME",
+      "title": "YOUR_LOCATION_DISPLAY_TITLE",
+      "type": "address",
+      "status": "active",
+      "timezone": "America/Chicago",
+      "address": {
+        "street1": "YOUR_LOCATION_STREET",
+        "city": "YOUR_LOCATION_CITY",
+        "state": "YOUR_LOCATION_STATE",
+        "zip": "YOUR_LOCATION_POSTCODE",
+        "country": "US"
+      }
+    }
+  }
+}

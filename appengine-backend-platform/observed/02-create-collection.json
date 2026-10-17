@@ -1,0 +1,100 @@
+{
+  "startedAt": "2026-10-10T07:30:40.351064+00:00",
+  "durationSeconds": 0.0579,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "datatype": "collection",
+      "isNew": true,
+      "data": {
+        "name": "baas_submissions_1010",
+        "title": "App submissions \u2014 Backend course",
+        "enableVersioning": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "title": "Reference"
+            },
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "attachmentPath": {
+              "type": "string",
+              "title": "Attachment path"
+            },
+            "status": {
+              "type": "string",
+              "title": "Status",
+              "enum": [
+                "new",
+                "reviewed"
+              ]
+            }
+          },
+          "required": [
+            "reference"
+          ]
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "datatype": "collection",
+      "data": {
+        "name": "baas_submissions_1010",
+        "title": "App submissions \u2014 Backend course",
+        "enableVersioning": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "title": "Reference"
+            },
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "attachmentPath": {
+              "type": "string",
+              "title": "Attachment path"
+            },
+            "status": {
+              "type": "string",
+              "title": "Status",
+              "enum": [
+                "new",
+                "reviewed"
+              ]
+            }
+          },
+          "required": [
+            "reference"
+          ]
+        }
+      },
+      "name": "baas_submissions_1010",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|collection",
+      "createdate": "2026-10-10T07:30:40.386Z",
+      "modifydate": "2026-10-10T07:30:40.386Z",
+      "version": 0,
+      "sk": "6ac9e9a0f5d6b011f6e11a11",
+      "id": "6ac9e9a0f5d6b011f6e11a11"
+    }
+  }
+}

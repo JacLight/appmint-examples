@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-10-10T07:32:23.418453+00:00",
+  "durationSeconds": 0.0101,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/automation/status/6ac9e9a0f5d6b011f6e11a13",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "automationId": "6ac9e9a0f5d6b011f6e11a13",
+      "orgId": "video-lab-mut4jkwd",
+      "status": "inactive",
+      "name": "Backend course \u2014 submission receipt",
+      "totalExecutions": 0
+    }
+  }
+}

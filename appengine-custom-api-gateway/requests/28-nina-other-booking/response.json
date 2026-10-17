@@ -1,0 +1,10 @@
+{
+  "status": 404,
+  "body": {
+    "statusCode": 404,
+    "error": "Reservation not found",
+    "path": "/client-data/reservations/6ac8e52762208c1ed6025011",
+    "method": "GET",
+    "timeStamp": "2026-10-10T19:30:35.118Z"
+  }
+}

@@ -1,0 +1,957 @@
+{
+  "info": {
+    "name": "AppEngine headless storefront \u00b7 explicit operations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "api_base",
+      "value": ""
+    },
+    {
+      "key": "org_id",
+      "value": ""
+    },
+    {
+      "key": "customer_token",
+      "value": ""
+    },
+    {
+      "key": "staff_token",
+      "value": ""
+    },
+    {
+      "key": "customer_email",
+      "value": ""
+    },
+    {
+      "key": "customer_password",
+      "value": ""
+    },
+    {
+      "key": "cart_id",
+      "value": ""
+    },
+    {
+      "key": "order_number",
+      "value": ""
+    },
+    {
+      "key": "confirm_test_operation",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Customer sign-in",
+      "request": {
+        "method": "POST",
+        "url": "{{api_base}}/profile/customer/signin",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{customer_email}}\",\n  \"password\": \"{{customer_password}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "01-payment-gateways",
+      "request": {
+        "method": "GET",
+        "url": "{{api_base}}/storefront/payment-gateways",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "12-product",
+      "request": {
+        "method": "GET",
+        "url": "{{api_base}}/storefront/product/HEADLESS-CEDAR-1010",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "16-shipping",
+      "request": {
+        "method": "POST",
+        "url": "{{api_base}}/shipping/options",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"items\": [\n    {\n      \"sku\": \"HEADLESS-CEDAR-1010\",\n      \"quantity\": 2\n    }\n  ],\n  \"toAddress\": {\n    \"name\": \"Mira-Lin Chen\",\n    \"street1\": \"123 Course Lane\",\n    \"city\": \"Chicago\",\n    \"state\": \"IL\",\n    \"zip\": \"60601\",\n    \"country\": \"US\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "17-quote",
+      "request": {
+        "method": "POST",
+        "url": "{{api_base}}/storefront/pricing/calculate-cart",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cartId\": \"{{cart_id}}\",\n  \"productItems\": [\n    {\n      \"sku\": \"HEADLESS-CEDAR-1010\",\n      \"quantity\": 2,\n      \"itemType\": \"product\"\n    }\n  ],\n  \"rentalItems\": [],\n  \"shippingAddress\": {\n    \"street1\": \"123 Course Lane\",\n    \"city\": \"Chicago\",\n    \"state\": \"IL\",\n    \"zip\": \"60601\",\n    \"country\": \"US\",\n    \"name\": \"Mira-Lin Chen\",\n    \"email\": \"{{customer_email}}\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "18-save-cart",
+      "request": {
+        "method": "POST",
+        "url": "{{api_base}}/storefront/cart/update/{{cart_id}}",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datatype\": \"sf_cart\",\n  \"data\": {\n    \"productItems\": [\n      {\n        \"sku\": \"HEADLESS-CEDAR-1010\",\n        \"quantity\": 2,\n        \"unitPrice\": 24,\n        \"amount\": 48,\n        \"discount\": 0,\n        \"deposit\": 0,\n        \"depositWaived\": false,\n        \"itemType\": \"product\",\n        \"parentSku\": \"HEADLESS-CEDAR-1010\",\n        \"waived\": false,\n        \"feesTotal\": 0,\n        \"lineTotal\": 48,\n        \"originalPrice\": 24,\n        \"finalPrice\": 24,\n        \"totalPrice\": 48,\n        \"tierDiscount\": 0,\n        \"discountPercent\": 0,\n        \"currency\": \"USD\",\n        \"priceDelta\": 0,\n        \"categories\": []\n      }\n    ],\n    \"rentalItems\": [],\n    \"rentalSubtotal\": 0,\n    \"rentalDeposit\": 0,\n    \"rentalDiscount\": 0,\n    \"rentalTax\": 0,\n    \"rentalDeliveryFee\": 0,\n    \"rentalFees\": 0,\n    \"rentalFeesList\": [],\n    \"rentalTotal\": 0,\n    \"rentalCount\": 0,\n    \"productSubtotal\": 48,\n    \"productDiscount\": 0,\n    \"productTax\": 0,\n    \"productShipping\": 6.5,\n    \"productTotal\": 54.5,\n    \"productCount\": 2,\n    \"subtotal\": 48,\n    \"discount\": 0,\n    \"tax\": 0,\n    \"deposit\": 0,\n    \"total\": 54.5,\n    \"shippingMethod\": \"flat\",\n    \"depositWaived\": false,\n    \"freeShipping\": false,\n    \"freeDelivery\": false,\n    \"freeReturnPickup\": false,\n    \"discounts\": [],\n    \"valid\": true,\n    \"cartId\": \"{{cart_id}}\",\n    \"email\": \"{{customer_email}}\",\n    \"source\": \"website\",\n    \"shippingAddress\": {\n      \"street1\": \"123 Course Lane\",\n      \"city\": \"Chicago\",\n      \"state\": \"IL\",\n      \"zip\": \"60601\",\n      \"country\": \"US\",\n      \"name\": \"Mira-Lin Chen\",\n      \"email\": \"{{customer_email}}\"\n    }\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "19-cart-readback",
+      "request": {
+        "method": "GET",
+        "url": "{{api_base}}/storefront/cart/mine",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "29-product-stock",
+      "request": {
+        "method": "GET",
+        "url": "{{api_base}}/storefront/product/HEADLESS-CEDAR-1010",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "30-own-order",
+      "request": {
+        "method": "GET",
+        "url": "{{api_base}}/client-data/orders/{{order_number}}",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "31-other-order",
+      "request": {
+        "method": "GET",
+        "url": "{{api_base}}/client-data/orders/{{order_number}}",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "33-unpaid-checkout \u00b7 writes a real unpaid order",
+      "request": {
+        "method": "POST",
+        "url": "{{api_base}}/storefront/checkout-cart",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{org_id}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customer_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cartId\": \"{{cart_id}}\",\n  \"productItems\": [\n    {\n      \"sku\": \"HEADLESS-CEDAR-1010\",\n      \"quantity\": 2,\n      \"unitPrice\": 24,\n      \"amount\": 48,\n      \"discount\": 0,\n      \"deposit\": 0,\n      \"depositWaived\": false,\n      \"itemType\": \"product\",\n      \"parentSku\": \"HEADLESS-CEDAR-1010\",\n      \"waived\": false,\n      \"feesTotal\": 0,\n      \"lineTotal\": 48,\n      \"originalPrice\": 24,\n      \"finalPrice\": 24,\n      \"totalPrice\": 48,\n      \"tierDiscount\": 0,\n      \"discountPercent\": 0,\n      \"currency\": \"USD\",\n      \"priceDelta\": 0,\n      \"categories\": []\n    }\n  ],\n  \"rentalItems\": [],\n  \"email\": \"{{customer_email}}\",\n  \"name\": \"Mira-Lin Chen\",\n  \"shippingAddress\": {\n    \"street1\": \"123 Course Lane\",\n    \"city\": \"Chicago\",\n    \"state\": \"IL\",\n    \"zip\": \"60601\",\n    \"country\": \"US\",\n    \"name\": \"Mira-Lin Chen\",\n    \"email\": \"{{customer_email}}\"\n  },\n  \"billingAddress\": {\n    \"street1\": \"123 Course Lane\",\n    \"city\": \"Chicago\",\n    \"state\": \"IL\",\n    \"zip\": \"60601\",\n    \"country\": \"US\",\n    \"name\": \"Mira-Lin Chen\",\n    \"email\": \"{{customer_email}}\"\n  },\n  \"shippingMethod\": \"flat\",\n  \"currency\": \"USD\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Options, coupon, saved order and carrier operations",
+      "item": [
+        {
+          "name": "associate-existing-label \u00b7 staff",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/shipping/order/manual",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{staff_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: staff. Source: json/operations/associate-existing-label.json. Replace marked values with your own saved response. Deliberate mutation: review the request and set confirm_test_operation=yes; no automatic retry.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderNumber\": \"YOUR_PAID_ORDER_NUMBER\",\n  \"sendNotification\": false,\n  \"shippingInfo\": {\n    \"carrier\": \"YOUR_LABEL_CARRIER\",\n    \"tracker\": \"YOUR_NEW_CORRECT_ADDRESS_TRACKING_NUMBER\",\n    \"trackingUrl\": \"YOUR_NEW_LABEL_TRACKING_URL\",\n    \"rate\": \"YOUR_LABEL_SERVICE\",\n    \"cost\": \"YOUR_ACTUAL_NEW_LABEL_COST\",\n    \"parcel\": {\n      \"length\": 16,\n      \"width\": 12,\n      \"height\": 1,\n      \"weight\": 1,\n      \"weightUnit\": \"lb\",\n      \"dimensionUnit\": \"in\"\n    },\n    \"products\": [\n      {\n        \"sku\": \"YOUR_ORDER_LINE_SKU\",\n        \"name\": \"YOUR_ORDER_LINE_NAME\",\n        \"quantity\": 2\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }",
+                  "if (pm.variables.get('confirm_test_operation') !== 'yes') { pm.execution.skipRequest(); throw new Error('Review this mutation, then set confirm_test_operation=yes.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "carrier-existing-tracker \u00b7 staff",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/upstream/call/YOUR_EASYPOST_CONFIG_ID/getTracker",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{staff_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: staff. Source: json/operations/carrier-existing-tracker.json. Replace marked values with your own saved response. Read or calculation request.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"tracking_code\": \"YOUR_SAVED_TRACKING_NUMBER\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "carrier-label \u00b7 staff",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/shipping/create",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{staff_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: staff. Source: json/operations/carrier-label.json. Replace marked values with your own saved response. Deliberate mutation: review the request and set confirm_test_operation=yes; no automatic retry.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fromAddress\": {\n    \"name\": \"Course dispatch\",\n    \"street1\": \"417 Montgomery St\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zip\": \"94104\",\n    \"country\": \"US\",\n    \"phone\": \"2025550108\"\n  },\n  \"toAddress\": {\n    \"name\": \"Course test recipient\",\n    \"street1\": \"388 Townsend St\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zip\": \"94107\",\n    \"country\": \"US\",\n    \"phone\": \"2025550109\"\n  },\n  \"parcel\": {\n    \"length\": 16,\n    \"width\": 12,\n    \"height\": 1,\n    \"weight\": 1,\n    \"weightUnit\": \"lb\",\n    \"dimensionUnit\": \"in\"\n  },\n  \"items\": [\n    {\n      \"sku\": \"HEADLESS-CEDAR-1010\",\n      \"quantity\": 2\n    }\n  ],\n  \"shipmentId\": \"SAVED_QUOTE_SHIPMENT_ID\",\n  \"rate\": {\n    \"id\": \"SELECTED_RATE_ID\",\n    \"carrier\": \"USPS\",\n    \"service\": \"GroundAdvantage\",\n    \"rate\": \"REPLACE_FROM_QUOTE\",\n    \"currency\": \"USD\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }",
+                  "if (pm.variables.get('confirm_test_operation') !== 'yes') { pm.execution.skipRequest(); throw new Error('Review this mutation, then set confirm_test_operation=yes.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "carrier-quote \u00b7 public",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/shipping/rates",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: public. Source: json/operations/carrier-quote.json. Replace marked values with your own saved response. Read or calculation request.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fromAddress\": {\n    \"name\": \"Course dispatch\",\n    \"street1\": \"417 Montgomery St\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zip\": \"94104\",\n    \"country\": \"US\",\n    \"phone\": \"2025550108\"\n  },\n  \"toAddress\": {\n    \"name\": \"Course test recipient\",\n    \"street1\": \"388 Townsend St\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zip\": \"94107\",\n    \"country\": \"US\",\n    \"phone\": \"2025550109\"\n  },\n  \"parcel\": {\n    \"length\": 16,\n    \"width\": 12,\n    \"height\": 1,\n    \"weight\": 1,\n    \"weightUnit\": \"lb\",\n    \"dimensionUnit\": \"in\"\n  },\n  \"items\": [\n    {\n      \"sku\": \"HEADLESS-CEDAR-1010\",\n      \"quantity\": 2\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "coupon-quote \u00b7 customer",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/storefront/pricing/calculate-cart",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customer_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: customer. Source: json/operations/coupon-quote.json. Replace marked values with your own saved response. Read or calculation request.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productItems\": [\n    {\n      \"sku\": \"HEADLESS-OPTIONS-1010\",\n      \"quantity\": 1,\n      \"options\": [\n        {\n          \"name\": \"size\",\n          \"value\": \"large\"\n        }\n      ]\n    }\n  ],\n  \"rentalItems\": [],\n  \"shippingAddress\": {\n    \"name\": \"Mira-Lin Chen\",\n    \"street1\": \"123 Course Lane\",\n    \"city\": \"Chicago\",\n    \"state\": \"IL\",\n    \"zip\": \"60601\",\n    \"country\": \"US\"\n  },\n  \"couponCode\": \"HCOPTION10\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "gateway-discovery \u00b7 customer",
+          "request": {
+            "method": "GET",
+            "url": "{{api_base}}/storefront/payment-gateways",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customer_token}}"
+              }
+            ],
+            "description": "Actor: customer. Source: json/operations/gateway-discovery.json. Replace marked values with your own saved response. Read or calculation request."
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "inventory-opening \u00b7 staff",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/storefront/inventory",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{staff_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: staff. Source: json/operations/inventory-opening.json. Replace marked values with your own saved response. Deliberate mutation: review the request and set confirm_test_operation=yes; no automatic retry.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sku\": \"YOUR_TRAINING_SKU\",\n  \"locationId\": \"YOUR_EXISTING_TRAINING_LOCATION_NAME\",\n  \"quantity\": 30,\n  \"reservedQuantity\": 0,\n  \"unitCost\": 0,\n  \"currency\": \"USD\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }",
+                  "if (pm.variables.get('confirm_test_operation') !== 'yes') { pm.execution.skipRequest(); throw new Error('Review this mutation, then set confirm_test_operation=yes.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "inventory-read \u00b7 staff",
+          "request": {
+            "method": "GET",
+            "url": "{{api_base}}/storefront/inventory/sku/YOUR_TRAINING_SKU",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{staff_token}}"
+              }
+            ],
+            "description": "Actor: staff. Source: json/operations/inventory-read.json. Replace marked values with your own saved response. Read or calculation request."
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "location-create \u00b7 staff",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/repository/create",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{staff_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: staff. Source: json/operations/location-create.json. Replace marked values with your own saved response. Deliberate mutation: review the request and set confirm_test_operation=yes; no automatic retry.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isNew\": true,\n  \"datatype\": \"location\",\n  \"data\": {\n    \"name\": \"YOUR_UNIQUE_LOCATION_NAME\",\n    \"title\": \"YOUR_LOCATION_DISPLAY_TITLE\",\n    \"type\": \"address\",\n    \"status\": \"active\",\n    \"timezone\": \"America/Chicago\",\n    \"address\": {\n      \"street1\": \"YOUR_LOCATION_STREET\",\n      \"city\": \"YOUR_LOCATION_CITY\",\n      \"state\": \"YOUR_LOCATION_STATE\",\n      \"zip\": \"YOUR_LOCATION_POSTCODE\",\n      \"country\": \"US\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }",
+                  "if (pm.variables.get('confirm_test_operation') !== 'yes') { pm.execution.skipRequest(); throw new Error('Review this mutation, then set confirm_test_operation=yes.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "location-lookup \u00b7 staff",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/repository/find/location",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{staff_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: staff. Source: json/operations/location-lookup.json. Replace marked values with your own saved response. Read or calculation request.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"data.name\": \"YOUR_TRAINING_LOCATION_NAME\"\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 10\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "option-quote \u00b7 customer",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/storefront/pricing/calculate-cart",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customer_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: customer. Source: json/operations/option-quote.json. Replace marked values with your own saved response. Read or calculation request.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productItems\": [\n    {\n      \"sku\": \"HEADLESS-OPTIONS-1010\",\n      \"quantity\": 1,\n      \"options\": [\n        {\n          \"name\": \"size\",\n          \"value\": \"large\"\n        }\n      ]\n    }\n  ],\n  \"rentalItems\": [],\n  \"shippingAddress\": {\n    \"name\": \"Mira-Lin Chen\",\n    \"street1\": \"123 Course Lane\",\n    \"city\": \"Chicago\",\n    \"state\": \"IL\",\n    \"zip\": \"60601\",\n    \"country\": \"US\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "order-stock-retry \u00b7 staff",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/storefront/order/stock-retry/YOUR_SHIPPED_ORDER_NUMBER",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{staff_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: staff. Source: json/operations/order-stock-retry.json. Replace marked values with your own saved response. Deliberate mutation: review the request and set confirm_test_operation=yes; no automatic retry.",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }",
+                  "if (pm.variables.get('confirm_test_operation') !== 'yes') { pm.execution.skipRequest(); throw new Error('Review this mutation, then set confirm_test_operation=yes.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "paid-order \u00b7 customer",
+          "request": {
+            "method": "GET",
+            "url": "{{api_base}}/client-data/orders/YOUR_ORDER_NUMBER",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customer_token}}"
+              }
+            ],
+            "description": "Actor: customer. Source: json/operations/paid-order.json. Replace marked values with your own saved response. Read or calculation request."
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "prepare-option-coupon \u00b7 staff",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/storefront/discounts",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{staff_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: staff. Source: json/operations/prepare-option-coupon.json. Replace marked values with your own saved response. Deliberate mutation: review the request and set confirm_test_operation=yes; no automatic retry.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"YOUR_UNIQUE_COUPON_NAME\",\n  \"code\": \"YOUR_UNIQUE_COUPON_CODE\",\n  \"status\": \"active\",\n  \"type\": \"percent\",\n  \"value\": 10,\n  \"applyTo\": \"products\",\n  \"products\": [\n    \"YOUR_UNIQUE_BASE_SKU\"\n  ],\n  \"autoApply\": false,\n  \"canCombine\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }",
+                  "if (pm.variables.get('confirm_test_operation') !== 'yes') { pm.execution.skipRequest(); throw new Error('Review this mutation, then set confirm_test_operation=yes.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "prepare-option-product \u00b7 staff",
+          "request": {
+            "method": "POST",
+            "url": "{{api_base}}/repository/create",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{staff_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Actor: staff. Source: json/operations/prepare-option-product.json. Replace marked values with your own saved response. Deliberate mutation: review the request and set confirm_test_operation=yes; no automatic retry.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isNew\": true,\n  \"datatype\": \"sf_product\",\n  \"data\": {\n    \"name\": \"YOUR_UNIQUE_PRODUCT_NAME\",\n    \"sku\": \"YOUR_UNIQUE_BASE_SKU\",\n    \"slug\": \"YOUR_UNIQUE_PRODUCT_SLUG\",\n    \"description\": \"Controlled headless option and coupon exercise\",\n    \"status\": \"active\",\n    \"available\": true,\n    \"price\": 20,\n    \"trackInventory\": true,\n    \"stock\": 12,\n    \"attributes\": [\n      {\n        \"name\": \"size\",\n        \"title\": \"Size\",\n        \"options\": [\n          {\n            \"value\": \"small\",\n            \"label\": \"Small\",\n            \"price\": \"0\"\n          },\n          {\n            \"value\": \"large\",\n            \"label\": \"Large\",\n            \"price\": \"+5\"\n          }\n        ]\n      }\n    ],\n    \"variations\": [\n      {\n        \"sku\": \"YOUR_UNIQUE_LARGE_VARIATION_SKU\",\n        \"options\": [\n          {\n            \"name\": \"size\",\n            \"value\": \"large\"\n          }\n        ],\n        \"price\": 25,\n        \"stock\": 6\n      }\n    ],\n    \"shipping\": {\n      \"config\": \"YOUR_SAVED_SHIPPING_CONFIG_NAME\"\n    },\n    \"parcel\": {\n      \"weight\": 0.5,\n      \"weightUnit\": \"lb\",\n      \"length\": 12,\n      \"width\": 9,\n      \"height\": 1,\n      \"dimensionUnit\": \"in\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }",
+                  "if (pm.variables.get('confirm_test_operation') !== 'yes') { pm.execution.skipRequest(); throw new Error('Review this mutation, then set confirm_test_operation=yes.'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "saved-cart \u00b7 customer",
+          "request": {
+            "method": "GET",
+            "url": "{{api_base}}/storefront/cart/mine",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{org_id}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customer_token}}"
+              }
+            ],
+            "description": "Actor: customer. Source: json/operations/saved-cart.json. Replace marked values with your own saved response. Read or calculation request."
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const unresolved = /YOUR_|SAVED_|SELECTED_|REPLACE_/.test(pm.variables.replaceIn(pm.request.url.toString() + (pm.request.body ? pm.request.body.raw : '')));",
+                  "if (unresolved) { pm.execution.skipRequest(); throw new Error('Replace marked request values from your saved response.'); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

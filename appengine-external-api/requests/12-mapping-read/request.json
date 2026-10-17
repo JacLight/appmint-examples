@@ -1,0 +1,14 @@
+{
+  "query": {
+    "data.supplierSku": {
+      "$in": [
+        "NW-OAK-24",
+        "NW-WAL-18"
+      ]
+    }
+  },
+  "options": {
+    "page": 1,
+    "pageSize": 20
+  }
+}

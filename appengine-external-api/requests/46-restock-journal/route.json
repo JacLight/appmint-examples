@@ -1,0 +1,4 @@
+{
+  "method": "POST",
+  "path": "/repository/find/journal_entry"
+}

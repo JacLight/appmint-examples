@@ -1,0 +1,17 @@
+{
+  "name": "appengine-read-only-diagnostics-course",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "diagnose": "node diagnose.mjs",
+    "test": "node test.mjs",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

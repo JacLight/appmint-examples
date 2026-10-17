@@ -1,0 +1,21 @@
+{
+  "method": "PUT",
+  "path": "/repository/create",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "datatype": "design_video_1009",
+    "isNew": true,
+    "data": {
+      "requestCode": "DR-103",
+      "title": "Whole home concept",
+      "customer": "6ac82b5a58e293f2e4d6635a",
+      "roomCount": 4,
+      "projectNotes": "Lighting and circulation",
+      "status": "new"
+    }
+  }
+}

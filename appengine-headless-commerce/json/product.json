@@ -1,0 +1,31 @@
+{
+  "isNew": true,
+  "datatype": "sf_product",
+  "data": {
+    "name": "Cedar Botanical Print",
+    "sku": "HEADLESS-CEDAR-1010",
+    "slug": "cedar-botanical-print-headless",
+    "description": "<p>A botanical art print for bright, considered spaces. Printed on heavyweight matte paper.</p>",
+    "status": "available",
+    "price": 24,
+    "available": true,
+    "trackInventory": true,
+    "stock": 40,
+    "images": [
+      {
+        "url": "YOUR_OWN_PUBLIC_PRODUCT_IMAGE_URL"
+      }
+    ],
+    "shipping": {
+      "config": "headless-1010-shipping"
+    },
+    "parcel": {
+      "weight": 0.5,
+      "weightUnit": "lb",
+      "length": 16,
+      "width": 12,
+      "height": 1,
+      "dimensionUnit": "in"
+    }
+  }
+}

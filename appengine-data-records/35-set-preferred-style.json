@@ -1,0 +1,16 @@
+{
+  "method": "POST",
+  "path": "/user/customer/update",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "sk": "6ac82b5a58e293f2e4d6635a",
+    "version": 0,
+    "data": {
+      "preferredStyle": "scandinavian"
+    }
+  }
+}

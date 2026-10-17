@@ -1,0 +1,14 @@
+[
+  {
+    "hostItem": "item_1",
+    "requestDirectory": "conditional-01-list_services"
+  },
+  {
+    "hostItem": "item_2",
+    "requestDirectory": "conditional-02-describe_service"
+  },
+  {
+    "hostItem": "item_3",
+    "requestDirectory": "conditional-03-getTimesheet"
+  }
+]

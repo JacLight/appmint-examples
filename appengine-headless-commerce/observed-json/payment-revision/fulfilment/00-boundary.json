@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-11T00:15:32.069Z",
+  "smtp": [
+    {
+      "name": "course-mail-disabled",
+      "status": "inactive",
+      "sendOutgoing": false
+    }
+  ],
+  "easypost": {
+    "id": "6acaca1f8c597416cfbe7f23",
+    "active": true,
+    "testKey": true
+  }
+}

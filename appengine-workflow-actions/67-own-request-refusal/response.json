@@ -1,0 +1,12 @@
+{
+  "status": 403,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "reason": "own-request",
+    "statusCode": 403,
+    "error": "You cannot decide your own request",
+    "path": "/approval/task/6aca13e3f5d6b011f6e12062/reject",
+    "method": "POST",
+    "timeStamp": "2026-10-10T10:30:59.553Z"
+  }
+}

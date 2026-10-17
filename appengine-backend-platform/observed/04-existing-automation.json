@@ -1,0 +1,39 @@
+{
+  "startedAt": "2026-10-10T07:30:40.554980+00:00",
+  "durationSeconds": 0.0291,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/automation",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "query": {
+        "data.name": "Backend course \u2014 submission receipt"
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 5
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "total": 0,
+      "datatype": "automation",
+      "pageSize": 5,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "data": []
+    }
+  }
+}

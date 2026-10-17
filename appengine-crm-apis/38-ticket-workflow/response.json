@@ -1,0 +1,72 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "taskSk": "6aca833237ff863efff476cf",
+    "workflowName": "ticket-support",
+    "workflowTitle": "Ticket support",
+    "stageId": 3,
+    "stageName": "Resolved",
+    "stageType": "end",
+    "stages": [
+      {
+        "id": 0,
+        "name": "New",
+        "type": "start",
+        "modelState": "new",
+        "modelStatus": "new",
+        "current": false
+      },
+      {
+        "id": 1,
+        "name": "In progress",
+        "type": "intermediate",
+        "modelState": "inprogress",
+        "modelStatus": "inprogress",
+        "current": false
+      },
+      {
+        "id": 2,
+        "name": "Waiting on customer",
+        "type": "intermediate",
+        "modelState": "pending",
+        "modelStatus": "pending",
+        "current": false
+      },
+      {
+        "id": 3,
+        "name": "Resolved",
+        "type": "end",
+        "modelState": "completed",
+        "modelStatus": "done",
+        "current": true
+      }
+    ],
+    "isFinal": true,
+    "taskStatus": "done",
+    "assignTo": [
+      "video-lab-mut4jkwd@example.com"
+    ],
+    "dueDate": null,
+    "overdue": false,
+    "escalationTier": 0,
+    "startedAt": "2026-10-10T18:25:54.059Z",
+    "updatedAt": "2026-10-10T18:25:54.336Z",
+    "history": [
+      {
+        "stageName": "New",
+        "left": true,
+        "at": "2026-10-10T18:25:54.332Z",
+        "by": "video-lab-mut4jkwd@example.com",
+        "note": null
+      },
+      {
+        "stageName": "Resolved",
+        "left": false,
+        "at": "2026-10-10T18:25:54.336Z",
+        "by": null,
+        "note": null
+      }
+    ]
+  }
+}

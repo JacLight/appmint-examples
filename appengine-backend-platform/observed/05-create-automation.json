@@ -1,0 +1,89 @@
+{
+  "startedAt": "2026-10-10T07:30:40.584284+00:00",
+  "durationSeconds": 0.0519,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/automation",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "name": "Backend course \u2014 submission receipt",
+      "trigger": {
+        "type": "data_created",
+        "config": {
+          "datatype": "baas_submissions_1010"
+        }
+      },
+      "actions": [
+        {
+          "type": "create_data",
+          "config": {
+            "datatype": "baas_receipts_1010",
+            "data": {
+              "submissionId": "{{dataId}}",
+              "reference": "{{data.reference}}",
+              "message": "AppEngine event processed"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "datatype": "automation",
+      "data": {
+        "name": "Backend course \u2014 submission receipt",
+        "steps": [
+          {
+            "id": "trigger_1",
+            "type": "trigger",
+            "name": "data_created",
+            "label": "data_created",
+            "enabled": true,
+            "config": {
+              "datatype": "baas_submissions_1010",
+              "type": "data_created"
+            },
+            "order": 1,
+            "nextStepId": "action_1"
+          },
+          {
+            "id": "action_1",
+            "type": "action",
+            "name": "create_data",
+            "label": "create_data",
+            "enabled": true,
+            "config": {
+              "datatype": "baas_receipts_1010",
+              "data": {
+                "submissionId": "{{dataId}}",
+                "reference": "{{data.reference}}",
+                "message": "AppEngine event processed"
+              },
+              "type": "create_data"
+            },
+            "order": 2
+          }
+        ],
+        "status": "draft",
+        "slug": "backend-course-submission-receipt-57z6"
+      },
+      "name": "Backend course \u2014 submission receipt",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|automation",
+      "createdate": "2026-10-10T07:30:40.617Z",
+      "modifydate": "2026-10-10T07:30:40.617Z",
+      "version": 0,
+      "sk": "6ac9e9a0f5d6b011f6e11a13",
+      "id": "6ac9e9a0f5d6b011f6e11a13"
+    }
+  }
+}

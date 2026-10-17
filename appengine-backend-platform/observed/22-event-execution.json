@@ -1,0 +1,106 @@
+{
+  "startedAt": "2026-10-10T07:32:23.395129+00:00",
+  "durationSeconds": 0.0106,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/automation/executions/exec_1791617478031_65seflj0f",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "executionId": "exec_1791617478031_65seflj0f",
+      "status": "completed",
+      "startedAt": "2026-10-10T07:31:18.031Z",
+      "completedAt": "2026-10-10T07:31:18.066Z",
+      "durationMs": 35,
+      "stepsDone": 1,
+      "failedStepId": null,
+      "error": null,
+      "triggeredBy": "event",
+      "waitingFor": null,
+      "automationId": "6ac9e9a0f5d6b011f6e11a13",
+      "results": [
+        {
+          "success": true,
+          "error": null,
+          "executionTime": 6,
+          "data": {
+            "created": true,
+            "datatype": "baas_receipts_1010",
+            "recordId": "6ac9e9c6f5d6b011f6e11a2b",
+            "record": {
+              "pk": "video-lab-mut4jkwd|baas_receipts_1010",
+              "sk": "6ac9e9c6f5d6b011f6e11a2b",
+              "name": "baas_receipts_1010-1791617478060-hxjyhitm",
+              "datatype": "baas_receipts_1010",
+              "data": {
+                "submissionId": "6ac9e9c6f5d6b011f6e11a28",
+                "reference": "BAAS-1010-A",
+                "message": "AppEngine event processed",
+                "name": "baas_receipts_1010-1791617478060-hxjyhitm"
+              },
+              "version": 0,
+              "created_by": "system",
+              "state": "draft",
+              "createdate": "2026-10-10T07:31:18.065Z",
+              "modifydate": "2026-10-10T07:31:18.065Z",
+              "id": "6ac9e9c6f5d6b011f6e11a2b"
+            }
+          },
+          "nextStepId": null,
+          "stepId": "action_1",
+          "stepType": "action"
+        }
+      ],
+      "errors": [],
+      "completedSteps": [
+        "action_1"
+      ],
+      "variables": {
+        "triggerEvent": "data_created",
+        "operation": "created",
+        "dataType": "baas_submissions_1010",
+        "dataId": "6ac9e9c6f5d6b011f6e11a28",
+        "timestamp": "2026-10-10T07:31:18.030Z",
+        "record": {
+          "datatype": "baas_submissions_1010",
+          "data": {
+            "reference": "BAAS-1010-A",
+            "title": "Application submission with attachment",
+            "attachmentPath": "video-lab-mut4jkwd/course-baas-1010/submission-notes.txt",
+            "status": "new"
+          },
+          "name": "Application submission with attachment",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "pk": "video-lab-mut4jkwd|baas_submissions_1010",
+          "createdate": "2026-10-10T07:31:18.027Z",
+          "modifydate": "2026-10-10T07:31:18.027Z",
+          "version": 0,
+          "sk": "6ac9e9c6f5d6b011f6e11a28",
+          "id": "6ac9e9c6f5d6b011f6e11a28"
+        },
+        "data": {
+          "reference": "BAAS-1010-A",
+          "title": "Application submission with attachment",
+          "attachmentPath": "video-lab-mut4jkwd/course-baas-1010/submission-notes.txt",
+          "status": "new"
+        },
+        "event": {
+          "email": null,
+          "link": null,
+          "broadcastId": null
+        },
+        "createdBy": "video-lab-mut4jkwd@example.com"
+      }
+    }
+  }
+}

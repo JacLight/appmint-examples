@@ -1,0 +1,7 @@
+{
+  "status": 200,
+  "body": {
+    "signedIn": false
+  },
+  "setCookie": "gateway_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0"
+}

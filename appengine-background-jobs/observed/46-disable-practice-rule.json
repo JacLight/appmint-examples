@@ -1,0 +1,63 @@
+{
+  "startedAt": "2026-10-11T05:09:36.863Z",
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "PUT",
+    "path": "/crm/leads/pipelines/stages/6acb15afba781cd23c2f6e14/contacted",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "sla": {
+        "duration": 0,
+        "action": "create_task"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6acb15afba781cd23c2f6e14",
+      "pk": "video-lab-mut4jkwd|lead_pipeline",
+      "sk": "6acb15afba781cd23c2f6e14",
+      "name": "job-usecase-1011 Follow-up",
+      "datatype": "lead_pipeline",
+      "data": {
+        "name": "job-usecase-1011 Follow-up",
+        "isDefault": false,
+        "stages": [
+          {
+            "id": "new",
+            "name": "New enquiry",
+            "order": 0
+          },
+          {
+            "id": "contacted",
+            "name": "Contacted",
+            "order": 1,
+            "sla": {
+              "duration": 0,
+              "action": "create_task"
+            }
+          },
+          {
+            "id": "followup",
+            "name": "Follow-up ready",
+            "order": 2
+          }
+        ],
+        "isActive": true,
+        "leadCount": 0
+      },
+      "version": 4,
+      "author": "video-lab-mut4jkwd@example.com",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "createdate": "2026-10-11T04:50:55.819Z",
+      "modifydate": "2026-10-11T05:09:36.938Z",
+      "modified_by": "video-lab-mut4jkwd@example.com"
+    }
+  }
+}

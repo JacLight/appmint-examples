@@ -1,0 +1,56 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "_id": "6aca82e237ff863efff476ad",
+    "pk": "video-lab-mut4jkwd|lead",
+    "sk": "6aca82e237ff863efff476ad",
+    "name": "LEAD1791656674902IQ2J",
+    "datatype": "lead",
+    "data": {
+      "fullName": "Mira CRM Course",
+      "email": "mira.crm1010@example.invalid",
+      "source": "website",
+      "description": "Controlled API inquiry",
+      "pipelineId": "6aca82e237ff863efff476aa",
+      "stageId": "new",
+      "status": "qualified",
+      "contactId": "6aca82e237ff863efff476ab",
+      "id": "lead_1791656674902_pc6vnkfr",
+      "name": "LEAD1791656674902IQ2J",
+      "firstName": "Mira",
+      "lastName": "CRM Course",
+      "score": 40,
+      "temperature": "hot",
+      "createdAt": "2026-10-10T18:24:34.902Z",
+      "updatedAt": "2026-10-10T18:24:35.030Z",
+      "leadInformation": {
+        "leadStatus": "qualified"
+      },
+      "assignedTo": "video-lab-mut4jkwd@example.com",
+      "assignedToType": "user",
+      "lastModifiedBy": "video-lab-mut4jkwd@example.com",
+      "activities": [
+        {
+          "type": "note",
+          "description": "Requested the API integration guide",
+          "id": "activity_ivvmdd6i8j7y5w03",
+          "createdAt": "2026-10-10T18:24:34.982Z",
+          "createdBy": "video-lab-mut4jkwd@example.com"
+        }
+      ],
+      "lastActivityAt": "2026-10-10T18:24:34.982Z",
+      "nextFollowUpAt": "2026-10-14T18:24:34.989Z",
+      "notes": "Review the requested guide",
+      "lastContactedAt": "2026-10-10T18:24:35.022Z"
+    },
+    "version": 4,
+    "author": "video-lab-mut4jkwd@example.com",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "createdate": "2026-10-10T18:24:34.907Z",
+    "modifydate": "2026-10-10T18:24:35.035Z",
+    "modified_by": "video-lab-mut4jkwd@example.com",
+    "ownerName": "Video Lab"
+  }
+}

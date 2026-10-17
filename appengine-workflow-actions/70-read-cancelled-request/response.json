@@ -1,0 +1,55 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "_id": "6aca13e3f5d6b011f6e12061",
+    "pk": "video-lab-mut4jkwd|access_request",
+    "sk": "6aca13e3f5d6b011f6e12061",
+    "name": "access_request-1791628259479-rac0683h",
+    "datatype": "access_request",
+    "data": {
+      "requester": {
+        "email": "video-lab-mut4jkwd@example.com",
+        "name": "Video Lab",
+        "userId": "6ac1a7896cf55d217cabf056"
+      },
+      "app": "appmint",
+      "path": "/course-training-only",
+      "label": "Course training screen",
+      "reason": "Demonstrate an isolated request lifecycle without granting access",
+      "status": "cancelled",
+      "round": 1,
+      "submittedAt": "2026-10-10T10:30:59.479Z",
+      "name": "access_request-1791628259479-rac0683h",
+      "approvalChain": [
+        {
+          "round": 1,
+          "level": 1,
+          "approverEmail": "",
+          "status": "cancelled",
+          "assignedAt": "2026-10-10T10:30:59.479Z",
+          "taskId": "6aca13e3f5d6b011f6e12062",
+          "decidedAt": "2026-10-10T10:30:59.581Z",
+          "decidedBy": "video-lab-mut4jkwd@example.com",
+          "comments": "Training request complete; no access grant needed"
+        }
+      ],
+      "approver": {
+        "emails": [],
+        "since": "2026-10-10T10:30:59.479Z",
+        "escalatesAt": "2026-10-13T10:30:59.505Z"
+      },
+      "taskId": "6aca13e3f5d6b011f6e12062",
+      "workflowName": "access-approval",
+      "comments": "Training request complete; no access grant needed",
+      "decidedAt": "2026-10-10T10:30:59.581Z",
+      "decidedBy": "video-lab-mut4jkwd@example.com"
+    },
+    "version": 0,
+    "author": "video-lab-mut4jkwd@example.com",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "inprogress",
+    "createdate": "2026-10-10T10:30:59.483Z",
+    "modifydate": "2026-10-10T10:30:59.584Z"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "method": "POST",
+  "path": "/repository/file/upload",
+  "body": {
+    "file": "submission-notes.txt",
+    "location": "course-baas-1010",
+    "isPrivate": "true"
+  }
+}

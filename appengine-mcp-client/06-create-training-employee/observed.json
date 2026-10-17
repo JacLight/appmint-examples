@@ -1,0 +1,33 @@
+{
+  "status": 201,
+  "body": {
+    "pk": "video-lab-mut4jkwd|bm_employee",
+    "sk": "6acb2e18ba781cd23c2f757d",
+    "name": "bm_employee-1791700504219-ti8aq5cr",
+    "datatype": "bm_employee",
+    "data": {
+      "employeeId": "mcp-usecase-1011-EMP0042",
+      "personalInfo": {
+        "firstName": "Tom",
+        "lastName": "Becker"
+      },
+      "contactInfo": {
+        "email": "tom.mcp-usecase-1011@training.local"
+      },
+      "employment": {
+        "status": "active",
+        "hireDate": "2026-10-01",
+        "jobTitle": "Training staff",
+        "department": "Course sandbox"
+      },
+      "name": "bm_employee-1791700504219-ti8aq5cr"
+    },
+    "version": 0,
+    "author": "video-lab-mut4jkwd@example.com",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "createdate": "2026-10-11T06:35:04.222Z",
+    "modifydate": "2026-10-11T06:35:04.222Z",
+    "id": "6acb2e18ba781cd23c2f757d"
+  }
+}

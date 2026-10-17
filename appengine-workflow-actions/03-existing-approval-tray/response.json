@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "waitingOnMe": [],
+    "myRequests": [],
+    "notices": [],
+    "unread": 0,
+    "counts": {
+      "waiting": 0,
+      "mine": 0
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "jsonrpc": "2.0",
+    "id": 14,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "AI-callable service not found: CourseUnknownService"
+        }
+      ],
+      "isError": true
+    }
+  }
+}

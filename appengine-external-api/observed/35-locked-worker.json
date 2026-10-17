@@ -1,0 +1,5 @@
+{
+  "id": "supplier-usecase-1011-LOCK",
+  "error": "This shipment already has an active or interrupted worker. Reconcile its intake before clearing the lock.",
+  "events": []
+}

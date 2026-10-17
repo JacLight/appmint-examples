@@ -1,0 +1,5 @@
+{
+  "method": "GET",
+  "path": "/client-data/orders/YOUR_ORDER_NUMBER",
+  "identity": "customer"
+}

@@ -1,0 +1,22 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "protocolVersion": "2025-06-18",
+      "capabilities": {
+        "tools": {
+          "listChanged": false
+        }
+      },
+      "serverInfo": {
+        "name": "appengine",
+        "title": "Appmint AppEngine",
+        "version": "1.0.0"
+      },
+      "instructions": "Backend services are reached in three steps: list_services to survey, describe_service to read a signature, then call_service to invoke. Arguments are positional and orgId is injected by the server \u2014 never pass it as an argument.\n\nAUTHENTICATION\nDiscovery (initialize, tools/list, list_services, describe_service) needs no credentials. call_service DOES, and requires two HTTP headers on the request:\n  orgid: <organization id>\n  Authorization: Bearer <token>\n\nIf you do not have a token, obtain one by signing in \u2014 this is a normal HTTP call, not an MCP tool:\n  POST /user/signin   (headers: orgid)   body: { \"email\": \"...\", \"password\": \"...\" }\n  -> the response carries the bearer token to use above.\nAn API key issued from the org (api-key endpoints) works in place of a signed-in user.\n\nBoth headers are set by whoever configured this MCP connection, not by you. If call_service reports that authentication or permission is missing, say so plainly and tell the user which header is absent \u2014 do not retry, and do not attempt to sign in on their behalf with credentials you were not given."
+    }
+  }
+}

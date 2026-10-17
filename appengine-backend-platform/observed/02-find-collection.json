@@ -1,0 +1,20 @@
+{
+  "startedAt": "2026-10-10T07:30:40.318407+00:00",
+  "durationSeconds": 0.0312,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/collections/baas_submissions_1010?enriched=false",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": []
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "method": "POST",
+  "path": "/client/forms/wf-usecase-1011-warranty/submit",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "sku": "HEADLESS-CEDAR-1010",
+      "quantity": 2
+    }
+  ],
+  "toAddress": {
+    "name": "Mira-Lin Chen",
+    "street1": "123 Course Lane",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60601",
+    "country": "US"
+  }
+}

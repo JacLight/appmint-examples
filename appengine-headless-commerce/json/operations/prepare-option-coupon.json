@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "path": "/storefront/discounts",
+  "identity": "staff",
+  "mutation": true,
+  "body": {
+    "name": "YOUR_UNIQUE_COUPON_NAME",
+    "code": "YOUR_UNIQUE_COUPON_CODE",
+    "status": "active",
+    "type": "percent",
+    "value": 10,
+    "applyTo": "products",
+    "products": [
+      "YOUR_UNIQUE_BASE_SKU"
+    ],
+    "autoApply": false,
+    "canCombine": false
+  }
+}

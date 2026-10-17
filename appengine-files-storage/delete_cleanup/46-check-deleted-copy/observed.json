@@ -1,0 +1,34 @@
+{
+  "startedAt": "2026-10-10T02:01:17.917544+00:00",
+  "durationSeconds": 0.2313,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/exists",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "course-files-1009/work/supplier-notes-moved.txt"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "exists": false,
+      "raw": {
+        "message": null,
+        "code": "NotFound",
+        "region": null,
+        "time": "2026-10-10T02:01:18.148Z",
+        "requestId": "tx00000deabbce83f530999-006ac99c6e-b4f4cca0-sfo3a",
+        "statusCode": 404,
+        "retryable": false,
+        "retryDelay": 21.77847150855836
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "method": "POST",
+  "path": "/repository/create",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "datatype": "schedule",
+    "isNew": true,
+    "data": {
+      "name": "course-invalid-past",
+      "type": "simple",
+      "status": "active",
+      "target": [
+        {
+          "datatype": "schedule_marks_1010",
+          "id": "6aca1344f5d6b011f6e12028"
+        }
+      ],
+      "start": {
+        "date": "2020-01-01T00:00:00.000Z",
+        "action": "update-status",
+        "actionArgs": "ready"
+      }
+    }
+  },
+  "note": "Historical observed request; replace dates and IDs before use."
+}

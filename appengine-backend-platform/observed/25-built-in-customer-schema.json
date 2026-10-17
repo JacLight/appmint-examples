@@ -1,0 +1,2113 @@
+{
+  "startedAt": "2026-10-10T07:32:23.428700+00:00",
+  "durationSeconds": 0.0112,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/collections/customer?enriched=false",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": [
+      {
+        "_id": "6ac98926f5d6b011f6e10df4",
+        "pk": "video-lab-mut4jkwd|collection",
+        "sk": "6ac98926f5d6b011f6e10df4",
+        "name": "customer",
+        "data": {
+          "name": "customer",
+          "title": "Customer",
+          "description": "Customer",
+          "type": "Concrete",
+          "enablePost": true,
+          "enableWorkflow": true,
+          "enableVersioning": true,
+          "enableIndexing": true,
+          "enableSubSchema": true,
+          "permission": {},
+          "validations": {},
+          "schema": {
+            "type": "object",
+            "properties": {
+              "accountType": {
+                "type": "string",
+                "options": [
+                  "subscriber",
+                  "contact",
+                  "customer"
+                ],
+                "group": "account"
+              },
+              "businessLocation": {
+                "type": "string",
+                "description": "FK to Business Location (venue / site / branch)",
+                "x-control": "selectMany",
+                "x-control-variant": "chip",
+                "maxItems": 1,
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "location",
+                  "value": "name",
+                  "label": "name"
+                },
+                "group": "businessLocation"
+              },
+              "balance": {
+                "type": "number",
+                "default": 0,
+                "group": "account",
+                "hideIn": [
+                  "generator"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "group": "account"
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "minLength": 3,
+                "maxLength": 150,
+                "unique": true,
+                "group": "identity"
+              },
+              "username": {
+                "type": "string",
+                "unique": true,
+                "group": "identity"
+              },
+              "phone": {
+                "type": "string",
+                "group": "identity"
+              },
+              "firstName": {
+                "type": "string",
+                "group": "fullname"
+              },
+              "middleName": {
+                "type": "string",
+                "group": "fullname"
+              },
+              "lastName": {
+                "type": "string",
+                "group": "fullname"
+              },
+              "prefix": {
+                "type": "string",
+                "group": "name-extra"
+              },
+              "suffix": {
+                "type": "string",
+                "group": "name-extra"
+              },
+              "title": {
+                "type": "string",
+                "group": "personal"
+              },
+              "sex": {
+                "type": "string",
+                "group": "personal"
+              },
+              "birthday": {
+                "type": "string",
+                "group": "personal"
+              },
+              "language": {
+                "type": "string",
+                "group": "locale"
+              },
+              "timezone": {
+                "type": "string",
+                "group": "locale"
+              },
+              "greeting": {
+                "type": "string"
+              },
+              "company": {
+                "type": "string",
+                "group": "work"
+              },
+              "jobTitle": {
+                "type": "string",
+                "group": "work"
+              },
+              "jobClass": {
+                "type": "string",
+                "group": "job-detail"
+              },
+              "employeeNumber": {
+                "type": "string",
+                "group": "job-detail"
+              },
+              "hoursOfOperation": {
+                "type": "string"
+              },
+              "taxExempt": {
+                "type": "boolean",
+                "default": false,
+                "group": "tax"
+              },
+              "taxExemptReason": {
+                "type": "string",
+                "description": "Why the customer is exempt (reseller, non-profit, government\u2026)",
+                "group": "tax"
+              },
+              "taxExemptCertificate": {
+                "type": "string",
+                "description": "Exemption certificate / permit number on file",
+                "group": "tax"
+              },
+              "parent": {
+                "type": "string",
+                "x-control": "selectMany",
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "customer",
+                  "value": "sk",
+                  "label": "name"
+                },
+                "group": "groups"
+              },
+              "groups": {
+                "type": "array",
+                "x-control-variant": "chip",
+                "x-control": "selectMany",
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "customer_group",
+                  "value": "name",
+                  "label": "name"
+                },
+                "items": {
+                  "type": "string"
+                },
+                "group": "groups"
+              },
+              "lockout": {
+                "type": "string",
+                "default": "false",
+                "group": "lockout",
+                "hideIn": [
+                  "generator"
+                ]
+              },
+              "lockoutDate": {
+                "type": "string",
+                "format": "date-time",
+                "disabled": true,
+                "group": "lockout",
+                "hideIn": [
+                  "generator"
+                ]
+              },
+              "passwordPolicy": "[redacted]",
+              "password": "[redacted]",
+              "confirmPassword": "[redacted]",
+              "guestUser": {
+                "type": "boolean",
+                "hidden": true,
+                "hideIn": [
+                  "generator"
+                ]
+              },
+              "leadStatus": {
+                "type": "string",
+                "enum": [
+                  "in progress",
+                  "contacted",
+                  "qualified",
+                  "attempted",
+                  "unqualified",
+                  "converted",
+                  "closed",
+                  "other"
+                ],
+                "group": "lead"
+              },
+              "leadStage": {
+                "type": "string",
+                "enum": [
+                  "new",
+                  "lead",
+                  "marketing-qualified",
+                  "sales-qualified",
+                  "opportunity",
+                  "customer",
+                  "evangelist",
+                  "other"
+                ],
+                "group": "lead"
+              },
+              "benefits": {
+                "type": "array",
+                "x-control-variant": "chip",
+                "x-control": "selectMany",
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "benefit",
+                  "value": "name",
+                  "label": "name"
+                },
+                "items": {
+                  "type": "string"
+                }
+              },
+              "address": {
+                "type": "array",
+                "displayStyle": "table",
+                "hideIn": [
+                  "table"
+                ],
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "address",
+                  "value": "sk",
+                  "label": "name"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "street1": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string"
+                    },
+                    "region": {
+                      "type": "string"
+                    },
+                    "zip": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "phones": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phoneNumber": {
+                      "type": "string",
+                      "description": "Phone number in E.164 format (e.g., +15551234567)"
+                    },
+                    "friendlyName": {
+                      "type": "string",
+                      "description": "Display name for this number"
+                    },
+                    "countryCode": {
+                      "type": "string",
+                      "description": "ISO country code (e.g., US, CA, GB)"
+                    },
+                    "extension": {
+                      "type": "string"
+                    },
+                    "phoneNumberType": {
+                      "type": "string",
+                      "description": "local | mobile | landline | toll_free"
+                    },
+                    "purpose": {
+                      "type": "string",
+                      "description": "contact | business | marketing | support | sales"
+                    },
+                    "primary": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "verified": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                }
+              },
+              "emails": {
+                "type": "array",
+                "hideIn": [
+                  "table"
+                ],
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "status": {
+                      "type": "string",
+                      "x-control": "label"
+                    },
+                    "verified": {
+                      "type": "boolean",
+                      "hidden": true
+                    }
+                  }
+                }
+              },
+              "subscriptions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "social": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "x-control": "selectMany",
+                      "x-control-variant": "chip",
+                      "dataSource": {
+                        "source": "json",
+                        "json": [
+                          "facebook",
+                          "twitter",
+                          "linkedin",
+                          "instagram",
+                          "tiktok"
+                        ]
+                      },
+                      "group": "social"
+                    },
+                    "url": {
+                      "type": "string",
+                      "group": "social"
+                    }
+                  }
+                }
+              },
+              "afflictions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "x-control": "selectMany",
+                      "x-control-variant": "chip",
+                      "dataSource": {
+                        "source": "json",
+                        "json": [
+                          "lead",
+                          "customer",
+                          "company",
+                          "employee"
+                        ]
+                      },
+                      "group": "afflictions"
+                    },
+                    "description": {
+                      "type": "string",
+                      "group": "afflictions"
+                    }
+                  }
+                }
+              },
+              "projects": {
+                "collapsible": true,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reminderQuestion": {
+                "hideIn": [
+                  "table",
+                  "generator"
+                ],
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "question": {
+                      "type": "string"
+                    },
+                    "answer": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "image": {
+                "type": "object",
+                "readOnly": true,
+                "x-control": "file",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string",
+                    "hidden": true,
+                    "hideIn": [
+                      "generator"
+                    ]
+                  },
+                  "contentType": {
+                    "type": "string",
+                    "hideIn": [
+                      "generator"
+                    ]
+                  },
+                  "url": {
+                    "type": "string",
+                    "x-render": "file"
+                  },
+                  "isPublic": {
+                    "type": "boolean",
+                    "hidden": true,
+                    "hideIn": [
+                      "generator"
+                    ]
+                  },
+                  "meta": {
+                    "type": "object",
+                    "hidden": true,
+                    "hideIn": [
+                      "generator"
+                    ],
+                    "properties": {
+                      "width": {
+                        "type": "number"
+                      },
+                      "height": {
+                        "type": "number"
+                      },
+                      "size": {
+                        "type": "number"
+                      },
+                      "xs": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "sm": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "md": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "logo": {
+                "type": "object",
+                "readOnly": true,
+                "x-control": "file",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string",
+                    "hidden": true,
+                    "hideIn": [
+                      "generator"
+                    ]
+                  },
+                  "contentType": {
+                    "type": "string",
+                    "hideIn": [
+                      "generator"
+                    ]
+                  },
+                  "url": {
+                    "type": "string",
+                    "x-render": "file"
+                  },
+                  "isPublic": {
+                    "type": "boolean",
+                    "hidden": true,
+                    "hideIn": [
+                      "generator"
+                    ]
+                  },
+                  "meta": {
+                    "type": "object",
+                    "hidden": true,
+                    "hideIn": [
+                      "generator"
+                    ],
+                    "properties": {
+                      "width": {
+                        "type": "number"
+                      },
+                      "height": {
+                        "type": "number"
+                      },
+                      "size": {
+                        "type": "number"
+                      },
+                      "xs": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "sm": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "md": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "about": {
+                "type": "string",
+                "x-control-variant": "textarea"
+              },
+              "communityProfile": {
+                "type": "object",
+                "collapsible": true,
+                "hideIn": [
+                  "generator"
+                ],
+                "properties": {
+                  "isPublic": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Opt-in to be visible in networking features"
+                  },
+                  "headline": {
+                    "type": "string",
+                    "maxLength": 150,
+                    "description": "Short headline e.g. \"CEO at Company\""
+                  },
+                  "bio": {
+                    "type": "string",
+                    "x-control-variant": "textarea",
+                    "maxLength": 1000
+                  },
+                  "expertise": {
+                    "type": "array",
+                    "x-control-variant": "chip",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Skills/expertise to share"
+                  },
+                  "interests": {
+                    "type": "array",
+                    "x-control-variant": "chip",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Topics interested in learning"
+                  },
+                  "lookingFor": {
+                    "type": "array",
+                    "x-control-variant": "chip",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "What they are looking for (investors, partners, etc.)"
+                  },
+                  "socialLinks": {
+                    "type": "object",
+                    "properties": {
+                      "linkedin": {
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "twitter": {
+                        "type": "string"
+                      },
+                      "github": {
+                        "type": "string"
+                      },
+                      "website": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  },
+                  "visibility": {
+                    "type": "object",
+                    "properties": {
+                      "showEmail": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "showPhone": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "showCompany": {
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "showLocation": {
+                        "type": "boolean",
+                        "default": true
+                      }
+                    }
+                  },
+                  "connectionPreferences": {
+                    "type": "object",
+                    "properties": {
+                      "autoAcceptQrScans": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "allowMessagesFromNonConnections": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "sendReadReceipts": {
+                        "type": "boolean",
+                        "default": true
+                      }
+                    }
+                  }
+                }
+              },
+              "sources": {
+                "type": "array",
+                "title": "Sources",
+                "description": "Every time data about this person arrived, newest last.",
+                "readOnly": true,
+                "group": "sources",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string",
+                      "enum": [
+                        "pdl",
+                        "diffbot",
+                        "maps",
+                        "linkedin",
+                        "spider",
+                        "import",
+                        "form",
+                        "facebook",
+                        "manual",
+                        "lead"
+                      ]
+                    },
+                    "sourceId": {
+                      "type": "string",
+                      "description": "The id at the source (PDL id, place id, lead sk\u2026)"
+                    },
+                    "ref": {
+                      "type": "string",
+                      "description": "What brought it: datatype/sk of the import job, form, search run or lead"
+                    },
+                    "at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "by": {
+                      "type": "string"
+                    },
+                    "fields": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The fields this arrival supplied"
+                    }
+                  }
+                }
+              },
+              "values": {
+                "type": "object",
+                "title": "All values",
+                "description": "Every value seen for a field, with its source. The top-level field holds the most trusted one.",
+                "readOnly": true,
+                "hidden": true,
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "value": {},
+                      "source": {
+                        "type": "string"
+                      },
+                      "ref": {
+                        "type": "string"
+                      },
+                      "at": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    }
+                  }
+                }
+              },
+              "audit": {
+                "type": "array",
+                "hidden": true,
+                "collapsible": true,
+                "hideIn": [
+                  "generator"
+                ],
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "lastLogin": {
+                      "type": "string",
+                      "disabled": true,
+                      "format": "date-time"
+                    },
+                    "lastUpdated": {
+                      "type": "string",
+                      "format": "date-time",
+                      "disabled": true
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "created",
+                        "updated",
+                        "deleted",
+                        "login",
+                        "failed_login",
+                        "change_password",
+                        "reset_password"
+                      ],
+                      "disabled": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "hidden": true
+                    }
+                  }
+                }
+              },
+              "preferredStyle": {
+                "type": "string",
+                "title": "Preferred style",
+                "enum": [
+                  "modern",
+                  "scandinavian",
+                  "industrial",
+                  "traditional"
+                ]
+              }
+            }
+          }
+        },
+        "datatype": "collection",
+        "version": 0,
+        "author": "video-lab-mut4jkwd@example.com",
+        "createdate": "2026-10-10T00:39:02.933Z",
+        "modifydate": "2026-10-10T00:39:02.933Z"
+      },
+      {
+        "pk": "customer_group",
+        "sk": "customer_group",
+        "name": "customer_group",
+        "data": {
+          "name": "customer_group",
+          "title": "Customer Group",
+          "description": "Customer Group",
+          "type": "Concrete",
+          "enablePost": true,
+          "enableWorkflow": true,
+          "enableVersioning": false,
+          "enableIndexing": true,
+          "enableSubSchema": false,
+          "permission": {},
+          "validations": {},
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "groupType": {
+                "type": "string",
+                "enum": [
+                  "dynamic",
+                  "static"
+                ]
+              },
+              "addRules": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "field": {
+                      "type": "string"
+                    },
+                    "operator": {
+                      "type": "string",
+                      "enum": [
+                        "equals",
+                        "not_equals",
+                        "in",
+                        "not_in"
+                      ]
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "removeRules": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "field": {
+                        "type": "string"
+                      },
+                      "operator": {
+                        "type": "string",
+                        "enum": [
+                          "equals",
+                          "not_equals",
+                          "in",
+                          "not_in"
+                        ]
+                      },
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "datatype": "collection",
+        "version": 0
+      },
+      {
+        "pk": "customer_kyc",
+        "sk": "customer_kyc",
+        "name": "customer_kyc",
+        "data": {
+          "name": "customer_kyc",
+          "title": "Customer KYC",
+          "description": "Customer KYC",
+          "type": "Concrete",
+          "enablePost": true,
+          "enableWorkflow": true,
+          "enableVersioning": false,
+          "enableIndexing": true,
+          "enableSubSchema": false,
+          "permission": {},
+          "validations": {},
+          "schema": {
+            "type": "object",
+            "properties": {
+              "customer": {
+                "type": "string",
+                "x-control": "selectMany",
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "customer",
+                  "value": "email",
+                  "label": "email"
+                },
+                "group": "customer"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "in_review",
+                  "additional_info_required",
+                  "verified",
+                  "rejected",
+                  "expired",
+                  "suspended"
+                ],
+                "default": "pending",
+                "group": "customer"
+              },
+              "tier": {
+                "type": "string",
+                "enum": [
+                  "basic",
+                  "standard",
+                  "enhanced",
+                  "full"
+                ],
+                "default": "basic",
+                "description": "Verification level",
+                "group": "customer"
+              },
+              "riskLevel": {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high",
+                  "prohibited"
+                ],
+                "group": "risk"
+              },
+              "riskScore": {
+                "type": "number",
+                "group": "risk"
+              },
+              "personalInfo": {
+                "type": "object",
+                "title": "Personal Information",
+                "collapsible": true,
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "group": "name"
+                  },
+                  "middleName": {
+                    "type": "string",
+                    "group": "name"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "group": "name"
+                  },
+                  "dateOfBirth": {
+                    "type": "string",
+                    "format": "date",
+                    "x-control": "date",
+                    "group": "dob"
+                  },
+                  "placeOfBirth": {
+                    "type": "string",
+                    "group": "dob"
+                  },
+                  "nationality": {
+                    "type": "string",
+                    "group": "nationality"
+                  },
+                  "secondNationality": {
+                    "type": "string",
+                    "group": "nationality"
+                  },
+                  "gender": {
+                    "type": "string",
+                    "enum": [
+                      "male",
+                      "female",
+                      "other"
+                    ],
+                    "group": "gender"
+                  },
+                  "taxId": {
+                    "type": "string",
+                    "description": "Tax ID / SSN / TIN",
+                    "group": "tax"
+                  },
+                  "taxCountry": {
+                    "type": "string",
+                    "group": "tax"
+                  }
+                }
+              },
+              "identityDocuments": {
+                "type": "array",
+                "title": "Identity Documents",
+                "collapsible": true,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "documentType": {
+                      "type": "string",
+                      "enum": [
+                        "passport",
+                        "national_id",
+                        "drivers_license",
+                        "residence_permit",
+                        "visa",
+                        "voter_id",
+                        "military_id",
+                        "other"
+                      ],
+                      "group": "doc-type"
+                    },
+                    "documentNumber": {
+                      "type": "string",
+                      "group": "doc-type"
+                    },
+                    "issuingCountry": {
+                      "type": "string",
+                      "group": "doc-issue"
+                    },
+                    "issuingAuthority": {
+                      "type": "string",
+                      "group": "doc-issue"
+                    },
+                    "issueDate": {
+                      "type": "string",
+                      "format": "date",
+                      "x-control": "date",
+                      "group": "doc-dates"
+                    },
+                    "expiryDate": {
+                      "type": "string",
+                      "format": "date",
+                      "x-control": "date",
+                      "group": "doc-dates"
+                    },
+                    "frontImage": {
+                      "type": "object",
+                      "readOnly": true,
+                      "x-control": "file",
+                      "properties": {
+                        "path": {
+                          "type": "string"
+                        },
+                        "content": {
+                          "type": "string",
+                          "hidden": true,
+                          "hideIn": [
+                            "generator"
+                          ]
+                        },
+                        "contentType": {
+                          "type": "string",
+                          "hideIn": [
+                            "generator"
+                          ]
+                        },
+                        "url": {
+                          "type": "string",
+                          "x-render": "file"
+                        },
+                        "isPublic": {
+                          "type": "boolean",
+                          "hidden": true,
+                          "hideIn": [
+                            "generator"
+                          ]
+                        },
+                        "meta": {
+                          "type": "object",
+                          "hidden": true,
+                          "hideIn": [
+                            "generator"
+                          ],
+                          "properties": {
+                            "width": {
+                              "type": "number"
+                            },
+                            "height": {
+                              "type": "number"
+                            },
+                            "size": {
+                              "type": "number"
+                            },
+                            "xs": {
+                              "type": "object",
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "sm": {
+                              "type": "object",
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "md": {
+                              "type": "object",
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "backImage": {
+                      "type": "object",
+                      "readOnly": true,
+                      "x-control": "file",
+                      "properties": {
+                        "path": {
+                          "type": "string"
+                        },
+                        "content": {
+                          "type": "string",
+                          "hidden": true,
+                          "hideIn": [
+                            "generator"
+                          ]
+                        },
+                        "contentType": {
+                          "type": "string",
+                          "hideIn": [
+                            "generator"
+                          ]
+                        },
+                        "url": {
+                          "type": "string",
+                          "x-render": "file"
+                        },
+                        "isPublic": {
+                          "type": "boolean",
+                          "hidden": true,
+                          "hideIn": [
+                            "generator"
+                          ]
+                        },
+                        "meta": {
+                          "type": "object",
+                          "hidden": true,
+                          "hideIn": [
+                            "generator"
+                          ],
+                          "properties": {
+                            "width": {
+                              "type": "number"
+                            },
+                            "height": {
+                              "type": "number"
+                            },
+                            "size": {
+                              "type": "number"
+                            },
+                            "xs": {
+                              "type": "object",
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "sm": {
+                              "type": "object",
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "md": {
+                              "type": "object",
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "verified": {
+                      "type": "boolean",
+                      "default": false,
+                      "group": "doc-verified"
+                    },
+                    "verificationMethod": {
+                      "type": "string",
+                      "enum": [
+                        "manual",
+                        "automated",
+                        "third_party"
+                      ],
+                      "group": "doc-verified"
+                    },
+                    "verificationDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "verificationNotes": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "biometrics": {
+                "type": "object",
+                "title": "Biometric Verification",
+                "collapsible": true,
+                "properties": {
+                  "selfieImage": {
+                    "type": "object",
+                    "readOnly": true,
+                    "x-control": "file",
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "content": {
+                        "type": "string",
+                        "hidden": true,
+                        "hideIn": [
+                          "generator"
+                        ]
+                      },
+                      "contentType": {
+                        "type": "string",
+                        "hideIn": [
+                          "generator"
+                        ]
+                      },
+                      "url": {
+                        "type": "string",
+                        "x-render": "file"
+                      },
+                      "isPublic": {
+                        "type": "boolean",
+                        "hidden": true,
+                        "hideIn": [
+                          "generator"
+                        ]
+                      },
+                      "meta": {
+                        "type": "object",
+                        "hidden": true,
+                        "hideIn": [
+                          "generator"
+                        ],
+                        "properties": {
+                          "width": {
+                            "type": "number"
+                          },
+                          "height": {
+                            "type": "number"
+                          },
+                          "size": {
+                            "type": "number"
+                          },
+                          "xs": {
+                            "type": "object",
+                            "properties": {
+                              "path": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "sm": {
+                            "type": "object",
+                            "properties": {
+                              "path": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "md": {
+                            "type": "object",
+                            "properties": {
+                              "path": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "selfieVerified": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "selfie"
+                  },
+                  "selfieMatchScore": {
+                    "type": "number",
+                    "description": "Face match confidence score (0-100)",
+                    "group": "selfie"
+                  },
+                  "livenessCheck": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "liveness"
+                  },
+                  "livenessScore": {
+                    "type": "number",
+                    "group": "liveness"
+                  },
+                  "livenessMethod": {
+                    "type": "string",
+                    "enum": [
+                      "video",
+                      "challenge_response",
+                      "passive"
+                    ]
+                  },
+                  "verificationDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              },
+              "address": {
+                "type": "object",
+                "title": "Residential Address",
+                "collapsible": true,
+                "properties": {
+                  "street1": {
+                    "type": "string"
+                  },
+                  "street2": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string",
+                    "group": "city"
+                  },
+                  "state": {
+                    "type": "string",
+                    "group": "city"
+                  },
+                  "postalCode": {
+                    "type": "string",
+                    "group": "country"
+                  },
+                  "country": {
+                    "type": "string",
+                    "group": "country"
+                  },
+                  "residencySince": {
+                    "type": "string",
+                    "format": "date",
+                    "x-control": "date"
+                  },
+                  "proofOfAddress": {
+                    "type": "object",
+                    "readOnly": true,
+                    "x-control": "file",
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "content": {
+                        "type": "string",
+                        "hidden": true,
+                        "hideIn": [
+                          "generator"
+                        ]
+                      },
+                      "contentType": {
+                        "type": "string",
+                        "hideIn": [
+                          "generator"
+                        ]
+                      },
+                      "url": {
+                        "type": "string",
+                        "x-render": "file"
+                      },
+                      "isPublic": {
+                        "type": "boolean",
+                        "hidden": true,
+                        "hideIn": [
+                          "generator"
+                        ]
+                      },
+                      "meta": {
+                        "type": "object",
+                        "hidden": true,
+                        "hideIn": [
+                          "generator"
+                        ],
+                        "properties": {
+                          "width": {
+                            "type": "number"
+                          },
+                          "height": {
+                            "type": "number"
+                          },
+                          "size": {
+                            "type": "number"
+                          },
+                          "xs": {
+                            "type": "object",
+                            "properties": {
+                              "path": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "sm": {
+                            "type": "object",
+                            "properties": {
+                              "path": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "md": {
+                            "type": "object",
+                            "properties": {
+                              "path": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "proofType": {
+                    "type": "string",
+                    "enum": [
+                      "utility_bill",
+                      "bank_statement",
+                      "tax_document",
+                      "government_letter",
+                      "lease_agreement",
+                      "other"
+                    ],
+                    "group": "proof"
+                  },
+                  "proofDate": {
+                    "type": "string",
+                    "format": "date",
+                    "x-control": "date",
+                    "description": "Date on proof document",
+                    "group": "proof"
+                  },
+                  "addressVerified": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              },
+              "employment": {
+                "type": "object",
+                "title": "Employment & Source of Funds",
+                "collapsible": true,
+                "properties": {
+                  "employmentStatus": {
+                    "type": "string",
+                    "enum": [
+                      "employed",
+                      "self_employed",
+                      "unemployed",
+                      "retired",
+                      "student",
+                      "other"
+                    ],
+                    "group": "employment"
+                  },
+                  "occupation": {
+                    "type": "string",
+                    "group": "employment"
+                  },
+                  "employer": {
+                    "type": "string",
+                    "group": "employer"
+                  },
+                  "employerAddress": {
+                    "type": "string",
+                    "group": "employer"
+                  },
+                  "industry": {
+                    "type": "string",
+                    "group": "industry"
+                  },
+                  "annualIncome": {
+                    "type": "number",
+                    "group": "industry"
+                  },
+                  "sourceOfFunds": {
+                    "type": "string",
+                    "enum": [
+                      "salary",
+                      "business",
+                      "investments",
+                      "inheritance",
+                      "savings",
+                      "pension",
+                      "other"
+                    ],
+                    "group": "source"
+                  },
+                  "sourceOfFundsDetails": {
+                    "type": "string",
+                    "x-control-variant": "textarea"
+                  },
+                  "sourceOfWealth": {
+                    "type": "string",
+                    "x-control-variant": "textarea",
+                    "description": "For enhanced due diligence"
+                  }
+                }
+              },
+              "screening": {
+                "type": "object",
+                "title": "PEP & Sanctions Screening",
+                "collapsible": true,
+                "properties": {
+                  "isPEP": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Politically Exposed Person",
+                    "group": "pep"
+                  },
+                  "pepType": {
+                    "type": "string",
+                    "enum": [
+                      "domestic",
+                      "foreign",
+                      "international_org",
+                      "family_member",
+                      "close_associate"
+                    ],
+                    "group": "pep"
+                  },
+                  "pepPosition": {
+                    "type": "string"
+                  },
+                  "pepCountry": {
+                    "type": "string"
+                  },
+                  "sanctionsHit": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "sanctions"
+                  },
+                  "sanctionsList": {
+                    "type": "string",
+                    "description": "Which sanctions list",
+                    "group": "sanctions"
+                  },
+                  "adverseMedia": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "adverse"
+                  },
+                  "adverseMediaDetails": {
+                    "type": "string",
+                    "x-control-variant": "textarea",
+                    "group": "adverse"
+                  },
+                  "lastScreeningDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "group": "screening-date"
+                  },
+                  "screeningProvider": {
+                    "type": "string",
+                    "group": "screening-date"
+                  },
+                  "screeningReference": {
+                    "type": "string"
+                  }
+                }
+              },
+              "thirdPartyVerification": {
+                "type": "object",
+                "title": "Third Party Verification",
+                "collapsible": true,
+                "properties": {
+                  "provider": {
+                    "type": "string",
+                    "enum": [
+                      "onfido",
+                      "jumio",
+                      "trulioo",
+                      "veriff",
+                      "sumsub",
+                      "other"
+                    ],
+                    "group": "provider"
+                  },
+                  "referenceId": {
+                    "type": "string",
+                    "group": "provider"
+                  },
+                  "checkId": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "pending",
+                      "complete",
+                      "failed"
+                    ],
+                    "group": "status"
+                  },
+                  "result": {
+                    "type": "string",
+                    "enum": [
+                      "clear",
+                      "consider",
+                      "rejected"
+                    ],
+                    "group": "status"
+                  },
+                  "reportUrl": {
+                    "type": "string"
+                  },
+                  "rawResponse": {
+                    "type": "object",
+                    "description": "Full API response",
+                    "hidden": true
+                  },
+                  "completedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              },
+              "verification": {
+                "type": "object",
+                "title": "Verification Status",
+                "collapsible": true,
+                "properties": {
+                  "identityVerified": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "verified"
+                  },
+                  "addressVerified": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "verified"
+                  },
+                  "documentsVerified": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "verified"
+                  },
+                  "biometricsVerified": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "verified"
+                  },
+                  "screeningPassed": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "verified"
+                  },
+                  "verifiedDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "group": "verify-date"
+                  },
+                  "verifiedBy": {
+                    "type": "string",
+                    "group": "verify-date"
+                  },
+                  "expiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "KYC expiry date"
+                  },
+                  "nextReviewDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Periodic review date"
+                  }
+                }
+              },
+              "issues": {
+                "type": "array",
+                "title": "Issues & Rejections",
+                "collapsible": true,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string",
+                      "format": "date-time",
+                      "group": "issue"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "document_rejected",
+                        "info_mismatch",
+                        "fraud_suspected",
+                        "sanctions_hit",
+                        "pep_match",
+                        "expired",
+                        "other"
+                      ],
+                      "group": "issue"
+                    },
+                    "field": {
+                      "type": "string",
+                      "description": "Which field/document has the issue"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "x-control-variant": "textarea"
+                    },
+                    "resolved": {
+                      "type": "boolean",
+                      "default": false,
+                      "group": "resolved"
+                    },
+                    "resolvedDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "group": "resolved"
+                    },
+                    "resolvedBy": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "auditLog": {
+                "type": "array",
+                "title": "Audit Log",
+                "collapsible": true,
+                "readOnly": true,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "group": "audit"
+                    },
+                    "action": {
+                      "type": "string",
+                      "group": "audit"
+                    },
+                    "performedBy": {
+                      "type": "string",
+                      "group": "audit-by"
+                    },
+                    "ipAddress": {
+                      "type": "string",
+                      "group": "audit-by"
+                    },
+                    "details": {
+                      "type": "string"
+                    },
+                    "previousValue": {
+                      "type": "string"
+                    },
+                    "newValue": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "consent": {
+                "type": "object",
+                "title": "Consent & Declarations",
+                "collapsible": true,
+                "properties": {
+                  "dataProcessingConsent": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "consent"
+                  },
+                  "termsAccepted": {
+                    "type": "boolean",
+                    "default": false,
+                    "group": "consent"
+                  },
+                  "consentDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "group": "consent-date"
+                  },
+                  "consentIp": {
+                    "type": "string",
+                    "group": "consent-date"
+                  },
+                  "declaration": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Customer declares information is accurate"
+                  }
+                }
+              },
+              "internalNotes": {
+                "type": "string",
+                "x-control-variant": "textarea",
+                "title": "Internal Notes"
+              }
+            },
+            "required": [
+              "customer"
+            ]
+          }
+        },
+        "datatype": "collection",
+        "version": 0
+      },
+      {
+        "pk": "customer_association",
+        "sk": "customer_association",
+        "name": "customer_association",
+        "data": {
+          "name": "customer_association",
+          "title": "Customer Association",
+          "description": "Customer Association",
+          "type": "Concrete",
+          "enablePost": true,
+          "enableWorkflow": true,
+          "enableVersioning": false,
+          "enableIndexing": true,
+          "enableSubSchema": false,
+          "permission": {},
+          "validations": {},
+          "schema": {
+            "type": "object",
+            "properties": {
+              "customerId": {
+                "type": "string",
+                "description": "The member who signs in",
+                "x-control": "selectMany",
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "customer",
+                  "value": "email",
+                  "label": [
+                    "email",
+                    "firstName",
+                    "lastName"
+                  ]
+                },
+                "group": "association"
+              },
+              "sharedAccountId": {
+                "type": "string",
+                "description": "The shared account they may order on",
+                "x-control": "selectMany",
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "customer",
+                  "value": "sk",
+                  "label": "name"
+                },
+                "group": "association"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "manager",
+                  "buyer"
+                ],
+                "default": "buyer",
+                "description": "Managers see every order placed on the account; buyers see only their own",
+                "group": "association"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "active",
+                  "suspended"
+                ],
+                "default": "active",
+                "x-control": "label",
+                "group": "association"
+              }
+            },
+            "required": [
+              "customerId",
+              "sharedAccountId"
+            ]
+          }
+        },
+        "datatype": "collection",
+        "version": 0
+      },
+      {
+        "pk": "customer_invitation",
+        "sk": "customer_invitation",
+        "name": "customer_invitation",
+        "data": {
+          "name": "customer_invitation",
+          "title": "Customer Invitation",
+          "description": "Customer Invitation",
+          "type": "Concrete",
+          "enablePost": true,
+          "enableWorkflow": true,
+          "enableVersioning": false,
+          "enableIndexing": true,
+          "enableSubSchema": false,
+          "permission": {},
+          "validations": {},
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string",
+                "format": "email",
+                "minLength": 3,
+                "maxLength": 150,
+                "group": "invitee"
+              },
+              "firstName": {
+                "type": "string",
+                "group": "invitee"
+              },
+              "lastName": {
+                "type": "string",
+                "group": "invitee"
+              },
+              "sharedAccountId": {
+                "type": "string",
+                "description": "Shared account the invitee joins on accepting",
+                "x-control": "selectMany",
+                "maxItems": 1,
+                "dataSource": {
+                  "source": "collection",
+                  "collection": "customer",
+                  "value": "sk",
+                  "label": "name"
+                },
+                "group": "grant"
+              },
+              "sharedAccountRole": {
+                "type": "string",
+                "enum": [
+                  "manager",
+                  "buyer"
+                ],
+                "default": "buyer",
+                "group": "grant"
+              },
+              "invitationToken": "[redacted]",
+              "status": {
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "accepted",
+                  "expired",
+                  "cancelled"
+                ],
+                "default": "pending",
+                "x-control": "label",
+                "group": "status"
+              },
+              "expiryDate": {
+                "type": "string",
+                "format": "date-time",
+                "group": "status"
+              },
+              "acceptedAt": {
+                "type": "string",
+                "format": "date-time",
+                "readOnly": true,
+                "group": "status"
+              },
+              "invitedBy": {
+                "type": "string",
+                "readOnly": true,
+                "group": "inviter"
+              },
+              "invitedByName": {
+                "type": "string",
+                "group": "inviter"
+              },
+              "message": {
+                "type": "string",
+                "group": "inviter"
+              }
+            },
+            "required": [
+              "email",
+              "sharedAccountId"
+            ]
+          }
+        },
+        "datatype": "collection",
+        "version": 0
+      }
+    ]
+  }
+}

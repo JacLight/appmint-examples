@@ -1,0 +1,41 @@
+{
+  "startedAt": "2026-10-10T01:59:32.860348+00:00",
+  "durationSeconds": 0.6801,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/createfolder",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "course-files-1009/empty/"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "files": [
+        {
+          "raw": {
+            "Key": "video-lab-mut4jkwd/course-files-1009/empty/",
+            "LastModified": "2026-10-10T01:59:33.166Z",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "ChecksumAlgorithm": [],
+            "Size": 0,
+            "StorageClass": "STANDARD"
+          },
+          "path": "video-lab-mut4jkwd/course-files-1009/empty/",
+          "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/empty/"
+        }
+      ],
+      "hasMore": false,
+      "startPage": 1,
+      "prefix": "video-lab-mut4jkwd/course-files-1009/empty/",
+      "pageNumber": 1
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "query": {
+    "data.path": {
+      "$regex": "course-files-1009/"
+    }
+  },
+  "options": {
+    "page": 1,
+    "pageSize": 20
+  }
+}

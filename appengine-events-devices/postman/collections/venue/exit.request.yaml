@@ -1,0 +1,35 @@
+{
+  "$kind": "http-request",
+  "method": "POST",
+  "url": "{{base_url}}/events/checkout",
+  "order": 6000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "scripts": [
+    {
+      "type": "beforeRequest",
+      "language": "text/javascript",
+      "code": "if(pm.variables.get('enabled_action') !== 'exit') throw new Error('Set enabled_action to exit only for this deliberate request; inspect saved state before repeating.');"
+    },
+    {
+      "type": "afterResponse",
+      "language": "text/javascript",
+      "code": "pm.test('Decision is explicit; HTTP success alone is not admission',()=>{pm.expect(pm.response.json().success).to.be.a('boolean');});"
+    }
+  ],
+  "body": {
+    "type": "json",
+    "content": "{\n  \"eventId\": \"{{event_id}}\",\n  \"zone\": \"{{zone}}\",\n  \"checkpoint\": \"{{entrance}}\",\n  \"code\": \"{{ticket_code}}\"\n}"
+  }
+}

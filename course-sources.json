@@ -1,0 +1,184 @@
+{
+  "courses": [
+    {
+      "courseId": "appengine-developer-course",
+      "title": "AppEngine Developer Introduction: Platform, APIs and Your First Connection",
+      "directory": "appengine-introduction",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-introduction"
+    },
+    {
+      "courseId": "appengine-api-foundations",
+      "title": "AppEngine API Foundations: Organization Setup, Customer Authentication and Your First Requests",
+      "directory": "appengine-api-foundations",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-api-foundations"
+    },
+    {
+      "courseId": "appengine-api-reference",
+      "title": "AppEngine API Reference: Find Endpoints, Read Contracts and Verify Requests",
+      "directory": "appengine-api-reference",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-api-reference"
+    },
+    {
+      "courseId": "appengine-data-records",
+      "title": "AppEngine Database & Repository APIs: Collections, Queries, Updates and Recovery",
+      "directory": "appengine-data-records",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-data-records"
+    },
+    {
+      "courseId": "appengine-files-storage",
+      "title": "AppEngine File Storage APIs: Uploads, Access, Attachments and Cleanup",
+      "directory": "appengine-files-storage",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-files-storage"
+    },
+    {
+      "courseId": "appengine-backend-platform",
+      "title": "AppEngine Backend as a Service: Data, Authentication, Files and Automation",
+      "directory": "appengine-backend-platform",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-backend-platform"
+    },
+    {
+      "courseId": "appengine-sync-scheduled-jobs",
+      "title": "AppEngine Scheduling and Sync APIs",
+      "directory": "appengine-sync-scheduled-jobs",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-sync-scheduled-jobs"
+    },
+    {
+      "courseId": "appengine-workflow-actions",
+      "title": "AppEngine Workflow, Handling and Approvals APIs",
+      "directory": "appengine-workflow-actions",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-workflow-actions"
+    },
+    {
+      "courseId": "appengine-sites-rendering",
+      "title": "AppEngine Sites and Pages: Routing, Content Binding and Publishing",
+      "directory": "appengine-sites-rendering",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-sites-rendering"
+    },
+    {
+      "courseId": "appengine-mcp",
+      "title": "AppEngine MCP: Connect AI Clients to Business APIs",
+      "directory": "appengine-mcp",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-mcp"
+    },
+    {
+      "courseId": "appengine-crm-apis",
+      "title": "AppEngine CRM APIs: Leads, Reservations, Forms and Support Tickets",
+      "directory": "appengine-crm-apis",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-crm-apis"
+    },
+    {
+      "courseId": "appengine-custom-api-gateway",
+      "title": "AppEngine Custom API Gateway: Customer Sessions, Route Isolation and Server-Side Adapters",
+      "directory": "appengine-custom-api-gateway",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-custom-api-gateway"
+    },
+    {
+      "courseId": "build-headless-commerce",
+      "title": "AppEngine Headless Storefront Development",
+      "directory": "appengine-headless-commerce",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-headless-commerce"
+    },
+    {
+      "courseId": "build-realtime-support",
+      "title": "AppEngine Real-time Chat and AI Support Integration",
+      "directory": "appengine-realtime-support",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-realtime-support"
+    },
+    {
+      "courseId": "build-connected-business-process",
+      "title": "AppEngine Event-driven Business Workflows",
+      "directory": "appengine-business-workflows",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-business-workflows"
+    },
+    {
+      "courseId": "background-job",
+      "title": "AppEngine Scheduled Jobs and Failure Recovery",
+      "directory": "appengine-background-jobs",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-background-jobs"
+    },
+    {
+      "courseId": "supplier-api",
+      "title": "AppEngine External API Integration and Data Mapping",
+      "directory": "appengine-external-api",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-external-api"
+    },
+    {
+      "courseId": "connect-ai-client-to-business",
+      "title": "AppEngine MCP: Connect an AI Client",
+      "directory": "appengine-mcp-client",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-mcp-client"
+    },
+    {
+      "courseId": "connected-client",
+      "title": "AppEngine Custom Web and Mobile Client Development",
+      "directory": "appengine-connected-client",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-connected-client"
+    },
+    {
+      "courseId": "diagnose-release",
+      "title": "AppEngine API Troubleshooting and Local Verification",
+      "directory": "appengine-api-troubleshooting",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-api-troubleshooting"
+    },
+    {
+      "courseId": "appengine-customer-portal",
+      "title": "AppEngine Customer Self-Service Portal",
+      "directory": "appengine-customer-portal",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-customer-portal"
+    },
+    {
+      "courseId": "appengine-events-devices",
+      "title": "AppEngine Events and Devices",
+      "directory": "appengine-events-devices",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-events-devices"
+    },
+    {
+      "courseId": "appengine-ai-employee-apis",
+      "title": "AppEngine AI Integration: AI Employees and AI Assistant in Your App",
+      "directory": "appengine-ai-integration",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-ai-integration"
+    },
+    {
+      "courseId": "appengine-phone-apis",
+      "title": "AppEngine Phone and SMS: Embed Calling in Your Web or Mobile App",
+      "directory": "appengine-phone-integration",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-phone-integration"
+    },
+    {
+      "courseId": "appengine-data-apis-pattern",
+      "title": "AppEngine Data APIs: One Pattern for Every Module",
+      "directory": "appengine-data-apis-pattern",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-data-apis-pattern"
+    },
+    {
+      "courseId": "appengine-auth-org-isolation",
+      "title": "AppEngine Authentication: Credentials, Scoped API Keys and Organization Isolation",
+      "directory": "appengine-auth-org-isolation",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-auth-org-isolation"
+    },
+    {
+      "courseId": "appengine-workforce-apis",
+      "title": "AppEngine Workforce APIs: Employees, Onboarding and Staff Self-Service",
+      "directory": "appengine-workforce-apis",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-workforce-apis"
+    },
+    {
+      "courseId": "appengine-logistics-rental-apis",
+      "title": "AppEngine Logistics, Rental and Storage APIs",
+      "directory": "appengine-logistics-rental-apis",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-logistics-rental-apis"
+    },
+    {
+      "courseId": "appengine-businessmade-apis",
+      "title": "AppEngine Business Operations APIs: Check-in, Work Orders and the POS",
+      "directory": "appengine-businessmade-apis",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-businessmade-apis"
+    },
+    {
+      "courseId": "appengine-integrations-webhooks",
+      "title": "AppEngine Provider Integrations, OAuth and Webhooks",
+      "directory": "appengine-integrations-webhooks",
+      "github": "https://github.com/JacLight/appmint-examples/tree/main/appengine-integrations-webhooks"
+    }
+  ]
+}

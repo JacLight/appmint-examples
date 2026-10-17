@@ -1,0 +1,52 @@
+{
+  "startedAt": "2026-10-11T04:51:20.139Z",
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/crm/leads/detail/6acb15c8ba781cd23c2f6e39",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6acb15c8ba781cd23c2f6e39",
+      "pk": "video-lab-mut4jkwd|lead",
+      "sk": "6acb15c8ba781cd23c2f6e39",
+      "name": "job-usecase-1011-22-move-lead",
+      "datatype": "lead",
+      "data": {
+        "name": "job-usecase-1011-22-move-lead",
+        "fullName": "Casey Morgan",
+        "pipelineId": "6acb15afba781cd23c2f6e14",
+        "stageId": "followup",
+        "source": "other",
+        "status": "new",
+        "id": "lead_1791694280049_f288qlid",
+        "firstName": "Casey",
+        "lastName": "Morgan",
+        "score": 10,
+        "temperature": "cold",
+        "createdAt": "2026-10-11T04:51:20.049Z",
+        "updatedAt": "2026-10-11T04:51:20.083Z",
+        "leadInformation": {
+          "leadScore": 10
+        },
+        "stageChangedAt": "2026-10-11T04:51:20.083Z",
+        "slaBreachedAt": "2026-10-11T04:51:20.082Z",
+        "slaBreachedFor": "contacted",
+        "lastModifiedBy": "lead-sla"
+      },
+      "version": 1,
+      "author": "video-lab-mut4jkwd@example.com",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "createdate": "2026-10-11T04:51:20.052Z",
+      "modifydate": "2026-10-11T04:51:20.085Z",
+      "modified_by": "lead-sla"
+    }
+  }
+}

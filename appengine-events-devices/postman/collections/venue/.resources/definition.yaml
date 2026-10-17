@@ -1,0 +1,68 @@
+{
+  "$kind": "collection",
+  "name": "AppEngine venue workflows",
+  "description": "Select individual requests. Admission and redemption have side effects. The full collection is not an automatic scenario. Exact current contracts remain in the maintained API reference.",
+  "auth": {
+    "type": "bearer",
+    "credentials": [
+      {
+        "key": "token",
+        "value": "{{staff_token}}"
+      }
+    ]
+  },
+  "variables": [
+    {
+      "key": "base_url",
+      "value": "https://appengine.appmint.io"
+    },
+    {
+      "key": "org",
+      "value": ""
+    },
+    {
+      "key": "staff_token",
+      "value": ""
+    },
+    {
+      "key": "event_id",
+      "value": ""
+    },
+    {
+      "key": "ticket_id",
+      "value": ""
+    },
+    {
+      "key": "ticket_code",
+      "value": ""
+    },
+    {
+      "key": "zone",
+      "value": "main-hall"
+    },
+    {
+      "key": "entrance",
+      "value": "front-gate"
+    },
+    {
+      "key": "benefit_point",
+      "value": "lunch-counter"
+    },
+    {
+      "key": "credential_code",
+      "value": ""
+    },
+    {
+      "key": "crew_credential_id",
+      "value": ""
+    },
+    {
+      "key": "enabled_action",
+      "value": ""
+    },
+    {
+      "key": "credential_entrance",
+      "value": "wristband-gate"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "method": "POST",
+  "path": "/repository/create",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "datatype": "schedule",
+    "isNew": true,
+    "data": {
+      "name": "course-status-window-1010",
+      "title": "Course status window \u2014 API course",
+      "type": "simple",
+      "status": "active",
+      "target": [
+        {
+          "datatype": "schedule_marks_1010",
+          "id": "6aca1344f5d6b011f6e12028"
+        }
+      ],
+      "start": {
+        "date": "2026-10-10T10:29:20.490Z",
+        "action": "update-status",
+        "actionArgs": "ready"
+      },
+      "end": {
+        "date": "2026-10-10T10:30:20.490Z",
+        "action": "update-status",
+        "actionArgs": "finished"
+      }
+    }
+  },
+  "note": "Historical observed request; replace dates and IDs before use."
+}

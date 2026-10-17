@@ -1,0 +1,6 @@
+{
+  "method": "POST",
+  "path": "/crm/leads/detail",
+  "identity": "staff",
+  "observedStatus": 201
+}

@@ -1,0 +1,1261 @@
+{
+  "info": {
+    "name": "AppEngine File Storage APIs \u2014 course examples",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base",
+      "value": "https://appengine.appmint.io"
+    },
+    {
+      "key": "orgid",
+      "value": "YOUR_ORGANIZATION_ID"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_STAFF_TOKEN"
+    }
+  ],
+  "item": [
+    {
+      "name": "prerequisites / 01-staff-signin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/profile/user/signin",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"video-lab-mut4jkwd@example.com\",\n  \"password\": \"[redacted]\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "prerequisites / 02-storage-list",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/flatlist",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prefix\": \"course-files-1009/\",\n  \"pageNumber\": 1,\n  \"maxKeys\": 10,\n  \"checkPrivacy\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "prerequisites / 47-driver",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/file/driver"
+      }
+    },
+    {
+      "name": "prerequisites / 04-upload-image",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/file/upload",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "location",
+              "type": "text",
+              "value": "course-files-1009"
+            },
+            {
+              "key": "isPrivate",
+              "type": "text",
+              "value": "false"
+            },
+            {
+              "key": "file",
+              "type": "file",
+              "src": "cedar-botanical-print.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "upload_image / 04-upload-image",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/file/upload",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "location",
+              "type": "text",
+              "value": "course-files-1009"
+            },
+            {
+              "key": "isPrivate",
+              "type": "text",
+              "value": "false"
+            },
+            {
+              "key": "file",
+              "type": "file",
+              "src": "cedar-botanical-print.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "upload_response / 04-upload-image",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/file/upload",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "location",
+              "type": "text",
+              "value": "course-files-1009"
+            },
+            {
+              "key": "isPrivate",
+              "type": "text",
+              "value": "false"
+            },
+            {
+              "key": "file",
+              "type": "file",
+              "src": "cedar-botanical-print.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "upload_response / 05-upload-private-text",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/file/upload",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "location",
+              "type": "text",
+              "value": "course-files-1009/private"
+            },
+            {
+              "key": "isPrivate",
+              "type": "text",
+              "value": "true"
+            },
+            {
+              "key": "file",
+              "type": "file",
+              "src": "supplier-notes.txt"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "attach_record / 13-create-product",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datatype\": \"sf_product\",\n  \"isNew\": true,\n  \"data\": {\n    \"name\": \"Cedar Botanical Print \\u2014 File API course\",\n    \"sku\": \"FILES-CEDAR-1009\",\n    \"description\": \"Harmless training product for file attachment demonstration\",\n    \"status\": \"draft\",\n    \"price\": 12,\n    \"images\": []\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "attach_record / 14-attach-product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/update-partial/sf_product/6ac99bdff5d6b011f6e10eeb",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data.images\": [\n    {\n      \"path\": \"video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png\",\n      \"url\": \"https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png\"\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "attach_record / 15-product-readback",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/get/sf_product/6ac99bdff5d6b011f6e10eeb"
+      }
+    },
+    {
+      "name": "list_files / 42-list-page-one",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/flatlist",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prefix\": \"course-files-1009/\",\n  \"pageNumber\": 1,\n  \"maxKeys\": 2,\n  \"recursive\": true,\n  \"checkPrivacy\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "list_files / 43-list-page-two",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/flatlist",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prefix\": \"course-files-1009/\",\n  \"pageNumber\": 2,\n  \"maxKeys\": 2,\n  \"recursive\": true,\n  \"checkPrivacy\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "inspect_read / 09-exists-image",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/exists",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "inspect_read / 08-stat-image",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/stat",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "inspect_read / 10-read-text",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt\",\n  \"encoding\": \"utf8\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "inspect_read / 11-sign-private",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/signurl",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf\",\n  \"options\": {\n    \"expiry\": 900\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "private_upload / 06-upload-private-pdf",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/file/upload",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "location",
+              "type": "text",
+              "value": "course-files-1009/private"
+            },
+            {
+              "key": "isPrivate",
+              "type": "text",
+              "value": "true"
+            },
+            {
+              "key": "file",
+              "type": "file",
+              "src": "supplier-sheet.pdf"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "signed_link / 11-sign-private",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/signurl",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf\",\n  \"options\": {\n    \"expiry\": 900\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "visibility / 17-private-to-public",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/make-public",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"locations\": [\n    \"video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "visibility / 19-public-to-private",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/make-private",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"locations\": [\n    \"video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "visibility / 21-sign-short-expiry",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/signurl",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf\",\n  \"options\": {\n    \"expiry\": 5\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "customer_files / 35-customer-direct-upload",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/customer/file/upload",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fileName\": \"course-order-1009.txt\",\n  \"base64Data\": \"data:text/plain;base64,VHJhaW5pbmcgY3VzdG9tZXIgYXJ0d29yayByZXF1ZXN0CkNlZGFyIGJvdGFuaWNhbCBwcmludCwgQTMgbWF0dGUuCg==\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "customer_files / 36-customer-direct-list",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/customer/file/flatlist",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prefix\": \"course-order-1009\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "copy_move / 22-copy-text",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/copy",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"src\": \"video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt\",\n  \"dest\": \"course-files-1009/work/supplier-notes-copy.txt\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "copy_move / 23-move-text",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/move",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"src\": \"course-files-1009/work/supplier-notes-copy.txt\",\n  \"dest\": \"course-files-1009/work/supplier-notes-moved.txt\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "copy_move / 24-copy-source-absent",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/exists",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"course-files-1009/work/supplier-notes-copy.txt\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "copy_move / 25-move-destination-present",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/exists",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"course-files-1009/work/supplier-notes-moved.txt\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "url_import / 31-upload-url",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/upload-url",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png\",\n  \"location\": \"course-files-1009/imported\",\n  \"name\": \"cedar-import.png\",\n  \"isPrivate\": true,\n  \"thumbnails\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "folders_index / 29-create-folder",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/createfolder",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"course-files-1009/empty/\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "folders_index / 32-index-folder",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/index",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"course-files-1009/\",\n  \"recursive\": true,\n  \"skipExisting\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "folders_index / 33-index-records",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/find/fileinfo",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {\n    \"data.path\": {\n      \"$regex\": \"course-files-1009/\"\n    }\n  },\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 20\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "folders_index / 30-rebuild-thumbnails",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/thumbnails",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "delete_cleanup / 62-replacement-readback",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/get/sf_product/6ac99bdff5d6b011f6e10eeb"
+      }
+    },
+    {
+      "name": "delete_cleanup / 45-delete-copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/delete",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"course-files-1009/work/supplier-notes-moved.txt\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "delete_cleanup / 46-check-deleted-copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/exists",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"course-files-1009/work/supplier-notes-moved.txt\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "options_limits / 26-append-test",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/append",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"course-files-1009/work/supplier-notes-moved.txt\",\n  \"content\": \"Appended course note.\\n\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "options_limits / 27-prepend-test",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/prepend",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"course-files-1009/work/supplier-notes-moved.txt\",\n  \"content\": \"Course file header.\\n\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "options_limits / 39-buffer-read",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/buffer",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "options_limits / 40-stream-read",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/stream",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "options_limits / 50-create-favicon",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/create_favicon",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"location\": \"video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "options_limits / 47-driver",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base}}/repository/file/driver"
+      }
+    },
+    {
+      "name": "options_limits / 31-upload-url",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/repository/file/upload-url",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png\",\n  \"location\": \"course-files-1009/imported\",\n  \"name\": \"cedar-import.png\",\n  \"isPrivate\": true,\n  \"thumbnails\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

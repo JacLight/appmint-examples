@@ -1,0 +1,9 @@
+{
+  "email": "sam.wf-usecase-1011@training.local",
+  "password": "YOUR_PRIVATE_VALUE",
+  "firstName": "Sam",
+  "lastName": "Reviewer",
+  "groups": [
+    "User"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "method": "GET",
+  "path": "/repository/get/customer/6aca82e237ff863efff476ab",
+  "identity": "staff",
+  "observedStatus": 200
+}

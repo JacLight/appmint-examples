@@ -1,0 +1,194 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/storefront/inventory/intakes?q=supplier-usecase-1011"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": [
+        {
+          "_id": "6acb1715ba781cd23c2f6ee8",
+          "pk": "video-lab-mut4jkwd|sf_inventory_intake",
+          "sk": "6acb1715ba781cd23c2f6ee8",
+          "name": "sf_inventory_intake-1791694613587-wst4c5iu",
+          "datatype": "sf_inventory_intake",
+          "data": {
+            "vendorId": null,
+            "vendorName": "Northwind Timber — teaching supplier",
+            "locationId": "supplier-usecase-1011",
+            "locationName": "Supplier Course Receiving",
+            "items": [
+              {
+                "sku": "SUPPLIER-OAK-1011",
+                "productName": "Training white oak plank",
+                "quantity": 40,
+                "unitCost": 38.5
+              },
+              {
+                "sku": "SUPPLIER-ASH-1011",
+                "productName": "Training ash plank",
+                "quantity": 12,
+                "unitCost": 61
+              }
+            ],
+            "expectedDate": "2026-10-15",
+            "notes": "Synthetic course shipment. Source purchase order COURSE-PO-1011; NW-OAK-24 → SUPPLIER-OAK-1011; NW-ASH-30 → SUPPLIER-ASH-1011",
+            "reference": "northwind:supplier-usecase-1011-UNKNOWN",
+            "intakeNumber": "INT-DKRB3SH0",
+            "status": "pending",
+            "total": 2272,
+            "currency": "USD",
+            "createdBy": "video-lab-mut4jkwd@example.com",
+            "createdAt": "2026-10-11T04:56:53.587Z",
+            "name": "sf_inventory_intake-1791694613587-wst4c5iu"
+          },
+          "version": 0,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T04:56:53.590Z",
+          "modifydate": "2026-10-11T04:56:53.590Z"
+        },
+        {
+          "_id": "6acb163bba781cd23c2f6e9d",
+          "pk": "video-lab-mut4jkwd|sf_inventory_intake",
+          "sk": "6acb163bba781cd23c2f6e9d",
+          "name": "sf_inventory_intake-1791694395384-c82hnaab",
+          "datatype": "sf_inventory_intake",
+          "data": {
+            "vendorId": null,
+            "vendorName": "Northwind Timber — teaching supplier",
+            "locationId": "supplier-usecase-1011",
+            "locationName": "Supplier Course Receiving",
+            "items": [
+              {
+                "sku": "SUPPLIER-OAK-1011",
+                "productName": "Training white oak plank",
+                "quantity": 20,
+                "unitCost": 41.5
+              },
+              {
+                "sku": "SUPPLIER-WAL-1011",
+                "productName": "Training walnut board",
+                "quantity": 6,
+                "unitCost": 70
+              }
+            ],
+            "expectedDate": null,
+            "notes": "Synthetic teaching restock; demonstrate weighted cost and actual receipt.",
+            "reference": "northwind:supplier-usecase-1011-CANCEL",
+            "intakeNumber": "INT-QBATNHJ0",
+            "status": "pending",
+            "total": 1250,
+            "currency": "USD",
+            "createdBy": "video-lab-mut4jkwd@example.com",
+            "createdAt": "2026-10-11T04:53:15.384Z",
+            "name": "sf_inventory_intake-1791694395384-c82hnaab"
+          },
+          "version": 0,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T04:53:15.386Z",
+          "modifydate": "2026-10-11T04:53:15.386Z"
+        },
+        {
+          "_id": "6acb163bba781cd23c2f6e9c",
+          "pk": "video-lab-mut4jkwd|sf_inventory_intake",
+          "sk": "6acb163bba781cd23c2f6e9c",
+          "name": "sf_inventory_intake-1791694395367-dq9nizna",
+          "datatype": "sf_inventory_intake",
+          "data": {
+            "vendorId": null,
+            "vendorName": "Northwind Timber — teaching supplier",
+            "locationId": "supplier-usecase-1011",
+            "locationName": "Supplier Course Receiving",
+            "items": [
+              {
+                "sku": "SUPPLIER-OAK-1011",
+                "productName": "Training white oak plank",
+                "quantity": 20,
+                "unitCost": 41.5
+              },
+              {
+                "sku": "SUPPLIER-WAL-1011",
+                "productName": "Training walnut board",
+                "quantity": 6,
+                "unitCost": 70
+              }
+            ],
+            "expectedDate": null,
+            "notes": "Synthetic teaching restock; demonstrate weighted cost and actual receipt.",
+            "reference": "northwind:supplier-usecase-1011-RESTOCK",
+            "intakeNumber": "INT-GECK8W0T",
+            "status": "pending",
+            "total": 1250,
+            "currency": "USD",
+            "createdBy": "video-lab-mut4jkwd@example.com",
+            "createdAt": "2026-10-11T04:53:15.367Z",
+            "name": "sf_inventory_intake-1791694395367-dq9nizna"
+          },
+          "version": 0,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T04:53:15.370Z",
+          "modifydate": "2026-10-11T04:53:15.370Z"
+        },
+        {
+          "_id": "6acb15d0ba781cd23c2f6e4d",
+          "pk": "video-lab-mut4jkwd|sf_inventory_intake",
+          "sk": "6acb15d0ba781cd23c2f6e4d",
+          "name": "sf_inventory_intake-1791694288203-x6eav2jc",
+          "datatype": "sf_inventory_intake",
+          "data": {
+            "vendorId": null,
+            "vendorName": "Northwind Timber — teaching supplier",
+            "locationId": "supplier-usecase-1011",
+            "locationName": "Supplier Course Receiving",
+            "items": [
+              {
+                "sku": "SUPPLIER-OAK-1011",
+                "productName": "Training white oak plank",
+                "quantity": 40,
+                "unitCost": 38.5
+              },
+              {
+                "sku": "SUPPLIER-WAL-1011",
+                "productName": "Training walnut board",
+                "quantity": 12,
+                "unitCost": 61
+              }
+            ],
+            "expectedDate": "2026-10-15",
+            "notes": "Synthetic course shipment. Source purchase order COURSE-PO-1011; NW-OAK-24 → SUPPLIER-OAK-1011; NW-WAL-18 → SUPPLIER-WAL-1011",
+            "reference": "northwind:supplier-usecase-1011-PRIMARY",
+            "intakeNumber": "INT-P3QZ0EAQ",
+            "status": "received",
+            "total": 2272,
+            "currency": "USD",
+            "createdBy": "video-lab-mut4jkwd@example.com",
+            "createdAt": "2026-10-11T04:51:28.203Z",
+            "name": "sf_inventory_intake-1791694288203-x6eav2jc",
+            "receivedBy": "video-lab-mut4jkwd@example.com",
+            "receivedAt": "2026-10-11T04:51:44.813Z",
+            "billId": "6acb15e0ba781cd23c2f6e5c",
+            "billNumber": "B-INT-P3QZ0EAQ"
+          },
+          "version": 1,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T04:51:28.226Z",
+          "modifydate": "2026-10-11T04:51:44.815Z",
+          "modified_by": "video-lab-mut4jkwd@example.com"
+        }
+      ],
+      "total": 4,
+      "page": 1,
+      "pageSize": 50
+    }
+  }
+}

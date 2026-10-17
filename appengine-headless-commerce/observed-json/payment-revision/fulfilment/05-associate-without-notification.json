@@ -1,0 +1,75 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/shipping/order/manual",
+    "identity": "staff",
+    "body": {
+      "orderNumber": "HS851V342",
+      "sendNotification": false,
+      "shippingInfo": {
+        "carrier": "USPS",
+        "tracker": "9434600208192110020219",
+        "trackingUrl": "https://tools.usps.com/go/TrackConfirmAction?tLabels=9434600208192110020219",
+        "rate": "GroundAdvantage",
+        "cost": "10.11",
+        "parcel": {
+          "length": 16,
+          "width": 12,
+          "height": 1,
+          "weight": 1,
+          "weightUnit": "lb",
+          "dimensionUnit": "in"
+        },
+        "products": [
+          {
+            "sku": "HEADLESS-CEDAR-1010",
+            "name": "Cedar Botanical Print",
+            "quantity": 2
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "success": true,
+      "order": {
+        "number": "HS851V342",
+        "status": "shipped",
+        "shippingInfo": [
+          {
+            "carrier": "USPS",
+            "service": "GroundAdvantage",
+            "tracker": "9434600208192110020219",
+            "trackingUrl": "https://tools.usps.com/go/TrackConfirmAction?tLabels=9434600208192110020219",
+            "rate": "GroundAdvantage",
+            "cost": "10.11",
+            "labelUrl": "",
+            "status": "shipped",
+            "shippedAt": "2026-10-11T00:11:14.513Z",
+            "estimatedDelivery": "",
+            "parcel": {
+              "length": 16,
+              "width": 12,
+              "height": 1,
+              "weight": 1,
+              "weightUnit": "lb",
+              "dimensionUnit": "in"
+            },
+            "products": [
+              {
+                "sku": "HEADLESS-CEDAR-1010",
+                "name": "Cedar Botanical Print",
+                "quantity": 2
+              }
+            ],
+            "addedBy": "video-lab-mut4jkwd@example.com",
+            "manual": true
+          }
+        ]
+      },
+      "message": "Shipping info added to order HS851V342"
+    }
+  }
+}

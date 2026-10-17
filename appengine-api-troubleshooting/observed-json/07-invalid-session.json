@@ -1,0 +1,22 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/client-data/profile",
+    "headers": {
+      "content-type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 401,
+    "body": {
+      "statusCode": 401,
+      "error": "Invalid or expired authorization",
+      "path": "/",
+      "method": "GET",
+      "timeStamp": "2026-10-11T06:39:08.126Z"
+    }
+  }
+}

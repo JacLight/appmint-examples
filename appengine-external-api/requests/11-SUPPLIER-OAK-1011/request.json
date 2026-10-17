@@ -1,0 +1,15 @@
+{
+  "isNew": true,
+  "datatype": "sf_product",
+  "data": {
+    "name": "Training white oak plank",
+    "sku": "SUPPLIER-OAK-1011",
+    "supplierSku": "NW-OAK-24",
+    "price": 38.5,
+    "available": false,
+    "status": "inactive",
+    "hidden": true,
+    "trackInventory": true,
+    "description": "Synthetic supplier integration course fixture; not offered for sale."
+  }
+}

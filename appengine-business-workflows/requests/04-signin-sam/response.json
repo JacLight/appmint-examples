@@ -1,0 +1,61 @@
+{
+  "status": 201,
+  "body": {
+    "user": {
+      "_id": "6acb15c8ba781cd23c2f6e37",
+      "pk": "video-lab-mut4jkwd|user",
+      "sk": "6acb15c8ba781cd23c2f6e37",
+      "name": "sam.wf-usecase-1011@training.local",
+      "version": 0,
+      "datatype": "user",
+      "data": {
+        "groups": [
+          "User"
+        ],
+        "username": "sam.wf-usecase-1011@training.local",
+        "email": "sam.wf-usecase-1011@training.local",
+        "firstName": "Sam",
+        "lastName": "Reviewer",
+        "audit": {
+          "lastLogin": "2026-10-11T04:51:28.888Z",
+          "meta": {
+            "ip": "::ffff:127.0.0.1",
+            "host": "127.0.0.1:3300",
+            "country": null,
+            "city": null,
+            "state": null,
+            "agent": "Python-urllib/3.14"
+          }
+        },
+        "permissions": {
+          "content": [
+            "read",
+            "create"
+          ],
+          "component": [
+            "view"
+          ],
+          "menu": {
+            "User": {
+              "menuInclude": [],
+              "menuExclude": [],
+              "default": "everyone"
+            }
+          }
+        },
+        "roles": [
+          "User"
+        ]
+      },
+      "created_by": "system",
+      "state": "draft",
+      "createdate": "2026-10-11T04:51:20.043Z",
+      "modifydate": "2026-10-11T04:51:28.888Z"
+    },
+    "orgId": "video-lab-mut4jkwd",
+    "rootOrg": "fundu",
+    "sharedOrg": "localhost",
+    "token": "[redacted]",
+    "refreshToken": "[redacted]"
+  }
+}

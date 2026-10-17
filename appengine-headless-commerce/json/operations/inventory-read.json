@@ -1,0 +1,5 @@
+{
+  "method": "GET",
+  "path": "/storefront/inventory/sku/YOUR_TRAINING_SKU",
+  "identity": "staff"
+}

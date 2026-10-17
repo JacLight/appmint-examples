@@ -1,0 +1,10 @@
+{
+  "method": "POST",
+  "path": "/upstream/call/YOUR_EASYPOST_CONFIG_ID/getTracker",
+  "identity": "staff",
+  "body": {
+    "data": {
+      "tracking_code": "YOUR_SAVED_TRACKING_NUMBER"
+    }
+  }
+}

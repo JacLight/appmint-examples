@@ -1,0 +1,8 @@
+{
+  "method": "POST",
+  "path": "/profile/user/signin",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "{{orgid}}"
+  }
+}

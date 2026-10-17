@@ -1,0 +1,12 @@
+{
+  "method": "POST",
+  "path": "/repository/trash-restore",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": [
+    "6ac988def5d6b011f6e10ddc"
+  ]
+}

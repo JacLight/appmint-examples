@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "path": "/repository/get/customer/6ac82b5a58e293f2e4d6635a",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": null
+}

@@ -1,0 +1,85 @@
+{
+  "at": "2026-10-10T22:26:40.079Z",
+  "request": {
+    "method": "POST",
+    "path": "/storefront/pricing/calculate-cart",
+    "body": {
+      "cartId": "6acab9f3bdaec2942121bebb",
+      "productItems": [
+        {
+          "sku": "HEADLESS-CEDAR-1010",
+          "quantity": 2,
+          "itemType": "product"
+        }
+      ],
+      "rentalItems": [],
+      "shippingAddress": {
+        "street1": "123 Course Lane",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60601",
+        "country": "US",
+        "name": "Mira-Lin Chen",
+        "email": "mira.chen.foundations@training.local"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "productItems": [
+        {
+          "sku": "HEADLESS-CEDAR-1010",
+          "quantity": 2,
+          "unitPrice": 24,
+          "amount": 48,
+          "discount": 0,
+          "deposit": 0,
+          "depositWaived": false,
+          "itemType": "product",
+          "parentSku": "HEADLESS-CEDAR-1010",
+          "waived": false,
+          "feesTotal": 0,
+          "lineTotal": 48,
+          "originalPrice": 24,
+          "finalPrice": 24,
+          "totalPrice": 48,
+          "tierDiscount": 0,
+          "discountPercent": 0,
+          "currency": "USD",
+          "priceDelta": 0,
+          "categories": []
+        }
+      ],
+      "rentalItems": [],
+      "rentalSubtotal": 0,
+      "rentalDeposit": 0,
+      "rentalDiscount": 0,
+      "rentalTax": 0,
+      "rentalDeliveryFee": 0,
+      "rentalFees": 0,
+      "rentalFeesList": [],
+      "rentalTotal": 0,
+      "rentalCount": 0,
+      "productSubtotal": 48,
+      "productDiscount": 0,
+      "productTax": 0,
+      "productShipping": 6.5,
+      "productTotal": 54.5,
+      "productCount": 2,
+      "subtotal": 48,
+      "discount": 0,
+      "tax": 0,
+      "deposit": 0,
+      "total": 54.5,
+      "shippingMethod": "flat",
+      "depositWaived": false,
+      "freeShipping": false,
+      "freeDelivery": false,
+      "freeReturnPickup": false,
+      "discounts": [],
+      "valid": true,
+      "cartId": "6acab9f3bdaec2942121bebb"
+    }
+  }
+}

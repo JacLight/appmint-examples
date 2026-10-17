@@ -1,0 +1,9 @@
+PUT {{base}}{{route}}
+
+Headers
+  orgid: {{orgid}}
+  Authorization: Bearer {{token}}
+  Content-Type: application/json
+
+Body → raw → JSON
+Use the complete request.json.

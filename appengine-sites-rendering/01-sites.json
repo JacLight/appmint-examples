@@ -1,0 +1,59 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/site",
+    "body": {
+      "query": {},
+      "options": {
+        "pageSize": 20
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 1,
+      "datatype": "site",
+      "pageSize": 20,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-04T18:16:48.505Z",
+      "data": [
+        {
+          "_id": "6ac1a7896cf55d217cabf059",
+          "pk": "video-lab-mut4jkwd|site",
+          "sk": "6ac1a7896cf55d217cabf059",
+          "name": "vidsite",
+          "datatype": "site",
+          "data": {
+            "name": "vidsite",
+            "title": "vidsite",
+            "description": "Site vidsite",
+            "template": null,
+            "hostName": "YOUR_SITE_HOST",
+            "homePage": "landing-page",
+            "publishedPagesOnly": false,
+            "isDefault": true,
+            "features": [
+              {
+                "feature": "forms",
+                "enabled": true,
+                "page": "consultation-form"
+              }
+            ]
+          },
+          "version": 2,
+          "created_by": "system",
+          "state": "draft",
+          "createdate": "2026-10-04T01:10:33.770Z",
+          "modifydate": "2026-10-04T18:16:48.505Z",
+          "modified_by": "video-lab-mut4jkwd@example.com"
+        }
+      ]
+    }
+  }
+}

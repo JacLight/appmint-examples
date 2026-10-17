@@ -1,0 +1,49 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "_id": "6aca13a4f5d6b011f6e12034",
+    "datatype": "workflow_lab_1010",
+    "data": {
+      "title": "Review API connection",
+      "status": "done",
+      "workflow": {
+        "workflowId": "6aca13a4f5d6b011f6e12033",
+        "status": "done"
+      }
+    },
+    "author": "video-lab-mut4jkwd@example.com",
+    "name": "Review API connection",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "completed",
+    "pk": "video-lab-mut4jkwd|workflow_lab_1010",
+    "createdate": "2026-10-10T10:29:56.152Z",
+    "modifydate": "2026-10-10T10:29:56.606Z",
+    "version": 0,
+    "sk": "6aca13a4f5d6b011f6e12034",
+    "handling": {
+      "by": "video-lab-mut4jkwd@example.com",
+      "byName": "Video",
+      "history": [
+        {
+          "status": "in_progress",
+          "at": "2026-10-10T10:29:56.362Z",
+          "by": "video-lab-mut4jkwd@example.com",
+          "byName": "Video"
+        },
+        {
+          "status": "done",
+          "at": "2026-10-10T10:29:56.606Z",
+          "by": "video-lab-mut4jkwd@example.com",
+          "byName": "Video",
+          "note": "API connection checked"
+        }
+      ],
+      "since": "2026-10-10T10:29:56.362Z",
+      "status": "done",
+      "takenAt": "2026-10-10T10:29:56.362Z",
+      "doneAt": "2026-10-10T10:29:56.606Z",
+      "outcome": "API connection checked"
+    }
+  }
+}

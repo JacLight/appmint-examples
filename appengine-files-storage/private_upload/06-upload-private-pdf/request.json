@@ -1,0 +1,9 @@
+{
+  "multipart": {
+    "location": "course-files-1009/private",
+    "isPrivate": "true",
+    "file": "supplier-sheet.pdf"
+  },
+  "fileBytes": 777,
+  "sha256": "9a6908c7d154f9f81fbabdf7bc88722078a7e149450f161e009aab3bbeef218b"
+}

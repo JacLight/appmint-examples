@@ -1,0 +1,56 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "PUT",
+    "path": "/storefront/inventory/intakes/6acb1929ba781cd23c2f70aa/receive"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "pk": "video-lab-mut4jkwd|sf_inventory_intake",
+      "name": "sf_inventory_intake-1791695145184-q08apqul",
+      "datatype": "sf_inventory_intake",
+      "data": {
+        "vendorId": null,
+        "vendorName": "Northwind Timber — teaching supplier",
+        "locationId": "supplier-usecase-1011",
+        "locationName": "Supplier Course Receiving",
+        "items": [
+          {
+            "sku": "SUPPLIER-OAK-1011",
+            "productName": "Training white oak plank",
+            "quantity": 18,
+            "unitCost": 41.5
+          },
+          {
+            "sku": "SUPPLIER-WAL-1011",
+            "productName": "Training walnut board",
+            "quantity": 6,
+            "unitCost": 70
+          }
+        ],
+        "expectedDate": null,
+        "notes": "Corrected counted quantities; original pending intake cancelled with a reason.",
+        "reference": "northwind:supplier-usecase-1011-CANCEL",
+        "intakeNumber": "INT-QT4I81J2",
+        "status": "received",
+        "total": 1167,
+        "currency": "USD",
+        "createdBy": "video-lab-mut4jkwd@example.com",
+        "createdAt": "2026-10-11T05:05:45.184Z",
+        "name": "sf_inventory_intake-1791695145184-q08apqul",
+        "receivedBy": "video-lab-mut4jkwd@example.com",
+        "receivedAt": "2026-10-11T05:12:09.693Z",
+        "billId": "6acb1aa9ba781cd23c2f71a5",
+        "billNumber": "B-INT-QT4I81J2"
+      },
+      "version": 1,
+      "author": "video-lab-mut4jkwd@example.com",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "modifydate": "2026-10-11T05:12:09.908Z",
+      "modified_by": "video-lab-mut4jkwd@example.com",
+      "search": "Northwind Timber teaching supplier supplier usecase 1011 Supplier Course Receiving SUPPLIER OAK 1011 Training white oak plank 18 41 5 SUPPLIER WAL 1011 Training walnut board 6 70 Corrected counted quantities original pending intake cancelled with a reason northwind supplier usecase 1011 CANCEL INT QT4I81J2 received 1167 USD video lab mut4jkwd example com 2026 10 11T05 05 45 184Z sf inventory intake 1791695145184 q08apqul video lab mut4jkwd example com 2026 10 11T05 12 09 693Z 6acb1aa9ba781cd23c2f71a5 B INT QT4I81J2"
+    }
+  }
+}

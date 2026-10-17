@@ -1,0 +1,31 @@
+{
+  "environment": "Isolated controlled training organization",
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/sf_product",
+    "identity": "authorized staff",
+    "body": {
+      "query": {
+        "data.sku": "HEADLESS-OPTIONS-1010"
+      },
+      "options": {
+        "pageSize": 2
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 0,
+      "datatype": "sf_product",
+      "pageSize": 2,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "data": []
+    }
+  }
+}

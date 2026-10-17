@@ -1,0 +1,11 @@
+{
+  "status": 403,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "statusCode": 403,
+    "error": "Customer sign-in required",
+    "path": "/crm/reservations/get/6aca830537ff863efff476c2",
+    "method": "GET",
+    "timeStamp": "2026-10-10T18:25:10.105Z"
+  }
+}

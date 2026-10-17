@@ -1,0 +1,24 @@
+{
+  "status": 201,
+  "body": {
+    "pk": "video-lab-mut4jkwd|user",
+    "sk": "6acb15c8ba781cd23c2f6e37",
+    "name": "sam.wf-usecase-1011@training.local",
+    "version": 0,
+    "datatype": "user",
+    "data": {
+      "groups": [
+        "User"
+      ],
+      "username": "sam.wf-usecase-1011@training.local",
+      "email": "sam.wf-usecase-1011@training.local",
+      "firstName": "Sam",
+      "lastName": "Reviewer"
+    },
+    "created_by": "system",
+    "state": "draft",
+    "createdate": "2026-10-11T04:51:20.043Z",
+    "modifydate": "2026-10-11T04:51:20.043Z",
+    "id": "6acb15c8ba781cd23c2f6e37"
+  }
+}

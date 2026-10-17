@@ -1,0 +1,14 @@
+{
+  "method": "POST",
+  "path": "/repository/find/location",
+  "identity": "staff",
+  "body": {
+    "query": {
+      "data.name": "YOUR_TRAINING_LOCATION_NAME"
+    },
+    "options": {
+      "page": 1,
+      "pageSize": 10
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "environment": "Isolated controlled training organization",
+  "request": {
+    "method": "POST",
+    "path": "/storefront/pricing/calculate-cart",
+    "identity": "controlled customer",
+    "body": {
+      "productItems": [
+        {
+          "sku": "HEADLESS-OPTIONS-1010",
+          "quantity": 1,
+          "itemType": "product",
+          "options": [
+            {
+              "name": "size",
+              "value": "large"
+            }
+          ]
+        }
+      ],
+      "rentalItems": [],
+      "shippingAddress": {
+        "name": "Nina Course",
+        "street1": "123 Course Lane",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60601",
+        "country": "US",
+        "email": "nina.gateway1010@example.invalid"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "productItems": [
+        {
+          "sku": "HEADLESS-OPTIONS-1010",
+          "quantity": 1,
+          "unitPrice": 25,
+          "amount": 25,
+          "discount": 0,
+          "deposit": 0,
+          "depositWaived": false,
+          "itemType": "product",
+          "parentSku": "HEADLESS-OPTIONS-1010",
+          "waived": false,
+          "options": [
+            {
+              "name": "size",
+              "value": "large"
+            }
+          ],
+          "feesTotal": 0,
+          "lineTotal": 25,
+          "originalPrice": 25,
+          "finalPrice": 25,
+          "totalPrice": 25,
+          "tierDiscount": 0,
+          "discountPercent": 0,
+          "currency": "USD",
+          "priceDelta": 0,
+          "variationSku": "HEADLESS-OPTIONS-LARGE-1010",
+          "categories": []
+        }
+      ],
+      "rentalItems": [],
+      "rentalSubtotal": 0,
+      "rentalDeposit": 0,
+      "rentalDiscount": 0,
+      "rentalTax": 0,
+      "rentalDeliveryFee": 0,
+      "rentalFees": 0,
+      "rentalFeesList": [],
+      "rentalTotal": 0,
+      "rentalCount": 0,
+      "productSubtotal": 25,
+      "productDiscount": 0,
+      "productTax": 0,
+      "productShipping": 6.5,
+      "productTotal": 31.5,
+      "productCount": 1,
+      "subtotal": 25,
+      "discount": 0,
+      "tax": 0,
+      "deposit": 0,
+      "total": 31.5,
+      "shippingMethod": "flat",
+      "depositWaived": false,
+      "freeShipping": false,
+      "freeDelivery": false,
+      "freeReturnPickup": false,
+      "discounts": [],
+      "valid": true,
+      "cartId": "6acaca3a8c597416cfbe7f28"
+    }
+  }
+}

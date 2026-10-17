@@ -1,0 +1,69 @@
+{
+  "confirmIsolatedDisabledDelivery": false,
+  "event": {
+    "title": "My controlled venue rehearsal",
+    "startTime": "REPLACE_WITH_FUTURE_ISO_DATETIME",
+    "endTime": "REPLACE_WITH_LATER_ISO_DATETIME",
+    "timezone": "America/Chicago",
+    "zones": [
+      {
+        "id": "main-hall",
+        "name": "Main Hall",
+        "capacity": 1
+      }
+    ],
+    "scanPoints": [
+      {
+        "id": "front-gate",
+        "name": "Front gate",
+        "zone": "main-hall",
+        "scanType": "entrance",
+        "matchField": "ticket_code",
+        "isActive": true
+      },
+      {
+        "id": "lunch-counter",
+        "name": "Lunch counter",
+        "zone": "main-hall",
+        "scanType": "eligibility",
+        "matchField": "ticket_code",
+        "acceptedPerkIds": [
+          "lunch"
+        ],
+        "autoClaimPerk": true,
+        "isActive": true
+      },
+      {
+        "id": "wristband-gate",
+        "name": "Wristband entrance",
+        "zone": "main-hall",
+        "scanType": "entrance",
+        "matchField": "credential_code",
+        "isActive": true
+      }
+    ]
+  },
+  "ticketType": {
+    "name": "REPLACE_WITH_UNIQUE_TRAINING_NAME",
+    "title": "General admission with lunch",
+    "currency": "USD",
+    "capacity": 10,
+    "allowReentry": true,
+    "reentryLimit": 1,
+    "zoneAccess": [
+      "main-hall"
+    ],
+    "perks": [
+      {
+        "id": "lunch",
+        "name": "Lunch voucher",
+        "type": "perk",
+        "quantity": 1,
+        "scanPointFilter": [
+          "lunch-counter"
+        ]
+      }
+    ]
+  },
+  "holderName": "Training attendee"
+}

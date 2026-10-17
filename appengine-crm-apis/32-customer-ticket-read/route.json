@@ -1,0 +1,6 @@
+{
+  "method": "GET",
+  "path": "/crm/tickets/get/Q3CHB319",
+  "identity": "customer",
+  "observedStatus": 200
+}

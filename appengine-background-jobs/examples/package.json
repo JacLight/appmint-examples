@@ -1,0 +1,1 @@
+{"private":true,"type":"module","scripts":{"inspect":"node client.mjs inspect"}}

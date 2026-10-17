@@ -1,0 +1,9 @@
+{
+  "method": "POST",
+  "path": "/approval/task/6acb1605ba781cd23c2f6e78/approve",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  }
+}

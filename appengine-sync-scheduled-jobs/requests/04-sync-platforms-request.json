@@ -1,0 +1,10 @@
+{
+  "method": "GET",
+  "path": "/sync/platforms",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": null,
+  "note": "Historical observed request; replace dates and IDs before use."
+}

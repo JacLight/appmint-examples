@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "path": "/repository/search/design_video_1009",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "keyword": "Lighting",
+    "query": {
+      "data.status": "new"
+    },
+    "options": {
+      "page": 1,
+      "pageSize": 20
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "client": "Official MCP SDK Client",
+  "connected": true,
+  "tools": [
+    "list_services",
+    "describe_service",
+    "call_service"
+  ],
+  "call": {
+    "service": "RepositoryCrudService",
+    "method": "findByAttribute",
+    "args": [
+      "sf_order",
+      "number",
+      "MCP1010A",
+      {
+        "page": 1,
+        "pageSize": 5
+      }
+    ]
+  },
+  "result": {
+    "isError": false,
+    "total": 1,
+    "records": [
+      {
+        "sk": "6aca827637ff863efff4769b",
+        "number": "MCP1010A",
+        "status": "processing"
+      }
+    ]
+  }
+}

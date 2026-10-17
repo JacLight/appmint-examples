@@ -1,0 +1,12 @@
+{
+  "method": "POST",
+  "path": "/schedule-control/cancel-job",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "jobId": "video-lab-mut4jkwd-6aca13c6f5d6b011f6e12052-start"
+  },
+  "note": "Historical observed request; replace dates and IDs before use."
+}

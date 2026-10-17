@@ -1,0 +1,47 @@
+{
+  "startedAt": "2026-10-10T10:30:30.387628+00:00",
+  "durationSeconds": 0.0372,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "datatype": "schedule",
+      "isNew": true,
+      "data": {
+        "name": "course-invalid-past",
+        "type": "simple",
+        "status": "active",
+        "target": [
+          {
+            "datatype": "schedule_marks_1010",
+            "id": "6aca1344f5d6b011f6e12028"
+          }
+        ],
+        "start": {
+          "date": "2020-01-01T00:00:00.000Z",
+          "action": "update-status",
+          "actionArgs": "ready"
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 400,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "reason": "run_at_in_past",
+      "field": "start.date",
+      "statusCode": 400,
+      "error": "Run at is in the past \u2014 pick a future time",
+      "path": "/repository/create",
+      "method": "POST",
+      "timeStamp": "2026-10-10T10:30:30.424Z"
+    }
+  }
+}

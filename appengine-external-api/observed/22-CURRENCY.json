@@ -1,0 +1,42 @@
+{
+  "id": "supplier-usecase-1011-CURRENCY",
+  "error": "Supplier currency differs from receiving location; do not silently convert",
+  "events": [
+    {
+      "scope": "AppEngine",
+      "method": "GET",
+      "path": "/storefront/inventory/intakes?q=northwind%3Asupplier-usecase-1011-CURRENCY&p=1&ps=50",
+      "status": 200,
+      "result": {
+        "data": [],
+        "total": 0,
+        "page": 1,
+        "pageSize": 50
+      }
+    },
+    {
+      "scope": "Teaching supplier",
+      "method": "GET",
+      "path": "/shipments/supplier-usecase-1011-CURRENCY",
+      "status": 200,
+      "result": {
+        "shipmentId": "supplier-usecase-1011-CURRENCY",
+        "purchaseOrder": "COURSE-PO-1011",
+        "estimatedArrival": "2026-10-15",
+        "currency": "EUR",
+        "lines": [
+          {
+            "supplierSku": "NW-OAK-24",
+            "quantity": 40,
+            "unitPrice": 38.5
+          },
+          {
+            "supplierSku": "NW-WAL-18",
+            "quantity": 12,
+            "unitPrice": 61
+          }
+        ]
+      }
+    }
+  ]
+}

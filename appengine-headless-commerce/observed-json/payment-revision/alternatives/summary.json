@@ -1,0 +1,35 @@
+{
+  "productId": "6acaca3a8c597416cfbe7f27",
+  "sku": "HEADLESS-OPTIONS-1010",
+  "variationSku": "HEADLESS-OPTIONS-LARGE-1010",
+  "customer": "Nina (existing controlled customer; no account changes)",
+  "cartId": "6acaca3a8c597416cfbe7f28",
+  "small": {
+    "unitPrice": 20,
+    "shipping": 6.5,
+    "total": 26.5
+  },
+  "large": {
+    "unitPrice": 25,
+    "shipping": 6.5,
+    "total": 31.5
+  },
+  "coupon": {
+    "code": "HCOPTION10",
+    "id": "6acaca428c597416cfbe7f2f",
+    "discount": 2.5,
+    "total": 29,
+    "savedReadback": true
+  },
+  "removed": {
+    "discount": 0,
+    "total": 31.5
+  },
+  "invalid": {
+    "valid": false,
+    "reason": "not_found",
+    "message": "Discount code not found",
+    "total": 31.5
+  },
+  "giftCard": "Not created. Automatic approval review rejected issuance of100USD redeemable value pending specific user authorization."
+}

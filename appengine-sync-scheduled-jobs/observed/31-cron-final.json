@@ -1,0 +1,54 @@
+{
+  "startedAt": "2026-10-10T10:32:20.642118+00:00",
+  "durationSeconds": 0.0139,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/get/schedule/6aca13c6f5d6b011f6e12059",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "_id": "6aca13c6f5d6b011f6e12059",
+      "datatype": "schedule",
+      "data": {
+        "name": "course-cron-1010",
+        "title": "Course bounded repeat \u2014 API course",
+        "type": "cron",
+        "status": "done",
+        "target": [
+          {
+            "datatype": "schedule_marks_1010",
+            "id": "6aca13c6f5d6b011f6e12058"
+          }
+        ],
+        "cron": {
+          "value": "* * * * *",
+          "timezone": "America/Chicago",
+          "action": "update-status",
+          "actionArgs": "ready"
+        },
+        "end": {
+          "date": "2026-10-10T10:32:10.387Z"
+        },
+        "lastRun": "2026-10-10T10:32:10.402Z",
+        "nextRun": null
+      },
+      "name": "course-cron-1010",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|schedule",
+      "createdate": "2026-10-10T10:30:30.693Z",
+      "modifydate": "2026-10-10T10:32:10.403Z",
+      "version": 0,
+      "sk": "6aca13c6f5d6b011f6e12059"
+    }
+  }
+}

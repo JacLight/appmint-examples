@@ -1,0 +1,27 @@
+{
+  "startedAt": "2026-10-10T02:01:17.717303+00:00",
+  "durationSeconds": 0.2,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/delete",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "course-files-1009/work/supplier-notes-moved.txt"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": [
+      {
+        "raw": {},
+        "wasDeleted": null
+      }
+    ]
+  }
+}

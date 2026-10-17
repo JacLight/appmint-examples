@@ -1,0 +1,29 @@
+{
+  "startedAt": "2026-10-10T02:00:13.302519+00:00",
+  "durationSeconds": 0.0054,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/customer/file/upload",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "fileName": "course-order-1009.txt",
+      "base64Data": "data:text/plain;base64,VHJhaW5pbmcgY3VzdG9tZXIgYXJ0d29yayByZXF1ZXN0CkNlZGFyIGJvdGFuaWNhbCBwcmludCwgQTMgbWF0dGUuCg=="
+    }
+  },
+  "response": {
+    "status": 403,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "statusCode": 403,
+      "error": "Forbidden",
+      "path": "/repository/customer/file/upload",
+      "method": "POST",
+      "timeStamp": "2026-10-10T02:00:13.307Z"
+    }
+  }
+}

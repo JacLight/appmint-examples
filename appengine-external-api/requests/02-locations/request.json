@@ -1,0 +1,9 @@
+{
+  "query": {
+    "data.name": "supplier-usecase-1011"
+  },
+  "options": {
+    "page": 1,
+    "pageSize": 5
+  }
+}

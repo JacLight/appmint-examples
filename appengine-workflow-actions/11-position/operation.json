@@ -1,0 +1,10 @@
+{
+  "method": "GET",
+  "path": "/workflow/position/workflow_lab_1010/6aca13a4f5d6b011f6e12034",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": null
+}

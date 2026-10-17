@@ -1,0 +1,77 @@
+{
+  "info": {
+    "name": "AppEngine \u2014 isolated scheduling exercise",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base",
+      "value": "YOUR_APPENGINE_ENDPOINT"
+    },
+    {
+      "key": "orgid",
+      "value": "YOUR_ORGANIZATION"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "targetDatatype",
+      "value": "YOUR_COLLECTION"
+    },
+    {
+      "key": "targetId",
+      "value": "YOUR_SAVED_RECORD_ID"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create a future simple schedule",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Use on the schedule CREATE request only. Re-running resets future dates.",
+              "// Set orgId, token, targetDatatype and targetId in your private environment.",
+              "const now = Date.now();",
+              "pm.variables.set('futureStart', new Date(now + 120000).toISOString());",
+              "pm.variables.set('futureEnd', new Date(now + 180000).toISOString());",
+              "pm.variables.set('scheduleName', `course-status-${now}`);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"datatype\":\"schedule\",\"isNew\":true,\"data\":{\"name\":\"{{scheduleName}}\",\"title\":\"Course isolated timed action\",\"type\":\"simple\",\"status\":\"active\",\"target\":[{\"datatype\":\"{{targetDatatype}}\",\"id\":\"{{targetId}}\"}],\"start\":{\"date\":\"{{futureStart}}\",\"action\":\"update-status\",\"actionArgs\":\"ready\"},\"end\":{\"date\":\"{{futureEnd}}\",\"action\":\"update-status\",\"actionArgs\":\"finished\"}}}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{base}}/repository/create",
+        "description": "Prepare a harmless custom target with waiting/ready/finished statuses first. Fill private variables. This creates an active two-boundary schedule with dates 2 and 3 minutes in the future. Submit once, then inspect the returned schedule ID."
+      }
+    }
+  ]
+}

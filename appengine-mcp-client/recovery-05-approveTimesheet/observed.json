@@ -1,0 +1,7 @@
+{
+  "result": null,
+  "error": {
+    "message": "tool call error: tool call failed for `appengine/call_service`\n\nCaused by:\n    Transport send error: Transport [codex_rmcp_client::event_notification_transport::EventNotificationTransport<rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<codex_rmcp_client::http_client_adapter::StreamableHttpClientAdapter>>>] error: Client error: HTTP request failed: http/request failed: error sending request for url (http://127.0.0.1:3348/mcp)"
+  },
+  "hostEventStatus": "failed"
+}

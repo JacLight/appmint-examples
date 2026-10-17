@@ -1,0 +1,25 @@
+{
+  "status": 201,
+  "body": {
+    "pk": "video-lab-mut4jkwd|bm_timesheet",
+    "sk": "6acb2e18ba781cd23c2f758f",
+    "name": "bm_timesheet-1791700504583-m7pqtwg0",
+    "datatype": "bm_timesheet",
+    "data": {
+      "employeeId": "6acb2e18ba781cd23c2f757d",
+      "payPeriodStart": "2026-10-26",
+      "payPeriodEnd": "2026-11-01",
+      "notes": "Synthetic course demonstration. No payroll run or payment.",
+      "status": "draft",
+      "timeEntries": [],
+      "name": "bm_timesheet-1791700504583-m7pqtwg0"
+    },
+    "version": 0,
+    "author": "video-lab-mut4jkwd@example.com",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "createdate": "2026-10-11T06:35:04.588Z",
+    "modifydate": "2026-10-11T06:35:04.588Z",
+    "id": "6acb2e18ba781cd23c2f758f"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "method": "POST",
+  "path": "/repository/create",
+  "body": {
+    "datatype": "collection",
+    "isNew": true,
+    "data": {
+      "name": "baas_submissions_1010",
+      "title": "App submissions \u2014 Backend course",
+      "enableVersioning": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "type": "string",
+            "title": "Reference"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "attachmentPath": {
+            "type": "string",
+            "title": "Attachment path"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "enum": [
+              "new",
+              "reviewed"
+            ]
+          }
+        },
+        "required": [
+          "reference"
+        ]
+      }
+    }
+  }
+}

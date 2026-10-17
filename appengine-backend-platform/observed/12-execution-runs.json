@@ -1,0 +1,53 @@
+{
+  "startedAt": "2026-10-10T07:31:19.048047+00:00",
+  "durationSeconds": 0.0134,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/automation/6ac9e9a0f5d6b011f6e11a13/runs",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "total": 2,
+      "page": 1,
+      "pageSize": 50,
+      "pages": 1,
+      "data": [
+        {
+          "executionId": "exec_1791617478031_65seflj0f",
+          "status": "completed",
+          "startedAt": "2026-10-10T07:31:18.031Z",
+          "completedAt": "2026-10-10T07:31:18.066Z",
+          "durationMs": 35,
+          "stepsDone": 1,
+          "failedStepId": null,
+          "error": null,
+          "triggeredBy": "event",
+          "waitingFor": null,
+          "subject": "Application submission with attachment"
+        },
+        {
+          "executionId": "exec_1791617477685_heb6z2",
+          "status": "completed",
+          "startedAt": "2026-10-10T07:31:17.686Z",
+          "completedAt": "2026-10-10T07:31:17.920Z",
+          "durationMs": 234,
+          "stepsDone": 1,
+          "failedStepId": null,
+          "error": null,
+          "triggeredBy": "manual-execution",
+          "waitingFor": null,
+          "subject": null
+        }
+      ]
+    }
+  }
+}

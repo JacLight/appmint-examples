@@ -1,0 +1,20 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "PUT",
+    "path": "/storefront/inventory/intakes/6acb163bba781cd23c2f6e9c/cancel",
+    "body": {
+      "reason": "Controlled invalid transition test; received intake must remain received."
+    }
+  },
+  "response": {
+    "status": 400,
+    "body": {
+      "statusCode": 400,
+      "error": "Intake INT-GECK8W0T is received; only a pending intake can be cancelled.",
+      "path": "/storefront/inventory/intakes/6acb163bba781cd23c2f6e9c/cancel",
+      "method": "PUT",
+      "timeStamp": "2026-10-11T05:03:28.703Z"
+    }
+  }
+}

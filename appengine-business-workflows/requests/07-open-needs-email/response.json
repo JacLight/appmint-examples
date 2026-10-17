@@ -1,0 +1,18 @@
+{
+  "status": 401,
+  "body": {
+    "reason": "email-required",
+    "authenticationType": "email",
+    "authentication": {
+      "required": true,
+      "type": "email",
+      "satisfied": false
+    },
+    "title": "Warranty claim",
+    "statusCode": 401,
+    "error": "This form asks for your email address before it opens.",
+    "path": "/client/forms/wf-usecase-1011-warranty",
+    "method": "GET",
+    "timeStamp": "2026-10-11T04:52:21.572Z"
+  }
+}

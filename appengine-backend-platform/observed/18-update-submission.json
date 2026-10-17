@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-10-10T07:32:22.340910+00:00",
+  "durationSeconds": 0.0104,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/update-partial/baas_submissions_1010/6ac9e9c6f5d6b011f6e11a28",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "data.status": "reviewed"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "text/html; charset=utf-8",
+    "body": true
+  }
+}

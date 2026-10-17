@@ -1,0 +1,59 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/location",
+    "identity": "staff",
+    "body": {
+      "query": {
+        "data.name": "bm-checkout-course"
+      },
+      "options": {
+        "pageSize": 2
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 1,
+      "datatype": "location",
+      "pageSize": 2,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-04T08:28:39.796Z",
+      "data": [
+        {
+          "_id": "6ac20e37811240dbeecc0685",
+          "pk": "video-lab-mut4jkwd|location",
+          "sk": "6ac20e37811240dbeecc0685",
+          "name": "bm-checkout-course",
+          "datatype": "location",
+          "data": {
+            "name": "bm-checkout-course",
+            "title": "BM Checkout Course",
+            "type": "address",
+            "status": "active",
+            "description": "",
+            "address": {},
+            "pos": {
+              "printReceiptOnSettle": false,
+              "openDrawerOnCashTender": false
+            },
+            "timezone": "America/Chicago",
+            "operatingHours": []
+          },
+          "version": 0,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-04T08:28:39.796Z",
+          "modifydate": "2026-10-04T08:28:39.796Z"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/storefront/inventory/intakes/6acb163bba781cd23c2f6e9d"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6acb163bba781cd23c2f6e9d",
+      "pk": "video-lab-mut4jkwd|sf_inventory_intake",
+      "sk": "6acb163bba781cd23c2f6e9d",
+      "name": "sf_inventory_intake-1791694395384-c82hnaab",
+      "datatype": "sf_inventory_intake",
+      "data": {
+        "vendorId": null,
+        "vendorName": "Northwind Timber — teaching supplier",
+        "locationId": "supplier-usecase-1011",
+        "locationName": "Supplier Course Receiving",
+        "items": [
+          {
+            "sku": "SUPPLIER-OAK-1011",
+            "productName": "Training white oak plank",
+            "quantity": 20,
+            "unitCost": 41.5
+          },
+          {
+            "sku": "SUPPLIER-WAL-1011",
+            "productName": "Training walnut board",
+            "quantity": 6,
+            "unitCost": 70
+          }
+        ],
+        "expectedDate": null,
+        "notes": "Synthetic teaching restock; demonstrate weighted cost and actual receipt.",
+        "reference": "northwind:supplier-usecase-1011-CANCEL",
+        "intakeNumber": "INT-QBATNHJ0",
+        "status": "cancelled",
+        "total": 1250,
+        "currency": "USD",
+        "createdBy": "video-lab-mut4jkwd@example.com",
+        "createdAt": "2026-10-11T04:53:15.384Z",
+        "name": "sf_inventory_intake-1791694395384-c82hnaab",
+        "cancelledBy": "video-lab-mut4jkwd@example.com",
+        "cancelledAt": "2026-10-11T05:03:35.854Z",
+        "cancelReason": "Supplier notice had the wrong quantities; corrected intake follows."
+      },
+      "version": 1,
+      "author": "video-lab-mut4jkwd@example.com",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "createdate": "2026-10-11T04:53:15.386Z",
+      "modifydate": "2026-10-11T05:03:35.877Z",
+      "modified_by": "video-lab-mut4jkwd@example.com"
+    }
+  }
+}

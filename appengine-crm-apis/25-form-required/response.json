@@ -1,0 +1,11 @@
+{
+  "status": 400,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "statusCode": 400,
+    "error": "Please fill in Request.",
+    "path": "/client/forms/crm-intake-1010/submit",
+    "method": "POST",
+    "timeStamp": "2026-10-10T18:25:10.441Z"
+  }
+}

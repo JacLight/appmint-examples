@@ -1,0 +1,17 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/site/base-url?siteName=vidsite",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "url": "http://YOUR_SITE_HOST"
+    }
+  }
+}

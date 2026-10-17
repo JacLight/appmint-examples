@@ -1,0 +1,71 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/site/get-site/vidsite/YOUR_SITE_HOST",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6ac1a7896cf55d217cabf059",
+      "pk": "video-lab-mut4jkwd|site",
+      "sk": "6ac1a7896cf55d217cabf059",
+      "name": "vidsite",
+      "datatype": "site-enriched",
+      "data": {
+        "name": "vidsite",
+        "title": "vidsite",
+        "description": "Site vidsite",
+        "template": null,
+        "hostName": "YOUR_SITE_HOST",
+        "homePage": "landing-page",
+        "publishedPagesOnly": false,
+        "isDefault": true,
+        "features": [
+          {
+            "feature": "forms",
+            "enabled": true,
+            "page": "consultation-form"
+          }
+        ],
+        "activeNotices": []
+      },
+      "version": 2,
+      "created_by": "system",
+      "state": "draft",
+      "createdate": "2026-10-04T01:10:33.770Z",
+      "modifydate": "2026-10-04T18:16:48.505Z",
+      "modified_by": "video-lab-mut4jkwd@example.com",
+      "company": {
+        "name": "video-lab-mut4jkwd",
+        "email": "video-lab-mut4jkwd@example.com"
+      },
+      "domainRecord": [
+        {
+          "_id": "6ac1a7896cf55d217cabf05b",
+          "pk": "fundu|site_domain",
+          "sk": "6ac1a7896cf55d217cabf05b",
+          "name": "site_domain-1791076233843-cwi3upx6",
+          "datatype": "site_domain",
+          "data": {
+            "domainName": "YOUR_SITE_HOST",
+            "orgId": "video-lab-mut4jkwd",
+            "siteId": "6ac1a7896cf55d217cabf059",
+            "siteName": "vidsite",
+            "status": "active",
+            "name": "site_domain-1791076233843-cwi3upx6"
+          },
+          "version": 0,
+          "created_by": "system",
+          "state": "draft",
+          "createdate": "2026-10-04T01:10:33.846Z",
+          "modifydate": "2026-10-04T01:10:33.846Z"
+        }
+      ]
+    }
+  }
+}

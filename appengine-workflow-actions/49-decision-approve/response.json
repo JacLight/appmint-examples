@@ -1,0 +1,42 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "taskId": "6aca13c4f5d6b011f6e1204a",
+    "decision": "approve",
+    "task": {
+      "id": "6aca13c4f5d6b011f6e1204a",
+      "title": "API decision: approve",
+      "summary": "",
+      "status": "approved",
+      "stageId": 1,
+      "workflowName": "api-decision-1010",
+      "assignTo": [
+        "video-lab-mut4jkwd@example.com"
+      ],
+      "dueDate": null,
+      "createdate": "2026-10-10T10:30:28.746Z",
+      "owner": {
+        "datatype": "workflow_lab_1010",
+        "id": "6aca13c4f5d6b011f6e12049",
+        "name": "API decision: approve"
+      },
+      "payload": {
+        "reviewType": "training",
+        "requesterEmail": "video-lab-mut4jkwd@example.com",
+        "requesterName": "Video Lab"
+      },
+      "history": [
+        {
+          "stageId": 0,
+          "status": "new",
+          "dueDate": null,
+          "note": "",
+          "modified": "2026-10-10T10:30:28.779Z",
+          "modifiedBy": "video-lab-mut4jkwd@example.com"
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "status": 200,
+  "body": {
+    "waitingOnMe": [
+      {
+        "id": "6acb15d0ba781cd23c2f6e53",
+        "title": "Warranty claim \u2014 dana.wf-usecase-1011@training.local",
+        "summary": "dana.wf-usecase-1011@training.local submitted Warranty claim",
+        "status": "new",
+        "stageId": 0,
+        "workflowName": "wf-usecase-1011-warranty",
+        "assignTo": [
+          "priya.wf-usecase-1011@training.local"
+        ],
+        "dueDate": "2026-10-13T04:51:28.944Z",
+        "createdate": "2026-10-11T04:51:28.947Z",
+        "owner": {
+          "datatype": "form_submission",
+          "id": "6acb15d0ba781cd23c2f6e52",
+          "name": "Warranty claim \u2014 dana.wf-usecase-1011@training.local"
+        },
+        "payload": {
+          "formName": "wf-usecase-1011-warranty",
+          "formId": "6acb15c8ba781cd23c2f6e43",
+          "submitter": "dana.wf-usecase-1011@training.local",
+          "requesterEmail": "dana.wf-usecase-1011@training.local"
+        },
+        "approvals": [],
+        "assignToNames": [
+          "Priya Reviewer"
+        ]
+      }
+    ],
+    "myRequests": [],
+    "notices": [],
+    "unread": 0,
+    "counts": {
+      "waiting": 1,
+      "mine": 0
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "status": 200,
+  "body": {
+    "_id": "6acb1605ba781cd23c2f6e72",
+    "pk": "video-lab-mut4jkwd|form_submission",
+    "sk": "6acb1605ba781cd23c2f6e72",
+    "name": "form_submission-1791694341814-jirycmv1",
+    "datatype": "form_submission",
+    "data": {
+      "formId": "6acb15c8ba781cd23c2f6e43",
+      "values": {
+        "fullName": "Dana Ruiz",
+        "email": "dana.wf-usecase-1011@training.local",
+        "orderNumber": "HC-1043",
+        "bikeModel": "Harbor Trail 2",
+        "problem": "Frame crack after three weeks"
+      },
+      "status": "rejected",
+      "authentication": {
+        "method": "email",
+        "status": "used",
+        "email": "dana.wf-usecase-1011@training.local",
+        "admittedBy": "email",
+        "verified": false,
+        "submittedAt": "2026-10-11T04:52:21.814Z",
+        "client": {}
+      },
+      "name": "form_submission-1791694341814-jirycmv1",
+      "workflow": {
+        "workflowId": "6acb15c8ba781cd23c2f6e42",
+        "status": "done"
+      }
+    },
+    "version": 0,
+    "author": "dana.wf-usecase-1011@training.local",
+    "client": {},
+    "created_by": "dana.wf-usecase-1011@training.local",
+    "state": "completed",
+    "createdate": "2026-10-11T04:52:21.830Z",
+    "modifydate": "2026-10-11T04:52:21.910Z",
+    "handling": {
+      "status": "open",
+      "since": "2026-10-11T04:52:21.842Z",
+      "channel": "form",
+      "title": "Form submitted: Warranty claim by dana.wf-usecase-1011@training.local",
+      "history": [
+        {
+          "status": "open",
+          "at": "2026-10-11T04:52:21.842Z"
+        }
+      ]
+    }
+  }
+}

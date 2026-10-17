@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "path": "/storefront/order/stock-retry/YOUR_SHIPPED_ORDER_NUMBER",
+  "identity": "staff",
+  "mutation": true,
+  "body": {}
+}

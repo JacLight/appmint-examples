@@ -1,0 +1,9 @@
+{
+  "method": "PUT",
+  "path": "/repository/create",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "{{orgid}}",
+    "Authorization": "Bearer {{token}}"
+  }
+}

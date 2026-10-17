@@ -1,0 +1,34 @@
+[
+  {
+    "hostItem": "item_1",
+    "requestDirectory": "approval-01-list_services"
+  },
+  {
+    "hostItem": "item_2",
+    "requestDirectory": "approval-02-describe_service"
+  },
+  {
+    "hostItem": "item_3",
+    "requestDirectory": "approval-03-describe_service"
+  },
+  {
+    "hostItem": "item_4",
+    "requestDirectory": "approval-04-describe_service"
+  },
+  {
+    "hostItem": "item_6",
+    "requestDirectory": "approval-05-getEmployee"
+  },
+  {
+    "hostItem": "item_7",
+    "requestDirectory": "approval-06-getTimesheet"
+  },
+  {
+    "hostItem": "item_9",
+    "requestDirectory": "approval-07-approveTimesheet"
+  },
+  {
+    "hostItem": "item_10",
+    "requestDirectory": "approval-08-getTimesheet"
+  }
+]

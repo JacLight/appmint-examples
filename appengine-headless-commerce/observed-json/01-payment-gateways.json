@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/storefront/payment-gateways"
+  },
+  "response": {
+    "status": 200,
+    "body": []
+  }
+}

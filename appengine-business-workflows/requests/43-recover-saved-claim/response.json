@@ -1,0 +1,44 @@
+{
+  "status": 201,
+  "body": {
+    "task": {
+      "pk": "video-lab-mut4jkwd|task",
+      "sk": "6acb1606ba781cd23c2f6e8c",
+      "name": "ak040j5x8n",
+      "datatype": "task",
+      "data": {
+        "name": "ak040j5x8n",
+        "title": "Recovered warranty claim HC-1047",
+        "note": "",
+        "workflowId": "6acb15c8ba781cd23c2f6e42",
+        "workflowName": "wf-usecase-1011-warranty",
+        "stageId": 0,
+        "status": "new",
+        "payload": {
+          "requesterEmail": "dana.wf-usecase-1011@training.local"
+        },
+        "assignTo": [
+          "priya.wf-usecase-1011@training.local"
+        ],
+        "escalationTier": 0,
+        "dueDate": "2026-10-13T04:52:22.391Z"
+      },
+      "version": 0,
+      "owner": {
+        "datatype": "form_submission",
+        "id": "6acb1606ba781cd23c2f6e8a",
+        "name": "Recovered warranty claim HC-1047"
+      },
+      "state": "draft",
+      "created_by": "system",
+      "createdate": "2026-10-11T04:52:22.393Z",
+      "modifydate": "2026-10-11T04:52:22.393Z",
+      "id": "6acb1606ba781cd23c2f6e8c"
+    },
+    "source": {
+      "datatype": "form_submission",
+      "id": "6acb1606ba781cd23c2f6e8a"
+    },
+    "workflowId": "6acb15c8ba781cd23c2f6e42"
+  }
+}

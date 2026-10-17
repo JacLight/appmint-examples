@@ -1,0 +1,6 @@
+{
+  "method": "POST",
+  "path": "/profile/customer/signin",
+  "identity": "public",
+  "observedStatus": 201
+}

@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "jsonrpc": "2.0",
+    "id": 15,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Method notACourseMethod on StorefrontOrderService is not @AiCallable (or does not exist)"
+        }
+      ],
+      "isError": true
+    }
+  }
+}

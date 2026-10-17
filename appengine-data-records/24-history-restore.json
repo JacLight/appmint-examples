@@ -1,0 +1,14 @@
+{
+  "method": "POST",
+  "path": "/repository/history/restore",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "datatype": "design_video_1009",
+    "id": "6ac988def5d6b011f6e10ddc",
+    "historyId": "6ac988f2f5d6b011f6e10de6"
+  }
+}

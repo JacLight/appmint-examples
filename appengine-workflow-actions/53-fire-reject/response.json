@@ -1,0 +1,46 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "task": {
+      "pk": "video-lab-mut4jkwd|task",
+      "sk": "6aca13c4f5d6b011f6e1204e",
+      "name": "nmqx5ur6f2",
+      "datatype": "task",
+      "data": {
+        "name": "nmqx5ur6f2",
+        "title": "API decision: reject",
+        "note": "",
+        "workflowId": "6aca13c4f5d6b011f6e12048",
+        "workflowName": "api-decision-1010",
+        "stageId": 0,
+        "status": "new",
+        "payload": {
+          "reviewType": "training",
+          "requesterEmail": "video-lab-mut4jkwd@example.com",
+          "requesterName": "Video Lab"
+        },
+        "assignTo": [
+          "video-lab-mut4jkwd@example.com"
+        ],
+        "escalationTier": 0
+      },
+      "version": 0,
+      "owner": {
+        "datatype": "workflow_lab_1010",
+        "id": "6aca13c4f5d6b011f6e1204c",
+        "name": "API decision: reject"
+      },
+      "state": "draft",
+      "created_by": "system",
+      "createdate": "2026-10-10T10:30:28.892Z",
+      "modifydate": "2026-10-10T10:30:28.892Z",
+      "id": "6aca13c4f5d6b011f6e1204e"
+    },
+    "source": {
+      "datatype": "workflow_lab_1010",
+      "id": "6aca13c4f5d6b011f6e1204c"
+    },
+    "workflowId": "6aca13c4f5d6b011f6e12048"
+  }
+}

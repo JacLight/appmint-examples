@@ -1,0 +1,18 @@
+{
+  "vendorName": "Northwind Timber \u2014 teaching supplier",
+  "locationId": "supplier-usecase-1011",
+  "items": [
+    {
+      "sku": "SUPPLIER-OAK-1011",
+      "quantity": 20,
+      "unitCost": 41.5
+    },
+    {
+      "sku": "SUPPLIER-WAL-1011",
+      "quantity": 6,
+      "unitCost": 70
+    }
+  ],
+  "reference": "northwind:supplier-usecase-1011-CANCEL",
+  "notes": "Synthetic teaching restock; demonstrate weighted cost and actual receipt."
+}

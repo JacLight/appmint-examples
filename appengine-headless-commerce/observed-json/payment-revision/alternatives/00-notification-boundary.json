@@ -1,0 +1,53 @@
+{
+  "environment": "Isolated controlled training organization",
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/config",
+    "identity": "authorized staff",
+    "body": {
+      "query": {
+        "data.provider": {
+          "$regex": "smtp",
+          "$options": "i"
+        }
+      },
+      "options": {
+        "pageSize": 20
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 1,
+      "datatype": "config",
+      "pageSize": 20,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-08T23:45:56.443Z",
+      "data": [
+        {
+          "_id": "6ac82b349b63259db7fe2d16",
+          "sk": "6ac82b349b63259db7fe2d16",
+          "pk": "video-lab-mut4jkwd|config",
+          "datatype": "config",
+          "name": "course-mail-disabled",
+          "version": 1,
+          "createdate": "2026-10-08T23:45:56.443Z",
+          "modifydate": "2026-10-08T23:45:56.443Z",
+          "data": {
+            "name": "course-mail-disabled",
+            "provider": "SMTPProvider",
+            "status": "inactive",
+            "sendOutgoing": false,
+            "priority": 100
+          }
+        }
+      ]
+    }
+  }
+}

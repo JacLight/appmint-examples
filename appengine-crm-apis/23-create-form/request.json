@@ -1,0 +1,34 @@
+{
+  "datatype": "crm_form",
+  "isNew": true,
+  "data": {
+    "name": "crm-intake-1010",
+    "title": "CRM API Intake",
+    "status": "active",
+    "authenticationType": "none",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "title": "Full name"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "title": "Email"
+        },
+        "request": {
+          "type": "string",
+          "title": "Request"
+        }
+      },
+      "required": [
+        "fullName",
+        "email",
+        "request"
+      ]
+    },
+    "submitMessage": "Your request was saved"
+  }
+}

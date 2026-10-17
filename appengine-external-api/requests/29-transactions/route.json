@@ -1,0 +1,4 @@
+{
+  "method": "GET",
+  "path": "/storefront/inventory/sku/SUPPLIER-OAK-1011/transactions?locationId=supplier-usecase-1011"
+}

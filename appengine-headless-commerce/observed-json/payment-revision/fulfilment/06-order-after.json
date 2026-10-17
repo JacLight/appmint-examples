@@ -1,0 +1,227 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/sf_order",
+    "identity": "staff",
+    "body": {
+      "query": {
+        "data.number": "HS851V342"
+      },
+      "options": {
+        "pageSize": 1,
+        "withFields": [
+          "data"
+        ]
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 1,
+      "datatype": "sf_order",
+      "pageSize": 1,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": null,
+      "hasNext": true,
+      "fromCache": false,
+      "lastItem": "2026-10-11T00:11:14.522Z",
+      "data": [
+        {
+          "_id": "6acac791faa0eca1c854d97c",
+          "pk": "video-lab-mut4jkwd|sf_order",
+          "sk": "6acac791faa0eca1c854d97c",
+          "name": "Mira-Lin Chen",
+          "datatype": "sf_order",
+          "data": {
+            "name": "Mira-Lin Chen",
+            "number": "HS851V342",
+            "email": "mira.chen.foundations@training.local",
+            "phone": null,
+            "currency": "usd",
+            "subtotal": 48,
+            "productSubtotal": 48,
+            "rentalSubtotal": 0,
+            "productShipping": 6.5,
+            "shippingMethod": "flat",
+            "tax": 0,
+            "productTax": 0,
+            "rentalTax": 0,
+            "discount": 0,
+            "productDiscount": 0,
+            "rentalDiscount": 0,
+            "deposit": 0,
+            "rentalDeposit": 0,
+            "rentalDeliveryFee": 0,
+            "rentalFees": 0,
+            "rentalFeesList": [],
+            "depositWaived": false,
+            "freeShipping": false,
+            "freeDelivery": false,
+            "productTotal": 54.5,
+            "rentalTotal": 0,
+            "amount": 54.5,
+            "affiliateCode": null,
+            "discounts": [],
+            "discountCode": "",
+            "productItems": [
+              {
+                "sku": "HEADLESS-CEDAR-1010",
+                "name": "Cedar Botanical Print",
+                "image": null,
+                "quantity": 2,
+                "unitPrice": 24,
+                "amount": 48,
+                "lineTotal": 48,
+                "discount": 0,
+                "originalPrice": 24,
+                "finalPrice": 24,
+                "totalPrice": 48,
+                "tierDiscount": 0,
+                "discountPercent": 0,
+                "appliedRule": null,
+                "appliedRuleType": null,
+                "priceDelta": 0,
+                "variationSku": null,
+                "itemType": "product",
+                "categoryId": null,
+                "parentSku": "HEADLESS-CEDAR-1010",
+                "waived": false,
+                "options": null,
+                "design": null,
+                "rentalId": null,
+                "startDate": null,
+                "endDate": null,
+                "rentalPeriod": null,
+                "duration": null,
+                "deposit": 0,
+                "depositWaived": false,
+                "timezone": null,
+                "fulfillment": null,
+                "return": null,
+                "fees": null,
+                "feesTotal": 0,
+                "optionalFees": null
+              }
+            ],
+            "rentalItems": [],
+            "productCount": 2,
+            "rentalCount": 0,
+            "shippingAddress": {
+              "street1": "123 Course Lane",
+              "city": "Chicago",
+              "state": "IL",
+              "zip": "60601",
+              "country": "US",
+              "name": "Mira-Lin Chen",
+              "email": "mira.chen.foundations@training.local"
+            },
+            "billingAddress": {
+              "street1": "123 Course Lane",
+              "city": "Chicago",
+              "state": "IL",
+              "zip": "60601",
+              "country": "US",
+              "name": "Mira-Lin Chen",
+              "email": "mira.chen.foundations@training.local"
+            },
+            "orderType": "product",
+            "paymentRef": "pi_3UP9WACH9tYO5hDg15wEPvip",
+            "paymentGateway": "stripe",
+            "status": "shipped",
+            "payments": [
+              {
+                "method": "stripe",
+                "label": "Stripe",
+                "amount": 54.5,
+                "ref": "pi_3UP9WACH9tYO5hDg15wEPvip"
+              }
+            ],
+            "paidAt": "2026-10-10T23:17:38.128Z",
+            "remarks": "Fully Paid",
+            "shippingInfo": [
+              {
+                "carrier": "USPS",
+                "service": "GroundAdvantage",
+                "tracker": "9434600208192110020219",
+                "trackingUrl": "https://tools.usps.com/go/TrackConfirmAction?tLabels=9434600208192110020219",
+                "rate": "GroundAdvantage",
+                "cost": "10.11",
+                "labelUrl": "",
+                "status": "shipped",
+                "shippedAt": "2026-10-11T00:11:14.513Z",
+                "estimatedDelivery": "",
+                "parcel": {
+                  "length": 16,
+                  "width": 12,
+                  "height": 1,
+                  "weight": 1,
+                  "weightUnit": "lb",
+                  "dimensionUnit": "in"
+                },
+                "products": [
+                  {
+                    "sku": "HEADLESS-CEDAR-1010",
+                    "name": "Cedar Botanical Print",
+                    "quantity": 2
+                  }
+                ],
+                "addedBy": "video-lab-mut4jkwd@example.com",
+                "manual": true
+              }
+            ],
+            "shippedQuantities": {
+              "HEADLESS-CEDAR-1010": 2
+            },
+            "shippedAt": "2026-10-11T00:11:14.513Z",
+            "orderInventory": {
+              "status": "needs_attention",
+              "drawn": {},
+              "results": [],
+              "issues": [
+                "HEADLESS-CEDAR-1010: no single stock location holds this SKU; set the order location"
+              ],
+              "uncosted": [],
+              "checkedAt": "2026-10-11T00:11:14.517Z"
+            }
+          },
+          "version": 1,
+          "author": "mira.chen.foundations@training.local",
+          "client": {
+            "realIp": "::ffff:127.0.0.1",
+            "socketIp": "::ffff:127.0.0.1",
+            "forwardIp": "",
+            "clientIp": "::ffff:127.0.0.1",
+            "referrer": "",
+            "host": "127.0.0.1:3300",
+            "clientHost": "",
+            "protocol": "http",
+            "domain": "127.0.0.1:3300",
+            "url": "/storefront/checkout-cart",
+            "userAgentString": "node",
+            "siteName": ""
+          },
+          "created_by": "mira.chen.foundations@training.local",
+          "state": "draft",
+          "createdate": "2026-10-10T23:17:37.940Z",
+          "modifydate": "2026-10-11T00:11:14.522Z",
+          "handling": {
+            "status": "open",
+            "since": "2026-10-10T23:17:37.950Z",
+            "channel": "order",
+            "title": "New order: Mira-Lin Chen",
+            "history": [
+              {
+                "status": "open",
+                "at": "2026-10-10T23:17:37.950Z"
+              }
+            ]
+          },
+          "modified_by": "system"
+        }
+      ]
+    }
+  }
+}

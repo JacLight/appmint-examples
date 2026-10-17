@@ -1,0 +1,9 @@
+{
+  "mode": "empty",
+  "sku": "EMPTY",
+  "exitCode": 0,
+  "stdout": "{\"sku\":\"EMPTY\",\"available\":0,\"noteWritten\":false,\"reason\":\"Out of stock\"}",
+  "error": null,
+  "notesBefore": 1,
+  "notesAfter": 1
+}

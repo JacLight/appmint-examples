@@ -1,0 +1,38 @@
+{
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/upload",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "multipart/form-data; boundary=CourseMultipart0419c020fd6b4c37a7e34b0f6941d2ee"
+    },
+    "body": {
+      "multipart": {
+        "location": "course-files-1009/private",
+        "isPrivate": "true",
+        "file": "supplier-notes.txt"
+      },
+      "fileBytes": 142,
+      "sha256": "9978a850661a86a949decd4f3625e327a883c6f746bf8a274f7e1493012ea7a7"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "raw": {
+        "Key": "video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt",
+        "LastModified": "2026-10-10T01:57:57.905Z",
+        "ETag": "\"a3d7c539b4f6215730b2b51e74c0651f\"",
+        "ChecksumAlgorithm": [],
+        "Size": 142,
+        "StorageClass": "STANDARD"
+      },
+      "path": "video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt",
+      "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt?AWSAccessKeyId=REDACTED&Expires=1791598378&Signature=REDACTED"
+    }
+  },
+  "durationSeconds": 0.309
+}

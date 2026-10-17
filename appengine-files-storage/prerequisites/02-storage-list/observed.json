@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-10-10T01:57:29.124293+00:00",
+  "durationSeconds": 0.4226,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/flatlist",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "prefix": "course-files-1009/",
+      "pageNumber": 1,
+      "maxKeys": 10,
+      "checkPrivacy": true
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "files": [],
+      "hasMore": false,
+      "startPage": 1,
+      "prefix": "video-lab-mut4jkwd/course-files-1009/",
+      "pageNumber": 1
+    }
+  }
+}

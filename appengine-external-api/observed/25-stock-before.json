@@ -1,0 +1,15 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/storefront/inventory/sku/SUPPLIER-OAK-1011"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "locations": [],
+      "totalQuantity": 0,
+      "totalAvailable": 0
+    }
+  }
+}

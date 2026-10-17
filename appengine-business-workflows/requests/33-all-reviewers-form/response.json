@@ -1,0 +1,56 @@
+{
+  "status": 200,
+  "body": {
+    "datatype": "crm_form",
+    "data": {
+      "name": "wf-usecase-1011-warranty-both",
+      "title": "Warranty \u2014 Two Reviewers",
+      "status": "open",
+      "authenticationType": "email",
+      "workflow": "wf-usecase-1011-warranty-both",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "title": "Full name"
+          },
+          "email": {
+            "type": "string",
+            "title": "Email",
+            "format": "email"
+          },
+          "orderNumber": {
+            "type": "string",
+            "title": "Order number"
+          },
+          "bikeModel": {
+            "type": "string",
+            "title": "Bike model"
+          },
+          "problem": {
+            "type": "string",
+            "title": "Problem"
+          }
+        },
+        "required": [
+          "fullName",
+          "email",
+          "orderNumber",
+          "bikeModel",
+          "problem"
+        ]
+      }
+    },
+    "author": "video-lab-mut4jkwd@example.com",
+    "name": "wf-usecase-1011-warranty-both",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "pk": "video-lab-mut4jkwd|crm_form",
+    "createdate": "2026-10-11T04:52:22.221Z",
+    "modifydate": "2026-10-11T04:52:22.221Z",
+    "version": 0,
+    "sk": "6acb1606ba781cd23c2f6e83",
+    "id": "6acb1606ba781cd23c2f6e83"
+  }
+}

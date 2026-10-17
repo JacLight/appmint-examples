@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-10-10T07:31:19.072616+00:00",
+  "durationSeconds": 0.0178,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/automation/stop/6ac9e9a0f5d6b011f6e11a13",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "reason": "Controlled course event proof complete"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "success": true,
+      "message": "Automation stopped successfully",
+      "automationId": "6ac9e9a0f5d6b011f6e11a13"
+    }
+  }
+}

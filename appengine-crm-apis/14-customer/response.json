@@ -1,0 +1,68 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "_id": "6aca82e237ff863efff476ab",
+    "pk": "video-lab-mut4jkwd|customer",
+    "sk": "6aca82e237ff863efff476ab",
+    "name": "mira.crm1010@example.invalid",
+    "version": 0,
+    "datatype": "customer",
+    "data": {
+      "groups": [
+        "Customer"
+      ],
+      "username": "mira.crm1010@example.invalid",
+      "email": "mira.crm1010@example.invalid",
+      "phone": null,
+      "firstName": "Mira",
+      "lastName": "CRM Course",
+      "status": "active",
+      "source": "form",
+      "sources": [
+        {
+          "source": "form",
+          "sourceId": null,
+          "ref": "lead",
+          "at": "2026-10-10T18:24:34.899Z",
+          "by": "video-lab-mut4jkwd@example.com",
+          "fields": [
+            "firstName",
+            "lastName",
+            "email"
+          ]
+        }
+      ],
+      "values": {
+        "firstName": [
+          {
+            "value": "Mira",
+            "source": "manual",
+            "at": "2026-10-10T18:24:34.899Z",
+            "ref": "lead"
+          }
+        ],
+        "lastName": [
+          {
+            "value": "CRM Course",
+            "source": "manual",
+            "at": "2026-10-10T18:24:34.899Z",
+            "ref": "lead"
+          }
+        ],
+        "email": [
+          {
+            "value": "mira.crm1010@example.invalid",
+            "source": "manual",
+            "at": "2026-10-10T18:24:34.899Z",
+            "ref": "lead"
+          }
+        ]
+      }
+    },
+    "created_by": "system",
+    "state": "draft",
+    "createdate": "2026-10-10T18:24:34.881Z",
+    "modifydate": "2026-10-10T18:24:34.900Z"
+  }
+}

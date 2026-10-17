@@ -1,0 +1,39 @@
+{
+  "method": "POST",
+  "path": "/repository/create",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "datatype": "collection",
+    "isNew": true,
+    "data": {
+      "name": "schedule_marks_1010",
+      "title": "Schedule markers \u2014 API course",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "type": "string",
+            "title": "Reference"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "enum": [
+              "waiting",
+              "ready",
+              "finished",
+              "manual"
+            ]
+          }
+        },
+        "required": [
+          "reference"
+        ]
+      }
+    }
+  },
+  "note": "Historical observed request; replace dates and IDs before use."
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "hostItem": "item_1",
+    "requestDirectory": "denied-01-list_services"
+  },
+  {
+    "hostItem": "item_2",
+    "requestDirectory": "denied-02-describe_service"
+  },
+  {
+    "hostItem": "item_4",
+    "requestDirectory": "denied-03-getTimesheet"
+  }
+]

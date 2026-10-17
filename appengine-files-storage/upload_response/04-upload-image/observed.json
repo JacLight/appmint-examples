@@ -1,0 +1,41 @@
+{
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/upload",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "multipart/form-data; boundary=CourseMultiparteb52f4c09c414cfcbf72c766f42ba66b"
+    },
+    "body": {
+      "multipart": {
+        "location": "course-files-1009",
+        "isPrivate": "false",
+        "file": "cedar-botanical-print.png"
+      },
+      "fileBytes": 52048,
+      "sha256": "58ebbc515c04304f14b5ca8bb22e63ab34843b82a74c4c6834546f52988d750d"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "raw": {
+        "Key": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+        "LastModified": "2026-10-10T01:57:56.165Z",
+        "ETag": "\"7dd84b24dd1de837688715f2ab001174\"",
+        "ChecksumAlgorithm": [],
+        "Size": 52048,
+        "StorageClass": "STANDARD"
+      },
+      "path": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+      "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+      "xs": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/cedar-botanical-print_xs.png?AWSAccessKeyId=REDACTED&Expires=2106957477&Signature=REDACTED",
+      "sm": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/cedar-botanical-print_sm.png?AWSAccessKeyId=REDACTED&Expires=2106957477&Signature=REDACTED",
+      "md": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/cedar-botanical-print_md.png?AWSAccessKeyId=REDACTED&Expires=2106957477&Signature=REDACTED"
+    }
+  },
+  "durationSeconds": 2.048
+}

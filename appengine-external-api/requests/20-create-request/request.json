@@ -1,0 +1,19 @@
+{
+  "vendorName": "Northwind Timber \u2014 teaching supplier",
+  "locationId": "supplier-usecase-1011",
+  "items": [
+    {
+      "sku": "SUPPLIER-OAK-1011",
+      "quantity": 40,
+      "unitCost": 38.5
+    },
+    {
+      "sku": "SUPPLIER-WAL-1011",
+      "quantity": 12,
+      "unitCost": 61
+    }
+  ],
+  "reference": "northwind:supplier-usecase-1011-PRIMARY",
+  "expectedDate": "2026-10-15",
+  "notes": "Synthetic course shipment. Source purchase order COURSE-PO-1011; NW-OAK-24 \u2192 SUPPLIER-OAK-1011; NW-WAL-18 \u2192 SUPPLIER-WAL-1011"
+}

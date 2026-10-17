@@ -1,0 +1,6 @@
+{
+  "method": "PUT",
+  "path": "/repository/create",
+  "identity": "staff",
+  "observedStatus": 200
+}

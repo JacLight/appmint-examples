@@ -1,0 +1,13 @@
+{
+  "method": "POST",
+  "path": "/repository/find/automation",
+  "body": {
+    "query": {
+      "data.name": "Backend course \u2014 submission receipt"
+    },
+    "options": {
+      "page": 1,
+      "pageSize": 5
+    }
+  }
+}

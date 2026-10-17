@@ -1,0 +1,6 @@
+{
+  "method": "GET",
+  "path": "/crm/customer-360?email=mira.crm1010%40example.invalid",
+  "identity": "staff",
+  "observedStatus": 200
+}

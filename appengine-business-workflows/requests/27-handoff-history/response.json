@@ -1,0 +1,70 @@
+{
+  "status": 200,
+  "body": {
+    "taskSk": "6acb1605ba781cd23c2f6e78",
+    "workflowName": "wf-usecase-1011-warranty",
+    "workflowTitle": "Warranty Claim Approval",
+    "stageId": 1,
+    "stageName": "Approved",
+    "stageType": "done",
+    "stages": [
+      {
+        "id": 0,
+        "name": "Waiting for approval",
+        "type": "start",
+        "modelState": "inprogress",
+        "modelStatus": "new",
+        "current": false
+      },
+      {
+        "id": 1,
+        "name": "Approved",
+        "type": "done",
+        "modelState": "completed",
+        "modelStatus": "approved",
+        "current": true
+      },
+      {
+        "id": 2,
+        "name": "Rejected",
+        "type": "done",
+        "modelState": "completed",
+        "modelStatus": "rejected",
+        "current": false
+      }
+    ],
+    "isFinal": true,
+    "taskStatus": "approved",
+    "assignTo": [
+      "sam.wf-usecase-1011@training.local"
+    ],
+    "dueDate": null,
+    "overdue": false,
+    "escalationTier": 0,
+    "startedAt": "2026-10-11T04:52:21.956Z",
+    "updatedAt": "2026-10-11T04:52:22.101Z",
+    "history": [
+      {
+        "stageName": "Waiting for approval",
+        "left": true,
+        "at": "2026-10-11T04:52:22.008Z",
+        "by": "priya.wf-usecase-1011@training.local",
+        "note": "Reassigned to sam.wf-usecase-1011@training.local: Sam will finish the review."
+      },
+      {
+        "stageName": "Waiting for approval",
+        "left": true,
+        "at": "2026-10-11T04:52:22.087Z",
+        "by": "sam.wf-usecase-1011@training.local",
+        "note": "dana.wf-usecase-1011@training.local submitted Warranty claim"
+      },
+      {
+        "stageName": "Approved",
+        "left": false,
+        "at": "2026-10-11T04:52:22.101Z",
+        "by": null,
+        "note": "Warranty evidence checked."
+      }
+    ]
+  }
+}

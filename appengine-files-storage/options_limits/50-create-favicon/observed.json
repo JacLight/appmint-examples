@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-10-10T02:01:49.371399+00:00",
+  "durationSeconds": 0.4887,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/create_favicon",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "ico": {
+        "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/favicon.ico?AWSAccessKeyId=REDACTED&Expires=2106957709&Signature=REDACTED",
+        "path": "video-lab-mut4jkwd/favicon.ico"
+      },
+      "png": {
+        "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/favicon.png?AWSAccessKeyId=REDACTED&Expires=2106957709&Signature=REDACTED",
+        "path": "video-lab-mut4jkwd/favicon.png"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/location",
+    "body": {
+      "query": {
+        "data.name": "supplier-usecase-1011"
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 5
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 0,
+      "datatype": "location",
+      "pageSize": 5,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "data": []
+    }
+  }
+}

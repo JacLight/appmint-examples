@@ -1,0 +1,48 @@
+{
+  "method": "POST",
+  "path": "/shipping/create",
+  "identity": "staff",
+  "mutation": true,
+  "body": {
+    "fromAddress": {
+      "name": "Course dispatch",
+      "street1": "417 Montgomery St",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94104",
+      "country": "US",
+      "phone": "2025550108"
+    },
+    "toAddress": {
+      "name": "Course test recipient",
+      "street1": "388 Townsend St",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94107",
+      "country": "US",
+      "phone": "2025550109"
+    },
+    "parcel": {
+      "length": 16,
+      "width": 12,
+      "height": 1,
+      "weight": 1,
+      "weightUnit": "lb",
+      "dimensionUnit": "in"
+    },
+    "items": [
+      {
+        "sku": "HEADLESS-CEDAR-1010",
+        "quantity": 2
+      }
+    ],
+    "shipmentId": "SAVED_QUOTE_SHIPMENT_ID",
+    "rate": {
+      "id": "SELECTED_RATE_ID",
+      "carrier": "USPS",
+      "service": "GroundAdvantage",
+      "rate": "REPLACE_FROM_QUOTE",
+      "currency": "USD"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "body": {
+      "isNew": true,
+      "datatype": "location",
+      "data": {
+        "name": "supplier-usecase-1011",
+        "title": "Supplier Course Receiving",
+        "currency": "USD",
+        "status": "active"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "datatype": "location",
+      "data": {
+        "name": "supplier-usecase-1011",
+        "title": "Supplier Course Receiving",
+        "currency": "USD",
+        "status": "active"
+      },
+      "name": "supplier-usecase-1011",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|location",
+      "createdate": "2026-10-11T04:50:24.336Z",
+      "modifydate": "2026-10-11T04:50:24.336Z",
+      "version": 0,
+      "sk": "6acb1590ba781cd23c2f6e10",
+      "id": "6acb1590ba781cd23c2f6e10"
+    }
+  }
+}

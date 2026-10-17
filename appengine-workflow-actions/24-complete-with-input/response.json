@@ -1,0 +1,78 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "_id": "6aca13a4f5d6b011f6e12035",
+    "pk": "video-lab-mut4jkwd|task",
+    "sk": "6aca13a4f5d6b011f6e12035",
+    "name": "wvn5t4sjca",
+    "datatype": "task",
+    "data": {
+      "name": "wvn5t4sjca",
+      "title": "Review API connection",
+      "description": "Confirm the connection and record the review outcome.",
+      "note": "Confirm the connection and record the review outcome.",
+      "workflowId": "6aca13a4f5d6b011f6e12033",
+      "workflowName": "api-review-1010",
+      "stageId": 2,
+      "status": "done",
+      "assignTo": [
+        "video-lab-mut4jkwd@example.com"
+      ],
+      "payload": {
+        "requesterEmail": "video-lab-mut4jkwd@example.com",
+        "requesterName": "Video Lab"
+      },
+      "escalationTier": 0,
+      "dueDate": null,
+      "escalationHistory": [
+        {
+          "tier": 1,
+          "stageId": 0,
+          "at": "2026-10-10T10:29:56.289Z",
+          "escalatedTo": []
+        }
+      ],
+      "completedAt": "2026-10-10T10:29:56.562Z",
+      "history": [
+        {
+          "stageId": 0,
+          "status": "new",
+          "dueDate": "2026-10-10T12:29:56.289Z",
+          "note": "Confirm the connection and record the review outcome.",
+          "modified": "2026-10-10T10:29:56.431Z",
+          "modifiedBy": "video-lab-mut4jkwd@example.com"
+        },
+        {
+          "stageId": 1,
+          "status": "inprogress",
+          "dueDate": null,
+          "note": "Confirm the connection and record the review outcome.",
+          "modified": "2026-10-10T10:29:56.561Z",
+          "modifiedBy": "video-lab-mut4jkwd@example.com"
+        }
+      ],
+      "inputs": {
+        "result": "Connection checked successfully"
+      }
+    },
+    "version": 0,
+    "owner": {
+      "datatype": "workflow_lab_1010",
+      "id": "6aca13a4f5d6b011f6e12034",
+      "name": "Review API connection"
+    },
+    "state": "completed",
+    "created_by": "system",
+    "createdate": "2026-10-10T10:29:56.189Z",
+    "modifydate": "2026-10-10T10:29:56.564Z",
+    "comments": [
+      {
+        "author": "video-lab-mut4jkwd@example.com",
+        "text": "The connection is visible in the training application.",
+        "stageId": 1,
+        "createdate": "2026-10-10T10:29:56.485Z"
+      }
+    ]
+  }
+}

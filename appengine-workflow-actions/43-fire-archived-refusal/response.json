@@ -1,0 +1,11 @@
+{
+  "status": 404,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "statusCode": 404,
+    "error": "Could not fire workflow_lab_1010/6aca13a4f5d6b011f6e12034 into workflow 6aca13a4f5d6b011f6e12033 \u2014 source or workflow not found",
+    "path": "/workflow/fire",
+    "method": "POST",
+    "timeStamp": "2026-10-10T10:30:28.626Z"
+  }
+}

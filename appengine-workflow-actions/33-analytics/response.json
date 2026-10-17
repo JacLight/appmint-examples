@@ -1,0 +1,43 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "workflowId": "6aca13a4f5d6b011f6e12033",
+    "windowDays": 7,
+    "sampleSize": 1,
+    "completedSampleSize": 1,
+    "totalFlow": {
+      "mean": 372,
+      "p50": 372,
+      "p95": 372,
+      "max": 372,
+      "min": 372
+    },
+    "perStage": [
+      {
+        "stageId": 0,
+        "samples": 1,
+        "mean": 242,
+        "p50": 242,
+        "p95": 242,
+        "max": 242,
+        "min": 242
+      },
+      {
+        "stageId": 1,
+        "samples": 1,
+        "mean": 130,
+        "p50": 130,
+        "p95": 130,
+        "max": 130,
+        "min": 130
+      }
+    ],
+    "currentlyActive": {
+      "byStage": {},
+      "total": 0
+    },
+    "computedAt": "2026-10-10T10:29:56.697Z",
+    "overdueCount": 0
+  }
+}

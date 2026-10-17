@@ -1,0 +1,8 @@
+POST {{base}}{{route}}
+
+Headers
+  orgid: {{orgid}}
+  Content-Type: application/json
+
+Body → raw → JSON
+Use the complete request.json.

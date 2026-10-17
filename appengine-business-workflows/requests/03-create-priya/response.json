@@ -1,0 +1,24 @@
+{
+  "status": 201,
+  "body": {
+    "pk": "video-lab-mut4jkwd|user",
+    "sk": "6acb15c7ba781cd23c2f6e30",
+    "name": "priya.wf-usecase-1011@training.local",
+    "version": 0,
+    "datatype": "user",
+    "data": {
+      "groups": [
+        "User"
+      ],
+      "username": "priya.wf-usecase-1011@training.local",
+      "email": "priya.wf-usecase-1011@training.local",
+      "firstName": "Priya",
+      "lastName": "Reviewer"
+    },
+    "created_by": "system",
+    "state": "draft",
+    "createdate": "2026-10-11T04:51:19.949Z",
+    "modifydate": "2026-10-11T04:51:19.949Z",
+    "id": "6acb15c7ba781cd23c2f6e30"
+  }
+}

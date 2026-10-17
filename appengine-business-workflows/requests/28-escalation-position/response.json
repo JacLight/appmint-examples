@@ -1,0 +1,56 @@
+{
+  "status": 200,
+  "body": {
+    "taskSk": "6acb1606ba781cd23c2f6e7f",
+    "workflowName": "wf-usecase-1011-warranty",
+    "workflowTitle": "Warranty Claim Approval",
+    "stageId": 0,
+    "stageName": "Waiting for approval",
+    "stageType": "start",
+    "stages": [
+      {
+        "id": 0,
+        "name": "Waiting for approval",
+        "type": "start",
+        "modelState": "inprogress",
+        "modelStatus": "new",
+        "current": true
+      },
+      {
+        "id": 1,
+        "name": "Approved",
+        "type": "done",
+        "modelState": "completed",
+        "modelStatus": "approved",
+        "current": false
+      },
+      {
+        "id": 2,
+        "name": "Rejected",
+        "type": "done",
+        "modelState": "completed",
+        "modelStatus": "rejected",
+        "current": false
+      }
+    ],
+    "isFinal": false,
+    "taskStatus": "new",
+    "assignTo": [
+      "priya.wf-usecase-1011@training.local"
+    ],
+    "dueDate": "2026-10-13T04:52:22.147Z",
+    "overdue": false,
+    "escalationTier": 0,
+    "startedAt": "2026-10-11T04:52:22.151Z",
+    "updatedAt": "2026-10-11T04:52:22.151Z",
+    "history": [
+      {
+        "stageName": "Waiting for approval",
+        "left": false,
+        "at": "2026-10-11T04:52:22.151Z",
+        "by": null,
+        "note": "dana.wf-usecase-1011@training.local submitted Warranty claim"
+      }
+    ]
+  }
+}

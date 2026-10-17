@@ -1,0 +1,32 @@
+{
+  "startedAt": "2026-10-11T04:54:03.990Z",
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/get/schedule_marks_1010/6acb166bba781cd23c2f6eb3",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6acb166bba781cd23c2f6eb3",
+      "datatype": "schedule_marks_1010",
+      "data": {
+        "reference": "job-usecase-1011-release",
+        "status": "waiting"
+      },
+      "name": null,
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|schedule_marks_1010",
+      "createdate": "2026-10-11T04:54:03.897Z",
+      "modifydate": "2026-10-11T04:54:03.897Z",
+      "version": 0,
+      "sk": "6acb166bba781cd23c2f6eb3"
+    }
+  }
+}

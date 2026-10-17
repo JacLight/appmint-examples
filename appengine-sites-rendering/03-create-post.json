@@ -1,0 +1,61 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "PUT",
+    "path": "/repository/create",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "datatype": "post",
+      "isNew": true,
+      "data": {
+        "title": "A calmer room starts with light",
+        "name": "room-lighting-1010",
+        "slug": "room-lighting-1010",
+        "summary": "Three ways to make a room feel brighter, without changing its footprint.",
+        "content": "<p>Start with the window. Keep the space around it clear, then layer one task light with a warm accent.</p><p>Natural materials soften the contrast and bring the room together.</p>",
+        "author": {
+          "name": "Cedar & Form"
+        },
+        "categories": []
+      },
+      "post": {
+        "categories": [],
+        "tags": []
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "datatype": "post",
+      "data": {
+        "title": "A calmer room starts with light",
+        "name": "room-lighting-1010",
+        "slug": "room-lighting-1010",
+        "summary": "Three ways to make a room feel brighter, without changing its footprint.",
+        "content": "<p>Start with the window. Keep the space around it clear, then layer one task light with a warm accent.</p><p>Natural materials soften the contrast and bring the room together.</p>",
+        "author": {
+          "name": "Cedar & Form"
+        },
+        "categories": []
+      },
+      "post": {
+        "categories": [],
+        "tags": []
+      },
+      "author": "video-lab-mut4jkwd@example.com",
+      "name": "room-lighting-1010",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|post",
+      "createdate": "2026-10-10T10:32:45.554Z",
+      "modifydate": "2026-10-10T10:32:45.554Z",
+      "version": 0,
+      "sk": "6aca144df5d6b011f6e1207e",
+      "id": "6aca144df5d6b011f6e1207e"
+    }
+  }
+}

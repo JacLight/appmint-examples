@@ -1,0 +1,9 @@
+{
+  "datatype": "workflow_lab_1010",
+  "id": "6aca13c4f5d6b011f6e12049",
+  "workflowId": "6aca13c4f5d6b011f6e12048",
+  "title": "API decision: approve",
+  "data": {
+    "reviewType": "training"
+  }
+}

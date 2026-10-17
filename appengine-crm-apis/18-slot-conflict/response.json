@@ -1,0 +1,17 @@
+{
+  "status": 400,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "code": "SLOT_TAKEN",
+    "startTime": "2026-10-13T14:00:00.000Z",
+    "endTime": "2026-10-13T14:30:00.000Z",
+    "overlapping": 1,
+    "capacity": 1,
+    "availability": "POST /crm/reservations/availability",
+    "statusCode": 400,
+    "error": "Sorry, that time was just taken. API consultation is already booked on Tue, Oct 13 between 9:00 AM and 9:30 AM. Please pick another time.",
+    "path": "/crm/reservations/book",
+    "method": "POST",
+    "timeStamp": "2026-10-10T18:25:10.023Z"
+  }
+}

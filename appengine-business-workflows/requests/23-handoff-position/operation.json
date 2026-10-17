@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "path": "/workflow/position/form_submission/6acb1605ba781cd23c2f6e76",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "method": "GET",
+  "path": "/repository/collections/sf_product?enriched=false",
+  "body": null
+}

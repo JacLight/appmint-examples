@@ -1,0 +1,42 @@
+{
+  "startedAt": "2026-10-10T02:01:11.027508+00:00",
+  "durationSeconds": 0.0116,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/stream",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "video-lab-mut4jkwd/course-files-1009/private/supplier-notes.txt"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "_events": {},
+      "_readableState": {
+        "highWaterMark": 65536,
+        "buffer": [],
+        "bufferIndex": 0,
+        "length": 0,
+        "pipes": [],
+        "awaitDrainWriters": null
+      },
+      "_writableState": {
+        "highWaterMark": 65536,
+        "length": 0,
+        "corked": 0,
+        "writelen": 0,
+        "bufferedIndex": 0,
+        "pendingcb": 0
+      },
+      "allowHalfOpen": true,
+      "_eventsCount": 1
+    }
+  }
+}

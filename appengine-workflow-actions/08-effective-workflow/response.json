@@ -1,0 +1,29 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "datatype": "workflow_lab_1010",
+    "collection": {
+      "sk": "6aca13a4f5d6b011f6e12032",
+      "workflow": null,
+      "enableWorkflow": true
+    },
+    "effective": {
+      "sk": "6aca13a4f5d6b011f6e12033",
+      "name": "api-review-1010",
+      "title": "API Record Review",
+      "enabled": true
+    },
+    "chosen": null,
+    "listing": [
+      {
+        "sk": "6aca13a4f5d6b011f6e12033",
+        "name": "api-review-1010",
+        "title": "API Record Review",
+        "enabled": true
+      }
+    ],
+    "active": true,
+    "reason": "runs \"api-review-1010\": it lists this collection"
+  }
+}

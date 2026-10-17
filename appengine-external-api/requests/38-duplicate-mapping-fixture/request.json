@@ -1,0 +1,13 @@
+{
+  "isNew": true,
+  "datatype": "sf_product",
+  "data": {
+    "name": "Training duplicate mapping check",
+    "sku": "SUPPLIER-DUPLICATE-1011",
+    "supplierSku": "NW-OAK-24",
+    "price": 0,
+    "available": false,
+    "hidden": true,
+    "status": "inactive"
+  }
+}

@@ -1,0 +1,1144 @@
+{
+  "info": {
+    "name": "AppEngine CRM APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base",
+      "value": "https://YOUR_APPENGINE_HOST"
+    },
+    {
+      "key": "orgid",
+      "value": "YOUR_ORG"
+    },
+    {
+      "key": "staffToken",
+      "value": ""
+    },
+    {
+      "key": "customerToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01-staff-signin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/profile/user/signin",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"YOUR_STAFF_EMAIL\",\n  \"password\": \"YOUR_PASSWORD\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "02-integrations",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/repository/find/integration",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {},\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 20\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "03-pipelines",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/repository/find/lead_pipeline",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {},\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 20\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "04-reservation-definitions",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/repository/find/reservation_definition",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": {},\n  \"options\": {\n    \"page\": 1,\n    \"pageSize\": 20\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "05-create-pipeline",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/pipelines",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"CRM API course\",\n  \"description\": \"Controlled developer course pipeline\",\n  \"isDefault\": false,\n  \"stages\": [\n    {\n      \"id\": \"new\",\n      \"name\": \"New\",\n      \"order\": 0,\n      \"probability\": 10\n    },\n    {\n      \"id\": \"qualified\",\n      \"name\": \"Qualified\",\n      \"order\": 1,\n      \"probability\": 50\n    },\n    {\n      \"id\": \"won\",\n      \"name\": \"Won\",\n      \"order\": 2,\n      \"probability\": 100,\n      \"isWon\": true\n    },\n    {\n      \"id\": \"lost\",\n      \"name\": \"Lost\",\n      \"order\": 3,\n      \"probability\": 0,\n      \"isLost\": true\n    }\n  ],\n  \"assignmentRules\": []\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "06-create-lead",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/detail",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Mira CRM Course\",\n  \"email\": \"mira.crm1010@example.invalid\",\n  \"source\": \"website\",\n  \"description\": \"Controlled API inquiry\",\n  \"pipelineId\": \"6aca82e237ff863efff476aa\",\n  \"stageId\": \"new\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "07-assign",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/assign/6aca82e237ff863efff476ad",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"assignedTo\": \"video-lab-mut4jkwd@example.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "08-note",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/activities/6aca82e237ff863efff476ad",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"note\",\n  \"description\": \"Requested the API integration guide\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "09-follow-up",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/follow-up/6aca82e237ff863efff476ad",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"followUpDate\": \"2026-10-14T18:24:34.989434+00:00\",\n  \"notes\": \"Review the requested guide\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "10-qualify",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/qualify/6aca82e237ff863efff476ad",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"notes\": \"Integration requirements confirmed\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "11-convert",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/convert/6aca82e237ff863efff476ad",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"conversionValue\": 150\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "12-lead-activities",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/activities/6aca82e237ff863efff476ad"
+      }
+    },
+    {
+      "name": "13-lead-filter",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/detail?search=Mira%20CRM&page=1&pageSize=10"
+      }
+    },
+    {
+      "name": "14-customer",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/repository/get/customer/6aca82e237ff863efff476ab"
+      }
+    },
+    {
+      "name": "15-definition",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datatype\": \"reservation_definition\",\n  \"isNew\": true,\n  \"data\": {\n    \"name\": \"crm-api-consultation-1010\",\n    \"title\": \"CRM API Consultation\",\n    \"type\": \"service\",\n    \"status\": \"active\",\n    \"services\": [\n      {\n        \"name\": \"API consultation\",\n        \"duration\": 30,\n        \"price\": 0,\n        \"breakAfter\": 0\n      }\n    ],\n    \"workDays\": [\n      \"Monday\",\n      \"Tuesday\",\n      \"Wednesday\",\n      \"Thursday\",\n      \"Friday\"\n    ],\n    \"officeHours\": {\n      \"startTime\": \"09:00\",\n      \"endTime\": \"17:00\",\n      \"timezone\": \"America/Chicago\"\n    },\n    \"spots\": 1,\n    \"hosts\": [],\n    \"notifications\": [\n      {\n        \"timeBefore\": 1,\n        \"unit\": \"days\",\n        \"type\": \"email\"\n      }\n    ]\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "16-slots",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/slots",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reservationDefinitionId\": \"6aca82e337ff863efff476b7\",\n  \"serviceName\": \"API consultation\",\n  \"serviceDate\": \"2026-10-13\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "17-public-book",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/book",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reservationDefinitionId\": \"6aca82e337ff863efff476b7\",\n  \"service\": \"API consultation\",\n  \"startTime\": \"2026-10-13T14:00:00.000Z\",\n  \"customer\": {\n    \"name\": \"Mira CRM Course\",\n    \"email\": \"mira.crm1010@example.invalid\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "18-slot-conflict",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/book",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reservationDefinitionId\": \"6aca82e337ff863efff476b7\",\n  \"service\": \"API consultation\",\n  \"startTime\": \"2026-10-13T14:00:00.000Z\",\n  \"customer\": {\n    \"name\": \"Mira CRM Course\",\n    \"email\": \"mira.crm1010@example.invalid\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "19-booking-readback",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/get/6aca830537ff863efff476c2"
+      }
+    },
+    {
+      "name": "20-reschedule",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/reschedule/6aca830537ff863efff476c2",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"startTime\": \"2026-10-13T14:30:00.000Z\",\n  \"reason\": \"Course change example\",\n  \"notify\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "21-cancel",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/cancel/6aca830537ff863efff476c2",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Controlled API lesson completed\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "22-cancel-readback",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/get/6aca830537ff863efff476c2"
+      }
+    },
+    {
+      "name": "23-create-form",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/repository/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"datatype\": \"crm_form\",\n  \"isNew\": true,\n  \"data\": {\n    \"name\": \"crm-intake-1010\",\n    \"title\": \"CRM API Intake\",\n    \"status\": \"active\",\n    \"authenticationType\": \"none\",\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"fullName\": {\n          \"type\": \"string\",\n          \"title\": \"Full name\"\n        },\n        \"email\": {\n          \"type\": \"string\",\n          \"format\": \"email\",\n          \"title\": \"Email\"\n        },\n        \"request\": {\n          \"type\": \"string\",\n          \"title\": \"Request\"\n        }\n      },\n      \"required\": [\n        \"fullName\",\n        \"email\",\n        \"request\"\n      ]\n    },\n    \"submitMessage\": \"Your request was saved\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "24-public-form",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/crm-intake-1010"
+      }
+    },
+    {
+      "name": "25-form-required",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/crm-intake-1010/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Mira CRM Course\",\n  \"email\": \"mira.crm1010@example.invalid\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "26-form-submit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/client/forms/crm-intake-1010/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Mira CRM Course\",\n  \"email\": \"mira.crm1010@example.invalid\",\n  \"request\": \"Send the developer guide\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "27-form-submissions",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/forms/submissions?formId=crm-intake-1010&page=1&pageSize=10"
+      }
+    },
+    {
+      "name": "28-customer360",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/customer-360?email=mira.crm1010%40example.invalid"
+      }
+    },
+    {
+      "name": "29-reservation-record",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/repository/get/reservation/6aca830537ff863efff476c2"
+      }
+    },
+    {
+      "name": "30-customer-signin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/profile/customer/signin",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"YOUR_CUSTOMER_EMAIL\",\n  \"password\": \"YOUR_PASSWORD\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "31-customer-ticket",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customerToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/tickets/create",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": {\n    \"title\": \"CRM API course request\",\n    \"description\": \"Please confirm the integration guide\",\n    \"status\": \"done\",\n    \"priority\": \"urgent\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "32-customer-ticket-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{customerToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/tickets/get/Q3CHB319"
+      }
+    },
+    {
+      "name": "33-ticket-note",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/tickets/comments/6aca833237ff863efff476ce",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"Checked the API guide for this request\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "34-ticket-assign",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/tickets/assign/6aca833237ff863efff476ce",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"assignTo\": \"video-lab-mut4jkwd@example.com\",\n  \"note\": \"Course reviewer\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "35-ticket-resolve",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/tickets/status/6aca833237ff863efff476ce",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"resolved\",\n  \"resolution\": {\n    \"summary\": \"Developer guide confirmed\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "36-ticket-record",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/repository/get/ticket/6aca833237ff863efff476ce"
+      }
+    },
+    {
+      "name": "37-ticket-list",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/tickets/list?search=CRM%20API%20course&page=1&pageSize=10"
+      }
+    },
+    {
+      "name": "38-ticket-workflow",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/tickets/workflow/6aca833237ff863efff476ce"
+      }
+    },
+    {
+      "name": "39-ticket-comments",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/tickets/comments/6aca833237ff863efff476ce"
+      }
+    },
+    {
+      "name": "40-ticket-messages",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/tickets/messages/6aca833237ff863efff476ce"
+      }
+    },
+    {
+      "name": "41-forecast",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/forecast?pipelineId=6aca82e237ff863efff476aa&months=3"
+      }
+    },
+    {
+      "name": "42-pipeline-read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{staffToken}}"
+          }
+        ],
+        "url": "{{base}}/crm/leads/pipelines/6aca82e237ff863efff476aa"
+      }
+    },
+    {
+      "name": "43-public-definitions",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/definitions"
+      }
+    },
+    {
+      "name": "44-availability",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base}}/crm/reservations/availability",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reservationDefinitionId\": \"6aca82e337ff863efff476b7\",\n  \"serviceName\": \"API consultation\",\n  \"from\": \"2026-10-13\",\n  \"days\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

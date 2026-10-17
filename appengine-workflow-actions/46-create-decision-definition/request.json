@@ -1,0 +1,39 @@
+{
+  "name": "api-decision-1010",
+  "title": "API Record Decision",
+  "enabled": true,
+  "autoFire": false,
+  "collections": [
+    "workflow_lab_1010"
+  ],
+  "notificationTemplate": [],
+  "stages": [
+    {
+      "id": 0,
+      "name": "Waiting",
+      "type": "start",
+      "modelStatus": "pending",
+      "modelState": "pending",
+      "assignTo": [
+        "video-lab-mut4jkwd@example.com"
+      ],
+      "notificationTemplate": []
+    },
+    {
+      "id": 1,
+      "name": "Approved",
+      "type": "end",
+      "modelStatus": "approved",
+      "modelState": "completed",
+      "notificationTemplate": []
+    },
+    {
+      "id": 2,
+      "name": "Rejected",
+      "type": "end",
+      "modelStatus": "rejected",
+      "modelState": "completed",
+      "notificationTemplate": []
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "method": "POST",
+  "path": "/repository/find/reservation_definition",
+  "identity": "staff",
+  "observedStatus": 201
+}

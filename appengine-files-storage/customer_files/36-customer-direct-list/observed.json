@@ -1,0 +1,28 @@
+{
+  "startedAt": "2026-10-10T02:00:13.308029+00:00",
+  "durationSeconds": 0.0057,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/customer/file/flatlist",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "prefix": "course-order-1009"
+    }
+  },
+  "response": {
+    "status": 403,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "statusCode": 403,
+      "error": "Forbidden",
+      "path": "/repository/customer/file/flatlist",
+      "method": "POST",
+      "timeStamp": "2026-10-10T02:00:13.313Z"
+    }
+  }
+}

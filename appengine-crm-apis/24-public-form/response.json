@@ -1,0 +1,75 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "form": {
+      "sk": "6aca830637ff863efff476ca",
+      "datatype": "crm_form",
+      "data": {
+        "name": "crm-intake-1010",
+        "title": "CRM API Intake",
+        "submitMessage": "Your request was saved",
+        "authenticationType": "none",
+        "status": "active",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "fullName": {
+              "type": "string",
+              "title": "Full name"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "title": "Email"
+            },
+            "request": {
+              "type": "string",
+              "title": "Request"
+            }
+          },
+          "required": [
+            "fullName",
+            "email",
+            "request"
+          ]
+        }
+      }
+    },
+    "collection": null,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "title": "Full name"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "title": "Email"
+        },
+        "request": {
+          "type": "string",
+          "title": "Request"
+        }
+      },
+      "required": [
+        "fullName",
+        "email",
+        "request"
+      ]
+    },
+    "displayName": "video-lab-mut4jkwd",
+    "participant": null,
+    "submitter": null,
+    "authenticationType": "none",
+    "authentication": {
+      "required": false,
+      "type": "none",
+      "satisfied": true
+    },
+    "session": null,
+    "lookupOptions": {}
+  }
+}

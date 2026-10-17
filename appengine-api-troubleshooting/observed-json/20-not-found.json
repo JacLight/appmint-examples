@@ -1,0 +1,22 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/client-data/reservations/diag-usecase-1011-missing",
+    "headers": {
+      "content-type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 400,
+    "body": {
+      "statusCode": 400,
+      "error": "Invalid reservation ID",
+      "path": "/client-data/reservations/diag-usecase-1011-missing",
+      "method": "GET",
+      "timeStamp": "2026-10-11T06:39:08.241Z"
+    }
+  }
+}

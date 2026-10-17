@@ -1,0 +1,35 @@
+{
+  "startedAt": "2026-10-10T01:59:30.792631+00:00",
+  "durationSeconds": 0.2671,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/make-private",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "locations": [
+        "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf"
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "success": true,
+      "results": [
+        {
+          "path": "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf",
+          "status": "success",
+          "acl": "private"
+        }
+      ],
+      "errors": [],
+      "message": "Successfully made objects private"
+    }
+  }
+}

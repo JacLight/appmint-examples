@@ -1,0 +1,43 @@
+{
+  "status": 201,
+  "body": {
+    "taskId": "6acb1606ba781cd23c2f6e86",
+    "decision": "approve",
+    "task": {
+      "id": "6acb1606ba781cd23c2f6e86",
+      "title": "Warranty \u2014 Two Reviewers \u2014 dana.wf-usecase-1011@training.local",
+      "summary": "dana.wf-usecase-1011@training.local submitted Warranty \u2014 Two Reviewers",
+      "status": "approved",
+      "stageId": 1,
+      "workflowName": "wf-usecase-1011-warranty-both",
+      "assignTo": [
+        "priya.wf-usecase-1011@training.local",
+        "sam.wf-usecase-1011@training.local"
+      ],
+      "dueDate": null,
+      "createdate": "2026-10-11T04:52:22.240Z",
+      "owner": {
+        "datatype": "form_submission",
+        "id": "6acb1606ba781cd23c2f6e85",
+        "name": "Warranty \u2014 Two Reviewers \u2014 dana.wf-usecase-1011@training.local"
+      },
+      "payload": {
+        "formName": "wf-usecase-1011-warranty-both",
+        "formId": "6acb1606ba781cd23c2f6e83",
+        "submitter": "dana.wf-usecase-1011@training.local",
+        "requesterEmail": "dana.wf-usecase-1011@training.local"
+      },
+      "history": [
+        {
+          "stageId": 0,
+          "status": "new",
+          "dueDate": "2026-10-13T04:52:22.239Z",
+          "note": "dana.wf-usecase-1011@training.local submitted Warranty \u2014 Two Reviewers",
+          "modified": "2026-10-11T04:52:22.309Z",
+          "modifiedBy": "sam.wf-usecase-1011@training.local"
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

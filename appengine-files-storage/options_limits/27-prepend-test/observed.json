@@ -1,0 +1,29 @@
+{
+  "startedAt": "2026-10-10T01:59:32.666811+00:00",
+  "durationSeconds": 0.0101,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/prepend",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "course-files-1009/work/supplier-notes-moved.txt",
+      "content": "Course file header.\n"
+    }
+  },
+  "response": {
+    "status": 500,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "statusCode": 500,
+      "error": "Internal server error",
+      "path": "/repository/file/prepend",
+      "method": "POST",
+      "timeStamp": "2026-10-10T01:59:32.676Z"
+    }
+  }
+}

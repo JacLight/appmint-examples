@@ -1,0 +1,906 @@
+{
+  "note": "Standalone test shipment; no customer email or order association, no notification requested.",
+  "request": {
+    "method": "POST",
+    "path": "/shipping/create",
+    "body": {
+      "fromAddress": {
+        "name": "Course dispatch",
+        "street1": "417 Montgomery St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94104",
+        "country": "US",
+        "phone": "2025550108"
+      },
+      "toAddress": {
+        "name": "Course test recipient",
+        "street1": "388 Townsend St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94107",
+        "country": "US",
+        "phone": "2025550109"
+      },
+      "parcel": {
+        "length": 16,
+        "width": 12,
+        "height": 1,
+        "weight": 1,
+        "weightUnit": "lb",
+        "dimensionUnit": "in"
+      },
+      "items": [
+        {
+          "sku": "HEADLESS-CEDAR-1010",
+          "quantity": 2
+        }
+      ],
+      "rate": {
+        "id": "rate_a1a035bbaf714599a0737bdd769978bf",
+        "object": "Rate",
+        "created_at": "2026-10-10T23:28:32Z",
+        "updated_at": "2026-10-10T23:28:32Z",
+        "mode": "test",
+        "service": "GroundAdvantage",
+        "carrier": "USPS",
+        "rate": "6.57",
+        "currency": "USD",
+        "retail_rate": "10.05",
+        "retail_currency": "USD",
+        "list_rate": "8.01",
+        "list_currency": "USD",
+        "billing_type": "easypost",
+        "delivery_days": 2,
+        "delivery_date": null,
+        "delivery_date_guaranteed": false,
+        "est_delivery_days": 2,
+        "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+        "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+        "_params": {
+          "shipment": {
+            "from_address": {
+              "name": "Course dispatch",
+              "street1": "417 Montgomery St",
+              "street2": "",
+              "city": "San Francisco",
+              "state": "CA",
+              "zip": "94104",
+              "country": "US",
+              "company": "",
+              "phone": "2025550108",
+              "email": ""
+            },
+            "to_address": {
+              "name": "Course test recipient",
+              "street1": "388 Townsend St",
+              "street2": "",
+              "city": "San Francisco",
+              "state": "CA",
+              "zip": "94107",
+              "country": "US",
+              "company": "",
+              "phone": "2025550109",
+              "email": ""
+            },
+            "parcel": {
+              "length": 16,
+              "width": 12,
+              "height": 1,
+              "weight": 16
+            }
+          }
+        },
+        "parcel": {
+          "length": 16,
+          "width": 12,
+          "height": 1,
+          "weight": 1,
+          "weightUnit": "lb",
+          "dimensionUnit": "in"
+        }
+      },
+      "shipmentId": "shp_f1234bdd60b84df5806400c228ab0413"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "shipping": {
+        "pk": "video-lab-mut4jkwd|sf_shipping",
+        "sk": "6acaca608c597416cfbe7f31",
+        "name": "sf_shipping-1791674976690-heeg4vf0",
+        "datatype": "sf_shipping",
+        "data": {
+          "orderNumber": null,
+          "orderId": null,
+          "courier": "USPS",
+          "courierName": "USPS",
+          "service": "GroundAdvantage",
+          "serviceName": "USPS GroundAdvantage",
+          "tracking": "9434600208192110020066",
+          "trackingUrl": "https://tools.usps.com/go/TrackConfirmAction?tLabels=9434600208192110020066",
+          "status": "shipped",
+          "shipDate": "2026-10-10T23:29:36.690Z",
+          "estimatedDeliveryDays": 2,
+          "expectedDeliveryDate": null,
+          "cost": 6.57,
+          "customerPrice": 6.57,
+          "markup": 0,
+          "currency": "USD",
+          "billedTo": "own",
+          "chargedAmount": 0,
+          "fromAddress": {
+            "name": "Course dispatch",
+            "street1": "417 Montgomery St",
+            "city": "San Francisco",
+            "state": "CA",
+            "zip": "94104",
+            "country": "US",
+            "phone": "2025550108"
+          },
+          "to": {
+            "name": "Course test recipient",
+            "street1": "388 Townsend St",
+            "city": "San Francisco",
+            "state": "CA",
+            "zip": "94107",
+            "country": "US",
+            "phone": "2025550109"
+          },
+          "products": [
+            {
+              "sku": "HEADLESS-CEDAR-1010",
+              "name": null,
+              "quantity": 2,
+              "qty": 2
+            }
+          ],
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          },
+          "labelUrl": "https://easypost-files.s3.us-west-2.amazonaws.com/files/postage_label/20261010/e81cf7c6aa937443aa90824bf08354d6cb.png",
+          "labelFormat": "PNG",
+          "shipmentId": "shp_f1234bdd60b84df5806400c228ab0413",
+          "customerEmail": null,
+          "notificationSent": false,
+          "remarks": "Shipped via GroundAdvantage",
+          "name": "sf_shipping-1791674976690-heeg4vf0"
+        },
+        "version": 0,
+        "author": "video-lab-mut4jkwd@example.com",
+        "created_by": "video-lab-mut4jkwd@example.com",
+        "state": "draft",
+        "createdate": "2026-10-10T23:29:36.712Z",
+        "modifydate": "2026-10-10T23:29:36.712Z",
+        "id": "6acaca608c597416cfbe7f31"
+      },
+      "shipment": {
+        "id": "shp_f1234bdd60b84df5806400c228ab0413",
+        "tracking_code": "9434600208192110020066",
+        "tracker": {
+          "id": "trk_41a64135b0f342f988f168243485635e",
+          "object": "Tracker",
+          "mode": "test",
+          "tracking_code": "9434600208192110020066",
+          "status": "unknown",
+          "status_detail": "unknown",
+          "created_at": "2026-10-10T23:29:36Z",
+          "updated_at": "2026-10-10T23:29:36Z",
+          "signed_by": null,
+          "weight": null,
+          "est_delivery_date": null,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier": "USPS",
+          "tracking_details": [],
+          "fees": [],
+          "carrier_detail": null,
+          "delivery_evidence": [],
+          "public_url": "https://track.easypost.com/djE6dHJrXzQxYTY0MTM1YjBmMzQyZjk4OGYxNjgyNDM0ODU2MzVl",
+          "_params": {
+            "rate": {
+              "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+            }
+          }
+        },
+        "postage_label": {
+          "object": "PostageLabel",
+          "id": "pl_3baeaa5a18ad4db68b1d3de213cac3fb",
+          "created_at": "2026-10-10T23:29:36Z",
+          "updated_at": "2026-10-10T23:29:36Z",
+          "date_advance": 0,
+          "integrated_form": "none",
+          "label_date": "2026-10-10T23:29:36Z",
+          "label_resolution": 300,
+          "label_size": "4x6",
+          "label_type": "default",
+          "label_file_type": "image/png",
+          "label_url": "https://easypost-files.s3.us-west-2.amazonaws.com/files/postage_label/20261010/e81cf7c6aa937443aa90824bf08354d6cb.png",
+          "label_pdf_url": null,
+          "label_zpl_url": null,
+          "label_epl2_url": null,
+          "label_file": null,
+          "_params": {
+            "rate": {
+              "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+            }
+          }
+        },
+        "selected_rate": {
+          "id": "rate_a1a035bbaf714599a0737bdd769978bf",
+          "object": "Rate",
+          "created_at": "2026-10-10T23:29:36Z",
+          "updated_at": "2026-10-10T23:29:36Z",
+          "mode": "test",
+          "service": "GroundAdvantage",
+          "carrier": "USPS",
+          "rate": "6.57",
+          "currency": "USD",
+          "retail_rate": "10.05",
+          "retail_currency": "USD",
+          "list_rate": "8.01",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": null,
+          "delivery_date_guaranteed": false,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+          "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+          "_params": {
+            "rate": {
+              "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+            }
+          }
+        },
+        "created_at": "2026-10-10T23:28:31Z",
+        "is_return": false,
+        "messages": [
+          {
+            "carrier": "DhlEcs",
+            "carrier_account_id": "ca_cc8e711c46c8480aad23a0c7ca4fbdd3",
+            "type": "rate_error",
+            "message": "shipment.options.merchant_id is required",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "carrier": "CanadaPost",
+            "carrier_account_id": "ca_1d377f45763040f4baf84d7a7a142818",
+            "type": "rate_error",
+            "message": "['Unable to get rates for shipments originating outside of Canada.']",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "carrier": "UPSDAP",
+            "carrier_account_id": "ca_2d36c6ca0ff94f188b2764ccfa17ba7d",
+            "type": "rate_error",
+            "message": "The request was understood, but cannot be processed.",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          }
+        ],
+        "mode": "test",
+        "options": {
+          "currency": "USD",
+          "payment": {
+            "type": "SENDER",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          "date_advance": 0,
+          "_params": {
+            "rate": {
+              "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+            }
+          }
+        },
+        "reference": null,
+        "status": "unknown",
+        "updated_at": "2026-10-10T23:29:36Z",
+        "batch_id": null,
+        "batch_status": null,
+        "batch_message": null,
+        "customs_info": null,
+        "from_address": {
+          "id": "adr_4e059e82c50211f1ae980022480b361d",
+          "object": "Address",
+          "created_at": "2026-10-10T23:28:31Z",
+          "updated_at": "2026-10-10T23:28:31Z",
+          "name": "Course dispatch",
+          "company": null,
+          "street1": "417 Montgomery St",
+          "street2": null,
+          "city": "San Francisco",
+          "state": "CA",
+          "zip": "94104",
+          "country": "US",
+          "phone": "2025550108",
+          "email": null,
+          "mode": "test",
+          "carrier_facility": null,
+          "residential": null,
+          "federal_tax_id": null,
+          "state_tax_id": null,
+          "verifications": {
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          "_params": {
+            "rate": {
+              "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+            }
+          }
+        },
+        "insurance": "100.00",
+        "order_id": null,
+        "parcel": {
+          "id": "prcl_61eae1e6cafb4f2c94b8a9764db334c0",
+          "object": "Parcel",
+          "weight": 16,
+          "length": 16,
+          "width": 12,
+          "height": 1,
+          "predefined_package": null,
+          "mode": "test",
+          "created_at": "2026-10-10T23:28:31Z",
+          "updated_at": "2026-10-10T23:28:31Z",
+          "_params": {
+            "rate": {
+              "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+            }
+          }
+        },
+        "rates": [
+          {
+            "id": "rate_9cf31b1d0b8f4934a8e2327f39a16edf",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "Priority",
+            "carrier": "USPS",
+            "rate": "8.01",
+            "currency": "USD",
+            "retail_rate": "11.50",
+            "retail_currency": "USD",
+            "list_rate": "9.44",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 2,
+            "delivery_date": null,
+            "delivery_date_guaranteed": false,
+            "est_delivery_days": 2,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "id": "rate_a1a035bbaf714599a0737bdd769978bf",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "GroundAdvantage",
+            "carrier": "USPS",
+            "rate": "6.57",
+            "currency": "USD",
+            "retail_rate": "10.05",
+            "retail_currency": "USD",
+            "list_rate": "8.01",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 2,
+            "delivery_date": null,
+            "delivery_date_guaranteed": false,
+            "est_delivery_days": 2,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "id": "rate_7ceda3709dc846b081575e19b599af9d",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "Express",
+            "carrier": "USPS",
+            "rate": "32.99",
+            "currency": "USD",
+            "retail_rate": "37.30",
+            "retail_currency": "USD",
+            "list_rate": "32.99",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 1,
+            "delivery_date": null,
+            "delivery_date_guaranteed": false,
+            "est_delivery_days": 1,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "id": "rate_ca979a38bea34497bd6c7db84b53671b",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "FIRST_OVERNIGHT",
+            "carrier": "FedExDefault",
+            "rate": "127.36",
+            "currency": "USD",
+            "retail_rate": null,
+            "retail_currency": null,
+            "list_rate": "128.15",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 2,
+            "delivery_date": "2026-10-12T08:00:00Z",
+            "delivery_date_guaranteed": true,
+            "est_delivery_days": 2,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "id": "rate_5dc4c94342824d2cb08ea0370a9fc45d",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "PRIORITY_OVERNIGHT",
+            "carrier": "FedExDefault",
+            "rate": "62.12",
+            "currency": "USD",
+            "retail_rate": null,
+            "retail_currency": null,
+            "list_rate": "87.31",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 2,
+            "delivery_date": "2026-10-12T10:30:00Z",
+            "delivery_date_guaranteed": true,
+            "est_delivery_days": 2,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "id": "rate_3a861a94d7eb442b88b6150603215cc2",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "STANDARD_OVERNIGHT",
+            "carrier": "FedExDefault",
+            "rate": "57.92",
+            "currency": "USD",
+            "retail_rate": null,
+            "retail_currency": null,
+            "list_rate": "84.31",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 2,
+            "delivery_date": "2026-10-12T17:00:00Z",
+            "delivery_date_guaranteed": true,
+            "est_delivery_days": 2,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "id": "rate_69c3613400b845b4a7c34dc9c223ccd7",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "FEDEX_2_DAY_AM",
+            "carrier": "FedExDefault",
+            "rate": "66.74",
+            "currency": "USD",
+            "retail_rate": null,
+            "retail_currency": null,
+            "list_rate": "67.43",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 3,
+            "delivery_date": "2026-10-13T10:30:00Z",
+            "delivery_date_guaranteed": true,
+            "est_delivery_days": 3,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "id": "rate_d72d0d5bd9a94e099d7e7cc94338a4cc",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "FEDEX_2_DAY",
+            "carrier": "FedExDefault",
+            "rate": "45.34",
+            "currency": "USD",
+            "retail_rate": null,
+            "retail_currency": null,
+            "list_rate": "63.23",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 3,
+            "delivery_date": "2026-10-13T17:00:00Z",
+            "delivery_date_guaranteed": true,
+            "est_delivery_days": 3,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "id": "rate_7efffb8f12704ee38fc1652a07d58085",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "FEDEX_GROUND",
+            "carrier": "FedExDefault",
+            "rate": "21.25",
+            "currency": "USD",
+            "retail_rate": null,
+            "retail_currency": null,
+            "list_rate": "22.27",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 1,
+            "delivery_date": "2026-10-13T23:59:00Z",
+            "delivery_date_guaranteed": true,
+            "est_delivery_days": 1,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "id": "rate_1f04710fdd0645aa9be03b3dbc67dd15",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "SMART_POST",
+            "carrier": "FedExDefault",
+            "rate": "10.31",
+            "currency": "USD",
+            "retail_rate": null,
+            "retail_currency": null,
+            "list_rate": "26.54",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 2,
+            "delivery_date": "2026-10-13T23:59:00Z",
+            "delivery_date_guaranteed": true,
+            "est_delivery_days": 2,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "id": "rate_5ccd45f5de144433a5166a8409115dc2",
+            "object": "Rate",
+            "created_at": "2026-10-10T23:28:32Z",
+            "updated_at": "2026-10-10T23:28:32Z",
+            "mode": "test",
+            "service": "FEDEX_EXPRESS_SAVER",
+            "carrier": "FedExDefault",
+            "rate": "21.46",
+            "currency": "USD",
+            "retail_rate": null,
+            "retail_currency": null,
+            "list_rate": "37.86",
+            "list_currency": "USD",
+            "billing_type": "easypost",
+            "delivery_days": 4,
+            "delivery_date": "2026-10-14T17:00:00Z",
+            "delivery_date_guaranteed": true,
+            "est_delivery_days": 4,
+            "shipment_id": "shp_f1234bdd60b84df5806400c228ab0413",
+            "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          }
+        ],
+        "refund_status": null,
+        "scan_form": null,
+        "to_address": {
+          "id": "adr_4e059e26c50211f1ae970022480b361d",
+          "object": "Address",
+          "created_at": "2026-10-10T23:28:31Z",
+          "updated_at": "2026-10-10T23:29:36Z",
+          "name": "COURSE TEST RECIPIENT",
+          "company": null,
+          "street1": "388 TOWNSEND ST",
+          "street2": "",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "zip": "94107-1666",
+          "country": "US",
+          "phone": "2025550109",
+          "email": null,
+          "mode": "test",
+          "carrier_facility": null,
+          "residential": true,
+          "federal_tax_id": null,
+          "state_tax_id": null,
+          "verifications": {
+            "zip4": {
+              "success": true,
+              "errors": [],
+              "details": null,
+              "_params": {
+                "rate": {
+                  "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+                }
+              }
+            },
+            "delivery": {
+              "success": true,
+              "errors": [],
+              "details": {
+                "latitude": 37.77551,
+                "longitude": -122.39697,
+                "time_zone": "America/Los_Angeles",
+                "_params": {
+                  "rate": {
+                    "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+                  }
+                }
+              },
+              "_params": {
+                "rate": {
+                  "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+                }
+              }
+            },
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          "_params": {
+            "rate": {
+              "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+            }
+          }
+        },
+        "usps_zone": 1,
+        "return_address": {
+          "id": "adr_4e059e82c50211f1ae980022480b361d",
+          "object": "Address",
+          "created_at": "2026-10-10T23:28:31Z",
+          "updated_at": "2026-10-10T23:28:31Z",
+          "name": "Course dispatch",
+          "company": null,
+          "street1": "417 Montgomery St",
+          "street2": null,
+          "city": "San Francisco",
+          "state": "CA",
+          "zip": "94104",
+          "country": "US",
+          "phone": "2025550108",
+          "email": null,
+          "mode": "test",
+          "carrier_facility": null,
+          "residential": null,
+          "federal_tax_id": null,
+          "state_tax_id": null,
+          "verifications": {
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          "_params": {
+            "rate": {
+              "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+            }
+          }
+        },
+        "buyer_address": {
+          "id": "adr_4e059e26c50211f1ae970022480b361d",
+          "object": "Address",
+          "created_at": "2026-10-10T23:28:31Z",
+          "updated_at": "2026-10-10T23:29:36Z",
+          "name": "COURSE TEST RECIPIENT",
+          "company": null,
+          "street1": "388 TOWNSEND ST",
+          "street2": "",
+          "city": "SAN FRANCISCO",
+          "state": "CA",
+          "zip": "94107-1666",
+          "country": "US",
+          "phone": "2025550109",
+          "email": null,
+          "mode": "test",
+          "carrier_facility": null,
+          "residential": true,
+          "federal_tax_id": null,
+          "state_tax_id": null,
+          "verifications": {
+            "zip4": {
+              "success": true,
+              "errors": [],
+              "details": null,
+              "_params": {
+                "rate": {
+                  "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+                }
+              }
+            },
+            "delivery": {
+              "success": true,
+              "errors": [],
+              "details": {
+                "latitude": 37.77551,
+                "longitude": -122.39697,
+                "time_zone": "America/Los_Angeles",
+                "_params": {
+                  "rate": {
+                    "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+                  }
+                }
+              },
+              "_params": {
+                "rate": {
+                  "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+                }
+              }
+            },
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          "_params": {
+            "rate": {
+              "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+            }
+          }
+        },
+        "forms": [],
+        "fees": [
+          {
+            "object": "Fee",
+            "type": "LabelFee",
+            "amount": "0.00000",
+            "charged": true,
+            "refunded": false,
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "object": "Fee",
+            "type": "PostageFee",
+            "amount": "6.57000",
+            "charged": true,
+            "refunded": false,
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          },
+          {
+            "object": "Fee",
+            "type": "InsuranceFee",
+            "amount": "1.00000",
+            "charged": true,
+            "refunded": false,
+            "_params": {
+              "rate": {
+                "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+              }
+            }
+          }
+        ],
+        "object": "Shipment",
+        "_params": {
+          "rate": {
+            "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+          }
+        }
+      },
+      "label": {
+        "object": "PostageLabel",
+        "id": "pl_3baeaa5a18ad4db68b1d3de213cac3fb",
+        "created_at": "2026-10-10T23:29:36Z",
+        "updated_at": "2026-10-10T23:29:36Z",
+        "date_advance": 0,
+        "integrated_form": "none",
+        "label_date": "2026-10-10T23:29:36Z",
+        "label_resolution": 300,
+        "label_size": "4x6",
+        "label_type": "default",
+        "label_file_type": "image/png",
+        "label_url": "https://easypost-files.s3.us-west-2.amazonaws.com/files/postage_label/20261010/e81cf7c6aa937443aa90824bf08354d6cb.png",
+        "label_pdf_url": null,
+        "label_zpl_url": null,
+        "label_epl2_url": null,
+        "label_file": null,
+        "_params": {
+          "rate": {
+            "id": "rate_a1a035bbaf714599a0737bdd769978bf"
+          }
+        }
+      },
+      "trackingUrl": "https://tools.usps.com/go/TrackConfirmAction?tLabels=9434600208192110020066"
+    }
+  }
+}

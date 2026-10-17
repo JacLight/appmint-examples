@@ -1,0 +1,15 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/publish/page/6aca144df5d6b011f6e12081",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": "already published"
+  }
+}

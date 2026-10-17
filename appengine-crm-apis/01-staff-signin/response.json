@@ -1,0 +1,94 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "user": {
+      "_id": "6ac1a7896cf55d217cabf056",
+      "datatype": "user",
+      "pk": "video-lab-mut4jkwd|user",
+      "sk": "6ac1a7896cf55d217cabf056",
+      "name": "f_admin",
+      "version": 0,
+      "data": {
+        "firstName": "Video",
+        "lastName": "Lab",
+        "email": "video-lab-mut4jkwd@example.com",
+        "username": "video-lab-mut4jkwd@example.com",
+        "groups": [
+          "ConfigAdmin",
+          "ContentAdmin",
+          "User"
+        ],
+        "lockout": null,
+        "account": null,
+        "audit": {
+          "lastLogin": "2026-10-10T18:22:46.209Z",
+          "meta": {
+            "ip": "::ffff:127.0.0.1",
+            "host": "127.0.0.1:3300",
+            "country": null,
+            "city": null,
+            "state": null,
+            "agent": "Python-urllib/3.14"
+          }
+        },
+        "roles": [
+          "ConfigAdmin",
+          "ContentAdmin",
+          "User",
+          "Owner"
+        ],
+        "meta": {
+          "onboarding": {
+            "welcomedAt": "2026-10-04T02:37:34.894Z"
+          }
+        },
+        "permissions": {
+          "content": [
+            "read",
+            "create",
+            "update",
+            "delete",
+            "review",
+            "approve"
+          ],
+          "component": [
+            "view",
+            "add",
+            "remove",
+            "configure"
+          ],
+          "menu": {
+            "ConfigAdmin": {
+              "menuInclude": [],
+              "menuExclude": [],
+              "default": "admin"
+            },
+            "ContentAdmin": {
+              "menuInclude": [],
+              "menuExclude": [],
+              "default": "manager"
+            },
+            "User": {
+              "menuInclude": [],
+              "menuExclude": [],
+              "default": "everyone"
+            },
+            "Owner": {
+              "menuInclude": [],
+              "menuExclude": [],
+              "default": "all"
+            }
+          }
+        }
+      },
+      "createdate": "2026-10-04T01:10:33.731Z",
+      "modifydate": "2026-10-10T18:22:46.212Z"
+    },
+    "orgId": "video-lab-mut4jkwd",
+    "rootOrg": "fundu",
+    "sharedOrg": "localhost",
+    "token": "[redacted]",
+    "refreshToken": "[redacted]"
+  }
+}

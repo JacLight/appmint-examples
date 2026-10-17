@@ -1,0 +1,64 @@
+{
+  "startedAt": "2026-10-11T04:55:01.448Z",
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/search/task",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "query": {
+        "data.relatedTo.id": "6acb1669ba781cd23c2f6eaf",
+        "data.source": "lead-sla"
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 20
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 1,
+      "datatype": "task",
+      "pageSize": 20,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-11T04:55:00.417Z",
+      "data": [
+        {
+          "_id": "6acb16a4ba781cd23c2f6ec1",
+          "pk": "video-lab-mut4jkwd|task",
+          "sk": "6acb16a4ba781cd23c2f6ec1",
+          "name": "Chase Avery Singh — stalled in Contacted",
+          "datatype": "task",
+          "data": {
+            "title": "Chase Avery Singh — stalled in Contacted",
+            "description": "No movement in Contacted for 24h",
+            "dueDate": "2026-10-11T04:55:00.391Z",
+            "assignedTo": null,
+            "relatedTo": {
+              "datatype": "lead",
+              "id": "6acb1669ba781cd23c2f6eaf"
+            },
+            "source": "lead-sla",
+            "name": "Chase Avery Singh — stalled in Contacted"
+          },
+          "version": 0,
+          "created_by": "lead-sla",
+          "state": "draft",
+          "createdate": "2026-10-11T04:55:00.417Z",
+          "modifydate": "2026-10-11T04:55:00.417Z"
+        }
+      ]
+    }
+  }
+}

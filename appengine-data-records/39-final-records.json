@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "path": "/repository/find/design_video_1009",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "query": {},
+    "options": {
+      "page": 1,
+      "pageSize": 20,
+      "sort": "data.requestCode",
+      "sortType": 1
+    }
+  }
+}

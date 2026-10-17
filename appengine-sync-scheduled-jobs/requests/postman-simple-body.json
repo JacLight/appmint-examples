@@ -1,0 +1,1 @@
+{"datatype":"schedule","isNew":true,"data":{"name":"{{scheduleName}}","title":"Course isolated timed action","type":"simple","status":"active","target":[{"datatype":"{{targetDatatype}}","id":"{{targetId}}"}],"start":{"date":"{{futureStart}}","action":"update-status","actionArgs":"ready"},"end":{"date":"{{futureEnd}}","action":"update-status","actionArgs":"finished"}}}

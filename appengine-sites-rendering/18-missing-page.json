@@ -1,0 +1,21 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/site/page/YOUR_SITE_HOST/vidsite/does-not-exist-1010",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 404,
+    "body": {
+      "statusCode": 404,
+      "error": "Page does-not-exist-1010 not found",
+      "path": "/site/page/YOUR_SITE_HOST/vidsite/does-not-exist-1010",
+      "method": "GET",
+      "timeStamp": "2026-10-10T10:41:19.935Z"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "startedAt": "2026-10-10T01:59:33.540631+00:00",
+  "durationSeconds": 0.7673,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/thumbnails",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "location": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": [
+      {
+        "files": [
+          {
+            "raw": {
+              "Key": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+              "LastModified": "2026-10-10T01:57:56.165Z",
+              "ETag": "\"7dd84b24dd1de837688715f2ab001174\"",
+              "ChecksumAlgorithm": [],
+              "Size": 52048,
+              "StorageClass": "STANDARD"
+            },
+            "path": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+            "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+            "md": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/cedar-botanical-print_md.png?AWSAccessKeyId=REDACTED&Expires=2106957574&Signature=REDACTED"
+          }
+        ],
+        "hasMore": false,
+        "startPage": 1,
+        "prefix": "video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png",
+        "pageNumber": 1,
+        "xs": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/cedar-botanical-print_xs.png?AWSAccessKeyId=REDACTED&Expires=2106957573&Signature=REDACTED",
+        "sm": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/cedar-botanical-print_sm.png?AWSAccessKeyId=REDACTED&Expires=2106957573&Signature=REDACTED",
+        "md": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/thumbnails/course-files-1009/cedar-botanical-print_md.png?AWSAccessKeyId=REDACTED&Expires=2106957574&Signature=REDACTED"
+      }
+    ]
+  }
+}

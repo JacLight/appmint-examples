@@ -1,0 +1,115 @@
+{
+  "id": "supplier-usecase-1011-DUPLICATE",
+  "error": "NW-OAK-24: expected exactly one mapped product; found 2",
+  "events": [
+    {
+      "scope": "AppEngine",
+      "method": "GET",
+      "path": "/storefront/inventory/intakes?q=northwind%3Asupplier-usecase-1011-DUPLICATE&p=1&ps=50",
+      "status": 200,
+      "result": {
+        "data": [],
+        "total": 0,
+        "page": 1,
+        "pageSize": 50
+      }
+    },
+    {
+      "scope": "Teaching supplier",
+      "method": "GET",
+      "path": "/shipments/supplier-usecase-1011-DUPLICATE",
+      "status": 200,
+      "result": {
+        "shipmentId": "supplier-usecase-1011-DUPLICATE",
+        "purchaseOrder": "COURSE-PO-1011",
+        "estimatedArrival": "2026-10-15",
+        "currency": "USD",
+        "lines": [
+          {
+            "supplierSku": "NW-OAK-24",
+            "quantity": 40,
+            "unitPrice": 38.5
+          },
+          {
+            "supplierSku": "NW-WAL-18",
+            "quantity": 12,
+            "unitPrice": 61
+          }
+        ]
+      }
+    },
+    {
+      "scope": "AppEngine",
+      "method": "POST",
+      "path": "/repository/find/sf_product",
+      "body": {
+        "query": {
+          "data.supplierSku": "NW-OAK-24"
+        },
+        "options": {
+          "page": 1,
+          "pageSize": 2
+        }
+      },
+      "status": 201,
+      "result": {
+        "total": 2,
+        "datatype": "sf_product",
+        "pageSize": 2,
+        "page": 1,
+        "sort": "modifydate",
+        "sortType": -1,
+        "lastPage": null,
+        "hasNext": true,
+        "fromCache": false,
+        "lastItem": "2026-10-11T04:50:24.367Z",
+        "data": [
+          {
+            "_id": "6acb1715ba781cd23c2f6ee9",
+            "datatype": "sf_product",
+            "data": {
+              "name": "Training duplicate mapping check",
+              "sku": "SUPPLIER-DUPLICATE-1011",
+              "supplierSku": "NW-OAK-24",
+              "price": 0,
+              "available": false,
+              "hidden": true,
+              "status": "inactive"
+            },
+            "name": "Training duplicate mapping check",
+            "created_by": "video-lab-mut4jkwd@example.com",
+            "state": "draft",
+            "pk": "video-lab-mut4jkwd|sf_product",
+            "createdate": "2026-10-11T04:56:53.602Z",
+            "modifydate": "2026-10-11T04:56:53.602Z",
+            "version": 0,
+            "sk": "6acb1715ba781cd23c2f6ee9"
+          },
+          {
+            "_id": "6acb1590ba781cd23c2f6e12",
+            "datatype": "sf_product",
+            "data": {
+              "name": "Training white oak plank",
+              "sku": "SUPPLIER-OAK-1011",
+              "supplierSku": "NW-OAK-24",
+              "price": 38.5,
+              "available": false,
+              "status": "inactive",
+              "hidden": true,
+              "trackInventory": true,
+              "description": "Synthetic supplier integration course fixture; not offered for sale."
+            },
+            "name": "Training white oak plank",
+            "created_by": "video-lab-mut4jkwd@example.com",
+            "state": "draft",
+            "pk": "video-lab-mut4jkwd|sf_product",
+            "createdate": "2026-10-11T04:50:24.367Z",
+            "modifydate": "2026-10-11T04:50:24.367Z",
+            "version": 0,
+            "sk": "6acb1590ba781cd23c2f6e12"
+          }
+        ]
+      }
+    }
+  ]
+}

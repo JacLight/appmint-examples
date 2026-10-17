@@ -1,0 +1,35 @@
+{
+  "status": 200,
+  "body": {
+    "_id": "6aca921537ff863efff478d1",
+    "pk": "video-lab-mut4jkwd|customer",
+    "sk": "6aca921537ff863efff478d1",
+    "name": "nina.gateway1010@example.invalid",
+    "version": 0,
+    "datatype": "customer",
+    "data": {
+      "groups": [
+        "Customer"
+      ],
+      "username": "nina.gateway1010@example.invalid",
+      "email": "nina.gateway1010@example.invalid",
+      "firstName": "Nina",
+      "lastName": "Cole",
+      "audit": {
+        "lastLogin": "2026-10-10T19:30:35.081Z",
+        "meta": {
+          "ip": "::1",
+          "host": "localhost:3300",
+          "country": null,
+          "city": null,
+          "state": null,
+          "agent": "node"
+        }
+      }
+    },
+    "created_by": "system",
+    "state": "draft",
+    "createdate": "2026-10-10T19:29:25.013Z",
+    "modifydate": "2026-10-10T19:30:35.082Z"
+  }
+}

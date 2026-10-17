@@ -1,0 +1,70 @@
+{
+  "controlledFault": true,
+  "forwardedApprovals": 1,
+  "droppedSuccessfulResponses": 1,
+  "events": [
+    {
+      "rpcMethod": "initialize",
+      "serviceMethod": null,
+      "upstreamStatus": 200,
+      "time": "2026-10-11T07:27:53.091595+00:00",
+      "action": "response_forwarded"
+    },
+    {
+      "rpcMethod": "notifications/initialized",
+      "serviceMethod": null,
+      "upstreamStatus": 202,
+      "time": "2026-10-11T07:27:53.115632+00:00",
+      "action": "response_forwarded"
+    },
+    {
+      "rpcMethod": "tools/list",
+      "serviceMethod": null,
+      "upstreamStatus": 200,
+      "time": "2026-10-11T07:27:53.128518+00:00",
+      "action": "response_forwarded"
+    },
+    {
+      "rpcMethod": "tools/call",
+      "serviceMethod": null,
+      "upstreamStatus": 200,
+      "time": "2026-10-11T07:28:02.437902+00:00",
+      "action": "response_forwarded"
+    },
+    {
+      "rpcMethod": "tools/call",
+      "serviceMethod": null,
+      "upstreamStatus": 200,
+      "time": "2026-10-11T07:28:03.584659+00:00",
+      "action": "response_forwarded"
+    },
+    {
+      "rpcMethod": "tools/call",
+      "serviceMethod": null,
+      "upstreamStatus": 200,
+      "time": "2026-10-11T07:28:07.784530+00:00",
+      "action": "response_forwarded"
+    },
+    {
+      "rpcMethod": "tools/call",
+      "serviceMethod": "getTimesheet",
+      "upstreamStatus": 200,
+      "time": "2026-10-11T07:28:11.578118+00:00",
+      "action": "response_forwarded"
+    },
+    {
+      "rpcMethod": "tools/call",
+      "serviceMethod": "approveTimesheet",
+      "upstreamStatus": 200,
+      "time": "2026-10-11T07:28:22.982978+00:00",
+      "action": "upstream_response_withheld_and_connection_closed"
+    },
+    {
+      "rpcMethod": "tools/call",
+      "serviceMethod": "getTimesheet",
+      "upstreamStatus": 200,
+      "time": "2026-10-11T07:28:29.277000+00:00",
+      "action": "response_forwarded"
+    }
+  ]
+}

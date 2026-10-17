@@ -1,0 +1,57 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "taskSk": "6aca13a4f5d6b011f6e12035",
+    "workflowName": "api-review-1010",
+    "workflowTitle": "API Record Review",
+    "stageId": 0,
+    "stageName": "Received",
+    "stageType": "start",
+    "stages": [
+      {
+        "id": 0,
+        "name": "Received",
+        "type": "start",
+        "modelState": "new",
+        "modelStatus": "new",
+        "current": true
+      },
+      {
+        "id": 1,
+        "name": "Reviewing",
+        "type": "intermediate",
+        "modelState": "inprogress",
+        "modelStatus": "inprogress",
+        "current": false
+      },
+      {
+        "id": 2,
+        "name": "Completed",
+        "type": "end",
+        "modelState": "completed",
+        "modelStatus": "done",
+        "current": false
+      }
+    ],
+    "isFinal": false,
+    "taskStatus": "new",
+    "assignTo": [
+      "video-lab-mut4jkwd@example.com"
+    ],
+    "dueDate": "2026-10-10T11:29:56.185Z",
+    "overdue": false,
+    "escalationTier": 0,
+    "startedAt": "2026-10-10T10:29:56.189Z",
+    "updatedAt": "2026-10-10T10:29:56.189Z",
+    "history": [
+      {
+        "stageName": "Received",
+        "left": false,
+        "at": "2026-10-10T10:29:56.189Z",
+        "by": null,
+        "note": "Confirm the connection and record the review outcome."
+      }
+    ]
+  }
+}

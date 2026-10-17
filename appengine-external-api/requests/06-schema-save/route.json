@@ -1,0 +1,4 @@
+{
+  "method": "POST",
+  "path": "/repository/update/sf_product"
+}

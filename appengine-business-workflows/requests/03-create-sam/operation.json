@@ -1,0 +1,9 @@
+{
+  "method": "POST",
+  "path": "/profile/user/signup",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  }
+}

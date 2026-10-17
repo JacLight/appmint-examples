@@ -1,0 +1,6 @@
+{
+  "method": "GET",
+  "path": "/crm/reservations/definitions",
+  "identity": "public",
+  "observedStatus": 200
+}

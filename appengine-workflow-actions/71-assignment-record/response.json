@@ -1,0 +1,21 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "datatype": "workflow_lab_1010",
+    "data": {
+      "title": "Completed assignment example",
+      "status": "draft"
+    },
+    "author": "video-lab-mut4jkwd@example.com",
+    "name": "Completed assignment example",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "pk": "video-lab-mut4jkwd|workflow_lab_1010",
+    "createdate": "2026-10-10T10:35:01.095Z",
+    "modifydate": "2026-10-10T10:35:01.095Z",
+    "version": 0,
+    "sk": "6aca14d5f5d6b011f6e12097",
+    "id": "6aca14d5f5d6b011f6e12097"
+  }
+}

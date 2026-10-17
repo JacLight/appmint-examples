@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "jsonrpc": "2.0",
+    "id": 8,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"total\": 1,\n  \"datatype\": \"sf_order\",\n  \"pageSize\": 5,\n  \"page\": 1,\n  \"sort\": \"modifydate\",\n  \"sortType\": -1,\n  \"lastPage\": 1,\n  \"hasNext\": false,\n  \"fromCache\": false,\n  \"lastItem\": \"2026-10-10T18:22:46.486Z\",\n  \"data\": [\n    {\n      \"_id\": \"6aca827637ff863efff4769b\",\n      \"datatype\": \"sf_order\",\n      \"data\": {\n        \"number\": \"MCP1010A\",\n        \"name\": \"MCP course controlled order\",\n        \"status\": \"on_hold\",\n        \"email\": \"video-lab-mut4jkwd@example.com\",\n        \"currency\": \"USD\",\n        \"productItems\": [],\n        \"statusHistory\": [\n          {\n            \"from\": \"on_hold\",\n            \"to\": \"on_hold\",\n            \"timestamp\": \"2026-10-10T18:22:46.462Z\",\n            \"note\": \"Controlled MCP course hold\"\n          }\n        ],\n        \"total\": 0,\n        \"previousStatus\": \"processing\",\n        \"holdReason\": \"Controlled MCP course hold\",\n        \"heldAt\": \"2026-10-10T18:22:46.462Z\"\n      },\n      \"author\": \"video-lab-mut4jkwd@example.com\",\n      \"name\": \"MCP course controlled order\",\n      \"created_by\": \"video-lab-mut4jkwd@example.com\",\n      \"state\": \"draft\",\n      \"pk\": \"video-lab-mut4jkwd|sf_order\",\n      \"createdate\": \"2026-10-10T18:22:46.334Z\",\n      \"modifydate\": \"2026-10-10T18:22:46.486Z\",\n      \"version\": 1,\n      \"sk\": \"6aca827637ff863efff4769b\",\n      \"handling\": {\n        \"status\": \"open\",\n        \"since\": \"2026-10-10T18:22:46.386Z\",\n        \"channel\": \"order\",\n        \"title\": \"New order: MCP course controlled order\",\n        \"history\": [\n          {\n            \"status\": \"open\",\n            \"at\": \"2026-10-10T18:22:46.386Z\"\n          }\n        ]\n      },\n      \"modified_by\": \"system\"\n    }\n  ]\n}"
+        }
+      ],
+      "isError": false
+    }
+  }
+}

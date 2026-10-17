@@ -1,0 +1,64 @@
+{
+  "startedAt": "2026-10-11T04:50:56.023Z",
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/search/task",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "query": {
+        "data.relatedTo.id": "6acb15afba781cd23c2f6e15",
+        "data.source": "lead-sla"
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 20
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 1,
+      "datatype": "task",
+      "pageSize": 20,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-11T04:50:55.875Z",
+      "data": [
+        {
+          "_id": "6acb15afba781cd23c2f6e18",
+          "pk": "video-lab-mut4jkwd|task",
+          "sk": "6acb15afba781cd23c2f6e18",
+          "name": "Chase Rowan Bennett — stalled in Contacted",
+          "datatype": "task",
+          "data": {
+            "title": "Chase Rowan Bennett — stalled in Contacted",
+            "description": "No movement in Contacted for 24h",
+            "dueDate": "2026-10-11T04:50:55.873Z",
+            "assignedTo": null,
+            "relatedTo": {
+              "datatype": "lead",
+              "id": "6acb15afba781cd23c2f6e15"
+            },
+            "source": "lead-sla",
+            "name": "Chase Rowan Bennett — stalled in Contacted"
+          },
+          "version": 0,
+          "created_by": "lead-sla",
+          "state": "draft",
+          "createdate": "2026-10-11T04:50:55.875Z",
+          "modifydate": "2026-10-11T04:50:55.875Z"
+        }
+      ]
+    }
+  }
+}

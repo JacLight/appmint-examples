@@ -1,0 +1,35 @@
+{
+  "startedAt": "2026-10-10T10:29:22.493764+00:00",
+  "durationSeconds": 0.0376,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/get/schedule_marks_1010/6aca1344f5d6b011f6e12028",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "_id": "6aca1344f5d6b011f6e12028",
+      "datatype": "schedule_marks_1010",
+      "data": {
+        "reference": "SCHEDULE-1010-A",
+        "status": "ready"
+      },
+      "name": null,
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|schedule_marks_1010",
+      "createdate": "2026-10-10T10:28:20.488Z",
+      "modifydate": "2026-10-10T10:29:20.497Z",
+      "version": 0,
+      "sk": "6aca1344f5d6b011f6e12028"
+    }
+  }
+}

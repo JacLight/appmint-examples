@@ -1,0 +1,26 @@
+{
+  "method": "POST",
+  "path": "/automation",
+  "body": {
+    "name": "Backend course \u2014 submission receipt",
+    "trigger": {
+      "type": "data_created",
+      "config": {
+        "datatype": "baas_submissions_1010"
+      }
+    },
+    "actions": [
+      {
+        "type": "create_data",
+        "config": {
+          "datatype": "baas_receipts_1010",
+          "data": {
+            "submissionId": "{{dataId}}",
+            "reference": "{{data.reference}}",
+            "message": "AppEngine event processed"
+          }
+        }
+      }
+    ]
+  }
+}

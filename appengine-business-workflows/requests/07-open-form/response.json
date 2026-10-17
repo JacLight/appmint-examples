@@ -1,0 +1,93 @@
+{
+  "status": 200,
+  "body": {
+    "form": {
+      "sk": "6acb15c8ba781cd23c2f6e43",
+      "datatype": "crm_form",
+      "data": {
+        "name": "wf-usecase-1011-warranty",
+        "title": "Warranty claim",
+        "authenticationType": "email",
+        "status": "open",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "fullName": {
+              "type": "string",
+              "title": "Full name"
+            },
+            "email": {
+              "type": "string",
+              "title": "Email",
+              "format": "email"
+            },
+            "orderNumber": {
+              "type": "string",
+              "title": "Order number"
+            },
+            "bikeModel": {
+              "type": "string",
+              "title": "Bike model"
+            },
+            "problem": {
+              "type": "string",
+              "title": "Problem"
+            }
+          },
+          "required": [
+            "fullName",
+            "email",
+            "orderNumber",
+            "bikeModel",
+            "problem"
+          ]
+        }
+      }
+    },
+    "collection": null,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "title": "Full name"
+        },
+        "email": {
+          "type": "string",
+          "title": "Email",
+          "format": "email"
+        },
+        "orderNumber": {
+          "type": "string",
+          "title": "Order number"
+        },
+        "bikeModel": {
+          "type": "string",
+          "title": "Bike model"
+        },
+        "problem": {
+          "type": "string",
+          "title": "Problem"
+        }
+      },
+      "required": [
+        "fullName",
+        "email",
+        "orderNumber",
+        "bikeModel",
+        "problem"
+      ]
+    },
+    "displayName": "video-lab-mut4jkwd",
+    "participant": null,
+    "submitter": "dana.wf-usecase-1011@training.local",
+    "authenticationType": "email",
+    "authentication": {
+      "required": true,
+      "type": "email",
+      "satisfied": true
+    },
+    "session": null,
+    "lookupOptions": {}
+  }
+}

@@ -1,0 +1,8 @@
+POST {{base}}{{route}}
+Headers: orgid + Authorization
+
+Body → form-data
+file       File  cedar-botanical-print.png
+location   Text  course-files-1009
+isPrivate  Text  false
+Let Postman create Content-Type.

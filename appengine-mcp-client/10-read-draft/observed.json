@@ -1,0 +1,58 @@
+{
+  "status": 200,
+  "body": {
+    "_id": "6acb2e18ba781cd23c2f7586",
+    "pk": "video-lab-mut4jkwd|bm_timesheet",
+    "sk": "6acb2e18ba781cd23c2f7586",
+    "name": "bm_timesheet-1791700504424-vut53l1c",
+    "datatype": "bm_timesheet",
+    "data": {
+      "employeeId": "6acb2e18ba781cd23c2f757d",
+      "payPeriodStart": "2026-10-12",
+      "payPeriodEnd": "2026-10-18",
+      "notes": "Synthetic course demonstration. No payroll run or payment.",
+      "status": "draft",
+      "timeEntries": [
+        {
+          "id": "te-1791700504438-htgxg5",
+          "timeSheetId": "6acb2e18ba781cd23c2f7586",
+          "date": "2026-10-12",
+          "hours": 8,
+          "type": "regular",
+          "description": "Synthetic training hours",
+          "approved": false,
+          "createdAt": "2026-10-11T06:35:04.438Z",
+          "countedHours": 8
+        }
+      ],
+      "name": "bm_timesheet-1791700504424-vut53l1c",
+      "totalHours": 8,
+      "regularHours": 8,
+      "overtimeHours": 0,
+      "doubleTimeHours": 0,
+      "ptoHours": 0,
+      "holidayHours": 0,
+      "sickHours": 0,
+      "appliedPolicy": {
+        "matchedBy": "default",
+        "rounding": "exact"
+      },
+      "recordedWorkedHours": 8,
+      "breakDeductedHours": 0,
+      "overlaps": [],
+      "paidState": {
+        "paid": false,
+        "unpaidEntryIds": [],
+        "unpaidHours": 0,
+        "unpaidDays": []
+      }
+    },
+    "version": 1,
+    "author": "video-lab-mut4jkwd@example.com",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "createdate": "2026-10-11T06:35:04.428Z",
+    "modifydate": "2026-10-11T06:35:04.445Z",
+    "modified_by": "system"
+  }
+}

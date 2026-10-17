@@ -1,0 +1,53 @@
+{
+  "name": "wf-usecase-1011-warranty-both",
+  "title": "Warranty \u2014 Two Reviewers",
+  "enabled": true,
+  "notificationTemplate": [],
+  "stages": [
+    {
+      "id": 0,
+      "type": "start",
+      "name": "Waiting for approval",
+      "modelState": "inprogress",
+      "modelStatus": "new",
+      "assignRule": {
+        "type": "users",
+        "users": [
+          "priya.wf-usecase-1011@training.local",
+          "sam.wf-usecase-1011@training.local"
+        ],
+        "mode": "all"
+      },
+      "notificationTemplate": [],
+      "escalations": [
+        {
+          "escalateAfter": 2,
+          "units": "days",
+          "escalateRule": {
+            "type": "users",
+            "users": [
+              "sam.wf-usecase-1011@training.local"
+            ]
+          },
+          "notificationTemplate": []
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "type": "done",
+      "name": "Approved",
+      "modelState": "completed",
+      "modelStatus": "approved",
+      "notificationTemplate": []
+    },
+    {
+      "id": 2,
+      "type": "done",
+      "name": "Rejected",
+      "modelState": "completed",
+      "modelStatus": "rejected",
+      "notificationTemplate": []
+    }
+  ]
+}

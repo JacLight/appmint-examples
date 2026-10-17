@@ -1,0 +1,248 @@
+{
+  "info": {
+    "name": "AppEngine API Troubleshooting \u2014 read-only requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Use your own organization and an owning customer session. No booking mutations are included. Store customerToken as a local secret, not shared collection content."
+  },
+  "variable": [
+    {
+      "key": "endpoint",
+      "value": "https://YOUR_APPENGINE_ENDPOINT"
+    },
+    {
+      "key": "orgid",
+      "value": "YOUR_ORGANIZATION_ID"
+    },
+    {
+      "key": "customerToken",
+      "value": ""
+    },
+    {
+      "key": "bookingId",
+      "value": "YOUR_SAVED_RECORD_ID"
+    },
+    {
+      "key": "definitionId",
+      "value": "YOUR_SAVED_DEFINITION_ID"
+    },
+    {
+      "key": "serviceName",
+      "value": "YOUR_SERVICE_NAME"
+    },
+    {
+      "key": "serviceDate",
+      "value": "YYYY-MM-DD"
+    },
+    {
+      "key": "otherCustomerToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Version",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          }
+        ],
+        "url": "{{endpoint}}/version",
+        "auth": {
+          "type": "noauth"
+        }
+      }
+    },
+    {
+      "name": "Customer profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          }
+        ],
+        "url": "{{endpoint}}/client-data/profile",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Customer booking detail",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          }
+        ],
+        "url": "{{endpoint}}/client-data/reservations/{{bookingId}}",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Customer booking history",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          }
+        ],
+        "url": "{{endpoint}}/client-data/reservations",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{customerToken}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Public bookable definitions",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          }
+        ],
+        "url": "{{endpoint}}/crm/reservations/definitions",
+        "auth": {
+          "type": "noauth"
+        }
+      }
+    },
+    {
+      "name": "Read available slots",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "orgid",
+            "value": "{{orgid}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{endpoint}}/crm/reservations/slots",
+        "auth": {
+          "type": "noauth"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reservationDefinitionId\": \"{{definitionId}}\",\n  \"serviceName\": \"{{serviceName}}\",\n  \"serviceDate\": \"{{serviceDate}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Optional boundary checks",
+      "description": "Read-only controlled checks. Use a second customer you own in the same organization for otherCustomerToken; leave this folder unrun otherwise. Course observed statuses were 403,400,404. Restore the owner detail read to finish.",
+      "item": [
+        {
+          "name": "Customer to organization record",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{orgid}}"
+              }
+            ],
+            "url": "{{endpoint}}/repository/org/{{orgid}}",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{customerToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Malformed reservation ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{orgid}}"
+              }
+            ],
+            "url": "{{endpoint}}/client-data/reservations/not-a-record-id",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{customerToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Same booking as another customer",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "orgid",
+                "value": "{{orgid}}"
+              }
+            ],
+            "url": "{{endpoint}}/client-data/reservations/{{bookingId}}",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{otherCustomerToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

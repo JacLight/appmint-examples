@@ -1,0 +1,55 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/storefront/product/HEADLESS-CEDAR-1010"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6acab73537ff863efff47d72",
+      "datatype": "sf_product-enriched-enriched",
+      "data": {
+        "name": "Cedar Botanical Print",
+        "sku": "HEADLESS-CEDAR-1010",
+        "slug": "cedar-botanical-print-headless",
+        "description": "<p>A botanical art print for bright, considered spaces. Printed on heavyweight matte paper.</p>",
+        "status": "available",
+        "price": 24,
+        "available": true,
+        "trackInventory": true,
+        "stock": 36,
+        "images": [
+          {
+            "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png"
+          }
+        ],
+        "shipping": {
+          "config": "headless-1010-shipping"
+        },
+        "parcel": {
+          "weight": 0.5,
+          "weightUnit": "lb",
+          "length": 16,
+          "width": 12,
+          "height": 1,
+          "dimensionUnit": "in"
+        },
+        "calculatedPrice": {
+          "originalPrice": 24,
+          "finalPrice": 24,
+          "discount": 0,
+          "discountPercent": 0,
+          "appliedDiscounts": []
+        }
+      },
+      "name": "Cedar Botanical Print",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|sf_product",
+      "createdate": "2026-10-10T22:07:49.502Z",
+      "modifydate": "2026-10-10T22:27:05.045Z",
+      "version": 0,
+      "sk": "6acab73537ff863efff47d72"
+    }
+  }
+}

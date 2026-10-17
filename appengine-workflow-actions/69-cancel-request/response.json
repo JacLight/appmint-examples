@@ -1,0 +1,8 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "requestId": "6aca13e3f5d6b011f6e12061",
+    "status": "cancelled"
+  }
+}

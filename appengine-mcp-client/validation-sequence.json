@@ -1,0 +1,18 @@
+[
+  {
+    "hostItem": "item_1",
+    "requestDirectory": "validation-01-list_services"
+  },
+  {
+    "hostItem": "item_2",
+    "requestDirectory": "validation-02-describe_service"
+  },
+  {
+    "hostItem": "item_3",
+    "requestDirectory": "validation-03-approveTimesheet"
+  },
+  {
+    "hostItem": "item_4",
+    "requestDirectory": "validation-04-getTimesheet"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "isNew": true,
+  "datatype": "sf_product",
+  "data": {
+    "name": "Training walnut board",
+    "sku": "SUPPLIER-WAL-1011",
+    "supplierSku": "NW-WAL-18",
+    "price": 61,
+    "available": false,
+    "status": "inactive",
+    "hidden": true,
+    "trackInventory": true,
+    "description": "Synthetic supplier integration course fixture; not offered for sale."
+  }
+}

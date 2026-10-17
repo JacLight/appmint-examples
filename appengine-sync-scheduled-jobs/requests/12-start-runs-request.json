@@ -1,0 +1,10 @@
+{
+  "method": "GET",
+  "path": "/queue-manager/schedule-runs/6aca1344f5d6b011f6e12029?limit=10",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": null,
+  "note": "Historical observed request; replace dates and IDs before use."
+}

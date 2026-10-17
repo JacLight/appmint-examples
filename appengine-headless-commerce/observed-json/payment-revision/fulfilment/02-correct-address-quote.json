@@ -1,0 +1,800 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/shipping/rates",
+    "identity": "staff",
+    "body": {
+      "fromAddress": {
+        "name": "Course dispatch",
+        "street1": "417 Montgomery St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94104",
+        "country": "US",
+        "phone": "2025550108"
+      },
+      "toAddress": {
+        "street1": "123 Course Lane",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60601",
+        "country": "US",
+        "name": "Mira-Lin Chen"
+      },
+      "parcel": {
+        "length": 16,
+        "width": 12,
+        "height": 1,
+        "weight": 1,
+        "weightUnit": "lb",
+        "dimensionUnit": "in"
+      },
+      "items": [
+        {
+          "sku": "HEADLESS-CEDAR-1010",
+          "name": "Cedar Botanical Print",
+          "quantity": 2
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "shipmentId": "shp_f6aa94f79af54346b2eca09a68becb14",
+      "rates": [
+        {
+          "id": "rate_01a354d6a8df46d3869379fd615edecf",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "Express",
+          "carrier": "USPS",
+          "rate": "58.14",
+          "currency": "USD",
+          "retail_rate": "65.15",
+          "retail_currency": "USD",
+          "list_rate": "58.14",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": null,
+          "delivery_date_guaranteed": false,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_18c68acc18e7436b8cef08290444df46",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "Priority",
+          "carrier": "USPS",
+          "rate": "13.48",
+          "currency": "USD",
+          "retail_rate": "17.95",
+          "retail_currency": "USD",
+          "list_rate": "16.07",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": null,
+          "delivery_date_guaranteed": false,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_d78c1e6980a3401a9544109e430c69e9",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "GroundAdvantage",
+          "carrier": "USPS",
+          "rate": "10.11",
+          "currency": "USD",
+          "retail_rate": "13.65",
+          "retail_currency": "USD",
+          "list_rate": "11.22",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 4,
+          "delivery_date": null,
+          "delivery_date_guaranteed": false,
+          "est_delivery_days": 4,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_eac2692e301141a399c2fe1c49477d23",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_d68cb282359a4e31a1c10c0349a6d7f8",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "FIRST_OVERNIGHT",
+          "carrier": "FedExDefault",
+          "rate": "196.22",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "217.93",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": "2026-10-13T08:00:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_b7edc18ec215428d94304c9b3491194e",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "PRIORITY_OVERNIGHT",
+          "carrier": "FedExDefault",
+          "rate": "55.20",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "177.09",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": "2026-10-13T10:30:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_3d6dc89cfaf24df4b5878bbc4824c8f1",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "STANDARD_OVERNIGHT",
+          "carrier": "FedExDefault",
+          "rate": "49.18",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "158.07",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 2,
+          "delivery_date": "2026-10-13T17:00:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 2,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_0ba80be73bff47bdbccb42fa4e899fdf",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "FEDEX_2_DAY_AM",
+          "carrier": "FedExDefault",
+          "rate": "45.66",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "89.10",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 3,
+          "delivery_date": "2026-10-14T10:30:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 3,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_1cf4eadf723447f7a533637613bfeaca",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "FEDEX_2_DAY",
+          "carrier": "FedExDefault",
+          "rate": "28.14",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "79.80",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 3,
+          "delivery_date": "2026-10-14T17:00:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 3,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_85ee625d06f9474f88f796fbaec4f9df",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "FEDEX_EXPRESS_SAVER",
+          "carrier": "FedExDefault",
+          "rate": "25.51",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "69.23",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 4,
+          "delivery_date": "2026-10-15T17:00:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 4,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_45f402b0ae6f4b85b971a9161123f4a8",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "FEDEX_GROUND",
+          "carrier": "FedExDefault",
+          "rate": "24.83",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "28.20",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 4,
+          "delivery_date": "2026-10-16T23:59:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 4,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        },
+        {
+          "id": "rate_e1ed65ea746547799286bc59cb73f50a",
+          "object": "Rate",
+          "created_at": "2026-10-11T00:11:00Z",
+          "updated_at": "2026-10-11T00:11:00Z",
+          "mode": "test",
+          "service": "SMART_POST",
+          "carrier": "FedExDefault",
+          "rate": "10.99",
+          "currency": "USD",
+          "retail_rate": null,
+          "retail_currency": null,
+          "list_rate": "32.47",
+          "list_currency": "USD",
+          "billing_type": "easypost",
+          "delivery_days": 5,
+          "delivery_date": "2026-10-19T23:59:00Z",
+          "delivery_date_guaranteed": true,
+          "est_delivery_days": 5,
+          "shipment_id": "shp_f6aa94f79af54346b2eca09a68becb14",
+          "carrier_account_id": "ca_e18e5a336c6c4acdb26effa36065e7f0",
+          "_params": {
+            "shipment": {
+              "from_address": {
+                "name": "Course dispatch",
+                "street1": "417 Montgomery St",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94104",
+                "country": "US",
+                "company": "",
+                "phone": "2025550108",
+                "email": ""
+              },
+              "to_address": {
+                "name": "Mira-Lin Chen",
+                "street1": "123 Course Lane",
+                "street2": "",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60601",
+                "country": "US",
+                "company": "",
+                "phone": "",
+                "email": ""
+              },
+              "parcel": {
+                "length": 16,
+                "width": 12,
+                "height": 1,
+                "weight": 16
+              }
+            }
+          },
+          "parcel": {
+            "length": 16,
+            "width": 12,
+            "height": 1,
+            "weight": 1,
+            "weightUnit": "lb",
+            "dimensionUnit": "in"
+          }
+        }
+      ],
+      "fromAddress": {
+        "name": "Course dispatch",
+        "street1": "417 Montgomery St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94104",
+        "country": "US",
+        "phone": "2025550108"
+      },
+      "toAddress": {
+        "street1": "123 Course Lane",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60601",
+        "country": "US",
+        "name": "Mira-Lin Chen"
+      },
+      "parcel": {
+        "length": 16,
+        "width": 12,
+        "height": 1,
+        "weight": 1,
+        "weightUnit": "lb",
+        "dimensionUnit": "in"
+      },
+      "items": [
+        {
+          "sku": "HEADLESS-CEDAR-1010",
+          "name": "Cedar Botanical Print",
+          "quantity": 2
+        }
+      ],
+      "isSharedOrg": false,
+      "declined": [
+        {
+          "carrier": "UPSDAP",
+          "message": "The request was understood, but cannot be processed."
+        },
+        {
+          "carrier": "DhlEcs",
+          "message": "shipment.options.merchant_id is required"
+        },
+        {
+          "carrier": "CanadaPost",
+          "message": "['Unable to get rates for shipments originating outside of Canada.']"
+        }
+      ]
+    }
+  }
+}

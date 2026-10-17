@@ -1,0 +1,14 @@
+{
+  "method": "POST",
+  "path": "/storefront/inventory",
+  "identity": "staff",
+  "mutation": true,
+  "body": {
+    "sku": "YOUR_TRAINING_SKU",
+    "locationId": "YOUR_EXISTING_TRAINING_LOCATION_NAME",
+    "quantity": 30,
+    "reservedQuantity": 0,
+    "unitCost": 0,
+    "currency": "USD"
+  }
+}

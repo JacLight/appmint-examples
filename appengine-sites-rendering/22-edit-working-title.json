@@ -1,0 +1,18 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/update-partial/page/6aca144df5d6b011f6e12081",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "data.title": "Cedar & Form Journal \u2014 revised"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": true
+  }
+}

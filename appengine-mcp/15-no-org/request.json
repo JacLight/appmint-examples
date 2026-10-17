@@ -1,0 +1,17 @@
+{
+  "jsonrpc": "2.0",
+  "id": 13,
+  "method": "tools/call",
+  "params": {
+    "name": "call_service",
+    "arguments": {
+      "service": "RepositoryCrudService",
+      "method": "findByAttribute",
+      "args": [
+        "sf_order",
+        "number",
+        "MCP1010A"
+      ]
+    }
+  }
+}

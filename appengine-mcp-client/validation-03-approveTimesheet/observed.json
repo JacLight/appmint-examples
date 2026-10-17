@@ -1,0 +1,13 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Only submitted timesheets can be approved"
+      }
+    ],
+    "structured_content": null
+  },
+  "error": null,
+  "hostEventStatus": "failed"
+}

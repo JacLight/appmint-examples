@@ -1,0 +1,25 @@
+{
+  "org": "YOUR_ORGANIZATION",
+  "prefix": "my-venue",
+  "eventId": "RETURNED_EVENT_SK",
+  "ticketTypeId": "RETURNED_TYPE_SK",
+  "zone": "main-hall",
+  "entrance": "front-gate",
+  "benefitPoint": "lunch-counter",
+  "credentialEntrance": "wristband-gate",
+  "capture": {
+    "ada": {
+      "id": "RETURNED_TICKET_SK",
+      "code": "RETURNED_TICKET_NAME",
+      "holderName": "Training attendee"
+    }
+  },
+  "captureCredentialCode": "my-venue-BAND-01",
+  "crew": {
+    "reader": "",
+    "point": "",
+    "zone": "",
+    "code": "",
+    "credentialId": ""
+  }
+}

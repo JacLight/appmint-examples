@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "path": "/repository/collections/fix",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": [
+    {
+      "action": "index",
+      "datatype": "design_video_1009"
+    }
+  ]
+}

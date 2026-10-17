@@ -1,0 +1,533 @@
+{
+  "startedAt": "2026-10-11T04:55:01.454Z",
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/jobs?kind=scheduled:lead-stage-sla&page=1&pageSize=10",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "total": 9,
+      "datatype": "job",
+      "pageSize": 10,
+      "page": 1,
+      "sort": "createdate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-11T04:50:55.869Z",
+      "data": [
+        {
+          "_id": "6acb16a4ba781cd23c2f6ec2",
+          "pk": "video-lab-mut4jkwd|job",
+          "sk": "6acb16a4ba781cd23c2f6ec2",
+          "name": "Lead stage follow-up",
+          "datatype": "job",
+          "data": {
+            "kind": "scheduled:lead-stage-sla",
+            "title": "Lead stage follow-up",
+            "requestedBy": "schedule",
+            "trigger": "schedule",
+            "status": "done",
+            "cancelRequested": false,
+            "args": {
+              "job": "lead-stage-sla"
+            },
+            "progress": {
+              "processed": 1,
+              "created": 0,
+              "updated": 0,
+              "failed": 0,
+              "skipped": 0,
+              "batchesDone": 0
+            },
+            "errors": [],
+            "attempts": 0,
+            "notify": {
+              "email": false,
+              "notice": false,
+              "on": []
+            },
+            "queuedAt": "2026-10-11T04:55:00.449Z",
+            "startedAt": "2026-10-11T04:55:00.449Z",
+            "name": "Lead stage follow-up",
+            "finishedAt": "2026-10-11T04:55:00.531Z",
+            "ms": 174,
+            "result": {
+              "stages": 1,
+              "processed": 1,
+              "breached": 1,
+              "failed": 0,
+              "actions": {
+                "create_task": 1
+              },
+              "errors": []
+            }
+          },
+          "version": 0,
+          "author": "schedule",
+          "created_by": "schedule",
+          "state": "draft",
+          "createdate": "2026-10-11T04:55:00.468Z",
+          "modifydate": "2026-10-11T04:55:00.531Z"
+        },
+        {
+          "_id": "6acb164dba781cd23c2f6ea2",
+          "pk": "video-lab-mut4jkwd|job",
+          "sk": "6acb164dba781cd23c2f6ea2",
+          "name": "Lead stage follow-up",
+          "datatype": "job",
+          "data": {
+            "kind": "scheduled:lead-stage-sla",
+            "title": "Lead stage follow-up",
+            "requestedBy": "video-lab-mut4jkwd@example.com",
+            "trigger": "manual",
+            "status": "done",
+            "cancelRequested": false,
+            "args": {},
+            "progress": {
+              "processed": 1,
+              "created": 0,
+              "updated": 0,
+              "failed": 2,
+              "skipped": 0,
+              "batchesDone": 0
+            },
+            "errors": [
+              {
+                "item": "6acb15caba781cd23c2f6e47",
+                "reason": "create_task on Contacted: A task with name \"Chase Casey Morgan — stalled in Contacted\" already exists."
+              },
+              {
+                "item": "6acb15afba781cd23c2f6e14:Invalid imported stage",
+                "reason": "Stage \"Invalid imported stage\" of pipeline \"job-usecase-1011 Follow-up\" has no usable id, so it was skipped"
+              }
+            ],
+            "attempts": 0,
+            "notify": {
+              "email": false,
+              "notice": false,
+              "on": []
+            },
+            "queuedAt": "2026-10-11T04:53:33.247Z",
+            "startedAt": "2026-10-11T04:53:33.247Z",
+            "name": "Lead stage follow-up",
+            "finishedAt": "2026-10-11T04:53:33.260Z",
+            "ms": 14,
+            "result": {
+              "stages": 2,
+              "processed": 1,
+              "breached": 0,
+              "failed": 2,
+              "actions": {},
+              "errors": [
+                {
+                  "item": "6acb15caba781cd23c2f6e47",
+                  "reason": "create_task on Contacted: A task with name \"Chase Casey Morgan — stalled in Contacted\" already exists."
+                },
+                {
+                  "item": "6acb15afba781cd23c2f6e14:Invalid imported stage",
+                  "reason": "Stage \"Invalid imported stage\" of pipeline \"job-usecase-1011 Follow-up\" has no usable id, so it was skipped"
+                }
+              ]
+            }
+          },
+          "version": 0,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T04:53:33.252Z",
+          "modifydate": "2026-10-11T04:53:33.261Z"
+        },
+        {
+          "_id": "6acb162cba781cd23c2f6e8f",
+          "pk": "video-lab-mut4jkwd|job",
+          "sk": "6acb162cba781cd23c2f6e8f",
+          "name": "Lead stage follow-up",
+          "datatype": "job",
+          "data": {
+            "kind": "scheduled:lead-stage-sla",
+            "title": "Lead stage follow-up",
+            "requestedBy": "schedule",
+            "trigger": "schedule",
+            "status": "done",
+            "cancelRequested": false,
+            "args": {
+              "job": "lead-stage-sla"
+            },
+            "progress": {
+              "processed": 1,
+              "created": 0,
+              "updated": 0,
+              "failed": 1,
+              "skipped": 0,
+              "batchesDone": 0
+            },
+            "errors": [
+              {
+                "item": "6acb15caba781cd23c2f6e47",
+                "reason": "create_task on Contacted: A task with name \"Chase Casey Morgan — stalled in Contacted\" already exists."
+              }
+            ],
+            "attempts": 0,
+            "notify": {
+              "email": false,
+              "notice": false,
+              "on": []
+            },
+            "queuedAt": "2026-10-11T04:53:00.197Z",
+            "startedAt": "2026-10-11T04:53:00.197Z",
+            "name": "Lead stage follow-up",
+            "finishedAt": "2026-10-11T04:53:00.272Z",
+            "ms": 219,
+            "result": {
+              "stages": 1,
+              "processed": 1,
+              "breached": 0,
+              "failed": 1,
+              "actions": {},
+              "errors": [
+                {
+                  "item": "6acb15caba781cd23c2f6e47",
+                  "reason": "create_task on Contacted: A task with name \"Chase Casey Morgan — stalled in Contacted\" already exists."
+                }
+              ]
+            }
+          },
+          "version": 0,
+          "author": "schedule",
+          "created_by": "schedule",
+          "state": "draft",
+          "createdate": "2026-10-11T04:53:00.212Z",
+          "modifydate": "2026-10-11T04:53:00.272Z"
+        },
+        {
+          "_id": "6acb15f0ba781cd23c2f6e61",
+          "pk": "video-lab-mut4jkwd|job",
+          "sk": "6acb15f0ba781cd23c2f6e61",
+          "name": "Lead stage follow-up",
+          "datatype": "job",
+          "data": {
+            "kind": "scheduled:lead-stage-sla",
+            "title": "Lead stage follow-up",
+            "requestedBy": "schedule",
+            "trigger": "schedule",
+            "status": "done",
+            "cancelRequested": false,
+            "args": {
+              "job": "lead-stage-sla"
+            },
+            "progress": {
+              "processed": 1,
+              "created": 0,
+              "updated": 0,
+              "failed": 1,
+              "skipped": 0,
+              "batchesDone": 0
+            },
+            "errors": [
+              {
+                "item": "6acb15caba781cd23c2f6e47",
+                "reason": "create_task on Contacted: A task with name \"Chase Casey Morgan — stalled in Contacted\" already exists."
+              }
+            ],
+            "attempts": 0,
+            "notify": {
+              "email": false,
+              "notice": false,
+              "on": []
+            },
+            "queuedAt": "2026-10-11T04:52:00.220Z",
+            "startedAt": "2026-10-11T04:52:00.220Z",
+            "name": "Lead stage follow-up",
+            "finishedAt": "2026-10-11T04:52:00.311Z",
+            "ms": 171,
+            "result": {
+              "stages": 1,
+              "processed": 1,
+              "breached": 0,
+              "failed": 1,
+              "actions": {},
+              "errors": [
+                {
+                  "item": "6acb15caba781cd23c2f6e47",
+                  "reason": "create_task on Contacted: A task with name \"Chase Casey Morgan — stalled in Contacted\" already exists."
+                }
+              ]
+            }
+          },
+          "version": 0,
+          "author": "schedule",
+          "created_by": "schedule",
+          "state": "draft",
+          "createdate": "2026-10-11T04:52:00.236Z",
+          "modifydate": "2026-10-11T04:52:00.311Z"
+        },
+        {
+          "_id": "6acb15c8ba781cd23c2f6e3e",
+          "pk": "video-lab-mut4jkwd|job",
+          "sk": "6acb15c8ba781cd23c2f6e3e",
+          "name": "Lead stage follow-up",
+          "datatype": "job",
+          "data": {
+            "kind": "scheduled:lead-stage-sla",
+            "title": "Lead stage follow-up",
+            "requestedBy": "video-lab-mut4jkwd@example.com",
+            "trigger": "manual",
+            "status": "done",
+            "cancelRequested": false,
+            "args": {},
+            "progress": {
+              "processed": 1,
+              "created": 0,
+              "updated": 0,
+              "failed": 0,
+              "skipped": 0,
+              "batchesDone": 0
+            },
+            "errors": [],
+            "attempts": 0,
+            "notify": {
+              "email": false,
+              "notice": false,
+              "on": []
+            },
+            "queuedAt": "2026-10-11T04:51:20.077Z",
+            "startedAt": "2026-10-11T04:51:20.077Z",
+            "name": "Lead stage follow-up",
+            "finishedAt": "2026-10-11T04:51:20.092Z",
+            "ms": 16,
+            "result": {
+              "stages": 1,
+              "processed": 1,
+              "breached": 1,
+              "failed": 0,
+              "actions": {
+                "auto_move": 1
+              },
+              "errors": []
+            }
+          },
+          "version": 0,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T04:51:20.079Z",
+          "modifydate": "2026-10-11T04:51:20.092Z"
+        },
+        {
+          "_id": "6acb15b9ba781cd23c2f6e29",
+          "pk": "video-lab-mut4jkwd|job",
+          "sk": "6acb15b9ba781cd23c2f6e29",
+          "name": "Lead stage follow-up",
+          "datatype": "job",
+          "data": {
+            "retryOf": "6acb15b9ba781cd23c2f6e26",
+            "kind": "scheduled:lead-stage-sla",
+            "title": "Lead stage follow-up",
+            "requestedBy": "video-lab-mut4jkwd@example.com",
+            "trigger": "manual",
+            "status": "done",
+            "cancelRequested": false,
+            "args": {},
+            "progress": {
+              "processed": 1,
+              "created": 0,
+              "updated": 0,
+              "failed": 0,
+              "skipped": 0,
+              "batchesDone": 0
+            },
+            "errors": [],
+            "attempts": 0,
+            "notify": {
+              "email": false,
+              "notice": false,
+              "on": []
+            },
+            "queuedAt": "2026-10-11T04:51:05.314Z",
+            "startedAt": "2026-10-11T04:51:05.314Z",
+            "name": "Lead stage follow-up",
+            "finishedAt": "2026-10-11T04:51:05.326Z",
+            "ms": 12,
+            "result": {
+              "stages": 1,
+              "processed": 1,
+              "breached": 1,
+              "failed": 0,
+              "actions": {
+                "create_task": 1
+              },
+              "errors": []
+            }
+          },
+          "version": 0,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T04:51:05.315Z",
+          "modifydate": "2026-10-11T04:51:05.326Z"
+        },
+        {
+          "_id": "6acb15b9ba781cd23c2f6e26",
+          "pk": "video-lab-mut4jkwd|job",
+          "sk": "6acb15b9ba781cd23c2f6e26",
+          "name": "Lead stage follow-up",
+          "datatype": "job",
+          "data": {
+            "kind": "scheduled:lead-stage-sla",
+            "title": "Lead stage follow-up",
+            "requestedBy": "video-lab-mut4jkwd@example.com",
+            "trigger": "manual",
+            "status": "failed",
+            "cancelRequested": false,
+            "args": {},
+            "progress": {
+              "processed": 0,
+              "created": 0,
+              "updated": 0,
+              "failed": 0,
+              "skipped": 0,
+              "batchesDone": 0
+            },
+            "errors": [
+              {
+                "item": "",
+                "reason": "stages.filter is not a function"
+              }
+            ],
+            "attempts": 0,
+            "notify": {
+              "email": false,
+              "notice": false,
+              "on": []
+            },
+            "queuedAt": "2026-10-11T04:51:05.226Z",
+            "startedAt": "2026-10-11T04:51:05.226Z",
+            "name": "Lead stage follow-up",
+            "error": "stages.filter is not a function",
+            "finishedAt": "2026-10-11T04:51:05.232Z",
+            "ms": 6,
+            "result": null,
+            "retriedAs": "6acb15b9ba781cd23c2f6e29"
+          },
+          "version": 0,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T04:51:05.229Z",
+          "modifydate": "2026-10-11T04:51:05.316Z"
+        },
+        {
+          "_id": "6acb15afba781cd23c2f6e19",
+          "pk": "video-lab-mut4jkwd|job",
+          "sk": "6acb15afba781cd23c2f6e19",
+          "name": "Lead stage follow-up",
+          "datatype": "job",
+          "data": {
+            "kind": "scheduled:lead-stage-sla",
+            "title": "Lead stage follow-up",
+            "requestedBy": "video-lab-mut4jkwd@example.com",
+            "trigger": "manual",
+            "status": "done",
+            "cancelRequested": false,
+            "args": {},
+            "progress": {
+              "processed": 0,
+              "created": 0,
+              "updated": 0,
+              "failed": 0,
+              "skipped": 0,
+              "batchesDone": 0
+            },
+            "errors": [],
+            "attempts": 0,
+            "notify": {
+              "email": false,
+              "notice": false,
+              "on": []
+            },
+            "queuedAt": "2026-10-11T04:50:55.955Z",
+            "startedAt": "2026-10-11T04:50:55.955Z",
+            "name": "Lead stage follow-up",
+            "finishedAt": "2026-10-11T04:50:55.961Z",
+            "ms": 7,
+            "result": {
+              "stages": 1,
+              "processed": 0,
+              "breached": 0,
+              "failed": 0,
+              "actions": {},
+              "errors": []
+            }
+          },
+          "version": 0,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T04:50:55.957Z",
+          "modifydate": "2026-10-11T04:50:55.961Z"
+        },
+        {
+          "_id": "6acb15afba781cd23c2f6e17",
+          "pk": "video-lab-mut4jkwd|job",
+          "sk": "6acb15afba781cd23c2f6e17",
+          "name": "Lead stage follow-up",
+          "datatype": "job",
+          "data": {
+            "kind": "scheduled:lead-stage-sla",
+            "title": "Lead stage follow-up",
+            "requestedBy": "video-lab-mut4jkwd@example.com",
+            "trigger": "manual",
+            "status": "done",
+            "cancelRequested": false,
+            "args": {},
+            "progress": {
+              "processed": 1,
+              "created": 0,
+              "updated": 0,
+              "failed": 0,
+              "skipped": 0,
+              "batchesDone": 0
+            },
+            "errors": [],
+            "attempts": 0,
+            "notify": {
+              "email": false,
+              "notice": false,
+              "on": []
+            },
+            "queuedAt": "2026-10-11T04:50:55.867Z",
+            "startedAt": "2026-10-11T04:50:55.867Z",
+            "name": "Lead stage follow-up",
+            "finishedAt": "2026-10-11T04:50:55.886Z",
+            "ms": 20,
+            "result": {
+              "stages": 1,
+              "processed": 1,
+              "breached": 1,
+              "failed": 0,
+              "actions": {
+                "create_task": 1
+              },
+              "errors": []
+            }
+          },
+          "version": 0,
+          "author": "video-lab-mut4jkwd@example.com",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "createdate": "2026-10-11T04:50:55.869Z",
+          "modifydate": "2026-10-11T04:50:55.886Z"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "total": 1,
+    "datatype": "ticket",
+    "pageSize": 50,
+    "page": 1,
+    "sort": "modifydate",
+    "sortType": -1,
+    "lastPage": 1,
+    "hasNext": false,
+    "fromCache": false,
+    "lastItem": "2026-10-10T18:25:54.087Z",
+    "data": [
+      {
+        "_id": "6aca833237ff863efff476ce",
+        "pk": "video-lab-mut4jkwd|ticket",
+        "sk": "6aca833237ff863efff476ce",
+        "name": "Q3CHB319",
+        "datatype": "ticket",
+        "data": {
+          "title": "CRM API course request",
+          "description": "Please confirm the integration guide",
+          "reportedByEmail": "mira.chen.foundations@training.local",
+          "reportedBy": "Mira-Lin Chen",
+          "status": "new",
+          "priority": "medium",
+          "channel": "web",
+          "name": "Q3CHB319"
+        },
+        "version": 0,
+        "author": "mira.chen.foundations@training.local",
+        "created_by": "mira.chen.foundations@training.local",
+        "state": "new",
+        "createdate": "2026-10-10T18:25:54.010Z",
+        "modifydate": "2026-10-10T18:25:54.087Z",
+        "handling": {
+          "status": "open",
+          "since": "2026-10-10T18:25:54.095Z",
+          "channel": "ticket",
+          "title": "New ticket: CRM API course request",
+          "history": [
+            {
+              "status": "open",
+              "at": "2026-10-10T18:25:54.095Z"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

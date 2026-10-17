@@ -1,0 +1,6 @@
+{
+  "method": "POST",
+  "path": "/crm/reservations/cancel/6aca830537ff863efff476c2",
+  "identity": "staff",
+  "observedStatus": 201
+}

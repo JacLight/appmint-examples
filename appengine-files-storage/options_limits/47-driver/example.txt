@@ -1,0 +1,7 @@
+GET {{base}}{{route}}
+
+Headers
+  orgid: {{orgid}}
+  Authorization: Bearer {{token}}
+
+Send; inspect Status and Body.

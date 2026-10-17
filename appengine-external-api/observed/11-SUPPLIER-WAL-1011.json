@@ -1,0 +1,48 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "body": {
+      "isNew": true,
+      "datatype": "sf_product",
+      "data": {
+        "name": "Training walnut board",
+        "sku": "SUPPLIER-WAL-1011",
+        "supplierSku": "NW-WAL-18",
+        "price": 61,
+        "available": false,
+        "status": "inactive",
+        "hidden": true,
+        "trackInventory": true,
+        "description": "Synthetic supplier integration course fixture; not offered for sale."
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "datatype": "sf_product",
+      "data": {
+        "name": "Training walnut board",
+        "sku": "SUPPLIER-WAL-1011",
+        "supplierSku": "NW-WAL-18",
+        "price": 61,
+        "available": false,
+        "status": "inactive",
+        "hidden": true,
+        "trackInventory": true,
+        "description": "Synthetic supplier integration course fixture; not offered for sale."
+      },
+      "name": "Training walnut board",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|sf_product",
+      "createdate": "2026-10-11T04:50:24.390Z",
+      "modifydate": "2026-10-11T04:50:24.390Z",
+      "version": 0,
+      "sk": "6acb1590ba781cd23c2f6e13",
+      "id": "6acb1590ba781cd23c2f6e13"
+    }
+  }
+}

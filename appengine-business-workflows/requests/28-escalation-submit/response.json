@@ -1,0 +1,38 @@
+{
+  "status": 201,
+  "body": {
+    "pk": "video-lab-mut4jkwd|form_submission",
+    "sk": "6acb1606ba781cd23c2f6e7d",
+    "name": "form_submission-1791694342128-fu1ddanj",
+    "datatype": "form_submission",
+    "data": {
+      "formId": "6acb15c8ba781cd23c2f6e43",
+      "values": {
+        "fullName": "Dana Ruiz",
+        "email": "dana.wf-usecase-1011@training.local",
+        "orderNumber": "HC-1045",
+        "bikeModel": "Harbor Trail 2",
+        "problem": "Frame crack after three weeks"
+      },
+      "status": "new",
+      "authentication": {
+        "method": "email",
+        "status": "used",
+        "email": "dana.wf-usecase-1011@training.local",
+        "admittedBy": "email",
+        "verified": false,
+        "submittedAt": "2026-10-11T04:52:22.128Z",
+        "client": {}
+      },
+      "name": "form_submission-1791694342128-fu1ddanj"
+    },
+    "version": 0,
+    "author": "dana.wf-usecase-1011@training.local",
+    "client": {},
+    "created_by": "dana.wf-usecase-1011@training.local",
+    "state": "draft",
+    "createdate": "2026-10-11T04:52:22.135Z",
+    "modifydate": "2026-10-11T04:52:22.135Z",
+    "id": "6acb1606ba781cd23c2f6e7d"
+  }
+}

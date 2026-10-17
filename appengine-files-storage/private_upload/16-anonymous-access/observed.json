@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "label": "public-image",
+      "status": 200,
+      "bytes": 52048,
+      "sha256": "58ebbc515c04304f14b5ca8bb22e63ab34843b82a74c4c6834546f52988d750d",
+      "contentType": "image/png",
+      "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/cedar-botanical-print.png"
+    },
+    {
+      "label": "private-pdf-unsigned",
+      "status": 403,
+      "bytes": 255,
+      "sha256": "64505920cc58f029ff03bf0ab799ffd7e8fa2bbe6476ff47905deed9e2356444",
+      "contentType": "application/xml",
+      "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf"
+    },
+    {
+      "label": "private-pdf-signed",
+      "status": 200,
+      "bytes": 777,
+      "sha256": "9a6908c7d154f9f81fbabdf7bc88722078a7e149450f161e009aab3bbeef218b",
+      "contentType": "application/pdf",
+      "url": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf?AWSAccessKeyId=REDACTED&Expires=1791598435&Signature=REDACTED"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "status": 409,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "reason": "decide-through-approvals",
+    "taskId": "6aca13e3f5d6b011f6e12062",
+    "stage": "Approved",
+    "statusCode": 409,
+    "error": "Decide this in Approvals \u2014 approving grants access and tells the requester; a stage move would not.",
+    "path": "/workflow/task/6aca13e3f5d6b011f6e12062/complete",
+    "method": "POST",
+    "timeStamp": "2026-10-10T10:30:59.570Z"
+  }
+}

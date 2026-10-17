@@ -1,0 +1,83 @@
+{
+  "environment": "Isolated controlled training organization",
+  "request": {
+    "method": "GET",
+    "path": "/storefront/product/HEADLESS-OPTIONS-1010",
+    "identity": "controlled customer"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6acaca3a8c597416cfbe7f27",
+      "datatype": "sf_product-enriched-enriched",
+      "data": {
+        "name": "Headless option-priced print",
+        "sku": "HEADLESS-OPTIONS-1010",
+        "slug": "headless-option-priced-print-1010",
+        "description": "Controlled headless option and coupon exercise",
+        "status": "active",
+        "available": true,
+        "price": 20,
+        "trackInventory": true,
+        "stock": 12,
+        "attributes": [
+          {
+            "name": "size",
+            "title": "Size",
+            "options": [
+              {
+                "value": "small",
+                "label": "Small",
+                "price": "0"
+              },
+              {
+                "value": "large",
+                "label": "Large",
+                "price": "+5"
+              }
+            ]
+          }
+        ],
+        "variations": [
+          {
+            "sku": "HEADLESS-OPTIONS-LARGE-1010",
+            "options": [
+              {
+                "name": "size",
+                "value": "large"
+              }
+            ],
+            "price": 25,
+            "stock": 6
+          }
+        ],
+        "shipping": {
+          "config": "headless-1010-shipping"
+        },
+        "parcel": {
+          "weight": 0.5,
+          "weightUnit": "lb",
+          "length": 12,
+          "width": 9,
+          "height": 1,
+          "dimensionUnit": "in"
+        },
+        "calculatedPrice": {
+          "originalPrice": 20,
+          "finalPrice": 20,
+          "discount": 0,
+          "discountPercent": 0,
+          "appliedDiscounts": []
+        }
+      },
+      "name": "Headless option-priced print",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|sf_product",
+      "createdate": "2026-10-10T23:28:58.697Z",
+      "modifydate": "2026-10-10T23:28:58.697Z",
+      "version": 0,
+      "sk": "6acaca3a8c597416cfbe7f27"
+    }
+  }
+}

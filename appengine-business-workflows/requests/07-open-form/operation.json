@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "path": "/client/forms/wf-usecase-1011-warranty?email=dana.wf-usecase-1011%40training.local",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json"
+  }
+}

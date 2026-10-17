@@ -1,0 +1,64 @@
+{
+  "orderId": "6acac791faa0eca1c854d97c",
+  "number": "HS851V342",
+  "status": "shipped",
+  "amount": 54.5,
+  "paymentRef": "pi_3UP9WACH9tYO5hDg15wEPvip",
+  "payments": [
+    {
+      "method": "stripe",
+      "label": "Stripe",
+      "amount": 54.5,
+      "ref": "pi_3UP9WACH9tYO5hDg15wEPvip"
+    }
+  ],
+  "collected": 54.5,
+  "remainingBalance": 0,
+  "shippingInfo": [
+    {
+      "carrier": "USPS",
+      "service": "GroundAdvantage",
+      "tracker": "9434600208192110020219",
+      "trackingUrl": "https://tools.usps.com/go/TrackConfirmAction?tLabels=9434600208192110020219",
+      "rate": "GroundAdvantage",
+      "cost": "10.11",
+      "labelUrl": "",
+      "status": "shipped",
+      "shippedAt": "2026-10-11T00:11:14.513Z",
+      "estimatedDelivery": "",
+      "parcel": {
+        "length": 16,
+        "width": 12,
+        "height": 1,
+        "weight": 1,
+        "weightUnit": "lb",
+        "dimensionUnit": "in"
+      },
+      "products": [
+        {
+          "sku": "HEADLESS-CEDAR-1010",
+          "name": "Cedar Botanical Print",
+          "quantity": 2
+        }
+      ],
+      "addedBy": "video-lab-mut4jkwd@example.com",
+      "manual": true
+    }
+  ],
+  "shippedQuantities": {
+    "HEADLESS-CEDAR-1010": 2
+  },
+  "orderInventory": {
+    "status": "needs_attention",
+    "drawn": {},
+    "results": [],
+    "issues": [
+      "HEADLESS-CEDAR-1010: no single stock location holds this SKU; set the order location"
+    ],
+    "uncosted": [],
+    "checkedAt": "2026-10-11T00:11:14.517Z"
+  },
+  "addressUnchanged": true,
+  "notificationRequested": false,
+  "labelMode": "test"
+}

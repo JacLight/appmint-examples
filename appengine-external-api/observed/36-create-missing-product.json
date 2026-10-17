@@ -1,0 +1,46 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "body": {
+      "isNew": true,
+      "datatype": "sf_product",
+      "data": {
+        "name": "Training ash plank",
+        "sku": "SUPPLIER-ASH-1011",
+        "supplierSku": "NW-ASH-30",
+        "price": 61,
+        "available": false,
+        "hidden": true,
+        "status": "inactive",
+        "trackInventory": true
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "datatype": "sf_product",
+      "data": {
+        "name": "Training ash plank",
+        "sku": "SUPPLIER-ASH-1011",
+        "supplierSku": "NW-ASH-30",
+        "price": 61,
+        "available": false,
+        "hidden": true,
+        "status": "inactive",
+        "trackInventory": true
+      },
+      "name": "Training ash plank",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|sf_product",
+      "createdate": "2026-10-11T04:56:53.554Z",
+      "modifydate": "2026-10-11T04:56:53.554Z",
+      "version": 0,
+      "sk": "6acb1715ba781cd23c2f6ee7",
+      "id": "6acb1715ba781cd23c2f6ee7"
+    }
+  }
+}

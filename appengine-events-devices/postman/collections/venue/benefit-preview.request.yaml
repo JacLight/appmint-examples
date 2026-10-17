@@ -1,0 +1,30 @@
+{
+  "$kind": "http-request",
+  "method": "POST",
+  "url": "{{base_url}}/events/verify-scan",
+  "order": 7000,
+  "headers": [
+    {
+      "key": "orgid",
+      "value": "{{org}}"
+    },
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "settings": {
+    "followRedirects": false
+  },
+  "scripts": [
+    {
+      "type": "beforeRequest",
+      "language": "text/javascript",
+      "code": "if(pm.variables.get('enabled_action') !== 'benefit-preview') throw new Error('Set enabled_action to benefit-preview only for this deliberate request; inspect saved state before repeating.');"
+    }
+  ],
+  "body": {
+    "type": "json",
+    "content": "{\n  \"eventId\": \"{{event_id}}\",\n  \"zone\": \"{{zone}}\",\n  \"checkpoint\": \"{{benefit_point}}\",\n  \"code\": \"{{ticket_code}}\",\n  \"redeem\": false\n}"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-10-10T07:32:22.298122+00:00",
+  "durationSeconds": 0.014,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/get/baas_submissions_1010/6ac9e9c6f5d6b011f6e11a28",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 401,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "code": "missing_authorization_header",
+      "statusCode": 401,
+      "error": "Authorization header is required. Send requests with `Authorization: Bearer <token>`.",
+      "path": "/repository/get/baas_submissions_1010/6ac9e9c6f5d6b011f6e11a28",
+      "method": "GET",
+      "timeStamp": "2026-10-10T07:32:22.311Z"
+    }
+  }
+}

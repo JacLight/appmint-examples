@@ -1,0 +1,13 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"_id\": \"6acb2e18ba781cd23c2f757d\",\n  \"pk\": \"video-lab-mut4jkwd|bm_employee\",\n  \"sk\": \"6acb2e18ba781cd23c2f757d\",\n  \"name\": \"bm_employee-1791700504219-ti8aq5cr\",\n  \"datatype\": \"bm_employee\",\n  \"data\": {\n    \"employeeId\": \"mcp-usecase-1011-EMP0042\",\n    \"personalInfo\": {\n      \"firstName\": \"Tom\",\n      \"lastName\": \"Becker\"\n    },\n    \"contactInfo\": {\n      \"email\": \"tom.mcp-usecase-1011@training.local\"\n    },\n    \"employment\": {\n      \"status\": \"active\",\n      \"hireDate\": \"2026-10-01\",\n      \"jobTitle\": \"Training staff\",\n      \"department\": \"Course sandbox\"\n    },\n    \"name\": \"bm_employee-1791700504219-ti8aq5cr\",\n    \"onboarding\": {\n      \"status\": \"in_progress\",\n      \"checklist\": [\n        {\n          \"key\": \"profile\",\n          \"required\": true,\n          \"status\": \"pending\"\n        },\n        {\n          \"key\": \"tax_w4\",\n          \"required\": true,\n          \"status\": \"pending\"\n        },\n        {\n          \"key\": \"pay_method\",\n          \"required\": true,\n          \"status\": \"pending\"\n        },\n        {\n          \"key\": \"handbook_ack\",\n          \"required\": true,\n          \"status\": \"pending\"\n        },\n        {\n          \"key\": \"offer_letter\",\n          \"required\": false,\n          \"status\": \"pending\"\n        },\n        {\n          \"key\": \"i9\",\n          \"required\": false,\n          \"status\": \"pending\"\n        }\n      ],\n      \"journeyId\": \"6acb2e18ba781cd23c2f757f\",\n      \"startedAt\": \"2026-10-11T06:35:04.265Z\",\n      \"startedBy\": \"journeys\",\n      \"lastActivityAt\": \"2026-10-11T06:35:06.632Z\"\n    }\n  },\n  \"version\": 0,\n  \"author\": \"video-lab-mut4jkwd@example.com\",\n  \"created_by\": \"video-lab-mut4jkwd@example.com\",\n  \"state\": \"draft\",\n  \"createdate\": \"2026-10-11T06:35:04.222Z\",\n  \"modifydate\": \"2026-10-11T06:35:06.632Z\"\n}"
+      }
+    ],
+    "structured_content": null
+  },
+  "error": null,
+  "hostEventStatus": "completed"
+}

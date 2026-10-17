@@ -1,0 +1,18 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/update-partial/site/6ac1a7896cf55d217cabf059",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "data.publishedPagesOnly": false
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": true
+  }
+}

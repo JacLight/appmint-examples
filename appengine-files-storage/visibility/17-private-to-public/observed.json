@@ -1,0 +1,36 @@
+{
+  "startedAt": "2026-10-10T01:59:30.386804+00:00",
+  "durationSeconds": 0.2395,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/make-public",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "locations": [
+        "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf"
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "success": true,
+      "results": [
+        {
+          "path": "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf",
+          "status": "success",
+          "acl": "public-read",
+          "publicUrl": "https://sfo3.digitaloceanspaces.com/fundu-space-sfo3-dev/video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf"
+        }
+      ],
+      "errors": [],
+      "message": "Successfully made objects public"
+    }
+  }
+}

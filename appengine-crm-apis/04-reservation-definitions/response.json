@@ -1,0 +1,79 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "total": 2,
+    "datatype": "reservation_definition",
+    "pageSize": 20,
+    "page": 1,
+    "sort": "modifydate",
+    "sortType": -1,
+    "lastPage": 1,
+    "hasNext": false,
+    "fromCache": false,
+    "lastItem": "2026-10-04T01:10:33.925Z",
+    "data": [
+      {
+        "_id": "6ac2937fab9829f838ab9193",
+        "pk": "video-lab-mut4jkwd|reservation_definition",
+        "sk": "6ac2937fab9829f838ab9193",
+        "name": "course-tasting-1004",
+        "datatype": "reservation_definition",
+        "data": {
+          "workDays": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "officeHours": {
+            "startTime": "09:00",
+            "endTime": "17:00",
+            "timezone": "America/Chicago"
+          },
+          "spots": 1,
+          "name": "course-tasting-1004",
+          "title": "Course tasting \u2014 Riverside",
+          "type": "service",
+          "status": "active",
+          "services": [
+            {
+              "name": "Course tasting session",
+              "duration": 30,
+              "price": 0,
+              "breakAfter": 0
+            }
+          ],
+          "businessLocation": "bm-riverside-course"
+        },
+        "version": 1,
+        "author": "video-lab-mut4jkwd@example.com",
+        "created_by": "video-lab-mut4jkwd@example.com",
+        "state": "draft",
+        "createdate": "2026-10-04T17:57:19.771Z",
+        "modifydate": "2026-10-04T18:00:34.674Z",
+        "modified_by": "video-lab-mut4jkwd@example.com"
+      },
+      {
+        "_id": "6ac1a7896cf55d217cabf060",
+        "pk": "video-lab-mut4jkwd|reservation_definition",
+        "sk": "6ac1a7896cf55d217cabf060",
+        "name": "meeting",
+        "datatype": "reservation_definition",
+        "data": {
+          "name": "meeting",
+          "title": "Meetings",
+          "description": "Meetings scheduled by the team \u2014 video or in person. Not a bookable service.",
+          "type": "interval",
+          "status": "active"
+        },
+        "version": 0,
+        "created_by": "video-lab-mut4jkwd@example.com",
+        "state": "draft",
+        "createdate": "2026-10-04T01:10:33.925Z",
+        "modifydate": "2026-10-04T01:10:33.925Z"
+      }
+    ]
+  }
+}

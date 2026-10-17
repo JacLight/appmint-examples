@@ -1,0 +1,32 @@
+{
+  "prefix": "supplier-usecase-1011",
+  "org": "video-lab-mut4jkwd",
+  "location": "supplier-usecase-1011",
+  "products": [
+    {
+      "id": "6acb1590ba781cd23c2f6e12",
+      "sku": "SUPPLIER-OAK-1011",
+      "name": "Training white oak plank",
+      "supplierSku": "NW-OAK-24"
+    },
+    {
+      "id": "6acb1590ba781cd23c2f6e13",
+      "sku": "SUPPLIER-WAL-1011",
+      "name": "Training walnut board",
+      "supplierSku": "NW-WAL-18"
+    }
+  ],
+  "locationId": "6acb1590ba781cd23c2f6e10",
+  "intakeId": "6acb15d0ba781cd23c2f6e4d",
+  "intakeNumber": "INT-P3QZ0EAQ",
+  "billId": "6acb15e0ba781cd23c2f6e5c",
+  "billNumber": "B-INT-P3QZ0EAQ",
+  "restockId": "6acb163bba781cd23c2f6e9c",
+  "restockNumber": "INT-GECK8W0T",
+  "cancelId": "6acb163bba781cd23c2f6e9d",
+  "cancelNumber": "INT-QBATNHJ0",
+  "restockBillId": "6acb1841ba781cd23c2f6fa0",
+  "restockBillNumber": "B-INT-GECK8W0T",
+  "correctedId": "6acb1929ba781cd23c2f70aa",
+  "correctedNumber": "INT-QT4I81J2"
+}

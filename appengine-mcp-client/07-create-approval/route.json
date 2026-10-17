@@ -1,0 +1,5 @@
+{
+  "method": "POST",
+  "path": "/business-made/timesheets",
+  "write": true
+}

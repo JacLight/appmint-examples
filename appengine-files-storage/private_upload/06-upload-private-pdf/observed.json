@@ -1,0 +1,38 @@
+{
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/upload",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "multipart/form-data; boundary=CourseMultipartffcd147c39a94399a6170e5a9b0cbd40"
+    },
+    "body": {
+      "multipart": {
+        "location": "course-files-1009/private",
+        "isPrivate": "true",
+        "file": "supplier-sheet.pdf"
+      },
+      "fileBytes": 777,
+      "sha256": "9a6908c7d154f9f81fbabdf7bc88722078a7e149450f161e009aab3bbeef218b"
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "raw": {
+        "Key": "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf",
+        "LastModified": "2026-10-10T01:57:58.226Z",
+        "ETag": "\"2affbcd6b2519107c4f2247f05ad8160\"",
+        "ChecksumAlgorithm": [],
+        "Size": 777,
+        "StorageClass": "STANDARD"
+      },
+      "path": "video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf",
+      "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-files-1009/private/supplier-sheet.pdf?AWSAccessKeyId=REDACTED&Expires=1791598378&Signature=REDACTED"
+    }
+  },
+  "durationSeconds": 0.234
+}

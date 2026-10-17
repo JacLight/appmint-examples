@@ -1,0 +1,76 @@
+{
+  "startedAt": "2026-10-10T10:30:30.667851+00:00",
+  "durationSeconds": 0.0551,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "datatype": "schedule",
+      "isNew": true,
+      "data": {
+        "name": "course-cron-1010",
+        "title": "Course bounded repeat \u2014 API course",
+        "type": "cron",
+        "status": "active",
+        "target": [
+          {
+            "datatype": "schedule_marks_1010",
+            "id": "6aca13c6f5d6b011f6e12058"
+          }
+        ],
+        "cron": {
+          "value": "* * * * *",
+          "timezone": "America/Chicago",
+          "action": "update-status",
+          "actionArgs": "ready"
+        },
+        "end": {
+          "date": "2026-10-10T10:32:10.387Z"
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "datatype": "schedule",
+      "data": {
+        "name": "course-cron-1010",
+        "title": "Course bounded repeat \u2014 API course",
+        "type": "cron",
+        "status": "active",
+        "target": [
+          {
+            "datatype": "schedule_marks_1010",
+            "id": "6aca13c6f5d6b011f6e12058"
+          }
+        ],
+        "cron": {
+          "value": "* * * * *",
+          "timezone": "America/Chicago",
+          "action": "update-status",
+          "actionArgs": "ready"
+        },
+        "end": {
+          "date": "2026-10-10T10:32:10.387Z"
+        }
+      },
+      "name": "course-cron-1010",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|schedule",
+      "createdate": "2026-10-10T10:30:30.693Z",
+      "modifydate": "2026-10-10T10:30:30.693Z",
+      "version": 0,
+      "sk": "6aca13c6f5d6b011f6e12059",
+      "id": "6aca13c6f5d6b011f6e12059"
+    }
+  }
+}

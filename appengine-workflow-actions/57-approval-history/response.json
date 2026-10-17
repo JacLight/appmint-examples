@@ -1,0 +1,289 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "decided": [
+      {
+        "id": "6aca13c4f5d6b011f6e1204e",
+        "title": "API decision: reject",
+        "summary": "Verified reject decision in the training course",
+        "status": "rejected",
+        "stageId": 2,
+        "workflowName": "api-decision-1010",
+        "assignTo": [
+          "video-lab-mut4jkwd@example.com"
+        ],
+        "dueDate": null,
+        "createdate": "2026-10-10T10:30:28.892Z",
+        "owner": {
+          "datatype": "workflow_lab_1010",
+          "id": "6aca13c4f5d6b011f6e1204c",
+          "name": "API decision: reject"
+        },
+        "payload": {
+          "reviewType": "training",
+          "requesterEmail": "video-lab-mut4jkwd@example.com",
+          "requesterName": "Video Lab"
+        },
+        "history": [
+          {
+            "stageId": 0,
+            "status": "new",
+            "dueDate": null,
+            "note": "",
+            "modified": "2026-10-10T10:30:28.917Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com"
+          }
+        ],
+        "approvals": [],
+        "note": "Verified reject decision in the training course",
+        "assignToNames": [
+          "Video Lab"
+        ],
+        "decidedByName": "Video Lab"
+      },
+      {
+        "id": "6aca13c4f5d6b011f6e1204a",
+        "title": "API decision: approve",
+        "summary": "Verified approve decision in the training course",
+        "status": "approved",
+        "stageId": 1,
+        "workflowName": "api-decision-1010",
+        "assignTo": [
+          "video-lab-mut4jkwd@example.com"
+        ],
+        "dueDate": null,
+        "createdate": "2026-10-10T10:30:28.746Z",
+        "owner": {
+          "datatype": "workflow_lab_1010",
+          "id": "6aca13c4f5d6b011f6e12049",
+          "name": "API decision: approve"
+        },
+        "payload": {
+          "reviewType": "training",
+          "requesterEmail": "video-lab-mut4jkwd@example.com",
+          "requesterName": "Video Lab"
+        },
+        "history": [
+          {
+            "stageId": 0,
+            "status": "new",
+            "dueDate": null,
+            "note": "",
+            "modified": "2026-10-10T10:30:28.779Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com"
+          }
+        ],
+        "approvals": [],
+        "note": "Verified approve decision in the training course",
+        "assignToNames": [
+          "Video Lab"
+        ],
+        "decidedByName": "Video Lab"
+      },
+      {
+        "id": "6aca13a4f5d6b011f6e12035",
+        "title": "Review API connection",
+        "summary": "Confirm the connection and record the review outcome.",
+        "status": "canceled",
+        "stageId": 0,
+        "workflowName": "api-review-1010",
+        "assignTo": [
+          "video-lab-mut4jkwd@example.com"
+        ],
+        "dueDate": null,
+        "createdate": "2026-10-10T10:29:56.189Z",
+        "owner": {
+          "datatype": "workflow_lab_1010",
+          "id": "6aca13a4f5d6b011f6e12034",
+          "name": "Review API connection"
+        },
+        "payload": {
+          "requesterEmail": "video-lab-mut4jkwd@example.com",
+          "requesterName": "Video Lab"
+        },
+        "history": [
+          {
+            "stageId": 0,
+            "status": "new",
+            "dueDate": "2026-10-10T12:29:56.289Z",
+            "note": "Confirm the connection and record the review outcome.",
+            "modified": "2026-10-10T10:29:56.431Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com"
+          },
+          {
+            "stageId": 1,
+            "status": "inprogress",
+            "dueDate": null,
+            "note": "Confirm the connection and record the review outcome.",
+            "modified": "2026-10-10T10:29:56.561Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com"
+          },
+          {
+            "stageId": 2,
+            "status": "done",
+            "dueDate": null,
+            "modified": "2026-10-10T10:30:28.530Z",
+            "modifiedBy": "restart"
+          },
+          {
+            "stageId": 0,
+            "status": "canceled",
+            "modified": "2026-10-10T10:30:28.595Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com",
+            "note": "Cancelled"
+          }
+        ],
+        "approvals": [],
+        "note": "Confirm the connection and record the review outcome.",
+        "assignToNames": [
+          "Video Lab"
+        ],
+        "decidedByName": "Video Lab"
+      },
+      {
+        "id": "6ac29a73cd3dc2715c5c99ea",
+        "title": "Verify reusable media in the reader",
+        "summary": "Open the unpublished media guide and confirm the saved image appears. Done means the reader preview shows both text and image.",
+        "status": "done",
+        "assignTo": [
+          "video-lab-mut4jkwd@example.com"
+        ],
+        "dueDate": null,
+        "createdate": "2026-10-04T18:26:59.799Z",
+        "owner": {
+          "datatype": "workspace",
+          "id": "6ac29a30cd3dc2715c5c99d0",
+          "name": "Course collaboration lab 20261004"
+        },
+        "payload": {
+          "workspace": "6ac29a30cd3dc2715c5c99d0",
+          "agenda": "6ac29d94d5ae55f09141858a"
+        },
+        "history": [
+          {
+            "status": "new",
+            "modified": "2026-10-04T18:26:59.778Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com",
+            "note": "created, assigned to video-lab-mut4jkwd@example.com",
+            "assignTo": [
+              "video-lab-mut4jkwd@example.com"
+            ]
+          },
+          {
+            "status": "inprogress",
+            "modified": "2026-10-04T18:27:51.813Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com",
+            "note": "status \u2192 inprogress",
+            "assignTo": [
+              "video-lab-mut4jkwd@example.com"
+            ],
+            "dueDate": null
+          },
+          {
+            "status": "done",
+            "modified": "2026-10-04T18:28:04.145Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com",
+            "note": "status \u2192 done",
+            "assignTo": [
+              "video-lab-mut4jkwd@example.com"
+            ],
+            "dueDate": null
+          },
+          {
+            "status": "done",
+            "modified": "2026-10-04T18:41:12.113Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com",
+            "note": "moved to an agenda",
+            "assignTo": [
+              "video-lab-mut4jkwd@example.com"
+            ],
+            "dueDate": null
+          }
+        ],
+        "approvals": [],
+        "note": "Open the unpublished media guide and confirm the saved image appears. Done means the reader preview shows both text and image.",
+        "assignToNames": [
+          "Video Lab"
+        ],
+        "decidedByName": "Video Lab"
+      },
+      {
+        "id": "6ac294c9ab9829f838ab91f8",
+        "title": "Walk-up #1",
+        "summary": "1\u00d7 Disc demo Stoneware Mug",
+        "status": "done",
+        "stageId": 3,
+        "workflowName": "prep-pipeline",
+        "assignTo": null,
+        "dueDate": null,
+        "createdate": "2026-10-04T18:02:49.073Z",
+        "owner": {
+          "datatype": "sf_order",
+          "id": "6ac294b9ab9829f838ab91f7",
+          "name": "Walk-up #1"
+        },
+        "payload": {
+          "orderId": "6ac294b9ab9829f838ab91f7",
+          "orderNumber": "DPXWSZ3KR",
+          "alias": "Walk-up #1",
+          "station": null,
+          "businessLocationId": "bm-riverside-course",
+          "servicePointId": null,
+          "course": null,
+          "seat": null,
+          "specialInstructions": null,
+          "items": [
+            {
+              "id": "bgy2dxwg0xhf",
+              "sku": "DISCDEMO-MUG",
+              "name": "Disc demo Stoneware Mug",
+              "quantity": 1,
+              "options": [],
+              "course": null,
+              "seat": null,
+              "specialInstructions": null
+            }
+          ],
+          "itemRefs": [
+            {
+              "orderId": "6ac294b9ab9829f838ab91f7",
+              "itemId": "bgy2dxwg0xhf"
+            }
+          ]
+        },
+        "history": [
+          {
+            "stageId": 0,
+            "status": "new",
+            "dueDate": null,
+            "note": "1\u00d7 Disc demo Stoneware Mug",
+            "modified": "2026-10-04T18:03:04.318Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com"
+          },
+          {
+            "stageId": 1,
+            "status": "inprogress",
+            "dueDate": null,
+            "note": "1\u00d7 Disc demo Stoneware Mug",
+            "modified": "2026-10-04T18:03:57.292Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com"
+          },
+          {
+            "stageId": 2,
+            "status": "pending",
+            "dueDate": null,
+            "note": "1\u00d7 Disc demo Stoneware Mug",
+            "modified": "2026-10-04T18:04:14.784Z",
+            "modifiedBy": "video-lab-mut4jkwd@example.com"
+          }
+        ],
+        "approvals": [],
+        "note": "1\u00d7 Disc demo Stoneware Mug",
+        "assignToNames": [],
+        "decidedByName": "Video Lab"
+      }
+    ],
+    "myRequests": []
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "startedAt": "2026-10-10T10:30:30.425167+00:00",
+  "durationSeconds": 0.014,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "datatype": "schedule",
+      "isNew": true,
+      "data": {
+        "name": "course-invalid-target",
+        "type": "simple",
+        "status": "stop",
+        "start": {
+          "date": "2026-10-11T10:30:30.387Z",
+          "action": "update-status",
+          "actionArgs": "ready"
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 400,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "reason": "target_required",
+      "field": "target",
+      "statusCode": 400,
+      "error": "Pick the record this schedule acts on.",
+      "path": "/repository/create",
+      "method": "POST",
+      "timeStamp": "2026-10-10T10:30:30.438Z"
+    }
+  }
+}

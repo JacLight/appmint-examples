@@ -1,0 +1,24 @@
+{
+  "orderNumber": "HS851V342",
+  "status": "shipped",
+  "stockStatus": "complete",
+  "drawn": {
+    "HEADLESS-CEDAR-1010": 2
+  },
+  "issues": [],
+  "inventoryQuantity": 28,
+  "inventoryUnitCost": 0,
+  "results": [
+    {
+      "sku": "HEADLESS-CEDAR-1010",
+      "quantity": 2,
+      "locationId": "bm-checkout-course",
+      "transactionId": "INV-29EB45F9A86A450B915DA7D3",
+      "alreadyApplied": false
+    }
+  ],
+  "paymentUnchanged": true,
+  "addressUnchanged": true,
+  "trackingUnchanged": true,
+  "repeatNoDoubleDraw": true
+}

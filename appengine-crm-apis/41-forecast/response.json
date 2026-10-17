@@ -1,0 +1,95 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "months": [
+      "2026-10",
+      "2026-11",
+      "2026-12"
+    ],
+    "byMonth": [
+      {
+        "month": "2026-10",
+        "weighted": 0,
+        "open": 0,
+        "openCount": 0,
+        "won": 0,
+        "wonCount": 1
+      },
+      {
+        "month": "2026-11",
+        "weighted": 0,
+        "open": 0,
+        "openCount": 0,
+        "won": 0,
+        "wonCount": 0
+      },
+      {
+        "month": "2026-12",
+        "weighted": 0,
+        "open": 0,
+        "openCount": 0,
+        "won": 0,
+        "wonCount": 0
+      }
+    ],
+    "byOwner": [
+      {
+        "owner": "video-lab-mut4jkwd@example.com",
+        "weighted": 0,
+        "open": 0,
+        "openCount": 0,
+        "won": 0,
+        "wonCount": 1,
+        "quota": null,
+        "ownerName": "Video Lab"
+      }
+    ],
+    "totals": {
+      "openCount": 0,
+      "openValue": 0,
+      "weighted": 0,
+      "wonCount": 1,
+      "wonValue": 0,
+      "lostCount": 0,
+      "unpriced": 0,
+      "withoutProbability": 0
+    },
+    "pipelines": [
+      {
+        "sk": "6aca82e237ff863efff476aa",
+        "name": "CRM API course",
+        "stages": [
+          {
+            "id": "new",
+            "name": "New",
+            "probability": 10,
+            "isWon": false,
+            "isLost": false
+          },
+          {
+            "id": "qualified",
+            "name": "Qualified",
+            "probability": 50,
+            "isWon": false,
+            "isLost": false
+          },
+          {
+            "id": "won",
+            "name": "Won",
+            "probability": 100,
+            "isWon": true,
+            "isLost": false
+          },
+          {
+            "id": "lost",
+            "name": "Lost",
+            "probability": 0,
+            "isWon": false,
+            "isLost": true
+          }
+        ]
+      }
+    ]
+  }
+}

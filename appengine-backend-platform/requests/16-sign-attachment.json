@@ -1,0 +1,10 @@
+{
+  "method": "POST",
+  "path": "/repository/file/signurl",
+  "body": {
+    "location": "video-lab-mut4jkwd/course-baas-1010/submission-notes.txt",
+    "options": {
+      "expiry": 900
+    }
+  }
+}

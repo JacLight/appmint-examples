@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "path": "/mcp",
+  "headers": {
+    "Content-Type": "application/json"
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "jsonrpc": "2.0",
+    "id": "a",
+    "method": "ping"
+  },
+  {
+    "jsonrpc": "2.0",
+    "id": "b",
+    "method": "tools/list"
+  },
+  {
+    "jsonrpc": "2.0",
+    "method": "notifications/initialized"
+  }
+]

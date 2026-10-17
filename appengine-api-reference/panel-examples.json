@@ -1,0 +1,352 @@
+[
+  {
+    "scene": "lookup_detail",
+    "phase": 0,
+    "method": "GET",
+    "path": "/documentation/search",
+    "body": null,
+    "languages": {
+      "typescript": "const url = new URL(base + \"/documentation/search\");\nurl.search = new URLSearchParams({\"q\": \"reservations slots\", \"limit\": \"5\"}).toString();\nconst response = await fetch(url);\nconst result = await response.json();",
+      "javascript": "const url = new URL(base + \"/documentation/search\");\nurl.search = new URLSearchParams({\"q\": \"reservations slots\", \"limit\": \"5\"}).toString();\nconst response = await fetch(url);\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.get(\n  base + \"/documentation/search\",\n  params={'q': 'reservations slots', 'limit': '5'},\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS --get \"$BASE/documentation/search\" \\\n  --data-urlencode 'q=reservations slots' \\\n  --data-urlencode 'limit=5'",
+      "postman": "GET {{base}}/documentation/search\nQuery parameters\n  q: reservations slots\n  limit: 5"
+    }
+  },
+  {
+    "scene": "lookup_detail",
+    "phase": 1,
+    "method": "GET",
+    "path": "/documentation/endpoint",
+    "body": null,
+    "languages": {
+      "typescript": "const hit = result.results.find(\n  x => x.method === \"POST\" &&\n  x.path === \"/crm/reservations/slots\"\n);\nconst detail = new URL(hit.detail);\ndetail.searchParams.set(\"format\", \"json\");\nconst response = await fetch(detail);\nconst contract = await response.json();",
+      "javascript": "const hit = result.results.find(\n  x => x.method === \"POST\" &&\n  x.path === \"/crm/reservations/slots\"\n);\nconst detail = new URL(hit.detail);\ndetail.searchParams.set(\"format\", \"json\");\nconst response = await fetch(detail);\nconst contract = await response.json();",
+      "python": "hit = next(x for x in result[\"results\"]\n  if x[\"method\"] == \"POST\" and\n  x[\"path\"] == \"/crm/reservations/slots\")\nresponse = requests.get(\n  hit[\"detail\"], params={\"format\": \"json\"},\n  timeout=30\n)\nresponse.raise_for_status()\ncontract = response.json()",
+      "curl": "read -r -p \"Returned detail URL: \" DETAIL\ncurl -sS --get \"$DETAIL\" \\\n  --data-urlencode \"format=json\"",
+      "postman": "GET {{detail}}\n\nCopy detail from the selected search hit\nto the detail environment variable.\nQuery parameter\n  format: json"
+    }
+  },
+  {
+    "scene": "lookup_detail",
+    "phase": 2,
+    "method": "GET",
+    "path": "/documentation/endpoint",
+    "body": null,
+    "languages": {
+      "typescript": "const url = new URL(base + \"/documentation/endpoint\");\nurl.search = new URLSearchParams({\"method\": \"POST\", \"path\": \"/crm/reservations/slots\", \"format\": \"json\"}).toString();\nconst response = await fetch(url);\nconst result = await response.json();",
+      "javascript": "const url = new URL(base + \"/documentation/endpoint\");\nurl.search = new URLSearchParams({\"method\": \"POST\", \"path\": \"/crm/reservations/slots\", \"format\": \"json\"}).toString();\nconst response = await fetch(url);\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.get(\n  base + \"/documentation/endpoint\",\n  params={'method': 'POST', 'path': '/crm/reservations/slots', 'format': 'json'},\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS --get \"$BASE/documentation/endpoint\" \\\n  --data-urlencode 'method=POST' \\\n  --data-urlencode 'path=/crm/reservations/slots' \\\n  --data-urlencode 'format=json'",
+      "postman": "GET {{base}}/documentation/endpoint\nQuery parameters\n  method: POST\n  path: /crm/reservations/slots\n  format: json"
+    }
+  },
+  {
+    "scene": "lookup_detail",
+    "phase": 3,
+    "method": "GET",
+    "path": "/documentation/endpoint",
+    "body": null,
+    "languages": {
+      "typescript": "const url = new URL(base + \"/documentation/endpoint\");\nurl.search = new URLSearchParams({\"method\": \"POST\", \"path\": \"/crm/reservations/slots\", \"format\": \"json\"}).toString();\nconst response = await fetch(url);\nconst result = await response.json();",
+      "javascript": "const url = new URL(base + \"/documentation/endpoint\");\nurl.search = new URLSearchParams({\"method\": \"POST\", \"path\": \"/crm/reservations/slots\", \"format\": \"json\"}).toString();\nconst response = await fetch(url);\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.get(\n  base + \"/documentation/endpoint\",\n  params={'method': 'POST', 'path': '/crm/reservations/slots', 'format': 'json'},\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS --get \"$BASE/documentation/endpoint\" \\\n  --data-urlencode 'method=POST' \\\n  --data-urlencode 'path=/crm/reservations/slots' \\\n  --data-urlencode 'format=json'",
+      "postman": "GET {{base}}/documentation/endpoint\nQuery parameters\n  method: POST\n  path: /crm/reservations/slots\n  format: json"
+    }
+  },
+  {
+    "scene": "lookup_detail",
+    "phase": 4,
+    "method": "GET",
+    "path": "/documentation/endpoint",
+    "body": null,
+    "languages": {
+      "typescript": "const url = new URL(base + \"/documentation/endpoint\");\nurl.search = new URLSearchParams({\"method\": \"POST\", \"path\": \"/crm/reservations/slots\", \"format\": \"json\"}).toString();\nconst response = await fetch(url);\nconst result = await response.json();",
+      "javascript": "const url = new URL(base + \"/documentation/endpoint\");\nurl.search = new URLSearchParams({\"method\": \"POST\", \"path\": \"/crm/reservations/slots\", \"format\": \"json\"}).toString();\nconst response = await fetch(url);\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.get(\n  base + \"/documentation/endpoint\",\n  params={'method': 'POST', 'path': '/crm/reservations/slots', 'format': 'json'},\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS --get \"$BASE/documentation/endpoint\" \\\n  --data-urlencode 'method=POST' \\\n  --data-urlencode 'path=/crm/reservations/slots' \\\n  --data-urlencode 'format=json'",
+      "postman": "GET {{base}}/documentation/endpoint\nQuery parameters\n  method: POST\n  path: /crm/reservations/slots\n  format: json"
+    }
+  },
+  {
+    "scene": "definitions",
+    "phase": 0,
+    "method": "GET",
+    "path": "/crm/reservations/definitions",
+    "body": null,
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/crm/reservations/definitions\", {\n  method: \"GET\",\n  headers: { orgid },\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/crm/reservations/definitions\", {\n  method: \"GET\",\n  headers: { orgid },\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.get(\n  base + \"/crm/reservations/definitions\",\n  headers={\"orgid\": orgid},\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X GET \\\n  \"$BASE/crm/reservations/definitions\" \\\n  -H \"orgid: $ORG_ID\"",
+      "postman": "GET {{base}}/crm/reservations/definitions\nHeaders\n  orgid: {{orgid}}\n\nRead status and response body."
+    }
+  },
+  {
+    "scene": "definitions",
+    "phase": 1,
+    "method": "GET",
+    "path": "/crm/reservations/definitions",
+    "body": null,
+    "languages": {
+      "typescript": "const definition = result.data.find(\n  d => d.data.name === \"course-tasting-1004\"\n);\nconst definitionId = definition.sk;\nconst serviceName =\n  definition.data.services[0].name;\nconst body = {\n  reservationDefinitionId: definitionId,\n  serviceName, serviceDate: \"2026-10-20\"\n};",
+      "javascript": "const definition = result.data.find(\n  d => d.data.name === \"course-tasting-1004\"\n);\nconst definitionId = definition.sk;\nconst serviceName =\n  definition.data.services[0].name;\nconst body = {\n  reservationDefinitionId: definitionId,\n  serviceName, serviceDate: \"2026-10-20\"\n};",
+      "python": "definition = next(d for d in result[\"data\"]\n  if d[\"data\"][\"name\"] == \"course-tasting-1004\")\ndefinition_id = definition[\"sk\"]\nservice_name = definition[\"data\"][\"services\"][0][\"name\"]\nbody = {\n  \"reservationDefinitionId\": definition_id,\n  \"serviceName\": service_name,\n  \"serviceDate\": \"2026-10-20\"\n}",
+      "curl": "DEF=\"6ac2937fab9829f838ab9193\"\nSERVICE=\"Course tasting session\"\n# Copied from the returned definition.\n# Put these values into request.json.\n# Use your own definition when practicing.",
+      "postman": "// Post-response script\nconst d = pm.response.json().data.find(\n  d => d.data.name === \"course-tasting-1004\"\n);\npm.environment.set(\"definitionId\", d.sk);\npm.environment.set(\n  \"serviceName\", d.data.services[0].name\n);"
+    }
+  },
+  {
+    "scene": "definitions",
+    "phase": 2,
+    "method": "GET",
+    "path": "/crm/reservations/definitions",
+    "body": null,
+    "languages": {
+      "typescript": "const definition = result.data.find(\n  d => d.data.name === \"course-tasting-1004\"\n);\nconst definitionId = definition.sk;\nconst serviceName =\n  definition.data.services[0].name;\nconst body = {\n  reservationDefinitionId: definitionId,\n  serviceName, serviceDate: \"2026-10-20\"\n};",
+      "javascript": "const definition = result.data.find(\n  d => d.data.name === \"course-tasting-1004\"\n);\nconst definitionId = definition.sk;\nconst serviceName =\n  definition.data.services[0].name;\nconst body = {\n  reservationDefinitionId: definitionId,\n  serviceName, serviceDate: \"2026-10-20\"\n};",
+      "python": "definition = next(d for d in result[\"data\"]\n  if d[\"data\"][\"name\"] == \"course-tasting-1004\")\ndefinition_id = definition[\"sk\"]\nservice_name = definition[\"data\"][\"services\"][0][\"name\"]\nbody = {\n  \"reservationDefinitionId\": definition_id,\n  \"serviceName\": service_name,\n  \"serviceDate\": \"2026-10-20\"\n}",
+      "curl": "DEF=\"6ac2937fab9829f838ab9193\"\nSERVICE=\"Course tasting session\"\n# Copied from the returned definition.\n# Put these values into request.json.\n# Use your own definition when practicing.",
+      "postman": "// Post-response script\nconst d = pm.response.json().data.find(\n  d => d.data.name === \"course-tasting-1004\"\n);\npm.environment.set(\"definitionId\", d.sk);\npm.environment.set(\n  \"serviceName\", d.data.services[0].name\n);"
+    }
+  },
+  {
+    "scene": "slots",
+    "phase": 0,
+    "method": "POST",
+    "path": "/crm/reservations/slots",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "serviceName": "Course tasting session",
+      "serviceDate": "2026-10-20"
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/crm/reservations/slots\",\n  headers={\"orgid\": orgid},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/crm/reservations/slots\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/crm/reservations/slots\nHeaders\n  orgid: {{orgid}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"serviceName\": \"Course tasting session\",\n  \"serviceDate\": \"2026-10-20\" }"
+    }
+  },
+  {
+    "scene": "slots",
+    "phase": 1,
+    "method": "POST",
+    "path": "/crm/reservations/slots",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "serviceName": "Course tasting session",
+      "serviceDate": "2026-10-20"
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/crm/reservations/slots\",\n  headers={\"orgid\": orgid},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/crm/reservations/slots\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/crm/reservations/slots\nHeaders\n  orgid: {{orgid}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"serviceName\": \"Course tasting session\",\n  \"serviceDate\": \"2026-10-20\" }"
+    }
+  },
+  {
+    "scene": "slots",
+    "phase": 2,
+    "method": "POST",
+    "path": "/crm/reservations/slots",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "serviceName": "Course tasting session",
+      "serviceDate": "2026-10-20"
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/crm/reservations/slots\",\n  headers={\"orgid\": orgid},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/crm/reservations/slots\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/crm/reservations/slots\nHeaders\n  orgid: {{orgid}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"serviceName\": \"Course tasting session\",\n  \"serviceDate\": \"2026-10-20\" }"
+    }
+  },
+  {
+    "scene": "slots",
+    "phase": 3,
+    "method": "POST",
+    "path": "/crm/reservations/slots",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "serviceName": "Course tasting session",
+      "serviceDate": "2026-10-20"
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/crm/reservations/slots\",\n  headers={\"orgid\": orgid},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/crm/reservations/slots\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/crm/reservations/slots\nHeaders\n  orgid: {{orgid}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"serviceName\": \"Course tasting session\",\n  \"serviceDate\": \"2026-10-20\" }"
+    }
+  },
+  {
+    "scene": "slots",
+    "phase": 4,
+    "method": "POST",
+    "path": "/crm/reservations/slots",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "serviceName": "Course tasting session",
+      "serviceDate": "2026-10-20"
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/crm/reservations/slots\",\n  headers={\"orgid\": orgid},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/crm/reservations/slots\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/crm/reservations/slots\nHeaders\n  orgid: {{orgid}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"serviceName\": \"Course tasting session\",\n  \"serviceDate\": \"2026-10-20\" }"
+    }
+  },
+  {
+    "scene": "slots",
+    "phase": 5,
+    "method": "POST",
+    "path": "/crm/reservations/slots",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "serviceName": "Course tasting session",
+      "serviceDate": "2026-10-20"
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/crm/reservations/slots\",\n  headers={\"orgid\": orgid},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/crm/reservations/slots\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/crm/reservations/slots\nHeaders\n  orgid: {{orgid}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"serviceName\": \"Course tasting session\",\n  \"serviceDate\": \"2026-10-20\" }"
+    }
+  },
+  {
+    "scene": "book_result",
+    "phase": 0,
+    "method": "POST",
+    "path": "/client-data/reservations",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "service": "Course tasting session",
+      "startTime": "2026-10-20T14:00:00.000Z",
+      "customer": {
+        "name": "Mira-Lin Chen",
+        "email": "YOUR_CUSTOMER_EMAIL"
+      }
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/client-data/reservations\", {\n  method: \"POST\",\n  headers: { orgid,\n    Authorization: `Bearer ${token}`,\n    \"x-client-info\": clientInfo,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/client-data/reservations\", {\n  method: \"POST\",\n  headers: { orgid,\n    Authorization: `Bearer ${token}`,\n    \"x-client-info\": clientInfo,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/client-data/reservations\",\n  headers={\"orgid\": orgid,\n    \"Authorization\": \"Bearer \" + token,\n    \"x-client-info\": client_info},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/client-data/reservations\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"x-client-info: $CLIENT_INFO\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/client-data/reservations\nHeaders\n  orgid: {{orgid}}\n  Authorization: Bearer {{token}}\n  x-client-info: {{clientInfo}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"service\": \"Course tasting session\",\n  \"startTime\": \"2026-10-20T14:00:00.000Z\",\n  \"customer\": { \"name\": \"Mira-Lin Chen\", \"email\": \"YOUR_CUSTOMER_EMAIL\" } }"
+    }
+  },
+  {
+    "scene": "book_result",
+    "phase": 1,
+    "method": "POST",
+    "path": "/client-data/reservations",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "service": "Course tasting session",
+      "startTime": "2026-10-20T14:00:00.000Z",
+      "customer": {
+        "name": "Mira-Lin Chen",
+        "email": "YOUR_CUSTOMER_EMAIL"
+      }
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/client-data/reservations\", {\n  method: \"POST\",\n  headers: { orgid,\n    Authorization: `Bearer ${token}`,\n    \"x-client-info\": clientInfo,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/client-data/reservations\", {\n  method: \"POST\",\n  headers: { orgid,\n    Authorization: `Bearer ${token}`,\n    \"x-client-info\": clientInfo,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/client-data/reservations\",\n  headers={\"orgid\": orgid,\n    \"Authorization\": \"Bearer \" + token,\n    \"x-client-info\": client_info},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/client-data/reservations\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"x-client-info: $CLIENT_INFO\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/client-data/reservations\nHeaders\n  orgid: {{orgid}}\n  Authorization: Bearer {{token}}\n  x-client-info: {{clientInfo}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"service\": \"Course tasting session\",\n  \"startTime\": \"2026-10-20T14:00:00.000Z\",\n  \"customer\": { \"name\": \"Mira-Lin Chen\", \"email\": \"YOUR_CUSTOMER_EMAIL\" } }"
+    }
+  },
+  {
+    "scene": "book_result",
+    "phase": 2,
+    "method": "POST",
+    "path": "/client-data/reservations",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "service": "Course tasting session",
+      "startTime": "2026-10-20T14:00:00.000Z",
+      "customer": {
+        "name": "Mira-Lin Chen",
+        "email": "YOUR_CUSTOMER_EMAIL"
+      }
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/client-data/reservations\", {\n  method: \"POST\",\n  headers: { orgid,\n    Authorization: `Bearer ${token}`,\n    \"x-client-info\": clientInfo,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/client-data/reservations\", {\n  method: \"POST\",\n  headers: { orgid,\n    Authorization: `Bearer ${token}`,\n    \"x-client-info\": clientInfo,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/client-data/reservations\",\n  headers={\"orgid\": orgid,\n    \"Authorization\": \"Bearer \" + token,\n    \"x-client-info\": client_info},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/client-data/reservations\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"x-client-info: $CLIENT_INFO\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/client-data/reservations\nHeaders\n  orgid: {{orgid}}\n  Authorization: Bearer {{token}}\n  x-client-info: {{clientInfo}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"service\": \"Course tasting session\",\n  \"startTime\": \"2026-10-20T14:00:00.000Z\",\n  \"customer\": { \"name\": \"Mira-Lin Chen\", \"email\": \"YOUR_CUSTOMER_EMAIL\" } }"
+    }
+  },
+  {
+    "scene": "book_result",
+    "phase": 3,
+    "method": "GET",
+    "path": "/client-data/reservations",
+    "body": null,
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/client-data/reservations\", {\n  method: \"GET\",\n  headers: { orgid,\n    Authorization: `Bearer ${token}`,\n    \"x-client-info\": clientInfo },\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/client-data/reservations\", {\n  method: \"GET\",\n  headers: { orgid,\n    Authorization: `Bearer ${token}`,\n    \"x-client-info\": clientInfo },\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.get(\n  base + \"/client-data/reservations\",\n  headers={\"orgid\": orgid,\n    \"Authorization\": \"Bearer \" + token,\n    \"x-client-info\": client_info},\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X GET \\\n  \"$BASE/client-data/reservations\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"x-client-info: $CLIENT_INFO\"",
+      "postman": "GET {{base}}/client-data/reservations\nHeaders\n  orgid: {{orgid}}\n  Authorization: Bearer {{token}}\n  x-client-info: {{clientInfo}}\n\nRead status and response body."
+    }
+  },
+  {
+    "scene": "book_result",
+    "phase": 4,
+    "method": "GET",
+    "path": "/client-data/reservations",
+    "body": null,
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/client-data/reservations\", {\n  method: \"GET\",\n  headers: { orgid,\n    Authorization: `Bearer ${token}`,\n    \"x-client-info\": clientInfo },\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/client-data/reservations\", {\n  method: \"GET\",\n  headers: { orgid,\n    Authorization: `Bearer ${token}`,\n    \"x-client-info\": clientInfo },\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.get(\n  base + \"/client-data/reservations\",\n  headers={\"orgid\": orgid,\n    \"Authorization\": \"Bearer \" + token,\n    \"x-client-info\": client_info},\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X GET \\\n  \"$BASE/client-data/reservations\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"x-client-info: $CLIENT_INFO\"",
+      "postman": "GET {{base}}/client-data/reservations\nHeaders\n  orgid: {{orgid}}\n  Authorization: Bearer {{token}}\n  x-client-info: {{clientInfo}}\n\nRead status and response body."
+    }
+  },
+  {
+    "scene": "book_result",
+    "phase": 5,
+    "method": "POST",
+    "path": "/crm/reservations/slots",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "serviceName": "Course tasting session",
+      "serviceDate": "2026-10-20"
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/crm/reservations/slots\",\n  headers={\"orgid\": orgid},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/crm/reservations/slots\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/crm/reservations/slots\nHeaders\n  orgid: {{orgid}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"serviceName\": \"Course tasting session\",\n  \"serviceDate\": \"2026-10-20\" }"
+    }
+  },
+  {
+    "scene": "book_result",
+    "phase": 6,
+    "method": "POST",
+    "path": "/crm/reservations/slots",
+    "body": {
+      "reservationDefinitionId": "6ac2937fab9829f838ab9193",
+      "serviceName": "Course tasting session",
+      "serviceDate": "2026-10-20"
+    },
+    "languages": {
+      "typescript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "javascript": "const response = await fetch(\n  base + \"/crm/reservations/slots\", {\n  method: \"POST\",\n  headers: { orgid,\n    \"Content-Type\": \"application/json\" },\n  body: JSON.stringify(body)\n});\nif (!response.ok) throw Error(String(response.status));\nconst result = await response.json();",
+      "python": "import requests\nresponse = requests.post(\n  base + \"/crm/reservations/slots\",\n  headers={\"orgid\": orgid},\n  json=body,\n  timeout=30\n)\nresponse.raise_for_status()\nresult = response.json()",
+      "curl": "curl -sS -i -X POST \\\n  \"$BASE/crm/reservations/slots\" \\\n  -H \"orgid: $ORG_ID\" \\\n  -H \"Content-Type: application/json\" \\\n  --data-binary @request.json",
+      "postman": "POST {{base}}/crm/reservations/slots\nHeaders\n  orgid: {{orgid}}\n  Content-Type: application/json\nBody \u2192 raw \u2192 JSON\n{\n  \"reservationDefinitionId\": \"6ac2937fab9829f838ab9193\",\n  \"serviceName\": \"Course tasting session\",\n  \"serviceDate\": \"2026-10-20\" }"
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "method": "POST",
+  "path": "/repository/find/baas_receipts_1010",
+  "body": {
+    "query": {
+      "data.reference": "PREVIEW-1010"
+    },
+    "options": {
+      "page": 1,
+      "pageSize": 10
+    }
+  }
+}

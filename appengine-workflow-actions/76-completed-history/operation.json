@@ -1,0 +1,10 @@
+{
+  "method": "GET",
+  "path": "/workflow/task/6aca14d5f5d6b011f6e12099/history",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": null
+}

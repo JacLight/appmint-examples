@@ -1,0 +1,38 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "pk": "video-lab-mut4jkwd|lead",
+    "sk": "6aca82e237ff863efff476ad",
+    "name": "LEAD1791656674902IQ2J",
+    "datatype": "lead",
+    "data": {
+      "fullName": "Mira CRM Course",
+      "email": "mira.crm1010@example.invalid",
+      "source": "website",
+      "description": "Controlled API inquiry",
+      "pipelineId": "6aca82e237ff863efff476aa",
+      "stageId": "new",
+      "status": "new",
+      "contactId": "6aca82e237ff863efff476ab",
+      "id": "lead_1791656674902_pc6vnkfr",
+      "name": "LEAD1791656674902IQ2J",
+      "firstName": "Mira",
+      "lastName": "CRM Course",
+      "score": 40,
+      "temperature": "warm",
+      "createdAt": "2026-10-10T18:24:34.902Z",
+      "updatedAt": "2026-10-10T18:24:34.902Z",
+      "leadInformation": {
+        "leadScore": 40
+      }
+    },
+    "version": 0,
+    "author": "video-lab-mut4jkwd@example.com",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "createdate": "2026-10-10T18:24:34.907Z",
+    "modifydate": "2026-10-10T18:24:34.907Z",
+    "id": "6aca82e237ff863efff476ad"
+  }
+}

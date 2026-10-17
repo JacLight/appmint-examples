@@ -1,0 +1,65 @@
+{
+  "name": "api-review-1010",
+  "title": "API Record Review",
+  "enabled": true,
+  "autoFire": false,
+  "collections": [
+    "workflow_lab_1010"
+  ],
+  "notificationTemplate": [],
+  "stages": [
+    {
+      "id": 0,
+      "name": "Received",
+      "type": "start",
+      "modelStatus": "new",
+      "modelState": "new",
+      "assignTo": [
+        "video-lab-mut4jkwd@example.com"
+      ],
+      "notificationTemplate": [],
+      "escalations": [
+        {
+          "escalateAfter": 60,
+          "units": "minutes",
+          "notificationTemplate": []
+        },
+        {
+          "escalateAfter": 120,
+          "units": "minutes",
+          "notificationTemplate": []
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Reviewing",
+      "type": "intermediate",
+      "modelStatus": "inprogress",
+      "modelState": "inprogress",
+      "assignTo": [
+        "video-lab-mut4jkwd@example.com"
+      ],
+      "notificationTemplate": [],
+      "inputs": [
+        {
+          "name": "result",
+          "type": "string",
+          "required": true,
+          "label": "Review result"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Completed",
+      "type": "end",
+      "modelStatus": "done",
+      "modelState": "completed",
+      "assignTo": [
+        "video-lab-mut4jkwd@example.com"
+      ],
+      "notificationTemplate": []
+    }
+  ]
+}

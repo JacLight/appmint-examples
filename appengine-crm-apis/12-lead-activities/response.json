@@ -1,0 +1,156 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": [
+    {
+      "id": "6aca82e337ff863efff476b6",
+      "type": "note",
+      "description": "Moved to Won",
+      "createdAt": "2026-10-10T18:24:35.078Z",
+      "createdBy": "Video Lab",
+      "metadata": {
+        "activityType": "stage_changed",
+        "source": "system",
+        "action": "Moved to Won",
+        "details": null,
+        "fromStageId": "new",
+        "fromStage": "New",
+        "toStageId": "won",
+        "toStage": "Won",
+        "isWon": true
+      }
+    },
+    {
+      "id": "6aca82e337ff863efff476b5",
+      "type": "note",
+      "description": "Lead updated",
+      "createdAt": "2026-10-10T18:24:35.073Z",
+      "createdBy": "Video Lab",
+      "metadata": {
+        "activityType": "lead_updated",
+        "source": "system",
+        "action": "Lead updated",
+        "changes": [
+          {
+            "field": "status",
+            "oldValue": "qualified",
+            "newValue": "converted"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6aca82e337ff863efff476b4",
+      "type": "note",
+      "description": "Lead converted",
+      "createdAt": "2026-10-10T18:24:35.061Z",
+      "createdBy": "Video Lab",
+      "metadata": {
+        "activityType": "lead_converted",
+        "source": "system",
+        "action": "Lead converted",
+        "details": "Mira CRM Course is now a customer contact, value $150"
+      }
+    },
+    {
+      "id": "6aca82e337ff863efff476b3",
+      "type": "note",
+      "description": "Lead updated",
+      "createdAt": "2026-10-10T18:24:35.037Z",
+      "createdBy": "Video Lab",
+      "metadata": {
+        "activityType": "lead_updated",
+        "source": "system",
+        "action": "Lead updated",
+        "changes": [
+          {
+            "field": "status",
+            "oldValue": "new",
+            "newValue": "qualified"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6aca82e337ff863efff476b2",
+      "type": "note",
+      "description": "Lead qualified",
+      "createdAt": "2026-10-10T18:24:35.022Z",
+      "createdBy": "Video Lab",
+      "metadata": {
+        "activityType": "lead_qualified",
+        "source": "system",
+        "action": "Lead qualified",
+        "details": "Integration requirements confirmed"
+      }
+    },
+    {
+      "id": "6aca82e337ff863efff476b1",
+      "type": "note",
+      "description": "Follow-up scheduled",
+      "createdAt": "2026-10-10T18:24:34.999Z",
+      "createdBy": "Video Lab",
+      "metadata": {
+        "activityType": "follow_up_scheduled",
+        "source": "system",
+        "action": "Follow-up scheduled",
+        "details": "Follow-up scheduled for Wed Oct 14 2026: Review the requested guide"
+      }
+    },
+    {
+      "type": "note",
+      "description": "Requested the API integration guide",
+      "id": "activity_ivvmdd6i8j7y5w03",
+      "createdAt": "2026-10-10T18:24:34.982Z",
+      "createdBy": "Video Lab",
+      "metadata": {
+        "source": "manual"
+      }
+    },
+    {
+      "id": "6aca82e237ff863efff476b0",
+      "type": "note",
+      "description": "Lead updated",
+      "createdAt": "2026-10-10T18:24:34.963Z",
+      "createdBy": "Video Lab",
+      "metadata": {
+        "activityType": "lead_updated",
+        "source": "system",
+        "action": "Lead updated",
+        "changes": [
+          {
+            "field": "assignedTo",
+            "oldValue": null,
+            "newValue": "video-lab-mut4jkwd@example.com"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6aca82e237ff863efff476af",
+      "type": "note",
+      "description": "Lead assigned",
+      "createdAt": "2026-10-10T18:24:34.952Z",
+      "createdBy": "Video Lab",
+      "metadata": {
+        "activityType": "lead_assigned",
+        "source": "system",
+        "action": "Lead assigned",
+        "details": "Lead assigned to Video Lab"
+      }
+    },
+    {
+      "id": "6aca82e237ff863efff476ae",
+      "type": "note",
+      "description": "Lead created",
+      "createdAt": "2026-10-10T18:24:34.920Z",
+      "createdBy": "Video Lab",
+      "metadata": {
+        "activityType": "lead_created",
+        "source": "system",
+        "action": "Lead created",
+        "details": "New lead \"Mira CRM Course\" created from website"
+      }
+    }
+  ]
+}

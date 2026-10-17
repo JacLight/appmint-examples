@@ -1,0 +1,30 @@
+{
+  "startedAt": "2026-10-10T10:30:30.486022+00:00",
+  "durationSeconds": 0.023,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/schedule-control/start/6aca13c6f5d6b011f6e12052",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "scheduleId": "6aca13c6f5d6b011f6e12052",
+      "status": "active",
+      "queued": [
+        {
+          "id": "video-lab-mut4jkwd-6aca13c6f5d6b011f6e12052-start",
+          "name": "start",
+          "scheduledFor": "2026-10-10T12:30:30.387Z"
+        }
+      ]
+    }
+  }
+}

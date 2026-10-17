@@ -1,0 +1,68 @@
+{
+  "environment": "Isolated controlled training organization",
+  "request": {
+    "method": "POST",
+    "path": "/storefront/discounts",
+    "identity": "authorized staff",
+    "body": {
+      "name": "Headless option10",
+      "code": "HCOPTION10",
+      "status": "active",
+      "type": "percent",
+      "value": 10,
+      "applyTo": "products",
+      "products": [
+        "HEADLESS-OPTIONS-1010"
+      ],
+      "autoApply": false,
+      "canCombine": false
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "pk": "video-lab-mut4jkwd|sf_discount",
+      "sk": "6acaca428c597416cfbe7f2f",
+      "name": "Headless option10",
+      "datatype": "sf_discount",
+      "data": {
+        "name": "Headless option10",
+        "description": null,
+        "status": "active",
+        "code": "HCOPTION10",
+        "priority": 0,
+        "stackable": false,
+        "type": "percent",
+        "value": 10,
+        "maxDiscount": null,
+        "buyXGetY": null,
+        "applyTo": "products",
+        "products": [
+          "HEADLESS-OPTIONS-1010"
+        ],
+        "categories": null,
+        "merchant": null,
+        "excludeProducts": null,
+        "minCartValue": null,
+        "minCartItems": null,
+        "firstOrderOnly": null,
+        "requireProducts": null,
+        "customerGroups": null,
+        "excludeCustomerGroups": null,
+        "customers": null,
+        "excludeCustomers": null,
+        "startDate": null,
+        "endDate": null,
+        "usageLimit": null,
+        "usageLimitPerCustomer": null,
+        "usageCount": 0
+      },
+      "version": 0,
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "createdate": "2026-10-10T23:29:06.364Z",
+      "modifydate": "2026-10-10T23:29:06.364Z",
+      "id": "6acaca428c597416cfbe7f2f"
+    }
+  }
+}

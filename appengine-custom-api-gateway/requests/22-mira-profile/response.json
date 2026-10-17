@@ -1,0 +1,37 @@
+{
+  "status": 200,
+  "body": {
+    "_id": "6ac82b5a58e293f2e4d6635a",
+    "pk": "video-lab-mut4jkwd|customer",
+    "sk": "6ac82b5a58e293f2e4d6635a",
+    "name": "mira.chen.foundations@training.local",
+    "version": 1,
+    "datatype": "customer",
+    "data": {
+      "groups": [
+        "Customer"
+      ],
+      "username": "mira.chen.foundations@training.local",
+      "email": "mira.chen.foundations@training.local",
+      "firstName": "Mira-Lin",
+      "lastName": "Chen",
+      "audit": {
+        "lastLogin": "2026-10-10T19:30:34.992Z",
+        "meta": {
+          "ip": "::1",
+          "host": "localhost:3300",
+          "country": null,
+          "city": null,
+          "state": null,
+          "agent": "node"
+        }
+      },
+      "preferredStyle": "scandinavian"
+    },
+    "created_by": "system",
+    "state": "draft",
+    "createdate": "2026-10-08T23:46:34.851Z",
+    "modifydate": "2026-10-10T19:30:34.992Z",
+    "modified_by": "system"
+  }
+}

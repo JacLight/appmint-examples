@@ -1,0 +1,42 @@
+{
+  "status": 201,
+  "body": {
+    "taskId": "6acb1605ba781cd23c2f6e73",
+    "decision": "reject",
+    "task": {
+      "id": "6acb1605ba781cd23c2f6e73",
+      "title": "Warranty claim \u2014 dana.wf-usecase-1011@training.local",
+      "summary": "dana.wf-usecase-1011@training.local submitted Warranty claim",
+      "status": "rejected",
+      "stageId": 2,
+      "workflowName": "wf-usecase-1011-warranty",
+      "assignTo": [
+        "priya.wf-usecase-1011@training.local"
+      ],
+      "dueDate": null,
+      "createdate": "2026-10-11T04:52:21.851Z",
+      "owner": {
+        "datatype": "form_submission",
+        "id": "6acb1605ba781cd23c2f6e72",
+        "name": "Warranty claim \u2014 dana.wf-usecase-1011@training.local"
+      },
+      "payload": {
+        "formName": "wf-usecase-1011-warranty",
+        "formId": "6acb15c8ba781cd23c2f6e43",
+        "submitter": "dana.wf-usecase-1011@training.local",
+        "requesterEmail": "dana.wf-usecase-1011@training.local"
+      },
+      "history": [
+        {
+          "stageId": 0,
+          "status": "new",
+          "dueDate": "2026-10-13T04:52:21.847Z",
+          "note": "dana.wf-usecase-1011@training.local submitted Warranty claim",
+          "modified": "2026-10-11T04:52:21.906Z",
+          "modifiedBy": "priya.wf-usecase-1011@training.local"
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Use only appengine MCP tools. Describe TimesheetService.getTimesheet then try to read the synthetic training timesheet 6acb2e18ba781cd23c2f757e. This account intentionally has no content permission. Report the real response, stop if access is denied, do not switch accounts or execute any write, shell or file tool.

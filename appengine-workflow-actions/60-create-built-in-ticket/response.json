@@ -1,0 +1,24 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "pk": "video-lab-mut4jkwd|ticket",
+    "sk": "6aca13e3f5d6b011f6e1205b",
+    "name": "REIF60GU",
+    "datatype": "ticket",
+    "data": {
+      "title": "Workflow API course ticket",
+      "description": "Disposable training example for automatic workflow creation",
+      "priority": "normal",
+      "status": "new",
+      "name": "REIF60GU"
+    },
+    "version": 0,
+    "author": "video-lab-mut4jkwd@example.com",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "createdate": "2026-10-10T10:30:59.268Z",
+    "modifydate": "2026-10-10T10:30:59.268Z",
+    "id": "6aca13e3f5d6b011f6e1205b"
+  }
+}

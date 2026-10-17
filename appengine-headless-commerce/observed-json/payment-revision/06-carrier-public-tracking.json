@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/shipping/track/9434600208192110020066"
+  },
+  "response": {
+    "status": 400,
+    "body": {
+      "statusCode": 400,
+      "error": "In test mode, only test tracking numbers are valid. Test tracking numbers are EZ1000000001, EZ2000000002, ... , EZ7000000007",
+      "path": "/shipping/track/9434600208192110020066",
+      "method": "GET",
+      "timeStamp": "2026-10-10T23:30:08.050Z"
+    }
+  }
+}

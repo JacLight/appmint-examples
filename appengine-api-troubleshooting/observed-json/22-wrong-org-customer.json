@@ -1,0 +1,22 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/client-data/reservations/6acb2ce8ba781cd23c2f7515",
+    "headers": {
+      "content-type": "application/json",
+      "orgid": "diag-usecase-1011-nonexistent",
+      "authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 401,
+    "body": {
+      "statusCode": 401,
+      "error": "Customer identity does not belong to this organization",
+      "path": "/",
+      "method": "GET",
+      "timeStamp": "2026-10-11T06:39:08.250Z"
+    }
+  }
+}

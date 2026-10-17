@@ -1,0 +1,12 @@
+{
+  "method": "POST",
+  "path": "/approval/task/6aca13c4f5d6b011f6e1204e/reject",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "note": "Verified reject decision in the training course"
+  }
+}

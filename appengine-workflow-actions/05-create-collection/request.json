@@ -1,0 +1,29 @@
+{
+  "datatype": "collection",
+  "isNew": true,
+  "data": {
+    "name": "workflow_lab_1010",
+    "title": "Workflow API course records",
+    "enableWorkflow": true,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "status": {
+          "type": "string",
+          "title": "Status"
+        },
+        "result": {
+          "type": "string",
+          "title": "Result"
+        }
+      },
+      "required": [
+        "title"
+      ]
+    }
+  }
+}

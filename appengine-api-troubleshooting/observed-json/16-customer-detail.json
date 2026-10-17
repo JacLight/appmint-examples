@@ -1,0 +1,111 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/client-data/reservations/6acb2ce8ba781cd23c2f7515",
+    "headers": {
+      "content-type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6acb2ce8ba781cd23c2f7515",
+      "pk": "video-lab-mut4jkwd|reservation",
+      "sk": "6acb2ce8ba781cd23c2f7515",
+      "name": "YV81IH2J",
+      "datatype": "reservation-enriched",
+      "data": {
+        "reservationDefinitionId": "6acb2ce0ba781cd23c2f74f6",
+        "service": "Private session",
+        "startTime": "2026-10-20T17:00:00.000Z",
+        "customer": {
+          "email": "mira.connected-usecase-1011@training.local",
+          "name": "Mira Chen",
+          "phone": null,
+          "id": "6acb2ce0ba781cd23c2f74f7"
+        },
+        "name": "YV81IH2J",
+        "endTime": "2026-10-20T18:00:00.000Z",
+        "customerId": "6acb2ce0ba781cd23c2f74f7",
+        "status": "cancelled",
+        "source": "online",
+        "timezone": "America/Los_Angeles",
+        "locationType": "virtual",
+        "address": "",
+        "meetingInfo": "",
+        "meetingLink": "",
+        "rescheduleHistory": [
+          {
+            "fromStartTime": "2026-10-20T16:00:00.000Z",
+            "fromEndTime": "2026-10-20T17:00:00.000Z",
+            "toStartTime": "2026-10-20T17:00:00.000Z",
+            "toEndTime": "2026-10-20T18:00:00.000Z",
+            "at": "2026-10-11T06:30:01.097Z",
+            "by": "mira.connected-usecase-1011@training.local",
+            "byCustomer": true,
+            "reason": "Changed from the client"
+          }
+        ],
+        "cancelledAt": "2026-10-11T06:30:01.142Z",
+        "cancelledBy": "mira.connected-usecase-1011@training.local",
+        "cancelReason": "",
+        "reservationDefinition": {
+          "_id": "6acb2ce0ba781cd23c2f74f6",
+          "datatype": "reservation_definition",
+          "data": {
+            "name": "connected-usecase-1011-private-sessions",
+            "title": "Juniper Private Sessions",
+            "type": "service",
+            "status": "active",
+            "workDays": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "officeHours": {
+              "startTime": "09:00",
+              "endTime": "17:00",
+              "timezone": "America/Los_Angeles"
+            },
+            "spots": 1,
+            "services": [
+              {
+                "name": "Private session",
+                "duration": 60,
+                "price": 0,
+                "breakAfter": 0
+              }
+            ],
+            "notifications": [],
+            "notify": [],
+            "hosts": ""
+          },
+          "name": "connected-usecase-1011-private-sessions",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "pk": "video-lab-mut4jkwd|reservation_definition",
+          "createdate": "2026-10-11T06:29:52.293Z",
+          "modifydate": "2026-10-11T06:29:52.293Z",
+          "version": 0,
+          "sk": "6acb2ce0ba781cd23c2f74f6"
+        }
+      },
+      "version": 2,
+      "author": "mira.connected-usecase-1011@training.local",
+      "created_by": "mira.connected-usecase-1011@training.local",
+      "state": "draft",
+      "createdate": "2026-10-11T06:30:00.891Z",
+      "modifydate": "2026-10-11T06:30:01.145Z",
+      "modified_by": "mira.connected-usecase-1011@training.local",
+      "owner": {
+        "datatype": "reservation_definition",
+        "id": "6acb2ce0ba781cd23c2f74f6"
+      }
+    }
+  }
+}

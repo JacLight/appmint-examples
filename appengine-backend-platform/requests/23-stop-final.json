@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "path": "/automation/stop/6ac9e9a0f5d6b011f6e11a13",
+  "body": {
+    "reason": "Course finished; preserve records only"
+  }
+}

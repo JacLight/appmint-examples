@@ -1,0 +1,6 @@
+.env
+.env.local
+.supplier-state/
+node_modules/
+dist/
+__pycache__/

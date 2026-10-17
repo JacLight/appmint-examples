@@ -1,0 +1,84 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/sf_product",
+    "body": {
+      "query": {
+        "data.supplierSku": {
+          "$in": [
+            "NW-OAK-24",
+            "NW-WAL-18"
+          ]
+        }
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 20
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 2,
+      "datatype": "sf_product",
+      "pageSize": 20,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-11T04:50:24.367Z",
+      "data": [
+        {
+          "_id": "6acb1590ba781cd23c2f6e13",
+          "datatype": "sf_product",
+          "data": {
+            "name": "Training walnut board",
+            "sku": "SUPPLIER-WAL-1011",
+            "supplierSku": "NW-WAL-18",
+            "price": 61,
+            "available": false,
+            "status": "inactive",
+            "hidden": true,
+            "trackInventory": true,
+            "description": "Synthetic supplier integration course fixture; not offered for sale."
+          },
+          "name": "Training walnut board",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "pk": "video-lab-mut4jkwd|sf_product",
+          "createdate": "2026-10-11T04:50:24.390Z",
+          "modifydate": "2026-10-11T04:50:24.390Z",
+          "version": 0,
+          "sk": "6acb1590ba781cd23c2f6e13"
+        },
+        {
+          "_id": "6acb1590ba781cd23c2f6e12",
+          "datatype": "sf_product",
+          "data": {
+            "name": "Training white oak plank",
+            "sku": "SUPPLIER-OAK-1011",
+            "supplierSku": "NW-OAK-24",
+            "price": 38.5,
+            "available": false,
+            "status": "inactive",
+            "hidden": true,
+            "trackInventory": true,
+            "description": "Synthetic supplier integration course fixture; not offered for sale."
+          },
+          "name": "Training white oak plank",
+          "created_by": "video-lab-mut4jkwd@example.com",
+          "state": "draft",
+          "pk": "video-lab-mut4jkwd|sf_product",
+          "createdate": "2026-10-11T04:50:24.367Z",
+          "modifydate": "2026-10-11T04:50:24.367Z",
+          "version": 0,
+          "sk": "6acb1590ba781cd23c2f6e12"
+        }
+      ]
+    }
+  }
+}

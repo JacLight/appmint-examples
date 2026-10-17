@@ -1,0 +1,22 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/client-data/reservations/6acb2ce8ba781cd23c2f7515",
+    "headers": {
+      "content-type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 404,
+    "body": {
+      "statusCode": 404,
+      "error": "Reservation not found",
+      "path": "/client-data/reservations/6acb2ce8ba781cd23c2f7515",
+      "method": "GET",
+      "timeStamp": "2026-10-11T06:39:08.247Z"
+    }
+  }
+}

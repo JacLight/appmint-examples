@@ -1,0 +1,26 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/repository/file/upload",
+    "body": {
+      "file": "submission-notes.txt",
+      "location": "course-baas-1010",
+      "isPrivate": "true"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "raw": {
+        "Key": "video-lab-mut4jkwd/course-baas-1010/submission-notes.txt",
+        "LastModified": "2026-10-10T07:31:17.422Z",
+        "ETag": "\"e1ac1ebb41fb64fd87fae8f1770e0fe4\"",
+        "ChecksumAlgorithm": [],
+        "Size": 93,
+        "StorageClass": "STANDARD"
+      },
+      "path": "video-lab-mut4jkwd/course-baas-1010/submission-notes.txt",
+      "signedUrl": "https://fundu-space-sfo3-dev.sfo3.digitaloceanspaces.com/video-lab-mut4jkwd/course-baas-1010/submission-notes.txt?AWSAccessKeyId=REDACTED&Expires=1791618377&Signature=REDACTED"
+    }
+  }
+}

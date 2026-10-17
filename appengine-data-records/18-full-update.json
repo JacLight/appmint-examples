@@ -1,0 +1,30 @@
+{
+  "method": "POST",
+  "path": "/repository/update/6ac988def5d6b011f6e10ddc",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "_id": "6ac988def5d6b011f6e10ddc",
+    "datatype": "design_video_1009",
+    "data": {
+      "requestCode": "DR-101",
+      "title": "Living room refresh",
+      "customer": "6ac82b5a58e293f2e4d6635a",
+      "roomCount": 2,
+      "projectNotes": "Lighting and storage; revised after review",
+      "status": "reviewing"
+    },
+    "author": "video-lab-mut4jkwd@example.com",
+    "name": "Living room refresh",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "pk": "video-lab-mut4jkwd|design_video_1009",
+    "createdate": "2026-10-10T00:37:50.164Z",
+    "modifydate": "2026-10-10T00:38:10.926Z",
+    "version": 0,
+    "sk": "6ac988def5d6b011f6e10ddc"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/site/sites-course-1010/features/forms/link",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "where": "footer",
+      "label": "Contact us",
+      "remove": true
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "href": "/consultation-form",
+      "where": "footer",
+      "label": "Contact us",
+      "updated": [],
+      "alreadyLinked": [],
+      "noPlace": [],
+      "removed": [
+        "feature-links"
+      ]
+    }
+  }
+}

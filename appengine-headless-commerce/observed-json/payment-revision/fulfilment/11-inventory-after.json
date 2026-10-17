@@ -1,0 +1,54 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/sf_inventory",
+    "identity": "staff",
+    "body": {
+      "query": {
+        "data.sku": "HEADLESS-CEDAR-1010",
+        "data.locationId": "bm-checkout-course"
+      },
+      "options": {
+        "pageSize": 2
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 1,
+      "datatype": "sf_inventory",
+      "pageSize": 2,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "lastItem": "2026-10-11T00:14:14.431Z",
+      "data": [
+        {
+          "_id": "6acad4cb8c597416cfbe80d4",
+          "pk": "video-lab-mut4jkwd|sf_inventory",
+          "sk": "6acad4cb8c597416cfbe80d4",
+          "version": 0,
+          "datatype": "sf_inventory",
+          "author": "video-lab-mut4jkwd@example.com",
+          "createdate": "2026-10-11T00:14:03.518Z",
+          "modifydate": "2026-10-11T00:14:14.431Z",
+          "data": {
+            "unitCost": 0,
+            "currency": "USD",
+            "sku": "HEADLESS-CEDAR-1010",
+            "locationId": "bm-checkout-course",
+            "quantity": 28,
+            "reservedQuantity": 0,
+            "availableQuantity": 28,
+            "movementRevision": 4,
+            "pendingMovements": []
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node venue-host.mjs",
+    "test": "node --test test.mjs"
+  },
+  "dependencies": {
+    "qrcode": "1.5.4",
+    "socket.io-client": "4.8.1"
+  }
+}

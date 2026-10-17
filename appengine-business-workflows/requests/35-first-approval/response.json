@@ -1,0 +1,42 @@
+{
+  "status": 201,
+  "body": {
+    "taskId": "6acb1606ba781cd23c2f6e86",
+    "decision": "approve",
+    "waitingOn": [
+      "sam.wf-usecase-1011@training.local"
+    ],
+    "task": {
+      "id": "6acb1606ba781cd23c2f6e86",
+      "title": "Warranty \u2014 Two Reviewers \u2014 dana.wf-usecase-1011@training.local",
+      "summary": "dana.wf-usecase-1011@training.local submitted Warranty \u2014 Two Reviewers",
+      "status": "new",
+      "stageId": 0,
+      "workflowName": "wf-usecase-1011-warranty-both",
+      "assignTo": [
+        "priya.wf-usecase-1011@training.local",
+        "sam.wf-usecase-1011@training.local"
+      ],
+      "dueDate": "2026-10-13T04:52:22.239Z",
+      "createdate": "2026-10-11T04:52:22.240Z",
+      "owner": {
+        "datatype": "form_submission",
+        "id": "6acb1606ba781cd23c2f6e85",
+        "name": "Warranty \u2014 Two Reviewers \u2014 dana.wf-usecase-1011@training.local"
+      },
+      "payload": {
+        "formName": "wf-usecase-1011-warranty-both",
+        "formId": "6acb1606ba781cd23c2f6e83",
+        "submitter": "dana.wf-usecase-1011@training.local",
+        "requesterEmail": "dana.wf-usecase-1011@training.local"
+      },
+      "approvals": [
+        {
+          "by": "priya.wf-usecase-1011@training.local",
+          "at": "2026-10-11T04:52:22.271Z",
+          "note": "First reviewer confirms the evidence."
+        }
+      ]
+    }
+  }
+}

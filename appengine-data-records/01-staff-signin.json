@@ -1,0 +1,12 @@
+{
+  "method": "POST",
+  "path": "/profile/user/signin",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "email": "YOUR_STAFF_EMAIL",
+    "password": "YOUR_STAFF_PASSWORD"
+  }
+}

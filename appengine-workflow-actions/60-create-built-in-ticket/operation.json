@@ -1,0 +1,16 @@
+{
+  "method": "POST",
+  "path": "/crm/tickets/create",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "data": {
+      "title": "Workflow API course ticket",
+      "description": "Disposable training example for automatic workflow creation",
+      "priority": "normal"
+    }
+  }
+}

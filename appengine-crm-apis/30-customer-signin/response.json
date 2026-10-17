@@ -1,0 +1,43 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "customer": {
+      "_id": "6ac82b5a58e293f2e4d6635a",
+      "pk": "video-lab-mut4jkwd|customer",
+      "sk": "6ac82b5a58e293f2e4d6635a",
+      "name": "mira.chen.foundations@training.local",
+      "version": 1,
+      "datatype": "customer",
+      "data": {
+        "groups": [
+          "Customer"
+        ],
+        "username": "mira.chen.foundations@training.local",
+        "email": "mira.chen.foundations@training.local",
+        "firstName": "Mira-Lin",
+        "lastName": "Chen",
+        "audit": {
+          "lastLogin": "2026-10-10T02:00:13.297Z",
+          "meta": {
+            "ip": "::ffff:127.0.0.1",
+            "host": "127.0.0.1:3300",
+            "country": null,
+            "city": null,
+            "state": null,
+            "agent": "Python-urllib/3.12"
+          }
+        },
+        "preferredStyle": "scandinavian"
+      },
+      "created_by": "system",
+      "state": "draft",
+      "createdate": "2026-10-08T23:46:34.851Z",
+      "modifydate": "2026-10-10T02:00:13.298Z",
+      "modified_by": "system"
+    },
+    "token": "[redacted]",
+    "refreshToken": "[redacted]",
+    "orgId": "video-lab-mut4jkwd"
+  }
+}

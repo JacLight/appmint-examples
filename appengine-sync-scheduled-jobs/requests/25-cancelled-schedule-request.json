@@ -1,0 +1,10 @@
+{
+  "method": "GET",
+  "path": "/repository/get/schedule/6aca13c6f5d6b011f6e12052",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": null,
+  "note": "Historical observed request; replace dates and IDs before use."
+}

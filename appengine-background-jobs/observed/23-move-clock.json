@@ -1,0 +1,20 @@
+{
+  "startedAt": "2026-10-11T04:51:20.064Z",
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/update-partial/lead/6acb15c8ba781cd23c2f6e39",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "data.stageChangedAt": "2026-10-10T03:51:20.064Z"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": true
+  }
+}

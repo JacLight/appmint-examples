@@ -1,0 +1,26 @@
+[
+  {
+    "hostItem": "item_1",
+    "requestDirectory": "recovery-01-list_services"
+  },
+  {
+    "hostItem": "item_2",
+    "requestDirectory": "recovery-02-describe_service"
+  },
+  {
+    "hostItem": "item_3",
+    "requestDirectory": "recovery-03-describe_service"
+  },
+  {
+    "hostItem": "item_4",
+    "requestDirectory": "recovery-04-getTimesheet"
+  },
+  {
+    "hostItem": "item_6",
+    "requestDirectory": "recovery-05-approveTimesheet"
+  },
+  {
+    "hostItem": "item_7",
+    "requestDirectory": "recovery-06-getTimesheet"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "path": "/workflow/fire",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "datatype": "workflow_lab_1010",
+    "id": "6aca13c4f5d6b011f6e1204c",
+    "workflowId": "6aca13c4f5d6b011f6e12048",
+    "title": "API decision: reject",
+    "data": {
+      "reviewType": "training"
+    }
+  }
+}

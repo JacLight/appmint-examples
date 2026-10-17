@@ -1,0 +1,9 @@
+{
+  "mode": "failure",
+  "sku": "FAIL",
+  "exitCode": 1,
+  "stdout": "",
+  "error": "Supplier check rejected before note write",
+  "notesBefore": 1,
+  "notesAfter": 1
+}

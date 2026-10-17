@@ -1,0 +1,17 @@
+{
+  "method": "PUT",
+  "path": "/repository/create",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "datatype": "workflow_lab_1010",
+    "isNew": true,
+    "data": {
+      "title": "Review API connection",
+      "status": "draft"
+    }
+  }
+}

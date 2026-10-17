@@ -94,3 +94,7 @@ explains it faster than any paragraph.
 MIT.
 
 - [AppEngine Data APIs](./appengine-data-apis-pattern): campaign and customer community client, JavaScript, TypeScript, Python, cURL and Postman examples.
+
+## AppEngine course source code
+
+See the [complete course-to-source index](COURSE-SOURCES.md) for the code accompanying the AppEngine video courses, including the recorded web/mobile apps and API examples. Each folder explains its setup and any unverified alternatives.

@@ -1,0 +1,11 @@
+{
+  "status": 201,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "type": "note",
+    "description": "Requested the API integration guide",
+    "id": "activity_ivvmdd6i8j7y5w03",
+    "createdAt": "2026-10-10T18:24:34.982Z",
+    "createdBy": "video-lab-mut4jkwd@example.com"
+  }
+}

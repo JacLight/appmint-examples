@@ -1,0 +1,19 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/update-partial/post/6aca144df5d6b011f6e1207e",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "data.title": "Natural light, thoughtfully layered",
+      "data.summary": "Start with daylight. Add task lighting. Finish with a warm accent."
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": true
+  }
+}

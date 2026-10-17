@@ -1,0 +1,6 @@
+{
+  "method": "PATCH",
+  "path": "/crm/tickets/status/6aca833237ff863efff476ce",
+  "identity": "staff",
+  "observedStatus": 200
+}

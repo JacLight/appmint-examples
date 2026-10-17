@@ -1,0 +1,13 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"_id\": \"6acb2e18ba781cd23c2f7586\",\n  \"pk\": \"video-lab-mut4jkwd|bm_timesheet\",\n  \"sk\": \"6acb2e18ba781cd23c2f7586\",\n  \"name\": \"bm_timesheet-1791700504424-vut53l1c\",\n  \"datatype\": \"bm_timesheet\",\n  \"data\": {\n    \"employeeId\": \"6acb2e18ba781cd23c2f757d\",\n    \"payPeriodStart\": \"2026-10-12\",\n    \"payPeriodEnd\": \"2026-10-18\",\n    \"notes\": \"Synthetic course demonstration. No payroll run or payment.\",\n    \"status\": \"draft\",\n    \"timeEntries\": [\n      {\n        \"id\": \"te-1791700504438-htgxg5\",\n        \"timeSheetId\": \"6acb2e18ba781cd23c2f7586\",\n        \"date\": \"2026-10-12\",\n        \"hours\": 8,\n        \"type\": \"regular\",\n        \"description\": \"Synthetic training hours\",\n        \"approved\": false,\n        \"createdAt\": \"2026-10-11T06:35:04.438Z\",\n        \"countedHours\": 8\n      }\n    ],\n    \"name\": \"bm_timesheet-1791700504424-vut53l1c\",\n    \"totalHours\": 8,\n    \"regularHours\": 8,\n    \"overtimeHours\": 0,\n    \"doubleTimeHours\": 0,\n    \"ptoHours\": 0,\n    \"holidayHours\": 0,\n    \"sickHours\": 0,\n    \"appliedPolicy\": {\n      \"matchedBy\": \"default\",\n      \"rounding\": \"exact\"\n    },\n    \"recordedWorkedHours\": 8,\n    \"breakDeductedHours\": 0\n  },\n  \"version\": 1,\n  \"author\": \"video-lab-mut4jkwd@example.com\",\n  \"created_by\": \"video-lab-mut4jkwd@example.com\",\n  \"state\": \"draft\",\n  \"createdate\": \"2026-10-11T06:35:04.428Z\",\n  \"modifydate\": \"2026-10-11T06:35:04.445Z\",\n  \"modified_by\": \"system\"\n}"
+      }
+    ],
+    "structured_content": null
+  },
+  "error": null,
+  "hostEventStatus": "completed"
+}

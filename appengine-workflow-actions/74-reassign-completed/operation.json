@@ -1,0 +1,14 @@
+{
+  "method": "POST",
+  "path": "/workflow/task/6aca14d5f5d6b011f6e12099/reassign",
+  "headers": {
+    "Content-Type": "application/json",
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "assignTo": [
+      "video-lab-mut4jkwd@example.com"
+    ]
+  }
+}

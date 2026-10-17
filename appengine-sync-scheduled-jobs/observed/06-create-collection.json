@@ -1,0 +1,86 @@
+{
+  "startedAt": "2026-10-10T10:28:20.428026+00:00",
+  "durationSeconds": 0.0267,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/create",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "datatype": "collection",
+      "isNew": true,
+      "data": {
+        "name": "schedule_marks_1010",
+        "title": "Schedule markers \u2014 API course",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "title": "Reference"
+            },
+            "status": {
+              "type": "string",
+              "title": "Status",
+              "enum": [
+                "waiting",
+                "ready",
+                "finished",
+                "manual"
+              ]
+            }
+          },
+          "required": [
+            "reference"
+          ]
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "datatype": "collection",
+      "data": {
+        "name": "schedule_marks_1010",
+        "title": "Schedule markers \u2014 API course",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "title": "Reference"
+            },
+            "status": {
+              "type": "string",
+              "title": "Status",
+              "enum": [
+                "waiting",
+                "ready",
+                "finished",
+                "manual"
+              ]
+            }
+          },
+          "required": [
+            "reference"
+          ]
+        }
+      },
+      "name": "schedule_marks_1010",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|collection",
+      "createdate": "2026-10-10T10:28:20.442Z",
+      "modifydate": "2026-10-10T10:28:20.442Z",
+      "version": 0,
+      "sk": "6aca1344f5d6b011f6e12027",
+      "id": "6aca1344f5d6b011f6e12027"
+    }
+  }
+}

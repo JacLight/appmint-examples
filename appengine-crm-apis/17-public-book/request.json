@@ -1,0 +1,9 @@
+{
+  "reservationDefinitionId": "6aca82e337ff863efff476b7",
+  "service": "API consultation",
+  "startTime": "2026-10-13T14:00:00.000Z",
+  "customer": {
+    "name": "Mira CRM Course",
+    "email": "mira.crm1010@example.invalid"
+  }
+}

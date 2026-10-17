@@ -1,0 +1,460 @@
+{
+  "startedAt": "2026-10-10T10:28:20.384531+00:00",
+  "durationSeconds": 0.043,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/queue-manager/org-schedules",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "orgId": "video-lab-mut4jkwd",
+      "queues": [
+        {
+          "queueName": "datatype-queue",
+          "schedules": [],
+          "count": 0
+        },
+        {
+          "queueName": "schedule-queue",
+          "schedules": [
+            {
+              "id": "repeat:75b645a567e0a8dfc1fea335ad30bc9c:1791628200000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac1a9dd8bd4f3d85236525b",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 525,
+                  "key": "cron:video-lab-mut4jkwd-6ac1a9dd8bd4f3d85236525b-cron::America/Chicago:*/5 * * * *",
+                  "cron": "*/5 * * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac1a9dd8bd4f3d85236525b-cron"
+                },
+                "jobId": "repeat:75b645a567e0a8dfc1fea335ad30bc9c:1791628200000",
+                "delay": 299485,
+                "timestamp": 1791627900515,
+                "prevMillis": 1791628200000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 299485,
+              "timestamp": 1791627900515,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-10T10:30:00.000Z"
+            },
+            {
+              "id": "repeat:ec8f0c02c3046b515ce3d418b8d32b15:1791628260000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac29b3d78bf7a375c8ec86e",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 264,
+                  "key": "cron:video-lab-mut4jkwd-6ac29b3d78bf7a375c8ec86e-cron::America/Chicago:1-59/10 * * * *",
+                  "cron": "1-59/10 * * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac29b3d78bf7a375c8ec86e-cron"
+                },
+                "jobId": "repeat:ec8f0c02c3046b515ce3d418b8d32b15:1791628260000",
+                "delay": 599911,
+                "timestamp": 1791627660089,
+                "prevMillis": 1791628260000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 599911,
+              "timestamp": 1791627660089,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-10T10:31:00.000Z"
+            },
+            {
+              "id": "repeat:a4e1ae5f6adfe3a3ed3435f1fb520066:1791628500000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac614a50b4e7837e69bee9e",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 264,
+                  "key": "cron:video-lab-mut4jkwd-6ac614a50b4e7837e69bee9e-cron::America/Chicago:5-59/10 * * * *",
+                  "cron": "5-59/10 * * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac614a50b4e7837e69bee9e-cron"
+                },
+                "jobId": "repeat:a4e1ae5f6adfe3a3ed3435f1fb520066:1791628500000",
+                "delay": 599865,
+                "timestamp": 1791627900135,
+                "prevMillis": 1791628500000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 599865,
+              "timestamp": 1791627900135,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-10T10:35:00.000Z"
+            },
+            {
+              "id": "repeat:1f082bf89f4451b0f6145784d549ca2f:1791628560000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac1defb19ec5a8a773c9439",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 264,
+                  "key": "cron:video-lab-mut4jkwd-6ac1defb19ec5a8a773c9439-cron::America/Chicago:6-59/10 * * * *",
+                  "cron": "6-59/10 * * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac1defb19ec5a8a773c9439-cron"
+                },
+                "jobId": "repeat:1f082bf89f4451b0f6145784d549ca2f:1791628560000",
+                "delay": 599830,
+                "timestamp": 1791627960170,
+                "prevMillis": 1791628560000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 599830,
+              "timestamp": 1791627960170,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-10T10:36:00.000Z"
+            },
+            {
+              "id": "repeat:7b56564867964d938cb2a853479b99eb:1791628620000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac1defb19ec5a8a773c9438",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 177,
+                  "key": "cron:video-lab-mut4jkwd-6ac1defb19ec5a8a773c9438-cron::America/Chicago:7-59/15 * * * *",
+                  "cron": "7-59/15 * * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac1defb19ec5a8a773c9438-cron"
+                },
+                "jobId": "repeat:7b56564867964d938cb2a853479b99eb:1791628620000",
+                "delay": 899971,
+                "timestamp": 1791627720029,
+                "prevMillis": 1791628620000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 899971,
+              "timestamp": 1791627720029,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-10T10:37:00.000Z"
+            },
+            {
+              "id": "repeat:77686606cbffc42f3a81c9ddbd483b20:1791628680000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac1a7896cf55d217cabf061",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 264,
+                  "key": "cron:video-lab-mut4jkwd-6ac1a7896cf55d217cabf061-cron::America/Chicago:8-59/10 * * * *",
+                  "cron": "8-59/10 * * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac1a7896cf55d217cabf061-cron"
+                },
+                "jobId": "repeat:77686606cbffc42f3a81c9ddbd483b20:1791628680000",
+                "delay": 599942,
+                "timestamp": 1791628080058,
+                "prevMillis": 1791628680000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 599942,
+              "timestamp": 1791628080058,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-10T10:38:00.000Z"
+            },
+            {
+              "id": "repeat:940c15c5c43516bd135de18ebb22a3e6:1791631020000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac1e4b319ec5a8a773c95a7",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 46,
+                  "key": "cron:video-lab-mut4jkwd-6ac1e4b319ec5a8a773c95a7-cron::America/Chicago:17 * * * *",
+                  "cron": "17 * * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac1e4b319ec5a8a773c95a7-cron"
+                },
+                "jobId": "repeat:940c15c5c43516bd135de18ebb22a3e6:1791631020000",
+                "delay": 3599811,
+                "timestamp": 1791627420189,
+                "prevMillis": 1791631020000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 3599811,
+              "timestamp": 1791627420189,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-10T11:17:00.000Z"
+            },
+            {
+              "id": "repeat:376785bd7abee84e447e073975bff27c:1791696300000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac1a9dd8bd4f3d85236525c",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 3,
+                  "key": "cron:video-lab-mut4jkwd-6ac1a9dd8bd4f3d85236525c-cron::America/Chicago:25 0 * * *",
+                  "cron": "25 0 * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac1a9dd8bd4f3d85236525c-cron"
+                },
+                "jobId": "repeat:376785bd7abee84e447e073975bff27c:1791696300000",
+                "delay": 86399389,
+                "timestamp": 1791609900611,
+                "prevMillis": 1791696300000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 86399389,
+              "timestamp": 1791609900611,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-11T05:25:00.000Z"
+            },
+            {
+              "id": "repeat:f8c2563b0e7969aeebf5b40f0a8a3e8d:1791702840000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac2dfc9ffe2855d93accff4",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 3,
+                  "key": "cron:video-lab-mut4jkwd-6ac2dfc9ffe2855d93accff4-cron::America/Chicago:14 2 * * *",
+                  "cron": "14 2 * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac2dfc9ffe2855d93accff4-cron"
+                },
+                "jobId": "repeat:f8c2563b0e7969aeebf5b40f0a8a3e8d:1791702840000",
+                "delay": 86399536,
+                "timestamp": 1791616440464,
+                "prevMillis": 1791702840000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 86399536,
+              "timestamp": 1791616440464,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-11T07:14:00.000Z"
+            },
+            {
+              "id": "repeat:34b2466b66080eac36162fcb6d8abe6d:1791705120000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac3e5233f551fc986319fae",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 3,
+                  "key": "cron:video-lab-mut4jkwd-6ac3e5233f551fc986319fae-cron::America/Chicago:52 2 * * *",
+                  "cron": "52 2 * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac3e5233f551fc986319fae-cron"
+                },
+                "jobId": "repeat:34b2466b66080eac36162fcb6d8abe6d:1791705120000",
+                "delay": 86399387,
+                "timestamp": 1791618720613,
+                "prevMillis": 1791705120000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 86399387,
+              "timestamp": 1791618720613,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-11T07:52:00.000Z"
+            },
+            {
+              "id": "repeat:8124e03a9669d43f171b90dbe8e65b1d:1791707400000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac1d43619ec5a8a773c91e6",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 3,
+                  "key": "cron:video-lab-mut4jkwd-6ac1d43619ec5a8a773c91e6-cron::America/Chicago:30 3 * * *",
+                  "cron": "30 3 * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac1d43619ec5a8a773c91e6-cron"
+                },
+                "jobId": "repeat:8124e03a9669d43f171b90dbe8e65b1d:1791707400000",
+                "delay": 86399154,
+                "timestamp": 1791621000846,
+                "prevMillis": 1791707400000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 86399154,
+              "timestamp": 1791621000846,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-11T08:30:00.000Z"
+            },
+            {
+              "id": "repeat:790610bb38f193d2913109da8bbd265f:1791708420000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac29b3d78bf7a375c8ec872",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 3,
+                  "key": "cron:video-lab-mut4jkwd-6ac29b3d78bf7a375c8ec872-cron::America/Chicago:47 3 * * *",
+                  "cron": "47 3 * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac29b3d78bf7a375c8ec872-cron"
+                },
+                "jobId": "repeat:790610bb38f193d2913109da8bbd265f:1791708420000",
+                "delay": 86399405,
+                "timestamp": 1791622020595,
+                "prevMillis": 1791708420000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 86399405,
+              "timestamp": 1791622020595,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-11T08:47:00.000Z"
+            },
+            {
+              "id": "repeat:b0830e53967219d216fde017c8cd8ae3:1791709980000",
+              "name": "cron",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac29b3d78bf7a375c8ec86c",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "repeat": {
+                  "count": 3,
+                  "key": "cron:video-lab-mut4jkwd-6ac29b3d78bf7a375c8ec86c-cron::America/Chicago:13 4 * * *",
+                  "cron": "13 4 * * *",
+                  "tz": "America/Chicago",
+                  "jobId": "video-lab-mut4jkwd-6ac29b3d78bf7a375c8ec86c-cron"
+                },
+                "jobId": "repeat:b0830e53967219d216fde017c8cd8ae3:1791709980000",
+                "delay": 86399432,
+                "timestamp": 1791623580568,
+                "prevMillis": 1791709980000,
+                "attempts": 1,
+                "removeOnComplete": true
+              },
+              "delay": 86399432,
+              "timestamp": 1791623580568,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-11T09:13:00.000Z"
+            },
+            {
+              "id": "video-lab-mut4jkwd-6ac8e52762208c1ed6025015-start",
+              "name": "start",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac8e52762208c1ed6025015",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "delay": 867640012,
+                "jobId": "video-lab-mut4jkwd-6ac8e52762208c1ed6025015-start",
+                "attempts": 3,
+                "removeOnComplete": true,
+                "timestamp": 1791550759988
+              },
+              "delay": 867640012,
+              "timestamp": 1791550759988,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-19T14:00:00.000Z"
+            },
+            {
+              "id": "video-lab-mut4jkwd-6ac8e52862208c1ed6025019-start",
+              "name": "start",
+              "data": {
+                "orgId": "video-lab-mut4jkwd",
+                "sk": "6ac8e52862208c1ed6025019",
+                "datatype": "schedule"
+              },
+              "opts": {
+                "delay": 950439940,
+                "jobId": "video-lab-mut4jkwd-6ac8e52862208c1ed6025019-start",
+                "attempts": 3,
+                "removeOnComplete": true,
+                "timestamp": 1791550760060
+              },
+              "delay": 950439940,
+              "timestamp": 1791550760060,
+              "state": "delayed",
+              "attemptsMade": 0,
+              "scheduledFor": "2026-10-20T13:00:00.000Z"
+            }
+          ],
+          "count": 15
+        },
+        {
+          "queueName": "platform-sync-queue",
+          "schedules": [],
+          "count": 0
+        }
+      ],
+      "totalSchedules": 15
+    }
+  }
+}

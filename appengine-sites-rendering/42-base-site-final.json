@@ -1,0 +1,44 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/get/site/6ac1a7896cf55d217cabf059",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6ac1a7896cf55d217cabf059",
+      "pk": "video-lab-mut4jkwd|site",
+      "sk": "6ac1a7896cf55d217cabf059",
+      "name": "vidsite",
+      "datatype": "site",
+      "data": {
+        "name": "vidsite",
+        "title": "vidsite",
+        "description": "Site vidsite",
+        "template": null,
+        "hostName": "YOUR_SITE_HOST",
+        "homePage": "landing-page",
+        "publishedPagesOnly": false,
+        "isDefault": true,
+        "features": [
+          {
+            "feature": "forms",
+            "enabled": true,
+            "page": "consultation-form"
+          }
+        ]
+      },
+      "version": 2,
+      "created_by": "system",
+      "state": "draft",
+      "createdate": "2026-10-04T01:10:33.770Z",
+      "modifydate": "2026-10-10T10:41:21.784Z",
+      "modified_by": "video-lab-mut4jkwd@example.com"
+    }
+  }
+}

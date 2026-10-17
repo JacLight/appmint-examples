@@ -1,0 +1,40 @@
+{
+  "startedAt": "2026-10-11T04:51:05.278Z",
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/repository/update-partial/lead_pipeline/6acb15afba781cd23c2f6e14",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "data.stages": [
+        {
+          "id": "new",
+          "name": "New enquiry",
+          "order": 0
+        },
+        {
+          "id": "contacted",
+          "name": "Contacted",
+          "order": 1,
+          "sla": {
+            "duration": 24,
+            "action": "create_task"
+          }
+        },
+        {
+          "id": "followup",
+          "name": "Follow-up ready",
+          "order": 2
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": true
+  }
+}

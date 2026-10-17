@@ -1,0 +1,6 @@
+{
+  "method": "GET",
+  "path": "/crm/leads/pipelines/6aca82e237ff863efff476aa",
+  "identity": "staff",
+  "observedStatus": 200
+}

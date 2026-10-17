@@ -1,0 +1,76 @@
+{
+  "startedAt": "2026-10-10T07:31:17.617404+00:00",
+  "durationSeconds": 0.3436,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "POST",
+    "path": "/automation/6ac9e9a0f5d6b011f6e11a13/execute",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "variables": {
+        "dataId": "manual-preview",
+        "data": {
+          "reference": "PREVIEW-1010"
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "success": true,
+      "message": "Automation executed successfully",
+      "executionId": "exec_1791617477685_heb6z2",
+      "result": {
+        "success": true,
+        "completedSteps": [
+          "action_1"
+        ],
+        "results": [
+          {
+            "success": true,
+            "error": null,
+            "executionTime": 57,
+            "data": {
+              "created": true,
+              "datatype": "baas_receipts_1010",
+              "recordId": "6ac9e9c5f5d6b011f6e11a26",
+              "record": {
+                "pk": "video-lab-mut4jkwd|baas_receipts_1010",
+                "sk": "6ac9e9c5f5d6b011f6e11a26",
+                "name": "baas_receipts_1010-1791617477863-g8k0qplt",
+                "datatype": "baas_receipts_1010",
+                "data": {
+                  "submissionId": "manual-preview",
+                  "reference": "PREVIEW-1010",
+                  "message": "AppEngine event processed",
+                  "name": "baas_receipts_1010-1791617477863-g8k0qplt"
+                },
+                "version": 0,
+                "created_by": "system",
+                "state": "draft",
+                "createdate": "2026-10-10T07:31:17.918Z",
+                "modifydate": "2026-10-10T07:31:17.918Z",
+                "id": "6ac9e9c5f5d6b011f6e11a26"
+              }
+            },
+            "nextStepId": null,
+            "stepId": "action_1",
+            "stepType": "action"
+          }
+        ],
+        "paused": false,
+        "executionId": "exec_1791617477685_heb6z2",
+        "totalSteps": 2,
+        "startedAt": "2026-10-10T07:31:17.686Z",
+        "completedAt": "2026-10-10T07:31:17.960Z",
+        "logs": []
+      }
+    }
+  }
+}

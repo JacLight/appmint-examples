@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-10-10T02:01:48.927144+00:00",
+  "durationSeconds": 0.0351,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/file/driver",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "driver": "s3"
+    }
+  }
+}

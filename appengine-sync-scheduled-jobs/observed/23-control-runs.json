@@ -1,0 +1,61 @@
+{
+  "startedAt": "2026-10-10T10:30:30.585852+00:00",
+  "durationSeconds": 0.0112,
+  "environment": "Controlled training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/queue-manager/schedule-runs/6aca13c6f5d6b011f6e12052",
+    "headers": {
+      "Content-Type": "application/json",
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json; charset=utf-8",
+    "body": {
+      "scheduleId": "6aca13c6f5d6b011f6e12052",
+      "totalRuns": 4,
+      "runs": [
+        {
+          "id": "6aca13c6f5d6b011f6e12056",
+          "scheduleId": "6aca13c6f5d6b011f6e12052",
+          "timestamp": "2026-10-10T10:30:30.579Z",
+          "status": "success",
+          "type": "update",
+          "comment": "Schedule run now: Course controls \u2014 API course",
+          "meta": {
+            "action": "update-status",
+            "jobId": "video-lab-mut4jkwd-6aca13c6f5d6b011f6e12052-run-1791628230571"
+          }
+        },
+        {
+          "id": "6aca13c6f5d6b011f6e12055",
+          "scheduleId": "6aca13c6f5d6b011f6e12052",
+          "timestamp": "2026-10-10T10:30:30.559Z",
+          "status": "success",
+          "type": "update",
+          "comment": "Schedule started: Course controls \u2014 API course"
+        },
+        {
+          "id": "6aca13c6f5d6b011f6e12054",
+          "scheduleId": "6aca13c6f5d6b011f6e12052",
+          "timestamp": "2026-10-10T10:30:30.525Z",
+          "status": "success",
+          "type": "update",
+          "comment": "Schedule stopped: Course controls \u2014 API course"
+        },
+        {
+          "id": "6aca13c6f5d6b011f6e12053",
+          "scheduleId": "6aca13c6f5d6b011f6e12052",
+          "timestamp": "2026-10-10T10:30:30.507Z",
+          "status": "success",
+          "type": "update",
+          "comment": "Schedule started: Course controls \u2014 API course"
+        }
+      ]
+    }
+  }
+}

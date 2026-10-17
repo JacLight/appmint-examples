@@ -1,0 +1,31 @@
+{
+  "environment": "Isolated controlled training organization",
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/sf_discount",
+    "identity": "authorized staff",
+    "body": {
+      "query": {
+        "data.code": "HCOPTION10"
+      },
+      "options": {
+        "pageSize": 2
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 0,
+      "datatype": "sf_discount",
+      "pageSize": 2,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "data": []
+    }
+  }
+}

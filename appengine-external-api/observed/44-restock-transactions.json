@@ -1,0 +1,78 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/storefront/inventory/sku/SUPPLIER-OAK-1011/transactions?locationId=supplier-usecase-1011"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": [
+        {
+          "id": "dd9f1f5779ead917d773aa27",
+          "transactionId": "INV-DD9F1F5779EAD917D773AA27",
+          "operationKey": "intake:6acb163bba781cd23c2f6e9c:SUPPLIER-OAK-1011",
+          "sku": "SUPPLIER-OAK-1011",
+          "locationId": "supplier-usecase-1011",
+          "type": "intake",
+          "mode": "delta",
+          "requestedQuantity": 20,
+          "unitCost": 38.5,
+          "quantity": 20,
+          "previousQuantity": 40,
+          "newQuantity": 60,
+          "previousReserved": 0,
+          "newReserved": 0,
+          "reason": "Received from Northwind Timber — teaching supplier on intake INT-GECK8W0T",
+          "referenceType": "purchase_order",
+          "referenceId": "INT-GECK8W0T",
+          "performedBy": "video-lab-mut4jkwd@example.com",
+          "timestamp": "2026-10-11T05:01:53.216Z"
+        },
+        {
+          "id": "37c43be441c91f13435dcb86",
+          "transactionId": "INV-37C43BE441C91F13435DCB86",
+          "operationKey": "intake:6acb15d0ba781cd23c2f6e4d:SUPPLIER-OAK-1011",
+          "sku": "SUPPLIER-OAK-1011",
+          "locationId": "supplier-usecase-1011",
+          "type": "intake",
+          "mode": "delta",
+          "requestedQuantity": 40,
+          "unitCost": 38.5,
+          "quantity": 40,
+          "previousQuantity": 0,
+          "newQuantity": 40,
+          "previousReserved": 0,
+          "newReserved": 0,
+          "reason": "Received from Northwind Timber — teaching supplier on intake INT-P3QZ0EAQ",
+          "referenceType": "purchase_order",
+          "referenceId": "INT-P3QZ0EAQ",
+          "performedBy": "video-lab-mut4jkwd@example.com",
+          "timestamp": "2026-10-11T04:51:44.755Z"
+        },
+        {
+          "id": "6acb15e0ba781cd23c2f6e59",
+          "transactionId": "INV-6ACB15E0BA781CD23C2F6E59",
+          "operationKey": "ecf0bdbf-7500-462d-a151-030dd3bf3bc0",
+          "sku": "SUPPLIER-OAK-1011",
+          "locationId": "supplier-usecase-1011",
+          "type": "intake",
+          "mode": "count",
+          "requestedQuantity": 0,
+          "quantity": 0,
+          "previousQuantity": 0,
+          "newQuantity": 0,
+          "previousReserved": 0,
+          "newReserved": 0,
+          "reason": "Opening stock",
+          "referenceType": "manual",
+          "performedBy": "video-lab-mut4jkwd@example.com",
+          "timestamp": "2026-10-11T04:51:44.732Z",
+          "unitCost": 38.5
+        }
+      ],
+      "total": 3,
+      "message": "Saved inventory movements."
+    }
+  }
+}

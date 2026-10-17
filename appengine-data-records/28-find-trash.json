@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "path": "/repository/find/trash",
+  "headers": {
+    "orgid": "YOUR_ORGANIZATION_ID",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_STAFF_TOKEN"
+  },
+  "body": {
+    "query": {
+      "sk": "6ac988def5d6b011f6e10ddc",
+      "sourceDatatype": "design_video_1009"
+    },
+    "options": {
+      "page": 1,
+      "pageSize": 20
+    }
+  }
+}

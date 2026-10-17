@@ -1,0 +1,59 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "PUT",
+    "path": "/repository/create",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    },
+    "body": {
+      "datatype": "site",
+      "isNew": true,
+      "data": {
+        "name": "sites-course-1010",
+        "title": "Cedar & Form \u00b7 Journal",
+        "homePage": "journal",
+        "publishedPagesOnly": true,
+        "description": "Isolated course fixture; no hostname registration",
+        "features": [
+          {
+            "feature": "forms",
+            "enabled": true,
+            "page": "consultation-form"
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "datatype": "site",
+      "data": {
+        "name": "sites-course-1010",
+        "title": "Cedar & Form \u00b7 Journal",
+        "homePage": "journal",
+        "publishedPagesOnly": true,
+        "description": "Isolated course fixture; no hostname registration",
+        "features": [
+          {
+            "feature": "forms",
+            "enabled": true,
+            "page": "consultation-form"
+          }
+        ]
+      },
+      "author": "video-lab-mut4jkwd@example.com",
+      "name": "sites-course-1010",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "pk": "video-lab-mut4jkwd|site",
+      "createdate": "2026-10-10T10:32:45.479Z",
+      "modifydate": "2026-10-10T10:32:45.479Z",
+      "version": 0,
+      "sk": "6aca144df5d6b011f6e1207d",
+      "id": "6aca144df5d6b011f6e1207d"
+    }
+  }
+}

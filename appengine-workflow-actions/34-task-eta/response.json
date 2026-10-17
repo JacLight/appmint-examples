@@ -1,0 +1,15 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "taskId": "6aca13a4f5d6b011f6e12035",
+    "currentStageId": 2,
+    "timeInCurrentStageMs": 147,
+    "estimatedRemainingMs": 0,
+    "estimatedAtTerminal": "2026-10-10T10:29:56.708Z",
+    "basedOn": {
+      "sampleSize": 0,
+      "windowDays": 7
+    }
+  }
+}

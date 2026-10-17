@@ -1,0 +1,15 @@
+{
+  "jsonrpc": "2.0",
+  "id": 20,
+  "method": "tools/call",
+  "params": {
+    "name": "call_service",
+    "arguments": {
+      "service": "StorefrontOrderService",
+      "method": "getOrderById",
+      "args": [
+        "6aca827637ff863efff4769b"
+      ]
+    }
+  }
+}

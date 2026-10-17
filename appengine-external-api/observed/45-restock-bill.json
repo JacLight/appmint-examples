@@ -1,0 +1,75 @@
+{
+  "environment": "Controlled local AppEngine training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/repository/get/bm_bill/6acb1841ba781cd23c2f6fa0"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_id": "6acb1841ba781cd23c2f6fa0",
+      "pk": "video-lab-mut4jkwd|bm_bill",
+      "sk": "6acb1841ba781cd23c2f6fa0",
+      "name": "bm_bill-1791694913264-u7s5b15i",
+      "datatype": "bm_bill",
+      "data": {
+        "billNumber": "B-INT-GECK8W0T",
+        "vendorId": "",
+        "vendorName": "Northwind Timber — teaching supplier",
+        "billDate": "2026-10-11",
+        "dueDate": "2026-11-10",
+        "currency": "USD",
+        "status": "approved",
+        "isInventory": true,
+        "description": "Stock received on intake INT-GECK8W0T (vendor ref northwind:supplier-usecase-1011-RESTOCK)",
+        "businessLocationId": "supplier-usecase-1011",
+        "lines": [
+          {
+            "description": "Training white oak plank (SUPPLIER-OAK-1011) — intake INT-GECK8W0T",
+            "quantity": 20,
+            "unitPrice": 41.5,
+            "amount": 830,
+            "sku": "SUPPLIER-OAK-1011"
+          },
+          {
+            "description": "Training walnut board (SUPPLIER-WAL-1011) — intake INT-GECK8W0T",
+            "quantity": 6,
+            "unitPrice": 70,
+            "amount": 420,
+            "sku": "SUPPLIER-WAL-1011"
+          }
+        ],
+        "subtotal": 1250,
+        "taxTotal": 0,
+        "total": 1250,
+        "paidAmount": 0,
+        "amountPaid": 0,
+        "balance": 1250,
+        "intakeId": "6acb163bba781cd23c2f6e9c",
+        "intakeNumber": "INT-GECK8W0T",
+        "approvedBy": "video-lab-mut4jkwd@example.com",
+        "approvedAt": "2026-10-11T05:01:53.264Z",
+        "lineItems": [
+          {
+            "ledgerAccountCode": "1200",
+            "description": "20 × Training white oak plank (SUPPLIER-OAK-1011) — intake INT-GECK8W0T",
+            "amount": 830
+          },
+          {
+            "ledgerAccountCode": "1200",
+            "description": "6 × Training walnut board (SUPPLIER-WAL-1011) — intake INT-GECK8W0T",
+            "amount": 420
+          }
+        ],
+        "booksPending": [],
+        "name": "bm_bill-1791694913264-u7s5b15i"
+      },
+      "version": 0,
+      "author": "video-lab-mut4jkwd@example.com",
+      "created_by": "video-lab-mut4jkwd@example.com",
+      "state": "draft",
+      "createdate": "2026-10-11T05:01:53.283Z",
+      "modifydate": "2026-10-11T05:01:53.283Z"
+    }
+  }
+}

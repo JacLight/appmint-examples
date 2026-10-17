@@ -1,0 +1,30 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/repository/find/sf_inventory",
+    "identity": "staff",
+    "body": {
+      "query": {
+        "data.sku": "HEADLESS-CEDAR-1010"
+      },
+      "options": {
+        "pageSize": 20
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "total": 0,
+      "datatype": "sf_inventory",
+      "pageSize": 20,
+      "page": 1,
+      "sort": "modifydate",
+      "sortType": -1,
+      "lastPage": 1,
+      "hasNext": false,
+      "fromCache": false,
+      "data": []
+    }
+  }
+}

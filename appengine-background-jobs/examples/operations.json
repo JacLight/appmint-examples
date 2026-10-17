@@ -1,0 +1,177 @@
+{
+  "inspect": {
+    "method": "GET",
+    "path": "/jobs/scheduled"
+  },
+  "create-pipeline": {
+    "method": "POST",
+    "path": "/crm/leads/pipelines",
+    "body": {
+      "name": "{{PREFIX}} Follow-up",
+      "isDefault": false,
+      "stages": [
+        {
+          "id": "new",
+          "name": "New enquiry",
+          "order": 0
+        },
+        {
+          "id": "contacted",
+          "name": "Contacted",
+          "order": 1
+        },
+        {
+          "id": "followup",
+          "name": "Follow-up ready",
+          "order": 2
+        }
+      ]
+    }
+  },
+  "create-lead": {
+    "method": "POST",
+    "path": "/crm/leads/detail",
+    "body": {
+      "name": "{{PREFIX}}-rowan",
+      "fullName": "Rowan Bennett",
+      "pipelineId": "{{PIPELINE_ID}}",
+      "stageId": "contacted",
+      "source": "other",
+      "status": "new"
+    }
+  },
+  "set-rule": {
+    "method": "PUT",
+    "path": "/crm/leads/pipelines/stages/{{PIPELINE_ID}}/contacted",
+    "body": {
+      "sla": {
+        "duration": 24,
+        "action": "create_task"
+      }
+    }
+  },
+  "age-practice-lead": {
+    "method": "POST",
+    "path": "/repository/update-partial/lead/{{LEAD_ID}}",
+    "body": {
+      "data.stageChangedAt": "{{PAST_25H}}"
+    }
+  },
+  "run": {
+    "method": "POST",
+    "path": "/jobs/scheduled/lead-stage-sla/run",
+    "body": {}
+  },
+  "get-lead": {
+    "method": "GET",
+    "path": "/crm/leads/detail/{{LEAD_ID}}"
+  },
+  "get-job": {
+    "method": "GET",
+    "path": "/jobs/{{JOB_ID}}"
+  },
+  "get-tasks": {
+    "method": "POST",
+    "path": "/repository/search/task",
+    "body": {
+      "query": {
+        "data.relatedTo.id": "{{LEAD_ID}}",
+        "data.source": "lead-sla"
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 20
+      }
+    }
+  },
+  "history": {
+    "method": "GET",
+    "path": "/jobs?kind=scheduled:lead-stage-sla&page=1&pageSize=20"
+  },
+  "pause": {
+    "method": "PUT",
+    "path": "/jobs/scheduled/lead-stage-sla",
+    "body": {
+      "enabled": false
+    }
+  },
+  "hourly": {
+    "method": "PUT",
+    "path": "/jobs/scheduled/lead-stage-sla",
+    "body": {
+      "enabled": true,
+      "intervalMinutes": 60
+    }
+  },
+  "retry": {
+    "method": "POST",
+    "path": "/jobs/{{JOB_ID}}/retry",
+    "body": {}
+  },
+  "auto-move": {
+    "method": "PUT",
+    "path": "/crm/leads/pipelines/stages/{{PIPELINE_ID}}/contacted",
+    "body": {
+      "sla": {
+        "duration": 24,
+        "action": "auto_move"
+      }
+    }
+  },
+  "cancel-schedule": {
+    "method": "POST",
+    "path": "/schedule-control/cancel-job",
+    "body": {
+      "jobId": "{{QUEUE_JOB_ID}}"
+    }
+  },
+  "create-marker": {
+    "method": "POST",
+    "path": "/repository/create",
+    "body": {
+      "datatype": "{{MARKER_DATATYPE}}",
+      "isNew": true,
+      "data": {
+        "reference": "{{PREFIX}}-release",
+        "status": "waiting"
+      }
+    }
+  },
+  "create-custom-schedule": {
+    "method": "POST",
+    "path": "/repository/create",
+    "body": {
+      "datatype": "schedule",
+      "isNew": true,
+      "data": {
+        "name": "{{PREFIX}}-release",
+        "title": "One-time follow-up preparation",
+        "type": "simple",
+        "status": "active",
+        "target": [
+          {
+            "datatype": "{{MARKER_DATATYPE}}",
+            "id": "{{MARKER_ID}}"
+          }
+        ],
+        "start": {
+          "date": "{{FUTURE_1H}}",
+          "action": "update-status",
+          "actionArgs": "ready"
+        }
+      }
+    }
+  },
+  "queue": {
+    "method": "GET",
+    "path": "/queue-manager/org-schedules"
+  },
+  "get-schedule": {
+    "method": "GET",
+    "path": "/repository/get/schedule/{{SCHEDULE_ID}}"
+  },
+  "get-marker": {
+    "method": "GET",
+    "path": "/repository/get/{{MARKER_DATATYPE}}/{{MARKER_ID}}"
+  }
+}

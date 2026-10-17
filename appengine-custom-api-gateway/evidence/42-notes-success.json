@@ -1,0 +1,21 @@
+{
+  "environment": "Controlled local training deployment",
+  "request": {
+    "method": "GET",
+    "path": "/notes/reservation/6ac8e52762208c1ed6025011",
+    "headers": {
+      "orgid": "video-lab-mut4jkwd",
+      "Authorization": "[redacted]"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "author": "video-lab-mut4jkwd@example.com",
+        "comment": "Tutorial Riverside Provisions check: RS-TEA-24; 12 units available; lead time 3 weeks. Checked 2026-10-10T19:30:47.233Z. Supplier fixture, not a placed order.",
+        "date": "2026-10-10T19:30:47.262Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,361 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "total": 4,
+    "datatype": "workflow_definition",
+    "pageSize": 200,
+    "page": 1,
+    "sort": "modifydate",
+    "sortType": -1,
+    "lastPage": 1,
+    "hasNext": false,
+    "fromCache": false,
+    "lastItem": "2026-10-04T01:10:33.898Z",
+    "data": [
+      {
+        "_id": "6ac294acab9829f838ab91f1",
+        "pk": "video-lab-mut4jkwd|workflow_definition",
+        "sk": "6ac294acab9829f838ab91f1",
+        "name": "prep-pipeline",
+        "datatype": "workflow_definition",
+        "data": {
+          "name": "prep-pipeline",
+          "enabled": true,
+          "title": "Course Prep Pipeline",
+          "description": "Local no-notification course fixture",
+          "notificationTemplate": [],
+          "stages": [
+            {
+              "id": 0,
+              "type": "start",
+              "name": "Received",
+              "modelState": "new",
+              "modelStatus": "new",
+              "notificationTemplate": []
+            },
+            {
+              "id": 1,
+              "type": "intermediate",
+              "name": "Prepping",
+              "modelState": "inprogress",
+              "modelStatus": "inprogress",
+              "notificationTemplate": []
+            },
+            {
+              "id": 2,
+              "type": "intermediate",
+              "name": "Ready",
+              "modelState": "inprogress",
+              "modelStatus": "pending",
+              "notificationTemplate": []
+            },
+            {
+              "id": 3,
+              "type": "end",
+              "name": "Delivered",
+              "modelState": "completed",
+              "modelStatus": "done",
+              "notificationTemplate": []
+            }
+          ],
+          "collections": []
+        },
+        "version": 0,
+        "author": "video-lab-mut4jkwd@example.com",
+        "created_by": "video-lab-mut4jkwd@example.com",
+        "state": "draft",
+        "createdate": "2026-10-04T18:02:20.561Z",
+        "modifydate": "2026-10-04T18:02:20.561Z"
+      },
+      {
+        "_id": "6ac1d85e19ec5a8a773c9297",
+        "pk": "video-lab-mut4jkwd|workflow_definition",
+        "sk": "6ac1d85e19ec5a8a773c9297",
+        "name": "ticket-support",
+        "datatype": "workflow_definition",
+        "data": {
+          "name": "ticket-support",
+          "title": "Ticket support",
+          "enabled": true,
+          "description": "New \u2192 In progress \u2192 Waiting on customer \u2192 Resolved. First response is due 4 hours after the ticket is opened and the owner is told at 1 day; resolution is due 2 days after work starts. Waiting on customer has no timer.",
+          "collections": [
+            "ticket"
+          ],
+          "notificationTemplate": [
+            "task-status-update",
+            "task-status-update-sms"
+          ],
+          "stages": [
+            {
+              "id": 0,
+              "type": "start",
+              "name": "New",
+              "modelState": "new",
+              "modelStatus": "new",
+              "assignRule": {
+                "type": "roles",
+                "roles": [
+                  "Support",
+                  "Owner"
+                ],
+                "mode": "any",
+                "fallbackRoles": [
+                  "Owner"
+                ]
+              },
+              "notificationTemplate": [
+                "task-assignment",
+                "task-assignment-sms"
+              ],
+              "escalations": [
+                {
+                  "escalateAfter": 4,
+                  "units": "hours",
+                  "notificationTemplate": [
+                    "task-reminder",
+                    "task-reminder-sms"
+                  ]
+                },
+                {
+                  "escalateAfter": 1,
+                  "units": "days",
+                  "escalateRule": {
+                    "type": "roles",
+                    "roles": [
+                      "Owner"
+                    ]
+                  },
+                  "notificationTemplate": [
+                    "task-reminder",
+                    "task-reminder-sms"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "type": "intermediate",
+              "name": "In progress",
+              "modelState": "inprogress",
+              "modelStatus": "inprogress",
+              "notificationTemplate": [
+                "task-status-update",
+                "task-status-update-sms"
+              ],
+              "escalations": [
+                {
+                  "escalateAfter": 2,
+                  "units": "days",
+                  "notificationTemplate": [
+                    "task-reminder",
+                    "task-reminder-sms"
+                  ]
+                },
+                {
+                  "escalateAfter": 1,
+                  "units": "days",
+                  "escalateRule": {
+                    "type": "roles",
+                    "roles": [
+                      "Owner"
+                    ]
+                  },
+                  "notificationTemplate": [
+                    "task-reminder",
+                    "task-reminder-sms"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "type": "intermediate",
+              "name": "Waiting on customer",
+              "modelState": "pending",
+              "modelStatus": "pending",
+              "notificationTemplate": [
+                "task-status-update",
+                "task-status-update-sms"
+              ]
+            },
+            {
+              "id": 3,
+              "type": "end",
+              "name": "Resolved",
+              "modelState": "completed",
+              "modelStatus": "done",
+              "notificationTemplate": [
+                "task-status-update",
+                "task-status-update-sms"
+              ]
+            }
+          ]
+        },
+        "version": 0,
+        "author": "system",
+        "created_by": "system",
+        "state": "draft",
+        "createdate": "2026-10-04T04:38:54.877Z",
+        "modifydate": "2026-10-04T06:04:03.827Z"
+      },
+      {
+        "_id": "6ac1a7896cf55d217cabf062",
+        "pk": "video-lab-mut4jkwd|workflow_definition",
+        "sk": "6ac1a7896cf55d217cabf062",
+        "name": "publish-approval",
+        "datatype": "workflow_definition",
+        "data": {
+          "name": "publish-approval",
+          "title": "Publishing approval",
+          "description": "A page, post or product waits on a reviewer before it goes live. Off by default; turn it on to require review.",
+          "collections": [
+            "page",
+            "post",
+            "sf_product"
+          ],
+          "enabled": false,
+          "autoFire": false,
+          "stages": [
+            {
+              "id": 0,
+              "type": "start",
+              "name": "Waiting on reviewer",
+              "modelState": "pending",
+              "modelStatus": "pending",
+              "assignRule": {
+                "type": "roles",
+                "roles": [
+                  "ContentAdmin",
+                  "Publisher",
+                  "Owner"
+                ],
+                "mode": "any",
+                "fallbackRoles": [
+                  "Owner"
+                ]
+              },
+              "notificationTemplate": [
+                "approval-requested",
+                "approval-requested-notification"
+              ],
+              "escalations": [
+                {
+                  "escalateAfter": 2,
+                  "units": "days",
+                  "escalateRule": {
+                    "type": "roles",
+                    "roles": [
+                      "Owner"
+                    ]
+                  },
+                  "notificationTemplate": [
+                    "approval-reminder",
+                    "approval-reminder-notification"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "type": "done",
+              "name": "Published",
+              "modelState": "published",
+              "modelStatus": "approved"
+            },
+            {
+              "id": 2,
+              "type": "done",
+              "name": "Rejected",
+              "modelState": "draft",
+              "modelStatus": "rejected"
+            }
+          ]
+        },
+        "version": 0,
+        "author": "video-lab-mut4jkwd@example.com",
+        "created_by": "video-lab-mut4jkwd@example.com",
+        "state": "draft",
+        "createdate": "2026-10-04T01:10:33.934Z",
+        "modifydate": "2026-10-04T01:10:33.934Z"
+      },
+      {
+        "_id": "6ac1a7896cf55d217cabf05d",
+        "pk": "video-lab-mut4jkwd|workflow_definition",
+        "sk": "6ac1a7896cf55d217cabf05d",
+        "name": "access-approval",
+        "datatype": "workflow_definition",
+        "data": {
+          "name": "access-approval",
+          "title": "Access request approval",
+          "enabled": true,
+          "description": "A request to open a screen or menu item waits on an admin. Anyone holding an approver role can decide; the first decision wins.",
+          "collections": [
+            "access_request"
+          ],
+          "autoFire": false,
+          "stages": [
+            {
+              "id": 0,
+              "type": "start",
+              "name": "Waiting on admin",
+              "modelState": "inprogress",
+              "modelStatus": "pending",
+              "assignRule": {
+                "type": "roles",
+                "roles": [
+                  "ConfigAdmin",
+                  "Owner"
+                ],
+                "mode": "any",
+                "fallbackRoles": [
+                  "Owner"
+                ]
+              },
+              "notificationTemplate": [
+                "approval-requested",
+                "approval-requested-notification"
+              ],
+              "escalations": [
+                {
+                  "escalateAfter": 3,
+                  "units": "days",
+                  "escalateRule": {
+                    "type": "roles",
+                    "roles": [
+                      "Owner"
+                    ]
+                  },
+                  "notificationTemplate": [
+                    "approval-reminder",
+                    "approval-reminder-notification"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "type": "done",
+              "name": "Approved",
+              "modelState": "completed",
+              "modelStatus": "approved"
+            },
+            {
+              "id": 2,
+              "type": "done",
+              "name": "Rejected",
+              "modelState": "completed",
+              "modelStatus": "rejected"
+            }
+          ]
+        },
+        "version": 0,
+        "author": "video-lab-mut4jkwd@example.com",
+        "created_by": "video-lab-mut4jkwd@example.com",
+        "state": "draft",
+        "createdate": "2026-10-04T01:10:33.898Z",
+        "modifydate": "2026-10-04T01:10:33.898Z"
+      }
+    ]
+  }
+}

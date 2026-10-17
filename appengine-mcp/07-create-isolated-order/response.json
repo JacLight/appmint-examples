@@ -1,0 +1,27 @@
+{
+  "status": 200,
+  "contentType": "application/json; charset=utf-8",
+  "body": {
+    "datatype": "sf_order",
+    "data": {
+      "number": "MCP1010A",
+      "name": "MCP course controlled order",
+      "status": "processing",
+      "email": "video-lab-mut4jkwd@example.com",
+      "currency": "USD",
+      "productItems": [],
+      "statusHistory": [],
+      "total": 0
+    },
+    "author": "video-lab-mut4jkwd@example.com",
+    "name": "MCP course controlled order",
+    "created_by": "video-lab-mut4jkwd@example.com",
+    "state": "draft",
+    "pk": "video-lab-mut4jkwd|sf_order",
+    "createdate": "2026-10-10T18:22:46.334Z",
+    "modifydate": "2026-10-10T18:22:46.334Z",
+    "version": 0,
+    "sk": "6aca827637ff863efff4769b",
+    "id": "6aca827637ff863efff4769b"
+  }
+}
