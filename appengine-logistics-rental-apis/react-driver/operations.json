@@ -1,0 +1,102 @@
+{
+  "driver_register": {
+    "actor": "driver",
+    "method": "POST",
+    "path": "/client/logistics/register",
+    "note": "Save returned sk as DRIVER_ID.",
+    "body": {
+      "vehicleType": "van",
+      "vehicleMake": "Ford",
+      "vehicleModel": "Transit",
+      "vehicleYear": 2025,
+      "vehicleColor": "white",
+      "licensePlate": "COURSE",
+      "licensePlateState": "IL"
+    }
+  },
+  "driver_online": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/availability",
+    "note": "",
+    "body": {
+      "availability": "online"
+    }
+  },
+  "driver_payout_methods": {
+    "actor": "driver",
+    "method": "GET",
+    "path": "/client/logistics/payout-methods",
+    "note": "Training driver must have no external payout destination. This course never requests a payout."
+  },
+  "delivery_accept": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/accept",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {}
+  },
+  "delivery_start_pickup": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/start-pickup",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {}
+  },
+  "delivery_arrive_pickup": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/arrive-pickup",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {
+      "stopIndex": 0
+    }
+  },
+  "delivery_complete_pickup": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/complete-pickup",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {
+      "stopIndex": 0,
+      "proof": {
+        "notes": "Two boxes collected"
+      }
+    }
+  },
+  "delivery_start_dropoff": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/start-dropoff",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {}
+  },
+  "delivery_arrive_dropoff": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/arrive-dropoff",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {
+      "stopIndex": 1
+    }
+  },
+  "delivery_complete_dropoff": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/complete-dropoff",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {
+      "stopIndex": 1,
+      "proof": {
+        "notes": "Two boxes received"
+      }
+    }
+  },
+  "delivery_complete": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/complete",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {}
+  }
+}

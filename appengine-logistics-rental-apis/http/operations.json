@@ -1,0 +1,662 @@
+{
+  "create_equipment": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/repository/create",
+    "note": "Create once with a unique SKU.",
+    "body": {
+      "datatype": "sf_rental_item",
+      "isNew": true,
+      "data": {
+        "name": "Hand truck",
+        "sku": "{SKU}",
+        "status": "active",
+        "quantity": 2,
+        "pricing": {
+          "daily": 15,
+          "currency": "USD"
+        },
+        "deposit": {
+          "required": true,
+          "type": "fixed",
+          "amount": 20
+        }
+      }
+    }
+  },
+  "rental_price": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/rental/items/{SKU}/price",
+    "note": "",
+    "body": {
+      "startDate": "{START_DATE}",
+      "endDate": "{END_DATE}",
+      "quantity": 2
+    }
+  },
+  "rental_availability": {
+    "actor": "staff",
+    "method": "GET",
+    "path": "/storefront/rental/items/{SKU}/availability?startDate={START_DATE}&endDate={END_DATE}&quantity=2",
+    "note": ""
+  },
+  "rental_create": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/rental",
+    "note": "Save response data.name as RENTAL_ID; use actual customer identity.",
+    "body": {
+      "startDate": "{START_DATE}",
+      "endDate": "{END_DATE}",
+      "quantity": 2,
+      "sku": "{SKU}",
+      "customer": {
+        "firstName": "Dana",
+        "lastName": "Reyes",
+        "email": "{CUSTOMER_EMAIL}",
+        "phone": ""
+      },
+      "fulfillment": {
+        "type": "pickup"
+      },
+      "return": {
+        "type": "dropoff"
+      }
+    }
+  },
+  "rental_confirm": {
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/storefront/rental/{RENTAL_ID}/confirm",
+    "note": "",
+    "body": {}
+  },
+  "rental_checkout": {
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/storefront/rental/{RENTAL_ID}/checkout",
+    "note": "",
+    "body": {
+      "condition": "good",
+      "checkedBy": "Course operator",
+      "notes": "Controlled training handover"
+    }
+  },
+  "rental_checkin": {
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/storefront/rental/{RENTAL_ID}/checkin",
+    "note": "",
+    "body": {
+      "condition": "good",
+      "checkedBy": "Course operator",
+      "notes": "Controlled training handover"
+    }
+  },
+  "rental_complete": {
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/storefront/rental/{RENTAL_ID}/complete",
+    "note": "",
+    "body": {}
+  },
+  "rental_cancel": {
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/storefront/rental/{RENTAL_ID}/cancel",
+    "note": "",
+    "body": {
+      "reason": "Changed date"
+    }
+  },
+  "rental_read": {
+    "actor": "staff",
+    "method": "GET",
+    "path": "/storefront/rental/{RENTAL_ID}",
+    "note": ""
+  },
+  "test_charge_fee": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payments/charge",
+    "note": "Verify own gateway sk_test privately; require success and gatewayResponse.livemode false. Save paymentRef. Amount is cents.",
+    "body": {
+      "gateway": "stripe",
+      "amount": 6000,
+      "currency": "usd",
+      "paymentMethodId": "pm_card_visa",
+      "metadata": {
+        "course": "logistics-example"
+      }
+    },
+    "testOnly": true
+  },
+  "rental_record_payment": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/rental/{RENTAL_ID}/payment",
+    "note": "Records a real successful charge; does not charge. Amount is major currency units.",
+    "body": {
+      "amount": 60,
+      "method": "card",
+      "gateway": "stripe",
+      "transactionId": "{FEE_PAYMENT_REF}"
+    }
+  },
+  "test_charge_deposit": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payments/charge",
+    "note": "Save the separate original deposit paymentRef; TEST only.",
+    "body": {
+      "gateway": "stripe",
+      "amount": 2000,
+      "currency": "usd",
+      "paymentMethodId": "pm_card_visa"
+    },
+    "testOnly": true
+  },
+  "rental_hold_deposit": {
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/storefront/rental/{RENTAL_ID}/deposit/hold",
+    "note": "Records the already collected deposit; this operation is not a card authorization.",
+    "body": {
+      "paymentGateway": "stripe",
+      "transactionId": "{DEPOSIT_PAYMENT_REF}",
+      "method": "card"
+    }
+  },
+  "rental_refund_deposit": {
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/storefront/rental/{RENTAL_ID}/deposit/refund",
+    "note": "Uses the original linked payment. No skipPaymentGateway.",
+    "body": {
+      "amount": 20,
+      "reason": "Returned in good condition"
+    },
+    "testOnly": true
+  },
+  "rental_refund_payment": {
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/storefront/rental/{RENTAL_ID}/payment/refund",
+    "note": "Cancellation and payment refund are separate.",
+    "body": {
+      "reason": "Controlled TEST refund"
+    },
+    "testOnly": true
+  },
+  "host_status": {
+    "actor": "host",
+    "method": "GET",
+    "path": "/client/stowbo/host/me",
+    "note": ""
+  },
+  "host_apply": {
+    "actor": "host",
+    "method": "POST",
+    "path": "/client/stowbo/host/apply",
+    "note": "Read organization policy: application is not universally auto-approved.",
+    "body": {
+      "agreementAccepted": true,
+      "formData": {},
+      "notes": "Developer training host"
+    }
+  },
+  "storage_listing_create": {
+    "actor": "host",
+    "method": "POST",
+    "path": "/client/stowbo/host/listings",
+    "note": "Save sk as LISTING_ID and data.name as LISTING_NAME; their roles differ.",
+    "body": {
+      "title": "Box storage",
+      "spaceType": "storage",
+      "capacity": 2,
+      "unitLabel": "locker",
+      "exclusive": false,
+      "allowMultiUnitBooking": true,
+      "staffing": "manned",
+      "accessHours": "daytime",
+      "rates": {
+        "mode": "posted",
+        "rounding": "up",
+        "bands": [
+          {
+            "charge": "per_period",
+            "amount": 5,
+            "per": "day"
+          }
+        ]
+      },
+      "payment": {
+        "upfront": 100,
+        "deposit": 0
+      }
+    }
+  },
+  "storage_unit_create": {
+    "actor": "host",
+    "method": "POST",
+    "path": "/client/stowbo/host/units",
+    "note": "Run for A1 then A2.",
+    "body": {
+      "listing": "{LISTING_NAME}",
+      "name": "{UNIT_NAME}",
+      "unitNumber": "{UNIT_NAME}",
+      "status": "vacant"
+    }
+  },
+  "storage_listing_activate": {
+    "actor": "host",
+    "method": "PUT",
+    "path": "/client/stowbo/host/listings/{LISTING_ID}/status",
+    "note": "",
+    "body": {
+      "status": "active"
+    }
+  },
+  "storage_quote": {
+    "actor": "customer",
+    "method": "POST",
+    "path": "/client/stowbo/checkout/quote",
+    "note": "Save the returned checkoutId from hold; cart does not reserve capacity.",
+    "body": {
+      "items": [
+        {
+          "listing": "{LISTING_NAME}",
+          "quantity": 2,
+          "startDate": "{START_DATE}",
+          "endDate": "{END_DATE}"
+        }
+      ]
+    }
+  },
+  "storage_cart": {
+    "actor": "customer",
+    "method": "POST",
+    "path": "/client/stowbo/checkout/cart",
+    "note": "Save the returned checkoutId from hold; cart does not reserve capacity.",
+    "body": {
+      "items": [
+        {
+          "listing": "{LISTING_NAME}",
+          "quantity": 2,
+          "startDate": "{START_DATE}",
+          "endDate": "{END_DATE}"
+        }
+      ]
+    }
+  },
+  "storage_hold": {
+    "actor": "customer",
+    "method": "POST",
+    "path": "/client/stowbo/checkout/hold",
+    "note": "Save the returned checkoutId from hold; cart does not reserve capacity.",
+    "body": {
+      "items": [
+        {
+          "listing": "{LISTING_NAME}",
+          "quantity": 2,
+          "startDate": "{START_DATE}",
+          "endDate": "{END_DATE}"
+        }
+      ]
+    }
+  },
+  "storage_confirm": {
+    "actor": "customer",
+    "method": "POST",
+    "path": "/client/stowbo/checkout/{CHECKOUT_ID}/confirm",
+    "note": "Configured TEST gateway only; save booking sk. Retry the same checkout after interrupted confirmation.",
+    "body": {
+      "paymentMethodId": "pm_card_visa"
+    },
+    "testOnly": true
+  },
+  "storage_read": {
+    "actor": "customer",
+    "method": "GET",
+    "path": "/client/stowbo/bookings/{BOOKING_ID}",
+    "note": ""
+  },
+  "storage_extend": {
+    "actor": "customer",
+    "method": "POST",
+    "path": "/client/stowbo/bookings/{BOOKING_ID}/extend",
+    "note": "Returns an extension summary, not a booking record. Reload the booking. Capacity and payment checked before change.",
+    "body": {
+      "endDate": "{NEW_END_DATE}",
+      "line": 0,
+      "paymentMethodId": "pm_card_visa"
+    },
+    "testOnly": true
+  },
+  "storage_due_cancel": {
+    "actor": "customer",
+    "method": "GET",
+    "path": "/client/stowbo/bookings/{BOOKING_ID}/due?action=cancel",
+    "note": "Read the cancellation amounts before choosing to cancel."
+  },
+  "storage_cancel": {
+    "actor": "customer",
+    "method": "PUT",
+    "path": "/client/stowbo/bookings/{BOOKING_ID}/cancel",
+    "note": "Check current policy and exact API reference; checked-in items must be checked out instead.",
+    "body": {
+      "reason": "Changed plans"
+    },
+    "testOnly": true
+  },
+  "storage_items": {
+    "actor": "host",
+    "method": "GET",
+    "path": "/client/stowbo/host/bookings/{BOOKING_ID}/items",
+    "note": "Each saved item has a distinct sk; repeat custody actions per item."
+  },
+  "storage_checkin": {
+    "actor": "host",
+    "method": "POST",
+    "path": "/client/stowbo/host/items/{ITEM_ID}/checkin",
+    "note": "",
+    "body": {
+      "unit": "{UNIT_NAME}",
+      "identifier": "{BOX_CODE}",
+      "note": "Received in good condition"
+    }
+  },
+  "storage_move_out": {
+    "actor": "host",
+    "method": "POST",
+    "path": "/client/stowbo/host/items/{ITEM_ID}/movement",
+    "note": "",
+    "body": {
+      "direction": "out",
+      "releasedTo": "Sam Rivera",
+      "note": "Collected by driver"
+    }
+  },
+  "storage_checkout_preview": {
+    "actor": "host",
+    "method": "GET",
+    "path": "/client/stowbo/host/items/{ITEM_ID}/checkout",
+    "note": ""
+  },
+  "storage_checkout": {
+    "actor": "host",
+    "method": "POST",
+    "path": "/client/stowbo/host/items/{ITEM_ID}/checkout",
+    "note": "Refused while physically present. Last finished item completes the order.",
+    "body": {
+      "note": "Collected; close this stay"
+    }
+  },
+  "storage_original_payments": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/repository/find/sf_transaction",
+    "note": "Exclude type=refund. Read all pages; find original charge and extension references, never first-row assumptions.",
+    "body": {
+      "query": {
+        "data.metadata.booking": "{BOOKING_ID}",
+        "data.status": "succeeded"
+      },
+      "options": {
+        "pageSize": 100
+      }
+    }
+  },
+  "verify_test_payment": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/finance/payments/verify",
+    "note": "Require gatewayResponse.livemode false and actual expected transaction.",
+    "body": {
+      "gateway": "stripe",
+      "paymentRef": "{PAYMENT_REF}"
+    }
+  },
+  "storage_refund": {
+    "actor": "host",
+    "method": "POST",
+    "path": "/client/stowbo/host/transactions/{PAYMENT_REF}/refund",
+    "note": "One original reference at a time. Host ownership checked. Refund is not a bill credit.",
+    "body": {
+      "reason": "Controlled TEST refund"
+    },
+    "testOnly": true
+  },
+  "driver_register": {
+    "actor": "driver",
+    "method": "POST",
+    "path": "/client/logistics/register",
+    "note": "Save returned sk as DRIVER_ID.",
+    "body": {
+      "vehicleType": "van",
+      "vehicleMake": "Ford",
+      "vehicleModel": "Transit",
+      "vehicleYear": 2025,
+      "vehicleColor": "white",
+      "licensePlate": "COURSE",
+      "licensePlateState": "IL"
+    }
+  },
+  "driver_approve": {
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/logistics/delivery/agents/{DRIVER_ID}/approve",
+    "note": "",
+    "body": {
+      "notes": "Dedicated training driver"
+    }
+  },
+  "driver_online": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/availability",
+    "note": "",
+    "body": {
+      "availability": "online"
+    }
+  },
+  "driver_payout_methods": {
+    "actor": "driver",
+    "method": "GET",
+    "path": "/client/logistics/payout-methods",
+    "note": "Training driver must have no external payout destination. This course never requests a payout."
+  },
+  "delivery_quote": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/logistics/delivery/quote",
+    "note": "Read valid, quote and routeSource; configured route provider can vary.",
+    "body": {
+      "stops": [
+        {
+          "type": "pickup",
+          "location": {
+            "lat": 41.8826,
+            "lng": -87.6226,
+            "address": "201 E Randolph St, Chicago, IL"
+          },
+          "contact": {
+            "name": "Alex Morgan"
+          },
+          "items": [
+            {
+              "name": "Box 1",
+              "quantity": 1
+            },
+            {
+              "name": "Box 2",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "type": "dropoff",
+          "location": {
+            "lat": 41.8917,
+            "lng": -87.6078,
+            "address": "600 E Grand Ave, Chicago, IL"
+          },
+          "contact": {
+            "name": "Dana Reyes"
+          }
+        }
+      ]
+    }
+  },
+  "delivery_create": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/logistics/delivery/jobs",
+    "note": "Save data.jobNumber; no physical shipment is booked.",
+    "body": {
+      "requireSystemQuote": true,
+      "stops": [
+        {
+          "type": "pickup",
+          "location": {
+            "lat": 41.8826,
+            "lng": -87.6226,
+            "address": "201 E Randolph St, Chicago, IL"
+          },
+          "contact": {
+            "name": "Alex Morgan"
+          },
+          "items": [
+            {
+              "name": "Box 1",
+              "quantity": 1
+            },
+            {
+              "name": "Box 2",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "type": "dropoff",
+          "location": {
+            "lat": 41.8917,
+            "lng": -87.6078,
+            "address": "600 E Grand Ave, Chicago, IL"
+          },
+          "contact": {
+            "name": "Dana Reyes"
+          }
+        }
+      ],
+      "customer": {
+        "firstName": "Dana",
+        "lastName": "Reyes",
+        "email": "{CUSTOMER_EMAIL}",
+        "phone": ""
+      },
+      "notes": "Simulated training journey"
+    }
+  },
+  "delivery_offer": {
+    "actor": "staff",
+    "method": "PUT",
+    "path": "/logistics/delivery/jobs/{JOB_NUMBER}/offer",
+    "note": "",
+    "body": {
+      "agentId": "{DRIVER_ID}"
+    }
+  },
+  "delivery_accept": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/accept",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {}
+  },
+  "delivery_start_pickup": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/start-pickup",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {}
+  },
+  "delivery_arrive_pickup": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/arrive-pickup",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {
+      "stopIndex": 0
+    }
+  },
+  "delivery_complete_pickup": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/complete-pickup",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {
+      "stopIndex": 0,
+      "proof": {
+        "notes": "Two boxes collected"
+      }
+    }
+  },
+  "delivery_start_dropoff": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/start-dropoff",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {}
+  },
+  "delivery_arrive_dropoff": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/arrive-dropoff",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {
+      "stopIndex": 1
+    }
+  },
+  "delivery_complete_dropoff": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/complete-dropoff",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {
+      "stopIndex": 1,
+      "proof": {
+        "notes": "Two boxes received"
+      }
+    }
+  },
+  "delivery_complete": {
+    "actor": "driver",
+    "method": "PUT",
+    "path": "/client/logistics/jobs/{JOB_NUMBER}/complete",
+    "note": "Run in journey order. Complete writes earnings; delivered alone does not settle earnings.",
+    "body": {}
+  },
+  "delivery_read": {
+    "actor": "staff",
+    "method": "GET",
+    "path": "/logistics/delivery/jobs/{JOB_NUMBER}",
+    "note": ""
+  },
+  "delivery_earning": {
+    "actor": "staff",
+    "method": "POST",
+    "path": "/repository/find/wallet_transaction",
+    "note": "One linked earning after repeated completion; training ledger only, never spend or request payout.",
+    "body": {
+      "query": {
+        "data.reference": "{JOB_NUMBER}",
+        "data.category": "earning"
+      },
+      "options": {
+        "pageSize": 100
+      }
+    }
+  }
+}

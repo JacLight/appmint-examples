@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.dart_tool/
+build/
+.env
+.env.*
+!.env.example
+*.log
+__pycache__/

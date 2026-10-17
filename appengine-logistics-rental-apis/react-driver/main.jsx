@@ -1,0 +1,16 @@
+import React,{useState} from 'react';
+import{createRoot}from'react-dom/client';
+import{LogisticsClient}from'./client.ts';
+import operations from'./operations.json';
+import './style.css';
+const actions=[['delivery_accept','Accept offer'],['delivery_start_pickup','Start pickup'],['delivery_arrive_pickup','Arrive at pickup'],['delivery_complete_pickup','Confirm collection'],['delivery_start_dropoff','Start dropoff'],['delivery_arrive_dropoff','Arrive at destination'],['delivery_complete_dropoff','Record handover'],['delivery_complete','Complete job']];
+function App(){
+ const[session,setSession]=useState({origin:'',orgId:'',token:''}),[job,setJob]=useState(''),[record,setRecord]=useState(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[connected,setConnected]=useState(false);
+ const client=()=>new LogisticsClient({driver:session},operations);
+ async function run(name){setBusy(true);setError('');try{if(!job.trim())throw Error('Enter the assigned job number.');await client().run(name,{JOB_NUMBER:job.trim()});setRecord(await client().run('delivery_read',{JOB_NUMBER:job.trim()}));}catch(e){setError(e.result?.message||e.message);}finally{setBusy(false)}}
+ const data=record?.data||record;
+ return <main><header><span>APPMINT · DEVELOPER COMPANION</span><h1>Driver workspace</h1><p>Connect the driver's customer session, open an assigned job, then record its actual stops.</p></header>
+ <section><h2>Driver session</h2><form onSubmit={e=>{e.preventDefault();setConnected(true)}}><label>Assigned AppEngine origin<input type="url" required placeholder="https://your-assigned-api.example" value={session.origin} onChange={e=>setSession({...session,origin:e.target.value})}/></label><label>Organization ID<input required value={session.orgId} onChange={e=>setSession({...session,orgId:e.target.value})}/></label><label>Customer bearer token<input type="password" autoComplete="off" required value={session.token} onChange={e=>setSession({...session,token:e.target.value})}/></label><button>Use driver session</button></form><p className="note">Session stays in memory. Obtain it through the API Foundations sign-in flow. Staff approval belongs in the dispatch application.</p></section>
+ {connected&&<section><h2>Assigned job</h2><label>Job number<input value={job} onChange={e=>setJob(e.target.value)}/></label><button disabled={busy} onClick={()=>run('delivery_read')}>Load saved job</button>{busy&&<p role="status">Saving and checking the result…</p>}{error&&<p className="error" role="alert">{String(error)}</p>}{data&&<><div className="status">{data.status}</div><div className="stops">{(data.stops||[]).map((s,i)=><article key={i}><h3>{i+1}. {s.type}</h3><p>{s.location?.address}</p><strong>{s.status}</strong><p>{s.proof?.notes||'Proof not recorded yet'}</p></article>)}</div><div className="actions">{actions.map(([name,title])=><button disabled={busy} key={name} onClick={()=>run(name)}>{title}</button>)}</div>{data.earnings&&<p className="note">Internal earnings: {data.earnings.driverTotal} · {data.earnings.status}. This app does not request a payout.</p>}<p className="note">The demonstration confirmation actions use the two-box proof text from the course. Adapt proof collection to the actual handover before deployment.</p></>}</section>}</main>
+}
+createRoot(document.getElementById('root')).render(<App/>);
