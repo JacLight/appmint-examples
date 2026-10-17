@@ -1,0 +1,221 @@
+--- 03-arrival-and-stand/app.js
++++ 04-linked-work-order/app.js
+@@ -36,6 +36,10 @@
+   arrival: [
+     "Arrivals & stands",
+     "One customer joins the queue, then moves into an available service stand.",
++  ],
++  work: [
++    "Work order",
++    "Record assignment, job time and materials against the same customer.",
+   ],
+ };
+ const money = (n) =>
+@@ -122,6 +126,10 @@
+     "GET",
+     "/checkin/queue?businessLocationId=" + encodeURIComponent(app.location)
+   );
++}
++async function workRead() {
++  const r = await request("GET", "/business-made/work-orders/" + app.work.sk);
++  app.work = r.data[0];
+ }
+ const floor = () =>
+   `<div class="floor">${app.points
+@@ -211,6 +219,69 @@
+     }<p class="muted">${
+       Array.isArray(app.queue) ? app.queue.length : app.queue.data?.length || 0
+     } waiting records returned</p></article></div>`;
++  if (app.view === "work") {
++    const w = data(app.work);
++    h = `<div class="grid"><article class="card"><h2>${
++      app.work ? esc(app.work.data.title) : "Create the linked job"
++    }</h2>${
++      app.work
++        ? row("Saved work-order ID", app.work.sk) +
++          row("Customer ID", w.customerId || "Not returned") +
++          row("Status", w.status) +
++          row("Job hours", w.actualHours || 0) +
++          row("Material cost", money(w.materialCost)) +
++          row("Completed", w.completedAt ? "Recorded" : "—")
++        : `<form id="createWork">${field(
++            "number",
++            "Unique work order number",
++            ""
++          )}${field(
++            "title",
++            "Job title",
++            "Dana bike tune-up"
++          )}<button>Create work order</button></form>`
++    }${
++      app.work
++        ? `<form id="assignMechanic"><label>Mechanic<select name="employee">${app.employees
++            .map(
++              (e) =>
++                `<option value="${esc(e.sk)}">${esc(
++                  e.data.personalInfo?.firstName +
++                    " " +
++                    e.data.personalInfo?.lastName
++                )}</option>`
++            )
++            .join(
++              ""
++            )}</select></label><button>Assign mechanic</button></form>${button(
++            "startWork",
++            "Start work"
++          )}${button("completeWork", "Complete work", true)}`
++        : ""
++    }</article><article class="card"><h2>Job evidence</h2>${
++      app.work
++        ? `<form id="logTime">${field(
++            "hours",
++            "Hours worked",
++            1.25,
++            "number"
++          )}<button>Add job time</button></form><form id="logMaterial">${field(
++            "name",
++            "Material",
++            "Replacement chain"
++          )}${field(
++            "cost",
++            "Total material cost",
++            10,
++            "number"
++          )}<button>Add material</button></form>${button(
++            "saveNote",
++            "Add repair note",
++            true
++          )}<p class="muted">Job-cost entries are separate from employee payroll timesheets and customer sale prices.</p>`
++        : "Create the work order first; it uses the customer returned by check-in."
++    }</article></div>`;
++  }
+   $("#content").innerHTML = h;
+   form("chooseLocation", async (v) => {
+     if (app.location !== v.location) {
+@@ -304,6 +375,86 @@
+         app.position = position;
+         notify("Saved arrival selected and current queue state read.");
+       });
++  form("createWork", async (v) => {
++    if (!app.arrival?.data.payload.customer.id)
++      throw Error("Check in a customer with an email or phone first.");
++    app.work = await request("POST", "/business-made/work-orders", {
++      orderNumber: v.number,
++      title: v.title,
++      customerId: app.arrival.data.payload.customer.id,
++      customerName: app.arrival.data.payload.customer.name,
++      status: "pending",
++      items: [{ id: "tune", productName: "Tune-up", quantity: 1 }],
++    });
++    notify("Work order saved against the arrival customer.");
++  });
++  form("assignMechanic", async (v) => {
++    app.mechanic = v.employee;
++    await request(
++      "POST",
++      "/business-made/work-orders/" + app.work.sk + "/assign",
++      { assignedTo: [v.employee] }
++    );
++    await workRead();
++    notify("Mechanic assignment saved.");
++  });
++  on("startWork", async () => {
++    await request(
++      "POST",
++      "/business-made/work-orders/" + app.work.sk + "/status",
++      { status: "in_progress" }
++    );
++    await workRead();
++    notify("Work is in progress.");
++  });
++  form("logTime", async (v) => {
++    if (!app.mechanic) throw Error("Assign a mechanic first.");
++    await request(
++      "POST",
++      "/business-made/work-orders/" + app.work.sk + "/time-entries",
++      {
++        employeeId: app.mechanic,
++        date: new Date().toISOString().slice(0, 10),
++        hours: Number(v.hours),
++        description: "Tune-up and chain replacement",
++      }
++    );
++    await workRead();
++    notify("Job time recorded and hours recalculated.");
++  });
++  form("logMaterial", async (v) => {
++    await request(
++      "POST",
++      "/business-made/work-orders/" + app.work.sk + "/materials",
++      {
++        id: crypto.randomUUID(),
++        materialName: v.name,
++        quantity: 1,
++        unit: "each",
++        unitCost: Number(v.cost),
++        totalCost: Number(v.cost),
++      }
++    );
++    await workRead();
++    notify("Material cost saved.");
++  });
++  on("saveNote", async () => {
++    await request("POST", "/notes/bm_work_order/" + app.work.sk, {
++      comment: "Training repair: chain replacement approved at the counter.",
++    });
++    notify("Repair note saved on this work order.");
++  });
++  on("completeWork", async () => {
++    await request(
++      "POST",
++      "/business-made/work-orders/" + app.work.sk + "/status",
++      { status: "completed" }
++    );
++    await workRead();
++    notify(
++      "Completion timestamp saved. New time entries now require reopening."
++    );
++  });
+ }
+ for (const b of document.querySelectorAll("[data-view]"))
+   b.onclick = () => {
+--- 03-arrival-and-stand/index.html
++++ 04-linked-work-order/index.html
+@@ -12,7 +12,8 @@
+       </div>
+       <p class="eyebrow">APPENGINE CLIENT EXAMPLE</p>
+       <button data-view="setup">Location & readiness</button
+-      ><button data-view="arrival">Arrivals & stands</button>
++      ><button data-view="arrival">Arrivals & stands</button
++      ><button data-view="work">Work orders</button>
+       <div class="sessions">
+         <button id="signIn">Staff · Sign in</button
+         ><small
+@@ -28,7 +29,7 @@
+           <h1 id="title"></h1>
+           <p id="subtitle"></p>
+         </div>
+-        <span class="badge">Checkpoint 3 · AppEngine client</span>
++        <span class="badge">Checkpoint 4 · AppEngine client</span>
+       </header>
+       <div id="notice" role="status" hidden></div>
+       <section id="content"></section>
+--- 03-arrival-and-stand/server.mjs
++++ 04-linked-work-order/server.mjs
+@@ -10,7 +10,7 @@
+     "Set APPENGINE_API_ORIGIN to your assigned AppEngine backend origin."
+   );
+ const allowed =
+-  /^\/(profile\/user\/signin|repository\/find\/sf_product|business-made\/employees|storefront\/pos\/readiness|checkin\/(walk-in|queue(?:\/position\/[^/]+)?|service-point|[^/]+\/(assign|leave)))$/;
++  /^\/(profile\/user\/signin|repository\/find\/sf_product|business-made\/(employees|work-orders(?:\/[^/]+(?:\/(assign|status|time-entries|materials))?)?)|notes\/bm_work_order\/[^/]+|storefront\/pos\/readiness|checkin\/(walk-in|queue(?:\/position\/[^/]+)?|service-point|[^/]+\/(assign|leave)))$/;
+ http
+   .createServer(async (req, res) => {
+     try {
+--- 03-arrival-and-stand/state.mjs
++++ 04-linked-work-order/state.mjs
+@@ -1,4 +1,4 @@
+ // Clear records owned by the selected visit before switching context.
+ export function resetVisitState(state) {
+-  for (const key of ["assignment", "standId", "position"]) delete state[key];
++  for (const key of ["work", "mechanic", "assignment", "standId", "position"]) delete state[key];
+ }

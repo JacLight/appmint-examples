@@ -1,0 +1,282 @@
+[
+  {
+    "id": "setup-status",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/setup/status"
+  },
+  {
+    "id": "locations",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/repository/find/location",
+    "body": {
+      "query": {},
+      "options": {
+        "page": 1,
+        "pageSize": 50
+      }
+    }
+  },
+  {
+    "id": "products",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/repository/find/sf_product",
+    "body": {
+      "query": {
+        "data.businessLocations": "{{LOCATION_NAME}}"
+      },
+      "options": {
+        "page": 1,
+        "pageSize": 50
+      }
+    }
+  },
+  {
+    "id": "employees",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/employees?page=1&pageSize=50"
+  },
+  {
+    "id": "readiness",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/storefront/pos/readiness?businessLocationId={{LOCATION_NAME}}"
+  },
+  {
+    "id": "available-stands",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/checkin/service-point/available?businessLocationId={{LOCATION_NAME}}"
+  },
+  {
+    "id": "all-stands",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/checkin/service-point?businessLocationId={{LOCATION_NAME}}"
+  },
+  {
+    "id": "walk-in",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/checkin/walk-in",
+    "body": {
+      "businessLocationId": "{{LOCATION_NAME}}",
+      "customer": {
+        "name": "{{CUSTOMER_NAME}}",
+        "email": "{{CUSTOMER_EMAIL}}"
+      },
+      "partySize": 1,
+      "quotedWaitMinutes": 10,
+      "notes": "Tune-up and chain inspection"
+    }
+  },
+  {
+    "id": "queue",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/checkin/queue?businessLocationId={{LOCATION_NAME}}"
+  },
+  {
+    "id": "position",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/checkin/queue/position/{{TASK_ID}}"
+  },
+  {
+    "id": "assign-stand",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/checkin/{{TASK_ID}}/assign",
+    "body": {
+      "servicePointId": "{{STAND_ID}}"
+    }
+  },
+  {
+    "id": "leave-queue",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/checkin/{{TASK_ID}}/leave",
+    "body": {
+      "reason": "Customer left before service"
+    }
+  },
+  {
+    "id": "work-create",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/work-orders",
+    "body": {
+      "orderNumber": "{{WORK_NUMBER}}",
+      "title": "Bike tune-up",
+      "customerId": "{{CUSTOMER_ID}}",
+      "status": "pending",
+      "items": [
+        {
+          "id": "tune",
+          "productName": "Tune-up",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "work-read",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/work-orders/{{WORK_ID}}"
+  },
+  {
+    "id": "work-assign",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/work-orders/{{WORK_ID}}/assign",
+    "body": {
+      "assignedTo": [
+        "{{EMPLOYEE_RECORD_ID}}"
+      ]
+    }
+  },
+  {
+    "id": "work-start",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/work-orders/{{WORK_ID}}/status",
+    "body": {
+      "status": "in_progress"
+    }
+  },
+  {
+    "id": "work-note",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/notes/bm_work_order/{{WORK_ID}}",
+    "body": {
+      "comment": "Chain replacement approved at the counter."
+    }
+  },
+  {
+    "id": "work-time",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/work-orders/{{WORK_ID}}/time-entries",
+    "body": {
+      "employeeId": "{{EMPLOYEE_RECORD_ID}}",
+      "date": "{{WORK_DATE}}",
+      "hours": 1.25,
+      "description": "Tune-up and chain replacement"
+    }
+  },
+  {
+    "id": "work-material",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/work-orders/{{WORK_ID}}/materials",
+    "body": {
+      "id": "{{MATERIAL_ID}}",
+      "materialName": "Replacement chain",
+      "quantity": 1,
+      "unit": "each",
+      "unitCost": 10,
+      "totalCost": 10
+    }
+  },
+  {
+    "id": "work-complete",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/business-made/work-orders/{{WORK_ID}}/status",
+    "body": {
+      "status": "completed"
+    }
+  },
+  {
+    "id": "customer-jobs",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/business-made/work-orders/customer/{{CUSTOMER_ID}}"
+  },
+  {
+    "id": "tab-open",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/pos/tab",
+    "body": {
+      "businessLocationId": "{{LOCATION_NAME}}",
+      "servicePointId": "{{STAND_ID}}",
+      "customer": {
+        "id": "{{CUSTOMER_ID}}",
+        "name": "{{CUSTOMER_NAME}}",
+        "email": "{{CUSTOMER_EMAIL}}"
+      },
+      "tabLabel": "Bike tune-up",
+      "requestId": "{{OPEN_REQUEST_ID}}"
+    }
+  },
+  {
+    "id": "tab-items",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/order/{{TAB_ID}}/items",
+    "body": {
+      "items": [
+        {
+          "sku": "{{TUNEUP_SKU}}",
+          "quantity": 1
+        },
+        {
+          "sku": "{{CHAIN_SKU}}",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "tab-breakdown",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/storefront/pos/tab/{{TAB_ID}}/breakdown"
+  },
+  {
+    "id": "tab-cash",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/pos/tab/{{TAB_ID}}/settle",
+    "body": {
+      "amount": 84.36,
+      "method": "cash",
+      "gateway": "manual",
+      "ref": "Training cash record"
+    }
+  },
+  {
+    "id": "tab-close",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/storefront/pos/tab/{{TAB_ID}}/close",
+    "body": {}
+  },
+  {
+    "id": "receipt",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/storefront/pos/tab/{{TAB_ID}}/receipt-payload"
+  },
+  {
+    "id": "stand-clear",
+    "actor": "staff",
+    "method": "POST",
+    "path": "/checkin/service-point/{{STAND_ID}}/clear",
+    "body": {
+      "finalStatus": "available"
+    }
+  },
+  {
+    "id": "closed-tabs",
+    "actor": "staff",
+    "method": "GET",
+    "path": "/storefront/pos/tabs/closed?businessLocationId={{LOCATION_NAME}}"
+  }
+]

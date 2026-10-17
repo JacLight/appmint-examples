@@ -1,0 +1,720 @@
+[
+  {
+    "checkpoint": "00-project-shell",
+    "previous": null,
+    "patch": "changes/00-project-shell.patch",
+    "changedFiles": [
+      {
+        "file": "app.js",
+        "change": "added"
+      },
+      {
+        "file": "index.html",
+        "change": "added"
+      },
+      {
+        "file": "package.json",
+        "change": "added"
+      },
+      {
+        "file": "server.mjs",
+        "change": "added"
+      },
+      {
+        "file": "style.css",
+        "change": "added"
+      }
+    ],
+    "sections": [],
+    "sha256": {
+      "app.js": "e7ac7c9c4bfbd98ba4a4ead01d09d1b918ff49aacbd1bb42a2892010bb084077",
+      "index.html": "4173745cf4de546691c37361c8157e167dc1f3a7c6ae2bec643fdbed986fda4a",
+      "package.json": "c36d441a9dbb54ebf829315e5a898b8207bc3e5e9036d28f93e662cf85c9f1b3",
+      "server.mjs": "1a39e2d01530664eea17a999cd1d58110fa0a4ae8ba18b8f01bb476e6dcb2345",
+      "style.css": "8c747e836de655fe8dd8b15d845e6797d3b5c0a1965dc04c6f3045668bee0dce"
+    }
+  },
+  {
+    "checkpoint": "01-staff-session",
+    "previous": "00-project-shell",
+    "patch": "changes/01-staff-session.patch",
+    "changedFiles": [
+      {
+        "file": "api.mjs",
+        "change": "added"
+      },
+      {
+        "file": "app.js",
+        "change": "modified"
+      },
+      {
+        "file": "auth.mjs",
+        "change": "added"
+      },
+      {
+        "file": "index.html",
+        "change": "modified"
+      },
+      {
+        "file": "server.mjs",
+        "change": "modified"
+      }
+    ],
+    "sections": [
+      {
+        "file": "api.mjs",
+        "name": "createApi",
+        "start": 9,
+        "end": 28
+      },
+      {
+        "file": "app.js",
+        "name": "notify",
+        "start": 11,
+        "end": 15
+      },
+      {
+        "file": "app.js",
+        "name": "act",
+        "start": 30,
+        "end": 45
+      },
+      {
+        "file": "app.js",
+        "name": "on",
+        "start": 46,
+        "end": 48
+      },
+      {
+        "file": "app.js",
+        "name": "form",
+        "start": 49,
+        "end": 54
+      },
+      {
+        "file": "app.js",
+        "name": "render",
+        "start": 55,
+        "end": 70
+      },
+      {
+        "file": "auth.mjs",
+        "name": "signInStaff",
+        "start": 4,
+        "end": 17
+      }
+    ],
+    "sha256": {
+      "api.mjs": "2de869ec80b9912e58a6a230f359644411ea5bac424a4fe839522421121ca529",
+      "app.js": "fc1da5541938fe4fd2d9d821eea63623bd6a708f6b93d838aa7dfb7e8bece672",
+      "auth.mjs": "3a473b301d14b49998dfe273e21d255184c8c5066a22ee5b57ff84f6bfaf6ec3",
+      "index.html": "d7566c7839496cc234008b9475cae43d2031afaaeb6d1f118ece12b6481b7e01",
+      "package.json": "c36d441a9dbb54ebf829315e5a898b8207bc3e5e9036d28f93e662cf85c9f1b3",
+      "server.mjs": "89cf7be39bf4cfb42e710156040792e9c58e7c6d7aebe8500d8e89cf7410d470",
+      "style.css": "8c747e836de655fe8dd8b15d845e6797d3b5c0a1965dc04c6f3045668bee0dce"
+    }
+  },
+  {
+    "checkpoint": "02-branch-readiness",
+    "previous": "01-staff-session",
+    "patch": "changes/02-branch-readiness.patch",
+    "changedFiles": [
+      {
+        "file": "app.js",
+        "change": "modified"
+      },
+      {
+        "file": "index.html",
+        "change": "modified"
+      },
+      {
+        "file": "server.mjs",
+        "change": "modified"
+      }
+    ],
+    "sections": [
+      {
+        "file": "api.mjs",
+        "name": "createApi",
+        "start": 9,
+        "end": 28
+      },
+      {
+        "file": "app.js",
+        "name": "notify",
+        "start": 50,
+        "end": 54
+      },
+      {
+        "file": "app.js",
+        "name": "act",
+        "start": 69,
+        "end": 84
+      },
+      {
+        "file": "app.js",
+        "name": "on",
+        "start": 85,
+        "end": 87
+      },
+      {
+        "file": "app.js",
+        "name": "form",
+        "start": 88,
+        "end": 93
+      },
+      {
+        "file": "app.js",
+        "name": "refreshFloor",
+        "start": 94,
+        "end": 104
+      },
+      {
+        "file": "app.js",
+        "name": "render",
+        "start": 116,
+        "end": 171
+      },
+      {
+        "file": "app.js",
+        "name": "chooseLocation",
+        "start": 149,
+        "end": 170
+      },
+      {
+        "file": "auth.mjs",
+        "name": "signInStaff",
+        "start": 4,
+        "end": 17
+      }
+    ],
+    "sha256": {
+      "api.mjs": "2de869ec80b9912e58a6a230f359644411ea5bac424a4fe839522421121ca529",
+      "app.js": "13fcb3339a58abe167960fa2c2eb73073d25b13a661b9471c5ba53d85e155933",
+      "auth.mjs": "3a473b301d14b49998dfe273e21d255184c8c5066a22ee5b57ff84f6bfaf6ec3",
+      "index.html": "533aa9dd185d56732ff0bc68c4be1d0b8884ee4a08fee2ff334c3db5cd84107f",
+      "package.json": "c36d441a9dbb54ebf829315e5a898b8207bc3e5e9036d28f93e662cf85c9f1b3",
+      "server.mjs": "72cd68af96ba6a1857a06a542789032f06cf588eae33c764dd5c29db973a4f7c",
+      "style.css": "8c747e836de655fe8dd8b15d845e6797d3b5c0a1965dc04c6f3045668bee0dce"
+    }
+  },
+  {
+    "checkpoint": "03-arrival-and-stand",
+    "previous": "02-branch-readiness",
+    "patch": "changes/03-arrival-and-stand.patch",
+    "changedFiles": [
+      {
+        "file": "app.js",
+        "change": "modified"
+      },
+      {
+        "file": "index.html",
+        "change": "modified"
+      },
+      {
+        "file": "server.mjs",
+        "change": "modified"
+      },
+      {
+        "file": "state.mjs",
+        "change": "added"
+      }
+    ],
+    "sections": [
+      {
+        "file": "api.mjs",
+        "name": "createApi",
+        "start": 9,
+        "end": 28
+      },
+      {
+        "file": "app.js",
+        "name": "resetVisit",
+        "start": 28,
+        "end": 30
+      },
+      {
+        "file": "app.js",
+        "name": "notify",
+        "start": 60,
+        "end": 64
+      },
+      {
+        "file": "app.js",
+        "name": "act",
+        "start": 79,
+        "end": 105
+      },
+      {
+        "file": "app.js",
+        "name": "on",
+        "start": 106,
+        "end": 108
+      },
+      {
+        "file": "app.js",
+        "name": "form",
+        "start": 109,
+        "end": 114
+      },
+      {
+        "file": "app.js",
+        "name": "refreshFloor",
+        "start": 115,
+        "end": 125
+      },
+      {
+        "file": "app.js",
+        "name": "render",
+        "start": 137,
+        "end": 307
+      },
+      {
+        "file": "app.js",
+        "name": "chooseLocation",
+        "start": 215,
+        "end": 241
+      },
+      {
+        "file": "app.js",
+        "name": "walkIn",
+        "start": 242,
+        "end": 261
+      },
+      {
+        "file": "app.js",
+        "name": "assignStand",
+        "start": 262,
+        "end": 277
+      },
+      {
+        "file": "app.js",
+        "name": "refreshQueue",
+        "start": 278,
+        "end": 289
+      },
+      {
+        "file": "app.js",
+        "name": "leaveQueue",
+        "start": 279,
+        "end": 289
+      },
+      {
+        "file": "auth.mjs",
+        "name": "signInStaff",
+        "start": 4,
+        "end": 17
+      },
+      {
+        "file": "state.mjs",
+        "name": "resetVisitState",
+        "start": 2,
+        "end": 4
+      }
+    ],
+    "sha256": {
+      "api.mjs": "2de869ec80b9912e58a6a230f359644411ea5bac424a4fe839522421121ca529",
+      "app.js": "e2374865c25388186805f6b2cab0e0dda44428d7846bf669e0cdb8dde37abb0e",
+      "auth.mjs": "3a473b301d14b49998dfe273e21d255184c8c5066a22ee5b57ff84f6bfaf6ec3",
+      "index.html": "a83f649769b2b181097ebd78e594e7a376f87bb82e3a7999a991116dfeee7609",
+      "package.json": "c36d441a9dbb54ebf829315e5a898b8207bc3e5e9036d28f93e662cf85c9f1b3",
+      "server.mjs": "4b55ccb2d82ea10532dd4bc84f904c6534e72e3ba72af6ee8860fa165865e34b",
+      "state.mjs": "ee4b0af0d33b60c7d36f536232a7a14e91d6f78083aea353ee52d68d5fd33227",
+      "style.css": "8c747e836de655fe8dd8b15d845e6797d3b5c0a1965dc04c6f3045668bee0dce"
+    }
+  },
+  {
+    "checkpoint": "04-linked-work-order",
+    "previous": "03-arrival-and-stand",
+    "patch": "changes/04-linked-work-order.patch",
+    "changedFiles": [
+      {
+        "file": "app.js",
+        "change": "modified"
+      },
+      {
+        "file": "index.html",
+        "change": "modified"
+      },
+      {
+        "file": "server.mjs",
+        "change": "modified"
+      },
+      {
+        "file": "state.mjs",
+        "change": "modified"
+      }
+    ],
+    "sections": [
+      {
+        "file": "api.mjs",
+        "name": "createApi",
+        "start": 9,
+        "end": 28
+      },
+      {
+        "file": "app.js",
+        "name": "resetVisit",
+        "start": 28,
+        "end": 30
+      },
+      {
+        "file": "app.js",
+        "name": "notify",
+        "start": 64,
+        "end": 68
+      },
+      {
+        "file": "app.js",
+        "name": "act",
+        "start": 83,
+        "end": 109
+      },
+      {
+        "file": "app.js",
+        "name": "on",
+        "start": 110,
+        "end": 112
+      },
+      {
+        "file": "app.js",
+        "name": "form",
+        "start": 113,
+        "end": 118
+      },
+      {
+        "file": "app.js",
+        "name": "refreshFloor",
+        "start": 119,
+        "end": 129
+      },
+      {
+        "file": "app.js",
+        "name": "workRead",
+        "start": 130,
+        "end": 133
+      },
+      {
+        "file": "app.js",
+        "name": "render",
+        "start": 145,
+        "end": 458
+      },
+      {
+        "file": "app.js",
+        "name": "chooseLocation",
+        "start": 286,
+        "end": 312
+      },
+      {
+        "file": "app.js",
+        "name": "walkIn",
+        "start": 313,
+        "end": 332
+      },
+      {
+        "file": "app.js",
+        "name": "assignStand",
+        "start": 333,
+        "end": 348
+      },
+      {
+        "file": "app.js",
+        "name": "refreshQueue",
+        "start": 349,
+        "end": 360
+      },
+      {
+        "file": "app.js",
+        "name": "leaveQueue",
+        "start": 350,
+        "end": 360
+      },
+      {
+        "file": "app.js",
+        "name": "createWork",
+        "start": 378,
+        "end": 390
+      },
+      {
+        "file": "app.js",
+        "name": "assignMechanic",
+        "start": 391,
+        "end": 400
+      },
+      {
+        "file": "app.js",
+        "name": "startWork",
+        "start": 401,
+        "end": 409
+      },
+      {
+        "file": "app.js",
+        "name": "logTime",
+        "start": 410,
+        "end": 424
+      },
+      {
+        "file": "app.js",
+        "name": "logMaterial",
+        "start": 425,
+        "end": 440
+      },
+      {
+        "file": "app.js",
+        "name": "saveNote",
+        "start": 441,
+        "end": 446
+      },
+      {
+        "file": "app.js",
+        "name": "completeWork",
+        "start": 447,
+        "end": 457
+      },
+      {
+        "file": "auth.mjs",
+        "name": "signInStaff",
+        "start": 4,
+        "end": 17
+      },
+      {
+        "file": "state.mjs",
+        "name": "resetVisitState",
+        "start": 2,
+        "end": 4
+      }
+    ],
+    "sha256": {
+      "api.mjs": "2de869ec80b9912e58a6a230f359644411ea5bac424a4fe839522421121ca529",
+      "app.js": "5ae19f52d067bd385a80a7f3e6219086004598af16d240878ce920debef7c080",
+      "auth.mjs": "3a473b301d14b49998dfe273e21d255184c8c5066a22ee5b57ff84f6bfaf6ec3",
+      "index.html": "0a77cb094d0c6017a7b89b089b7e4e59f968928d470f8b4eb4ce31094f462669",
+      "package.json": "c36d441a9dbb54ebf829315e5a898b8207bc3e5e9036d28f93e662cf85c9f1b3",
+      "server.mjs": "ecbbe5b1bd8a72e620e29f8705a38a7483ebd9b5eca7430093875a444d64b073",
+      "state.mjs": "9be781fdd62fe3078c60d5caf17483a02cf53621588ab5db0c787c156999630c",
+      "style.css": "8c747e836de655fe8dd8b15d845e6797d3b5c0a1965dc04c6f3045668bee0dce"
+    }
+  },
+  {
+    "checkpoint": "05-tab-payment-receipt",
+    "previous": "04-linked-work-order",
+    "patch": "changes/05-tab-payment-receipt.patch",
+    "changedFiles": [
+      {
+        "file": "app.js",
+        "change": "modified"
+      },
+      {
+        "file": "index.html",
+        "change": "modified"
+      },
+      {
+        "file": "server.mjs",
+        "change": "modified"
+      },
+      {
+        "file": "state.mjs",
+        "change": "modified"
+      }
+    ],
+    "sections": [
+      {
+        "file": "api.mjs",
+        "name": "createApi",
+        "start": 9,
+        "end": 28
+      },
+      {
+        "file": "app.js",
+        "name": "resetVisit",
+        "start": 28,
+        "end": 30
+      },
+      {
+        "file": "app.js",
+        "name": "notify",
+        "start": 68,
+        "end": 72
+      },
+      {
+        "file": "app.js",
+        "name": "act",
+        "start": 87,
+        "end": 113
+      },
+      {
+        "file": "app.js",
+        "name": "on",
+        "start": 114,
+        "end": 116
+      },
+      {
+        "file": "app.js",
+        "name": "form",
+        "start": 117,
+        "end": 122
+      },
+      {
+        "file": "app.js",
+        "name": "refreshFloor",
+        "start": 123,
+        "end": 133
+      },
+      {
+        "file": "app.js",
+        "name": "workRead",
+        "start": 134,
+        "end": 137
+      },
+      {
+        "file": "app.js",
+        "name": "breakdown",
+        "start": 138,
+        "end": 144
+      },
+      {
+        "file": "app.js",
+        "name": "render",
+        "start": 156,
+        "end": 602
+      },
+      {
+        "file": "app.js",
+        "name": "chooseLocation",
+        "start": 359,
+        "end": 385
+      },
+      {
+        "file": "app.js",
+        "name": "walkIn",
+        "start": 386,
+        "end": 405
+      },
+      {
+        "file": "app.js",
+        "name": "assignStand",
+        "start": 406,
+        "end": 421
+      },
+      {
+        "file": "app.js",
+        "name": "refreshQueue",
+        "start": 422,
+        "end": 433
+      },
+      {
+        "file": "app.js",
+        "name": "leaveQueue",
+        "start": 423,
+        "end": 433
+      },
+      {
+        "file": "app.js",
+        "name": "createWork",
+        "start": 451,
+        "end": 463
+      },
+      {
+        "file": "app.js",
+        "name": "assignMechanic",
+        "start": 464,
+        "end": 473
+      },
+      {
+        "file": "app.js",
+        "name": "startWork",
+        "start": 474,
+        "end": 482
+      },
+      {
+        "file": "app.js",
+        "name": "logTime",
+        "start": 483,
+        "end": 497
+      },
+      {
+        "file": "app.js",
+        "name": "logMaterial",
+        "start": 498,
+        "end": 513
+      },
+      {
+        "file": "app.js",
+        "name": "saveNote",
+        "start": 514,
+        "end": 519
+      },
+      {
+        "file": "app.js",
+        "name": "completeWork",
+        "start": 520,
+        "end": 530
+      },
+      {
+        "file": "app.js",
+        "name": "openTab",
+        "start": 531,
+        "end": 544
+      },
+      {
+        "file": "app.js",
+        "name": "chooseItems",
+        "start": 545,
+        "end": 560
+      },
+      {
+        "file": "app.js",
+        "name": "refreshTab",
+        "start": 561,
+        "end": 576
+      },
+      {
+        "file": "app.js",
+        "name": "cash",
+        "start": 562,
+        "end": 576
+      },
+      {
+        "file": "app.js",
+        "name": "closeTab",
+        "start": 577,
+        "end": 585
+      },
+      {
+        "file": "app.js",
+        "name": "clearStand",
+        "start": 586,
+        "end": 594
+      },
+      {
+        "file": "app.js",
+        "name": "receipt",
+        "start": 595,
+        "end": 601
+      },
+      {
+        "file": "auth.mjs",
+        "name": "signInStaff",
+        "start": 4,
+        "end": 17
+      },
+      {
+        "file": "state.mjs",
+        "name": "resetVisitState",
+        "start": 2,
+        "end": 18
+      }
+    ],
+    "sha256": {
+      "api.mjs": "2de869ec80b9912e58a6a230f359644411ea5bac424a4fe839522421121ca529",
+      "app.js": "62b0b8efc49565a28657d1677041e7537ad0ab549367eef7c226fcce8fc6ee5a",
+      "auth.mjs": "3a473b301d14b49998dfe273e21d255184c8c5066a22ee5b57ff84f6bfaf6ec3",
+      "index.html": "cbd0c2881f8a1d5e8414171ef1a2ccbe752a7b9e0b981d7317113e477d8eac12",
+      "package.json": "c36d441a9dbb54ebf829315e5a898b8207bc3e5e9036d28f93e662cf85c9f1b3",
+      "server.mjs": "4a292f4ca3dd6e834e345a50f91bf535935ff14a125a1dc83b135e2577c0bc3a",
+      "state.mjs": "25ffcc80ac8b82601a73a8fa99d1dbcc3f400a2fea1f161ee442ea52c4089007",
+      "style.css": "8c747e836de655fe8dd8b15d845e6797d3b5c0a1965dc04c6f3045668bee0dce"
+    }
+  }
+]

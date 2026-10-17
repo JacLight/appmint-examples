@@ -2,6 +2,10 @@
 
 A custom staff counter consumes AppEngine check-in, work orders and POS APIs. It follows the same customer from arrival to a service stand, repair work and a closed sale. This is a plain JavaScript browser client with a small development proxy; it is not a React or native-mobile application.
 
+## Build it step by step
+
+Start with the [six runnable source checkpoints](checkpoints/README.md) for the developer course: a blank project, staff authentication, branch reads, arrival/stand assignment, linked work orders, and tab/payment/receipt integration. Each stage has exact diffs and named source ranges. The [setup guide](checkpoints/SETUP.md) supplies concrete training record requests and readiness checks. Independent folders start separate browser sessions; checkpoint05 runs the complete integration continuously. The original finished browser client and language examples below remain available.
+
 ## Prerequisites
 
 Use an organization you control and an authorized staff account. Obtain the assigned AppEngine API origin and organization ID from your deployment; follow the published API Foundations and Authentication courses for sign-in. Current contracts: https://appengine.appmint.io/documentation . Staff permissions must cover Check-in/Floor, Time/work orders and POS/Tabs. A visible navigation item never grants permission.

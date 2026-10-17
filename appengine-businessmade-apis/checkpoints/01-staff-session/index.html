@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><title>Northside Service Desk · AppEngine companion</title
+  ><link rel="stylesheet" href="style.css" />
+  <body>
+    <aside>
+      <div class="brand">
+        N<span>Northside<br />Service Desk</span>
+      </div>
+      <p class="eyebrow">APPENGINE CLIENT EXAMPLE</p>
+      <button data-view="setup">Location & readiness</button>
+      <div class="sessions">
+        <button id="signIn">Staff · Sign in</button
+        ><small
+          >Each request uses the signed-in staff account and its organization
+          permissions.</small
+        >
+      </div>
+    </aside>
+    <main>
+      <header>
+        <div>
+          <p class="eyebrow">NORTHSIDE BIKES · OPERATIONS</p>
+          <h1 id="title"></h1>
+          <p id="subtitle"></p>
+        </div>
+        <span class="badge">Checkpoint 1 · AppEngine client</span>
+      </header>
+      <div id="notice" role="status" hidden></div>
+      <section id="content"></section>
+      <footer>
+        Developer companion · Controlled training business · No real money or
+        physical-print claim.
+      </footer>
+      <details>
+        <summary>Last request and response</summary>
+        <pre id="trace">No request yet.</pre>
+      </details>
+    </main>
+    <dialog id="login">
+      <form id="loginForm">
+        <h2>Sign in to your organization</h2>
+        <label>Organization ID<input name="org" required /></label
+        ><label>Email<input name="email" type="email" required /></label
+        ><label
+          >Password<input name="password" type="password" required /></label
+        ><button>Sign in</button
+        ><button type="button" id="cancel" class="secondary">Cancel</button>
+      </form>
+    </dialog>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

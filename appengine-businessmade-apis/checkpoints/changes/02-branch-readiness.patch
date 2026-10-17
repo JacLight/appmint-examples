@@ -1,0 +1,176 @@
+--- 01-staff-session/app.js
++++ 02-branch-readiness/app.js
+@@ -1,13 +1,52 @@
+ import { createApi } from "./api.mjs";
+ import { signInStaff } from "./auth.mjs";
+-const $ = (selector) => document.querySelector(selector);
+-const app = (window.app = { view: "setup", session: null });
++const $ = (s) => document.querySelector(s),
++  esc = (x) =>
++    String(x ?? "").replace(
++      /[&<>"']/g,
++      (c) =>
++        ({
++          "&": "&amp;",
++          "<": "&lt;",
++          ">": "&gt;",
++          '"': "&quot;",
++          "'": "&#39;",
++        }[c])
++    );
++const app = (window.app = {
++  view: "setup",
++  session: null,
++  location: "",
++  points: [],
++  queue: [],
++  products: [],
++  employees: [],
++});
+ const titles = {
+   setup: [
+-    "Staff session",
+-    "Authenticate the staff caller before adding business requests.",
++    "Location & readiness",
++    "Use the saved branch name, available service points and an authorized operator.",
+   ],
+ };
++const money = (n) =>
++    Number(n || 0).toLocaleString("en-US", {
++      style: "currency",
++      currency: "USD",
++    }),
++  badge = (x) => `<span class="badge">${esc(x)}</span>`,
++  data = (x) => x?.data || {},
++  button = (id, label, secondary = false) =>
++    `<button id="${id}" class="${
++      secondary ? "secondary" : ""
++    }">${label}</button>`,
++  field = (name, label, value = "", type = "text") =>
++    `<label>${label}<input name="${name}" type="${type}" ${
++      type === "number" ? 'step="any"' : ""
++    } value="${esc(value)}" required></label>`,
++  row = (label, value) =>
++    `<div class="recordline"><span>${label}</span><strong>${esc(
++      value
++    )}</strong></div>`;
+ function notify(text, error = false) {
+   $("#notice").hidden = false;
+   $("#notice").textContent = text;
+@@ -52,6 +91,28 @@
+     act(() => fn(Object.fromEntries(new FormData(e.target))));
+   });
+ }
++async function refreshFloor() {
++  app.points = await request(
++    "GET",
++    "/checkin/service-point?businessLocationId=" +
++      encodeURIComponent(app.location)
++  );
++  app.queue = await request(
++    "GET",
++    "/checkin/queue?businessLocationId=" + encodeURIComponent(app.location)
++  );
++}
++const floor = () =>
++  `<div class="floor">${app.points
++    .map(
++      (p) =>
++        `<article class="stand ${esc(
++          p.data.status
++        )}"><span class="muted">SERVICE STAND</span><h3>${esc(
++          p.data.displayName
++        )}</h3>${badge(p.data.status)}</article>`
++    )
++    .join("")}</div>`;
+ function render() {
+   const [title, subtitle] = titles[app.view];
+   $("#title").textContent = title;
+@@ -64,9 +125,49 @@
+     .forEach((b) => b.classList.toggle("active", b.dataset.view === app.view));
+   let h = "";
+   if (app.view === "setup")
+-    h =
+-      '<article class="card"><h2>Service desk project</h2><p>Sign in with your own training staff account. Branch reads are added in the next checkpoint.</p></article>';
++    h = `<div class="grid"><article class="card"><h2>Choose your branch</h2><form id="chooseLocation">${field(
++      "location",
++      "Saved location name",
++      app.location
++    )}<button>Load branch & readiness</button></form><p class="muted">Use the location’s name. Keep record IDs for employee and stand references.</p></article><article class="card"><h2>Register readiness</h2>${
++      app.readiness
++        ? badge(app.readiness.allowed ? "Allowed" : "Blocked") +
++          "<p>" +
++          esc(
++            app.readiness.reasons?.join(", ") ||
++              "No blocking requirements returned for this operator."
++          ) +
++          "</p>"
++        : "Load a branch to check this staff session."
++    }</article></div>${floor()}<article class="card"><h2>Product catalogue</h2>${
++      app.products
++        .map((p) => row(p.data.name, p.data.sku + " · " + money(p.data.price)))
++        .join("") ||
++      "Products are read from your organization. Create the service products before opening a sale."
++    }</article>`;
+   $("#content").innerHTML = h;
++  form("chooseLocation", async (v) => {
++    app.location = v.location;
++    app.readiness = await request(
++      "GET",
++      "/storefront/pos/readiness?businessLocationId=" +
++        encodeURIComponent(v.location)
++    );
++    const p = await request("POST", "/repository/find/sf_product", {
++      query: { "data.businessLocations": v.location },
++      options: { page: 1, pageSize: 50 },
++    });
++    app.products = p.data;
++    const e = await request(
++      "GET",
++      "/business-made/employees?page=1&pageSize=50"
++    );
++    app.employees = e.data || e;
++    await refreshFloor();
++    notify(
++      "Branch, available stands, catalogue and operator readiness loaded."
++    );
++  });
+ }
+ for (const b of document.querySelectorAll("[data-view]"))
+   b.onclick = () => {
+@@ -81,6 +182,12 @@
+   const values = Object.fromEntries(new FormData(form));
+   act(async () => {
+     app.session = await signInStaff(values);
++    app.location = "";
++    app.points = [];
++    app.queue = [];
++    app.products = [];
++    app.employees = [];
++    app.readiness = null;
+     app.view = "setup";
+     $("#login").close();
+     form.reset();
+--- 01-staff-session/index.html
++++ 02-branch-readiness/index.html
+@@ -27,7 +27,7 @@
+           <h1 id="title"></h1>
+           <p id="subtitle"></p>
+         </div>
+-        <span class="badge">Checkpoint 1 · AppEngine client</span>
++        <span class="badge">Checkpoint 2 · AppEngine client</span>
+       </header>
+       <div id="notice" role="status" hidden></div>
+       <section id="content"></section>
+--- 01-staff-session/server.mjs
++++ 02-branch-readiness/server.mjs
+@@ -9,7 +9,8 @@
+   throw Error(
+     "Set APPENGINE_API_ORIGIN to your assigned AppEngine backend origin."
+   );
+-const allowed = /^\/profile\/user\/signin$/;
++const allowed =
++  /^\/(profile\/user\/signin|repository\/find\/sf_product|business-made\/employees|storefront\/pos\/readiness|checkin\/(service-point|queue))$/;
+ http
+   .createServer(async (req, res) => {
+     try {

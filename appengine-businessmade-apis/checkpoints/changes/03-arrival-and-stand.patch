@@ -1,0 +1,243 @@
+--- 02-branch-readiness/app.js
++++ 03-arrival-and-stand/app.js
+@@ -1,3 +1,4 @@
++import { resetVisitState } from "./state.mjs";
+ import { createApi } from "./api.mjs";
+ import { signInStaff } from "./auth.mjs";
+ const $ = (s) => document.querySelector(s),
+@@ -22,10 +23,19 @@
+   products: [],
+   employees: [],
+ });
++// Keep the selected visit separate when the customer or branch changes.
++// This teaching client keeps context in memory. Reload recovery needs saved IDs.
++function resetVisit() {
++  resetVisitState(app);
++}
+ const titles = {
+   setup: [
+     "Location & readiness",
+     "Use the saved branch name, available service points and an authorized operator.",
++  ],
++  arrival: [
++    "Arrivals & stands",
++    "One customer joins the queue, then moves into an available service stand.",
+   ],
+ };
+ const money = (n) =>
+@@ -74,6 +84,17 @@
+     await fn();
+     render();
+   } catch (e) {
++    // A competing operator may have changed the floor. Re-read; never retry a write.
++    if (e.status === 409 && app.location) {
++      const failedRequest = $("#trace").textContent;
++      try {
++        await refreshFloor();
++        render();
++      } catch {
++        // Preserve the original conflict even if this read also fails.
++      }
++      $("#trace").textContent = failedRequest;
++    }
+     notify(e.message, true);
+   } finally {
+     pending = false;
+@@ -145,8 +166,58 @@
+         .join("") ||
+       "Products are read from your organization. Create the service products before opening a sale."
+     }</article>`;
++  if (app.view === "arrival")
++    h = `${floor()}<div class="grid"><article class="card"><h2>New walk-in</h2><form id="walkIn">${field(
++      "name",
++      "Customer name",
++      "Dana Reyes"
++    )}${field("email", "Email", "", "email")}${field(
++      "notes",
++      "Visit notes",
++      "Tune-up and chain inspection"
++    )}<button>Check in customer</button></form></article><article class="card"><h2>Current arrival</h2>${
++      app.arrival
++        ? row("Customer", app.arrival.data.payload.customer.name) +
++          row("Arrival ID", app.arrival.sk) +
++          row(
++            "Customer ID",
++            app.arrival.data.payload.customer.id || "Not returned"
++          ) +
++          row("Queue status", app.position?.status || "Waiting") +
++          row("Position", app.position?.position ?? "—") +
++          `<form id="assignStand"><label>Service stand<select name="stand">${app.points
++            .map(
++              (p) =>
++                `<option value="${esc(p.sk)}">${esc(
++                  p.data.displayName
++                )} · ${esc(p.data.status)}</option>`
++            )
++            .join("")}</select></label><button>Assign stand</button></form>`
++        : "Save a walk-in to read the actual queue position."
++    }${button("refreshQueue", "Refresh queue", true)}${
++      app.arrival ? button("leaveQueue", "Mark this arrival left", true) : ""
++    }${
++      app.recent?.length
++        ? "<h3>Saved arrivals in this session</h3>" +
++          app.recent
++            .map(
++              (a) =>
++                `<button class="secondary" data-arrival="${esc(
++                  a.arrival.sk
++                )}">${esc(a.arrival.data.payload.customer.name)}</button>`
++            )
++            .join("")
++        : ""
++    }<p class="muted">${
++      Array.isArray(app.queue) ? app.queue.length : app.queue.data?.length || 0
++    } waiting records returned</p></article></div>`;
+   $("#content").innerHTML = h;
+   form("chooseLocation", async (v) => {
++    if (app.location !== v.location) {
++      resetVisit();
++      app.arrival = null;
++      app.recent = [];
++    }
+     app.location = v.location;
+     app.readiness = await request(
+       "GET",
+@@ -168,6 +239,71 @@
+       "Branch, available stands, catalogue and operator readiness loaded."
+     );
+   });
++  form("walkIn", async (v) => {
++    const savedArrival = await request("POST", "/checkin/walk-in", {
++      businessLocationId: app.location,
++      customer: { name: v.name, email: v.email },
++      partySize: 1,
++      quotedWaitMinutes: 10,
++      notes: v.notes,
++    });
++    resetVisit();
++    app.arrival = savedArrival;
++    app.position = await request(
++      "GET",
++      "/checkin/queue/position/" + app.arrival.sk
++    );
++    app.standId = null;
++    app.recent ||= [];
++    app.recent.push({ arrival: app.arrival });
++    await refreshFloor();
++    notify("Customer and arrival saved. Queue position is from AppEngine.");
++  });
++  form("assignStand", async (v) => {
++    app.assignment = await request(
++      "POST",
++      "/checkin/" + app.arrival.sk + "/assign",
++      { servicePointId: v.stand }
++    );
++    app.standId = app.assignment.servicePointId;
++    const current = app.recent?.find((a) => a.arrival.sk === app.arrival.sk);
++    if (current) current.standId = app.standId;
++    await refreshFloor();
++    app.position = await request(
++      "GET",
++      "/checkin/queue/position/" + app.arrival.sk
++    );
++    notify("Stand assigned. Queue and floor refreshed.");
++  });
++  on("refreshQueue", refreshFloor);
++  on("leaveQueue", async () => {
++    await request("POST", "/checkin/" + app.arrival.sk + "/leave", {
++      reason: "Customer left the controlled training queue",
++    });
++    app.position = await request(
++      "GET",
++      "/checkin/queue/position/" + app.arrival.sk
++    );
++    await refreshFloor();
++    notify("Arrival marked left; queue refreshed.");
++  });
++  for (const b of document.querySelectorAll("[data-arrival]"))
++    b.onclick = () =>
++      act(async () => {
++        const saved = app.recent.find(
++          (a) => a.arrival.sk === b.dataset.arrival
++        );
++        const position = await request(
++          "GET",
++          "/checkin/queue/position/" + saved.arrival.sk
++        );
++        await refreshFloor();
++        resetVisit();
++        app.arrival = saved.arrival;
++        app.standId = saved.standId;
++        app.position = position;
++        notify("Saved arrival selected and current queue state read.");
++      });
+ }
+ for (const b of document.querySelectorAll("[data-view]"))
+   b.onclick = () => {
+@@ -182,6 +318,9 @@
+   const values = Object.fromEntries(new FormData(form));
+   act(async () => {
+     app.session = await signInStaff(values);
++    resetVisit();
++    app.arrival = null;
++    app.recent = [];
+     app.location = "";
+     app.points = [];
+     app.queue = [];
+--- 02-branch-readiness/index.html
++++ 03-arrival-and-stand/index.html
+@@ -11,7 +11,8 @@
+         N<span>Northside<br />Service Desk</span>
+       </div>
+       <p class="eyebrow">APPENGINE CLIENT EXAMPLE</p>
+-      <button data-view="setup">Location & readiness</button>
++      <button data-view="setup">Location & readiness</button
++      ><button data-view="arrival">Arrivals & stands</button>
+       <div class="sessions">
+         <button id="signIn">Staff · Sign in</button
+         ><small
+@@ -27,7 +28,7 @@
+           <h1 id="title"></h1>
+           <p id="subtitle"></p>
+         </div>
+-        <span class="badge">Checkpoint 2 · AppEngine client</span>
++        <span class="badge">Checkpoint 3 · AppEngine client</span>
+       </header>
+       <div id="notice" role="status" hidden></div>
+       <section id="content"></section>
+--- 02-branch-readiness/server.mjs
++++ 03-arrival-and-stand/server.mjs
+@@ -10,7 +10,7 @@
+     "Set APPENGINE_API_ORIGIN to your assigned AppEngine backend origin."
+   );
+ const allowed =
+-  /^\/(profile\/user\/signin|repository\/find\/sf_product|business-made\/employees|storefront\/pos\/readiness|checkin\/(service-point|queue))$/;
++  /^\/(profile\/user\/signin|repository\/find\/sf_product|business-made\/employees|storefront\/pos\/readiness|checkin\/(walk-in|queue(?:\/position\/[^/]+)?|service-point|[^/]+\/(assign|leave)))$/;
+ http
+   .createServer(async (req, res) => {
+     try {
+@@ -48,9 +48,14 @@
+       }
+       const name = u.pathname === "/" ? "index.html" : u.pathname.slice(1);
+       if (
+-        !["index.html", "app.js", "api.mjs", "auth.mjs", "style.css"].includes(
+-          name
+-        )
++        ![
++          "index.html",
++          "app.js",
++          "api.mjs",
++          "auth.mjs",
++          "state.mjs",
++          "style.css",
++        ].includes(name)
+       ) {
+         res.writeHead(404);
+         res.end();
+--- /dev/null
++++ 03-arrival-and-stand/state.mjs
+@@ -0,0 +1,4 @@
++// Clear records owned by the selected visit before switching context.
++export function resetVisitState(state) {
++  for (const key of ["assignment", "standId", "position"]) delete state[key];
++}

@@ -1,0 +1,220 @@
+--- /dev/null
++++ 01-staff-session/api.mjs
+@@ -0,0 +1,28 @@
++// Every business action uses the current staff identity and organization.
++export class AppEngineError extends Error {
++  constructor(status, body) {
++    super(`${status} · ${body.message || body.error || "Request failed"}`);
++    this.status = status;
++    this.body = body;
++  }
++}
++export function createApi(getSession, onResult = () => {}) {
++  return async function request(method, path, body) {
++    const session = getSession();
++    if (!session)
++      throw new Error("Sign in with your authorized staff account first.");
++    const response = await fetch("/api" + path, {
++      method,
++      headers: {
++        orgid: session.org,
++        Authorization: "Bearer " + session.token,
++        "Content-Type": "application/json",
++      },
++      ...(body === undefined ? {} : { body: JSON.stringify(body) }),
++    });
++    const result = await response.json();
++    onResult({ method, path, status: response.status, result });
++    if (!response.ok) throw new AppEngineError(response.status, result);
++    return result;
++  };
++}
+--- 00-project-shell/app.js
++++ 01-staff-session/app.js
+@@ -1,6 +1,91 @@
+-// Start with a running page; AppEngine integration is added next.
+-document.querySelector("#title").textContent = "Service desk project";
+-document.querySelector("#subtitle").textContent =
+-  "Connect this client to your AppEngine organization in the next checkpoint.";
+-document.querySelector("#content").innerHTML =
+-  '<article class="card"><h2>Project shell is running</h2><p>No AppEngine request has been added yet.</p></article>';
++import { createApi } from "./api.mjs";
++import { signInStaff } from "./auth.mjs";
++const $ = (selector) => document.querySelector(selector);
++const app = (window.app = { view: "setup", session: null });
++const titles = {
++  setup: [
++    "Staff session",
++    "Authenticate the staff caller before adding business requests.",
++  ],
++};
++function notify(text, error = false) {
++  $("#notice").hidden = false;
++  $("#notice").textContent = text;
++  $("#notice").className = error ? "error" : "success";
++}
++const request = createApi(
++  () => app.session,
++  ({ method, path, status, result }) => {
++    $("#trace").textContent =
++      method +
++      " " +
++      path +
++      "\nHTTP " +
++      status +
++      "\n" +
++      JSON.stringify(result, null, 2);
++  }
++);
++let pending = false;
++async function act(fn) {
++  if (pending) return;
++  pending = true;
++  document.querySelectorAll("main button").forEach((b) => (b.disabled = true));
++  try {
++    await fn();
++    render();
++  } catch (e) {
++    notify(e.message, true);
++  } finally {
++    pending = false;
++    document
++      .querySelectorAll("main button")
++      .forEach((b) => (b.disabled = false));
++  }
++}
++function on(id, fn) {
++  $("#" + id)?.addEventListener("click", () => act(fn));
++}
++function form(id, fn) {
++  $("#" + id)?.addEventListener("submit", (e) => {
++    e.preventDefault();
++    act(() => fn(Object.fromEntries(new FormData(e.target))));
++  });
++}
++function render() {
++  const [title, subtitle] = titles[app.view];
++  $("#title").textContent = title;
++  $("#subtitle").textContent = subtitle;
++  $("#signIn").textContent = app.session
++    ? "Staff · Connected"
++    : "Staff · Sign in";
++  document
++    .querySelectorAll("[data-view]")
++    .forEach((b) => b.classList.toggle("active", b.dataset.view === app.view));
++  let h = "";
++  if (app.view === "setup")
++    h =
++      '<article class="card"><h2>Service desk project</h2><p>Sign in with your own training staff account. Branch reads are added in the next checkpoint.</p></article>';
++  $("#content").innerHTML = h;
++}
++for (const b of document.querySelectorAll("[data-view]"))
++  b.onclick = () => {
++    app.view = b.dataset.view;
++    render();
++  };
++$("#signIn").onclick = () => $("#login").showModal();
++$("#cancel").onclick = () => $("#login").close();
++$("#loginForm").onsubmit = (e) => {
++  e.preventDefault();
++  const form = e.target;
++  const values = Object.fromEntries(new FormData(form));
++  act(async () => {
++    app.session = await signInStaff(values);
++    app.view = "setup";
++    $("#login").close();
++    form.reset();
++    notify("Signed in with this staff account.");
++  });
++};
++window.render = render;
++render();
+--- /dev/null
++++ 01-staff-session/auth.mjs
+@@ -0,0 +1,17 @@
++// This small training adapter covers an already verified staff account.
++// Challenge-capable production authentication is linked in the course.
++import { AppEngineError } from "./api.mjs";
++export async function signInStaff({ org, email, password }) {
++  const response = await fetch("/api/profile/user/signin", {
++    method: "POST",
++    headers: { orgid: org, "Content-Type": "application/json" },
++    body: JSON.stringify({ email, password }),
++  });
++  const result = await response.json();
++  if (!response.ok) throw new AppEngineError(response.status, result);
++  if (!result.token)
++    throw new Error(
++      "Complete the supported sign-in challenge in the Authentication lesson before using this checkpoint."
++    );
++  return { org, token: result.token };
++}
+--- 00-project-shell/index.html
++++ 01-staff-session/index.html
+@@ -11,7 +11,14 @@
+         N<span>Northside<br />Service Desk</span>
+       </div>
+       <p class="eyebrow">APPENGINE CLIENT EXAMPLE</p>
+-      <p>Project shell</p>
++      <button data-view="setup">Location & readiness</button>
++      <div class="sessions">
++        <button id="signIn">Staff · Sign in</button
++        ><small
++          >Each request uses the signed-in staff account and its organization
++          permissions.</small
++        >
++      </div>
+     </aside>
+     <main>
+       <header>
+@@ -20,7 +27,7 @@
+           <h1 id="title"></h1>
+           <p id="subtitle"></p>
+         </div>
+-        <span class="badge">Checkpoint 0 · AppEngine client</span>
++        <span class="badge">Checkpoint 1 · AppEngine client</span>
+       </header>
+       <div id="notice" role="status" hidden></div>
+       <section id="content"></section>
+@@ -33,6 +40,17 @@
+         <pre id="trace">No request yet.</pre>
+       </details>
+     </main>
++    <dialog id="login">
++      <form id="loginForm">
++        <h2>Sign in to your organization</h2>
++        <label>Organization ID<input name="org" required /></label
++        ><label>Email<input name="email" type="email" required /></label
++        ><label
++          >Password<input name="password" type="password" required /></label
++        ><button>Sign in</button
++        ><button type="button" id="cancel" class="secondary">Cancel</button>
++      </form>
++    </dialog>
+     <script type="module" src="app.js"></script>
+   </body>
+ </html>
+--- 00-project-shell/server.mjs
++++ 01-staff-session/server.mjs
+@@ -9,7 +9,7 @@
+   throw Error(
+     "Set APPENGINE_API_ORIGIN to your assigned AppEngine backend origin."
+   );
+-const allowed = /^$/;
++const allowed = /^\/profile\/user\/signin$/;
+ http
+   .createServer(async (req, res) => {
+     try {
+@@ -46,7 +46,11 @@
+         return;
+       }
+       const name = u.pathname === "/" ? "index.html" : u.pathname.slice(1);
+-      if (!["index.html", "app.js", "style.css"].includes(name)) {
++      if (
++        !["index.html", "app.js", "api.mjs", "auth.mjs", "style.css"].includes(
++          name
++        )
++      ) {
+         res.writeHead(404);
+         res.end();
+         return;

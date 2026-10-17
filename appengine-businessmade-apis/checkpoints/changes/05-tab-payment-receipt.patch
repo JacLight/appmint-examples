@@ -1,0 +1,238 @@
+--- 04-linked-work-order/app.js
++++ 05-tab-payment-receipt/app.js
+@@ -23,7 +23,7 @@
+   products: [],
+   employees: [],
+ });
+-// Keep the selected visit separate when the customer or branch changes.
++// A new customer/branch must not inherit another visit's work order or tab.
+ // This teaching client keeps context in memory. Reload recovery needs saved IDs.
+ function resetVisit() {
+   resetVisitState(app);
+@@ -40,6 +40,10 @@
+   work: [
+     "Work order",
+     "Record assignment, job time and materials against the same customer.",
++  ],
++  counter: [
++    "Counter & receipt",
++    "AppEngine prices the order and records each payment. Closing and clearing are separate.",
+   ],
+ };
+ const money = (n) =>
+@@ -130,6 +134,13 @@
+ async function workRead() {
+   const r = await request("GET", "/business-made/work-orders/" + app.work.sk);
+   app.work = r.data[0];
++}
++async function breakdown() {
++  app.breakdown = await request(
++    "GET",
++    "/storefront/pos/tab/" + app.tab.sk + "/breakdown"
++  );
++  app.tab = app.breakdown.order;
+ }
+ const floor = () =>
+   `<div class="floor">${app.points
+@@ -282,6 +293,68 @@
+         : "Create the work order first; it uses the customer returned by check-in."
+     }</article></div>`;
+   }
++  if (app.view === "counter") {
++    const d = app.breakdown?.breakdown;
++    h = `<div class="grid3"><article class="card"><h2>${esc(
++      app.arrival?.data.payload.customer.name || "Customer"
++    )} · Service tab</h2>${
++      app.tab
++        ? row("Order", app.tab.data.number) + row("Status", app.tab.data.status)
++        : "<p>Open a tab at Dana’s stand using a stable request ID.</p>"
++    }${button("openTab", app.tab ? "Retry same open request" : "Open tab")}${
++      app.tab
++        ? `<form id="chooseItems"><h3>Choose catalogue lines</h3>${app.products
++            .map(
++              (p) =>
++                `<label class="catalogue-choice"><input type="checkbox" name="sku" value="${esc(
++                  p.data.sku
++                )}"><span>${esc(p.data.name)} · ${money(
++                  p.data.price
++                )}</span><input type="number" name="qty-${esc(
++                  p.data.sku
++                )}" value="1" min="1" step="1" aria-label="Quantity"></label>`
++            )
++            .join("")}<button>Add selected lines</button></form>` +
++          button("refreshTab", "Refresh totals", true)
++        : ""
++    }</article><article class="card"><h2>Server totals</h2>${
++      d
++        ? row("Subtotal", money(d.subtotal)) +
++          row("Tax", money(d.tax)) +
++          `<p class="money">${money(d.total)}</p>` +
++          row("Paid", money(d.paid)) +
++          row("Balance due", money(d.balanceDue))
++        : ""
++    }</article><article class="card"><h2>Settle, close, clear</h2><p class="muted">Training cash records an internal tender; no real payment provider is charged.</p>${
++      app.tab
++        ? button("cash", "Record training cash") +
++          button("closeTab", "Close tab", true) +
++          button("clearStand", "Clear service stand", true) +
++          button("receipt", "Get returned receipt", true)
++        : "Open the tab first."
++    }${
++      app.closed
++        ? row("Saved order", app.closed.order.data.status) +
++          row("Stand after close", app.closed.servicePoint?.data.status)
++        : ""
++    }${app.cleared ? badge("Stand available") : ""}</article></div>${
++      app.receipt
++        ? `<article class="card"><h2>Actual AppEngine receipt payload</h2><div class="receipt">${app.receipt.lines
++            .map((l) =>
++              l.kind === "text"
++                ? `<div style="white-space:pre" class="${
++                    l.bold ? "bold" : ""
++                  }">${esc(l.text)}</div>`
++                : l.kind === "feed"
++                ? "<br>"
++                : ""
++            )
++            .join(
++              ""
++            )}</div><p class="muted">Returned template lines for your printer implementation. This view does not claim paper was printed.</p></article>`
++        : ""
++    }`;
++  }
+   $("#content").innerHTML = h;
+   form("chooseLocation", async (v) => {
+     if (app.location !== v.location) {
+@@ -455,6 +528,77 @@
+       "Completion timestamp saved. New time entries now require reopening."
+     );
+   });
++  on("openTab", async () => {
++    if (!app.arrival || !app.standId)
++      throw Error("Assign the arrival to a stand first.");
++    app.requestId ||= crypto.randomUUID();
++    app.tab = await request("POST", "/storefront/pos/tab", {
++      businessLocationId: app.location,
++      servicePointId: app.standId,
++      customer: app.arrival.data.payload.customer,
++      tabLabel: app.arrival.data.payload.customer.name + " · Service tab",
++      requestId: app.requestId,
++    });
++    await breakdown();
++    notify("Tab loaded. Repeating this request keeps the same tab.");
++  });
++  form("chooseItems", async () => {
++    const f = $("#chooseItems"),
++      selected = [...f.querySelectorAll("[name=sku]:checked")].map((e) => ({
++        sku: e.value,
++        quantity: Number(f.elements.namedItem("qty-" + e.value).value),
++      }));
++    if (!selected.length)
++      throw Error("Select the catalogue lines for this customer.");
++    await request("POST", "/storefront/order/" + app.tab.sk + "/items", {
++      items: selected,
++    });
++    await breakdown();
++    notify(
++      "Selected catalogue prices and location tax calculated on the server."
++    );
++  });
++  on("refreshTab", breakdown);
++  on("cash", async () => {
++    await breakdown();
++    app.payment = await request(
++      "POST",
++      "/storefront/pos/tab/" + app.tab.sk + "/settle",
++      {
++        amount: app.breakdown.breakdown.balanceDue,
++        method: "cash",
++        gateway: "manual",
++        ref: "Training cash record",
++      }
++    );
++    await breakdown();
++    notify("Cash tender recorded. Balance refreshed.");
++  });
++  on("closeTab", async () => {
++    app.closed = await request(
++      "POST",
++      "/storefront/pos/tab/" + app.tab.sk + "/close",
++      {}
++    );
++    await breakdown();
++    notify("Tab completed. Inspect the stand state before the next arrival.");
++  });
++  on("clearStand", async () => {
++    app.cleared = await request(
++      "POST",
++      "/checkin/service-point/" + app.standId + "/clear",
++      { finalStatus: "available" }
++    );
++    await refreshFloor();
++    notify("Stand cleared and available for the next arrival.");
++  });
++  on("receipt", async () => {
++    app.receipt = await request(
++      "GET",
++      "/storefront/pos/tab/" + app.tab.sk + "/receipt-payload"
++    );
++    notify("Actual receipt template returned. Client rendering shown below.");
++  });
+ }
+ for (const b of document.querySelectorAll("[data-view]"))
+   b.onclick = () => {
+--- 04-linked-work-order/index.html
++++ 05-tab-payment-receipt/index.html
+@@ -13,7 +13,8 @@
+       <p class="eyebrow">APPENGINE CLIENT EXAMPLE</p>
+       <button data-view="setup">Location & readiness</button
+       ><button data-view="arrival">Arrivals & stands</button
+-      ><button data-view="work">Work orders</button>
++      ><button data-view="work">Work orders</button
++      ><button data-view="counter">Counter & receipt</button>
+       <div class="sessions">
+         <button id="signIn">Staff · Sign in</button
+         ><small
+@@ -29,7 +30,7 @@
+           <h1 id="title"></h1>
+           <p id="subtitle"></p>
+         </div>
+-        <span class="badge">Checkpoint 4 · AppEngine client</span>
++        <span class="badge">Checkpoint 5 · AppEngine client</span>
+       </header>
+       <div id="notice" role="status" hidden></div>
+       <section id="content"></section>
+--- 04-linked-work-order/server.mjs
++++ 05-tab-payment-receipt/server.mjs
+@@ -10,7 +10,7 @@
+     "Set APPENGINE_API_ORIGIN to your assigned AppEngine backend origin."
+   );
+ const allowed =
+-  /^\/(profile\/user\/signin|repository\/find\/sf_product|business-made\/(employees|work-orders(?:\/[^/]+(?:\/(assign|status|time-entries|materials))?)?)|notes\/bm_work_order\/[^/]+|storefront\/pos\/readiness|checkin\/(walk-in|queue(?:\/position\/[^/]+)?|service-point|[^/]+\/(assign|leave)))$/;
++  /^\/(profile\/user\/signin|repository\/(?:find\/(?:location|service_point|sf_product|bm_employee)|get\/(?:location|service_point|sf_product|bm_employee)\/[^/]+)|business-made\/(?:setup\/status|employees|work-orders(?:\/(?:active|customer\/[^/]+|[^/]+(?:\/(?:assign|status|items|time-entries|materials))?))?)|checkin\/(?:walk-in|queue(?:\/history|\/position\/[^/]+)?|service-point(?:\/available|\/[^/]+\/clear)?|[^/]+\/(?:assign|leave|no-show))|notes\/bm_work_order\/[^/]+|storefront\/(?:pos\/(?:readiness|tabs(?:\/closed)?|tab(?:\/[^/]+\/(?:breakdown|settle|close|receipt-payload|print-receipt))?)|order\/[^/]+\/items))$/;
+ http
+   .createServer(async (req, res) => {
+     try {
+--- 04-linked-work-order/state.mjs
++++ 05-tab-payment-receipt/state.mjs
+@@ -1,4 +1,18 @@
+-// Clear records owned by the selected visit before switching context.
++// Only the current visit may own these dependent business records.
+ export function resetVisitState(state) {
+-  for (const key of ["work", "mechanic", "assignment", "standId", "position"]) delete state[key];
++  for (const key of [
++    "work",
++    "mechanic",
++    "tab",
++    "breakdown",
++    "requestId",
++    "closed",
++    "cleared",
++    "receipt",
++    "payment",
++    "assignment",
++    "standId",
++    "position",
++  ])
++    delete state[key];
+ }

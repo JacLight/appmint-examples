@@ -1,0 +1,148 @@
+--- /dev/null
++++ 00-project-shell/app.js
+@@ -0,0 +1,6 @@
++// Start with a running page; AppEngine integration is added next.
++document.querySelector("#title").textContent = "Service desk project";
++document.querySelector("#subtitle").textContent =
++  "Connect this client to your AppEngine organization in the next checkpoint.";
++document.querySelector("#content").innerHTML =
++  '<article class="card"><h2>Project shell is running</h2><p>No AppEngine request has been added yet.</p></article>';
+--- /dev/null
++++ 00-project-shell/index.html
+@@ -0,0 +1,38 @@
++<!DOCTYPE html>
++<html lang="en">
++  <meta charset="utf-8" /><meta
++    name="viewport"
++    content="width=device-width,initial-scale=1"
++  /><title>Northside Service Desk · AppEngine companion</title
++  ><link rel="stylesheet" href="style.css" />
++  <body>
++    <aside>
++      <div class="brand">
++        N<span>Northside<br />Service Desk</span>
++      </div>
++      <p class="eyebrow">APPENGINE CLIENT EXAMPLE</p>
++      <p>Project shell</p>
++    </aside>
++    <main>
++      <header>
++        <div>
++          <p class="eyebrow">NORTHSIDE BIKES · OPERATIONS</p>
++          <h1 id="title"></h1>
++          <p id="subtitle"></p>
++        </div>
++        <span class="badge">Checkpoint 0 · AppEngine client</span>
++      </header>
++      <div id="notice" role="status" hidden></div>
++      <section id="content"></section>
++      <footer>
++        Developer companion · Controlled training business · No real money or
++        physical-print claim.
++      </footer>
++      <details>
++        <summary>Last request and response</summary>
++        <pre id="trace">No request yet.</pre>
++      </details>
++    </main>
++    <script type="module" src="app.js"></script>
++  </body>
++</html>
+--- /dev/null
++++ 00-project-shell/package.json
+@@ -0,0 +1,10 @@
++{
++  "private": true,
++  "type": "module",
++  "scripts": {
++    "start": "node server.mjs"
++  },
++  "engines": {
++    "node": ">=20"
++  }
++}
+--- /dev/null
++++ 00-project-shell/server.mjs
+@@ -0,0 +1,73 @@
++import http from "node:http";
++import fs from "node:fs/promises";
++import path from "node:path";
++import { fileURLToPath } from "node:url";
++const root = path.dirname(fileURLToPath(import.meta.url));
++const api = process.env.APPENGINE_API_ORIGIN;
++const port = Number(process.env.PORT || 4108);
++if (!api)
++  throw Error(
++    "Set APPENGINE_API_ORIGIN to your assigned AppEngine backend origin."
++  );
++const allowed = /^$/;
++http
++  .createServer(async (req, res) => {
++    try {
++      const u = new URL(req.url, "http://sample.invalid");
++      if (u.pathname.startsWith("/api/")) {
++        const route = u.pathname.slice(4);
++        if (!allowed.test(route))
++          throw Error("This example does not proxy that route.");
++        let body = "";
++        for await (const c of req) {
++          body += c;
++          if (body.length > 1e6) throw Error("Request too large");
++        }
++        const upstream = await fetch(
++          api.replace(/\/$/, "") + route + u.search,
++          {
++            method: req.method,
++            headers: {
++              "content-type": "application/json",
++              ...(req.headers.orgid ? { orgid: req.headers.orgid } : {}),
++              ...(req.headers.authorization
++                ? { authorization: req.headers.authorization }
++                : {}),
++            },
++            ...(body ? { body } : {}),
++          }
++        );
++        res.writeHead(upstream.status, {
++          "Content-Type":
++            upstream.headers.get("content-type") || "application/json",
++          "Cache-Control": "no-store",
++        });
++        res.end(Buffer.from(await upstream.arrayBuffer()));
++        return;
++      }
++      const name = u.pathname === "/" ? "index.html" : u.pathname.slice(1);
++      if (!["index.html", "app.js", "style.css"].includes(name)) {
++        res.writeHead(404);
++        res.end();
++        return;
++      }
++      res.writeHead(200, {
++        "Content-Type":
++          name.endsWith(".js") || name.endsWith(".mjs")
++            ? "text/javascript"
++            : name.endsWith(".css")
++            ? "text/css"
++            : "text/html",
++        "Cache-Control": "no-store",
++      });
++      res.end(await fs.readFile(path.join(root, name)));
++    } catch (e) {
++      res.writeHead(400, { "Content-Type": "application/json" });
++      res.end(JSON.stringify({ message: e.message }));
++    }
++  })
++  .listen(port, "127.0.0.1", () =>
++    console.log(
++      `Course example: http://127.0.0.1:${port} — local development only. No stored credentials are supplied by this server.`
++    )
++  );
+--- /dev/null
++++ 00-project-shell/style.css
+@@ -0,0 +1,6 @@
++@font-face{font-family:Inter;src:local(Inter)}*{box-sizing:border-box}body{margin:0;background:#f5f4fb;color:#17142b;font-family:Inter,system-ui,sans-serif;font-size:18px;display:flex}aside{width:300px;min-height:100vh;background:#fff;border-right:1px solid #e5e1ee;padding:36px 24px;position:fixed;inset:0 auto 0 0}.brand{display:flex;align-items:center;gap:13px;color:#7444e7;font-size:38px;font-weight:800}.brand span{font-size:20px;color:#241a3c}.eyebrow{font-size:12px;font-weight:750;letter-spacing:1.8px;color:#785ba8;margin:16px 0}aside>button{display:block;width:100%;text-align:left;background:none;color:#605570;margin:10px 0;padding:16px;border:0;border-radius:12px;font-size:17px}aside>button.active{background:#eee6ff;color:#5e2fcc;font-weight:700}.sessions{position:absolute;bottom:36px;width:252px;border-top:1px solid #e5e1ee;font-size:14px}.sessions button{width:100%;font-size:14px;margin-bottom:8px}.sessions small{display:block;color:#766c84;line-height:1.5}main{margin-left:300px;width:calc(100% - 300px);padding:44px 60px}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}h1{font-size:42px;letter-spacing:-1.6px;margin:8px 0}h2{font-size:27px;letter-spacing:-.5px;margin:0 0 22px}h3{margin:0 0 12px;font-size:21px}p{line-height:1.5;color:#6c637a}.badge,.state{display:inline-block;border-radius:30px;padding:9px 15px;background:#e0f3ec;color:#146a51;font-size:15px;font-weight:700}.state.draft,.state.pending,.state.todo{background:#fff0cd;color:#86570b}.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}.panel{background:white;border:1px solid #e4dfed;border-radius:20px;padding:30px;min-width:0}.wide{grid-column:1/-1}.row{display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #eeeaf4;padding:17px 0}.row:last-child{border-bottom:0}.muted,small{color:#746c80}.metric{font-size:54px;font-weight:750;letter-spacing:-2px;margin:8px 0}.metric small{font-size:20px;letter-spacing:0}button{border:0;border-radius:10px;background:#7744e8;color:white;font:inherit;padding:13px 19px;cursor:pointer}button:hover{filter:brightness(.95)}button:disabled{opacity:.5;cursor:wait}.secondary{background:#eee8f8;color:#6038a7}form{display:grid;gap:16px}label{display:grid;gap:8px;font-size:14px;color:#675c76}input,select,textarea{width:100%;font:inherit;font-size:18px;border:1px solid #d9d0e6;border-radius:9px;padding:12px;color:#241b34;background:white}textarea{min-height:90px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}#notice{position:sticky;top:15px;z-index:2;border-radius:12px;padding:16px 24px;background:#e0f3ec;color:#176b52;margin-bottom:22px}#notice.error{background:#ffe7e8;color:#9b2936}footer{margin-top:30px;font-size:13px;color:#877d93}details{margin-top:22px;font-size:14px}pre{font:14px/1.5 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;border:1px solid #e4dfed;border-radius:12px;padding:20px}dialog{border:1px solid #d9cdec;border-radius:22px;padding:40px;width:550px}dialog::backdrop{background:#21193255}.avatar{border-radius:50%;background:#ece1ff;color:#7439da;width:56px;height:56px;display:grid;place-items:center;font-size:22px;font-weight:700}.person{display:flex;gap:17px;align-items:center}.calendar{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.day{background:#f7f4fc;border-radius:12px;padding:16px;min-height:170px}.shift{background:#e9defc;border-left:4px solid #7540d8;border-radius:8px;padding:12px;margin-top:15px}.empty{padding:35px 15px;text-align:center;color:#7e728e;background:#faf8fd;border:1px dashed #d7cbe9;border-radius:12px}.policy{background:#f7f5fb;padding:22px;border-radius:12px;line-height:1.6}.money{font-variant-numeric:tabular-nums}.focus{outline:4px solid #a06af5;outline-offset:5px}@media(max-width:1000px){aside{width:220px}main{margin-left:220px;width:calc(100% - 220px);padding:30px}.grid{grid-template-columns:1fr}.sessions{width:172px}.calendar{grid-template-columns:1fr}.badge{display:none}}
++
++.floor{display:flex;gap:24px;align-items:stretch}.stand{flex:1;border:2px solid #dcd6ed;border-radius:20px;padding:24px;background:#fff;min-height:160px}.stand.occupied{border-color:#dfac59;background:#fff8e9}.stand.available{border-color:#78baa8;background:#ecf8f3}.stand h3{font-size:30px;margin:12px 0}.receipt{font:20px/1.7 ui-monospace,monospace;background:white;border:1px solid #d8d4df;max-width:650px;margin:auto;padding:28px;box-shadow:0 10px 32px #211a3210}.receipt .center{text-align:center}.receipt .rule{border-top:1px dashed #9a94a5;margin:12px 0}.receipt .columns{display:flex;justify-content:space-between}.receipt .bold{font-weight:700}.recordline{display:flex;justify-content:space-between;border-bottom:1px solid #e8e3ef;padding:15px 0}.money{font-size:42px;font-weight:700;color:#1a745e}.muted{color:#746c83}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
++.card{background:white;border:1px solid #e4dfed;border-radius:20px;padding:28px;min-width:0;margin-top:24px}.grid>.card{margin-top:0}.card>button{margin:8px 8px 8px 0}.card>form+form,.card>form+button{margin-top:20px}.floor{margin-top:24px;margin-bottom:24px}.card form{max-width:100%}.grid .card{align-self:start}.receipt{font-size:19px;overflow:auto}.receipt div{min-height:1em}
++.catalogue-choice{display:grid;grid-template-columns:24px 1fr 80px;align-items:center;gap:12px}.catalogue-choice input[type=checkbox]{width:20px;height:20px}.catalogue-choice input[type=number]{font-size:16px}
++.grid3>.card{margin-top:0;padding:24px}.grid3 h2{font-size:24px}.grid3 .catalogue-choice{grid-template-columns:22px 1fr 60px}.grid3 .catalogue-choice input{padding:8px}.grid3>article>.money{margin:24px 0}.grid3 .recordline{font-size:16px}.grid3>article>button{font-size:16px;padding:12px 14px}
