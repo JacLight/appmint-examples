@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "title": "Prepare your Atelier consultation",
+  "required": [
+    "projectType",
+    "brief",
+    "contactConsent"
+  ],
+  "properties": {
+    "projectType": {
+      "type": "string",
+      "title": "Project type",
+      "enum": [
+        "Single room",
+        "Whole home"
+      ]
+    },
+    "brief": {
+      "type": "string",
+      "title": "What would you like help with?",
+      "minLength": 12,
+      "maxLength": 300,
+      "x-control-variant": "textarea"
+    },
+    "contactConsent": {
+      "type": "boolean",
+      "title": "I agree to be contacted about this booking",
+      "const": true
+    }
+  }
+}

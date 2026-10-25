@@ -24,9 +24,32 @@ In the Appmint application, configure an active service Reservation Definition w
 
 Use normal customer signup/sign-in in the site. The application handles verification codes and temporary-password change, then requests a new ordinary sign-in. Customer tokens live in browser `sessionStorage`, scoped to the configured organization/definition; refresh is automatic. The server stores no customer session, so restarting or redeploying it does not discard an open tab's session. Signing out clears the local session; this sample does not implement global token revocation.
 
-In Vibe Studio, use this folder as the application root. If importing the whole examples repository, the application root is `appengine-vibe-booking`, not its `web` subfolder. Run `npm ci --include=dev` to install the locked toolchain, then `npm run build`, and start the runtime with `npm start`. Explicitly including development dependencies makes the Vite build work even when the host sets `NODE_ENV=production` during installation. The root `package-lock.json` is the deployment lockfile.
+## Import and configure in Vibe Studio
 
-The build writes `web/dist`; deploy that output alongside `server.mjs` and the root package files. The server resolves static files relative to `server.mjs`, rather than the shell's current directory. Do not configure a static-only hosting target: the `/api` gateway needs the Node process. The process binds `0.0.0.0` and reads the platform's `PORT` (3000 locally). Provide `APPENGINE_BASE_URL`, `APPENGINE_ORG_ID` and `APPENGINE_DEFINITION_ID` through deployment configuration; the ignored local `config.json` will not be in a Git checkout. A working `/healthz` proves the process is listening; verify the customer journey separately against your chosen AppEngine organization.
+Open an empty App development environment and confirm its organization and project. In the GitHub drawer choose **Clone fresh**, enter `https://github.com/JacLight/appmint-examples.git`, then choose **Clone repository into workspace**. This imports the whole examples repository; the GitHub subfolder webpage is not a clone URL. Back up existing work before using a fresh workspace.
+
+Open `appengine-vibe-booking` and inspect its files. The course starting source is commit `2c2b407`; the repository's current branch may include later changes. Because the workspace contains the whole repository, create this `package.json` at the **workspace root**, outside `appengine-vibe-booking`:
+
+```json
+{
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "npm ci --prefix appengine-vibe-booking --include=dev && npm run build --prefix appengine-vibe-booking",
+    "start": "npm start --prefix appengine-vibe-booking"
+  }
+}
+```
+
+Keep the development environment's framework set to **Node**. This wrapper selects the nested project's locked dependencies, builds its React interface, and starts its Node server. The demonstrated flow does not depend on a hidden root-directory or build-command settings field. Including development dependencies supplies Vite even when installation runs with `NODE_ENV=production`.
+
+Create `appengine-vibe-booking/config.json` in the Studio file editor from [config.example.json](config.example.json), and replace `baseUrl`, `orgId` and `definitionId` with your own public AppEngine coordinates. Save and reopen both new files to check their contents. The local ignored `config.json` is absent from a Git clone, so create it in this workspace. No environment-variable editor is demonstrated in this flow; the runtime's environment-variable support remains available for deployments that provide one. Do not put passwords, access/refresh tokens or service credentials in either file.
+
+The build writes `appengine-vibe-booking/web/dist`. The Node server serves those assets and the `/api` gateway, binds `0.0.0.0`, and reads the platform's `PORT`. Static paths resolve relative to `server.mjs`. A static-only target cannot run this gateway.
+
+Open **Manage project → Build**, follow the job in **Builds**, and inspect its logs. After a successful build, open preview and check the real services, ordinary customer sign-in and saved-booking readback. A working `/healthz` only proves the process is listening. Then verify the checked build independently on the production address before calling a release complete. **Managed build, preview, promotion and production verification remain pending for this course companion; local API results and static checks do not establish hosting success.**
+
+Use the [setup recipe](docs/setup/README.md) for the supported intake schema and reservation-definition values. The [prepared release-two edit](docs/release-two/README.md) supplies the complete saved-answer summary patch and its limited static validation; it has not been applied to the application or verified on hosting.
 
 ## API boundary
 

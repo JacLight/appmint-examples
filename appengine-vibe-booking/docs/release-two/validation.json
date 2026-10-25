@@ -1,0 +1,26 @@
+{
+  "baseCommit": "2c2b407",
+  "patchApplyCheckPassed": true,
+  "checks": [
+    {
+      "file": "App.jsx",
+      "baseSha256": "8e9ca2b5ca632ab90b77c6efaad6bcb1a42ce8e0ac23cce94f959e64ca4fd7b1",
+      "proposedSha256": "123695ca3dc2bfb2225895568c6125eb708d2b7fc4d8806182a0966ff940d020",
+      "syntaxPassed": true,
+      "warningCount": 0
+    },
+    {
+      "file": "styles.css",
+      "baseSha256": "b287de299e43fdc10da27df896b6ab4ec6fd95510a575d42087e6fc27bf95b7a",
+      "proposedSha256": "c98ddcb52383c30d1bac84c5c511f2999625b7fde5b95a729815c83158d28d24",
+      "syntaxPassed": true,
+      "warningCount": 0
+    }
+  ],
+  "setupSchemaAcceptedByActualRenderer": true,
+  "actualApplicationFilesUnchanged": true,
+  "limitations": [
+    "Static syntax, patch applicability and schema compatibility only.",
+    "No browser, API write, managed build, preview, production, promotion or rollback validation."
+  ]
+}

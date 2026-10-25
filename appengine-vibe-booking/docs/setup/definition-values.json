@@ -1,0 +1,42 @@
+{
+  "name": "atelier-consultations",
+  "title": "Atelier design consultations",
+  "type": "service",
+  "status": "active",
+  "form": "atelier_booking_intake",
+  "workDays": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+  ],
+  "officeHours": {
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "timezone": "America/Chicago"
+  },
+  "slotGeneration": "duration",
+  "spots": 1,
+  "services": [
+    {
+      "name": "Room planning",
+      "duration": 30,
+      "price": 0,
+      "breakAfter": 15
+    },
+    {
+      "name": "Whole-home consultation",
+      "duration": 60,
+      "price": 0,
+      "breakAfter": 15
+    }
+  ],
+  "bookingType": "unassigned",
+  "hosts": [],
+  "autoConfirm": true,
+  "settings": {
+    "autoConfirm": true
+  },
+  "paymentRequired": false
+}

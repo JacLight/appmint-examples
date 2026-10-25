@@ -1,0 +1,6 @@
+              <ProjectSummary
+                key={booking.id}
+                api={api}
+                booking={booking}
+                onAuth={onAuth}
+              />
