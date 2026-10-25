@@ -1,0 +1,8 @@
+node_modules/
+web/dist/
+config.json
+.env
+.env.*
+!config.example.json
+*.ndjson
+postman/.dependencies/

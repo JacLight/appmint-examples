@@ -1,0 +1,5 @@
+{
+  "baseUrl": "https://appengine.example.com",
+  "orgId": "your-organization",
+  "definitionId": "your-active-reservation-definition-id"
+}
