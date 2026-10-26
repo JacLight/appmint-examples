@@ -9,6 +9,15 @@ const RESPONSE_LIMIT = 2 * 1024 * 1024;
 export class HttpError extends Error {
   constructor(status, message, code) { super(message); this.status = status; this.code = code; }
 }
+function validatePublicOrigins(value) {
+  if (!Array.isArray(value)) throw new Error('publicOrigins must be an array of exact HTTPS origins.');
+  for (const origin of value) {
+    let url;
+    try { url = new URL(origin); } catch { throw new Error('publicOrigins must contain exact HTTPS origins.'); }
+    if (typeof origin !== 'string' || url.protocol !== 'https:' || url.origin !== origin || url.hostname.includes('*')) throw new Error('publicOrigins must contain exact HTTPS origins without paths, credentials or wildcards.');
+  }
+  return value;
+}
 export async function loadConfig(env = process.env) {
   let file = {};
   try { file = JSON.parse(await readFile(resolve(ROOT, env.APPENGINE_CONFIG || 'config.json'), 'utf8')); }
@@ -20,6 +29,7 @@ export async function loadConfig(env = process.env) {
   if (url.protocol !== 'https:' && !['localhost', '127.0.0.1', '[::1]'].includes(url.hostname)) throw new Error('AppEngine requires HTTPS outside localhost.');
   config.baseUrl = config.baseUrl.replace(/\/+$/, '');
   if (!/^[\w-]+$/.test(config.orgId) || !/^[\w-]+$/.test(config.definitionId)) throw new Error('Invalid organization or definition identifier.');
+  config.publicOrigins = validatePublicOrigins(env.APP_PUBLIC_ORIGINS === undefined ? (file.publicOrigins ?? []) : (env.APP_PUBLIC_ORIGINS.trim() ? env.APP_PUBLIC_ORIGINS.split(',').map(origin => origin.trim()) : []));
   return config;
 }
 function json(res, status, body) {
@@ -38,6 +48,7 @@ function requiredString(value, name, max = 500) {
   return value;
 }
 export function createServer(config, { timeoutMs = 12000, staticDir = resolve(ROOT, 'web/dist') } = {}) {
+  const publicOrigins = new Set(validatePublicOrigins(config.publicOrigins ?? []));
   async function upstream(path, method = 'GET', body, bearer, write = false) {
     try {
       const response = await fetch(config.baseUrl + path, { method, headers: { accept: 'application/json', orgid: config.orgId, ...(body ? { 'content-type': 'application/json' } : {}), ...(bearer ? { authorization: bearer } : {}) }, body: body ? JSON.stringify(body) : undefined, signal: AbortSignal.timeout(timeoutMs), redirect: 'error' });
@@ -81,7 +92,9 @@ export function createServer(config, { timeoutMs = 12000, staticDir = resolve(RO
       if (path === '/api/config' && method === 'GET') return json(res, 200, { orgId: config.orgId, definitionId: config.definitionId });
       if (path.startsWith('/api/')) {
         // No cookies or arbitrary destinations/headers are forwarded. The browser sends its own customer bearer.
-        if (req.headers.origin && req.headers.origin !== `https://${req.headers.host}` && req.headers.origin !== `http://${req.headers.host}`) throw new HttpError(403, 'Cross-origin requests are not allowed.');
+        // A reverse proxy may rewrite Host. Trust only explicitly configured public origins,
+        // never client-supplied Forwarded or X-Forwarded-* headers.
+        if (req.headers.origin && req.headers.origin !== `https://${req.headers.host}` && req.headers.origin !== `http://${req.headers.host}` && !publicOrigins.has(req.headers.origin)) throw new HttpError(403, 'Cross-origin requests are not allowed.');
         const publicRoute = path === '/api/definitions' || /^\/api\/auth\/(signin|signup|refresh|verify)$/.test(path);
         const bearer = req.headers.authorization;
         if (!publicRoute && (!bearer || !/^Bearer [^\s]+$/.test(bearer) || bearer.length > 16384)) throw new HttpError(401, 'Please sign in to continue.');

@@ -1,5 +1,6 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
+import http from 'node:http';
 import { readFile, writeFile, mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -67,6 +68,51 @@ test('allowlist, fixed organization/definition and body boundary reject unwanted
   const response = await fetch(base + '/api/config'); assert.deepEqual(await response.json(), { orgId: 'testorg', definitionId: 'definition1' });
   assert.equal((await fetch(base + '/api/bookings', { headers: { origin: 'https://untrusted.test', authorization: 'Bearer customer-access' } })).status, 403);
   await assert.rejects(loadConfig({ APPENGINE_BASE_URL: 'http://external.test', APPENGINE_ORG_ID: 'org', APPENGINE_DEFINITION_ID: 'id' }), /HTTPS/);
+});
+
+test('configured public origins permit sign-in through a rewritten Host but reject unknown origins', async () => {
+  const proxyServer = createServer({ baseUrl: upstream, orgId: 'testorg', definitionId: 'definition1', publicOrigins: ['https://preview.example.test', 'https://appointments.example.test'] });
+  await new Promise(resolve => proxyServer.listen(0, '127.0.0.1', resolve));
+  const address = `http://127.0.0.1:${proxyServer.address().port}/api/auth/signin`;
+  const signIn = headers => new Promise((resolve, reject) => {
+    const request = http.request(address, { method: 'POST', headers: { host: 'internal-container:3000', 'content-type': 'application/json', ...headers } }, response => {
+      const chunks = [];
+      response.on('data', chunk => chunks.push(chunk));
+      response.on('end', () => resolve({ status: response.statusCode, body: JSON.parse(Buffer.concat(chunks).toString()) }));
+    });
+    request.on('error', reject);
+    request.end(JSON.stringify({ email: 'customer@example.test', password: 'fixture-password' }));
+  });
+  try {
+    // The simulated upstream's token proves these requests reached normal customer sign-in.
+    for (const origin of ['https://preview.example.test', 'https://appointments.example.test', 'http://internal-container:3000']) {
+      const response = await signIn({ origin });
+      assert.equal(response.status, 201);
+      assert.equal(response.body.token, 'customer-access');
+    }
+    for (const origin of ['https://malicious.example.test', 'https://preview.example.test.attacker.test', 'http://preview.example.test', 'null']) {
+      const response = await signIn({ origin, 'x-forwarded-host': origin.replace(/^https?:\/\//, ''), 'x-forwarded-proto': 'https', forwarded: `host="${origin.replace(/^https?:\/\//, '')}";proto=https` });
+      assert.equal(response.status, 403);
+      assert.equal(response.body.message, 'Cross-origin requests are not allowed.');
+      assert.equal(response.body.token, undefined);
+    }
+  } finally { await new Promise(resolve => proxyServer.close(resolve)); }
+});
+
+test('public origin configuration accepts exact HTTPS origins and rejects permissive values', async () => {
+  const file = join(temporary, 'origin-config.json');
+  const fixture = { baseUrl: upstream, orgId: 'testorg', definitionId: 'definition1', publicOrigins: ['https://preview.example.test'] };
+  await writeFile(file, JSON.stringify(fixture));
+  assert.deepEqual((await loadConfig({ APPENGINE_CONFIG: file })).publicOrigins, fixture.publicOrigins);
+  assert.deepEqual((await loadConfig({ APPENGINE_CONFIG: file, APP_PUBLIC_ORIGINS: 'https://appointments.example.test, https://secondary.example.test:8443' })).publicOrigins, ['https://appointments.example.test', 'https://secondary.example.test:8443']);
+  assert.deepEqual((await loadConfig({ APPENGINE_CONFIG: file, APP_PUBLIC_ORIGINS: '' })).publicOrigins, []);
+  for (const origin of ['http://preview.example.test', '*', 'https://*.example.test', 'https://preview.example.test/', 'https://preview.example.test/path', 'https://preview.example.test?query=1', 'https://preview.example.test#fragment', 'https://user:password@preview.example.test', 'null']) {
+    await assert.rejects(loadConfig({ APPENGINE_CONFIG: file, APP_PUBLIC_ORIGINS: origin }), /exact HTTPS origins/);
+  }
+  await writeFile(file, JSON.stringify({ ...fixture, publicOrigins: 'https://preview.example.test' }));
+  await assert.rejects(loadConfig({ APPENGINE_CONFIG: file }), /array/);
+  await writeFile(file, JSON.stringify({ ...fixture, publicOrigins: undefined }));
+  assert.deepEqual((await loadConfig({ APPENGINE_CONFIG: file })).publicOrigins, []);
 });
 
 
