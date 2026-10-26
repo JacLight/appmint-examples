@@ -1,0 +1,5 @@
+simulation: atelier-booking
+routing: path
+mocks:
+  - routeKey: appengine
+    path: ../mocks/appengine/config.yaml

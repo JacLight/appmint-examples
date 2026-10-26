@@ -1,0 +1,7 @@
+{
+  "name": "appengine-vibe-booking", "version": "1.0.0", "private": true, "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {"start": "node server.mjs", "dev": "vite web --host 127.0.0.1", "build": "vite build web", "test": "node --test tests/*.test.mjs", "check": "tsc --noEmit --target ES2022 --module ESNext --moduleResolution bundler --lib ES2022,DOM web/src/api.ts web/src/appengine-api.ts"},
+  "dependencies": {"react": "18.3.1", "react-dom": "18.3.1"},
+  "devDependencies": {"vite": "6.0.11", "typescript": "5.8.2"}
+}
