@@ -1,6 +1,19 @@
-              <ProjectSummary
-                key={booking.id}
-                api={api}
-                booking={booking}
+// 1. Inside BookingDetail, immediately after const booking = ...;
+// Keep this hook BEFORE the if (!booking) early return.
+  const schemaServiceId = booking?.serviceId;
+  // Called before the early return below so hook order never changes.
+  const intakeSchema = useRemote(
+    () =>
+      schemaServiceId
+        ? api.intakeSchema(schemaServiceId)
+        : Promise.resolve(null),
+    [api, schemaServiceId],
+  );
+
+// 2. In the normal appointment branch, after the existing remote.error block.
+// Keep this OUTSIDE the moving-time picker branch.
+              <ProjectAnswers
+                answers={booking.answers}
+                schema={intakeSchema}
                 onAuth={onAuth}
               />

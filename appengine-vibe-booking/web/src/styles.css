@@ -1462,3 +1462,26 @@ textarea:focus {
     font-size: 12px;
   }
 }
+.project-answers dl > div > * {
+  min-width: 0;
+}
+.project-answers dt,
+.project-answers dd {
+  overflow-wrap: anywhere;
+}
+.project-answers dd {
+  white-space: pre-wrap;
+}
+.project-answers-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+@media (max-width: 720px) {
+  .project-answers dl > div {
+    padding: 10px 0;
+  }
+}

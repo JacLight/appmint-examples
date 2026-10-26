@@ -592,6 +592,98 @@ function BookFlow({
     </section>
   );
 }
+const answerMissing = (v) =>
+  v == null || v === "" || (Array.isArray(v) && !v.length);
+function answerLabel(v) {
+  if (answerMissing(v)) return "Not provided";
+  if (typeof v === "boolean") return v ? "Yes" : "No";
+  if (Array.isArray(v)) return v.map(answerLabel).join(", ");
+  if (typeof v === "object") return JSON.stringify(v);
+  return String(v);
+}
+function ProjectAnswers({ answers, schema, onAuth }) {
+  const saved =
+    answers && typeof answers === "object" && !Array.isArray(answers)
+      ? answers
+      : {};
+  const fields = schema.value?.properties || {};
+  // Configured fields keep their form order; answers no longer in the form follow.
+  const keys = [
+    ...Object.keys(fields),
+    ...Object.keys(saved).filter((k) => !(k in fields)),
+  ];
+  const hasAnswers = Object.values(saved).some((v) => !answerMissing(v));
+  return (
+    <div
+      className="review-section project-answers"
+      id="project-answers"
+      aria-labelledby="project-answers-heading"
+      aria-busy={schema.loading}
+      role="region"
+    >
+      <h3 id="project-answers-heading">Your project</h3>
+      {!hasAnswers ? (
+        <p className="muted" id="project-answers-empty">
+          No project details were saved with this appointment.
+        </p>
+      ) : schema.loading ? (
+        <p
+          className="muted project-answers-status"
+          id="project-answers-loading"
+          role="status"
+        >
+          <span className="spinner" aria-hidden="true" /> Loading your project
+          details…
+        </p>
+      ) : (
+        <>
+          {schema.error && (
+            <p
+              className="error project-answers-status"
+              id="project-answers-error"
+              role="alert"
+            >
+              <span id="project-answers-error-message">
+                We couldn't load the question titles. {message(schema.error)}
+              </span>
+              <button
+                className="text-button"
+                id="project-answers-retry"
+                onClick={() =>
+                  schema.error.status === 401 && onAuth
+                    ? onAuth(schema.retry)
+                    : schema.retry()
+                }
+              >
+                {schema.error.status === 401 && onAuth
+                  ? "Sign in again"
+                  : "Try again"}{" "}
+                <Arrow />
+              </button>
+            </p>
+          )}
+          <dl id="project-answers-list">
+            {keys.map((key, i) => {
+              const rowId = `project-answer-${i}-${key.replace(/[^\w-]/g, "_")}`;
+              const missing = answerMissing(saved[key]);
+              return (
+                <div key={key} id={rowId}>
+                  <dt id={`${rowId}-title`}>{fields[key]?.title || key}</dt>
+                  <dd
+                    id={`${rowId}-value`}
+                    className={missing ? "muted" : undefined}
+                  >
+                    {answerLabel(saved[key])}
+                  </dd>
+                </div>
+              );
+            })}
+          </dl>
+        </>
+      )}
+    </div>
+  );
+}
 function BookingDetail({ api, id, initial, services, onBack, onAuth }) {
   const remote = useRemote(() => api.booking(id), [api, id]);
   const [updated, setUpdated] = useState(null),
@@ -602,6 +694,15 @@ function BookingDetail({ api, id, initial, services, onBack, onAuth }) {
     [unknown, setUnknown] = useState(false),
     [pickerVersion, setPickerVersion] = useState(0);
   const booking = updated || remote.value || initial;
+  const schemaServiceId = booking?.serviceId;
+  // Called before the early return below so hook order never changes.
+  const intakeSchema = useRemote(
+    () =>
+      schemaServiceId
+        ? api.intakeSchema(schemaServiceId)
+        : Promise.resolve(null),
+    [api, schemaServiceId],
+  );
   if (!booking)
     return (
       <Status resource={remote} onAuth={onAuth}>
@@ -726,6 +827,11 @@ function BookingDetail({ api, id, initial, services, onBack, onAuth }) {
                   We couldn't refresh these details. {message(remote.error)}
                 </p>
               )}
+              <ProjectAnswers
+                answers={booking.answers}
+                schema={intakeSchema}
+                onAuth={onAuth}
+              />
             </>
           )}
         </div>

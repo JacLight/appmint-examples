@@ -62,11 +62,12 @@ Create `config.json` beside `server.mjs`, using the root [config.example.json](.
 {
   "baseUrl": "https://appengine.appmint.io",
   "orgId": "YOUR_ORGANIZATION_ID",
-  "definitionId": "YOUR_DEFINITION_ID"
+  "definitionId": "YOUR_DEFINITION_ID",
+  "publicOrigins": []
 }
 ```
 
-A private AppEngine installation uses its own API address. These three coordinates are public configuration, not credentials. The ignored local `config.json` is not included in Git; supply the file in the deployed workspace or use the three environment variables documented in the [companion README](../../README.md).
+A private AppEngine installation uses its own API address. For a hosting proxy that rewrites Host, fill `publicOrigins` with the exact customer-facing preview and production HTTPS origins, without paths or trailing slashes. Leave it empty for the default same-host check. These values and the three AppEngine coordinates are public configuration, not credentials. The ignored local `config.json` is not included in Git; supply the file in the deployed workspace or use the three environment variables documented in the [companion README](../../README.md).
 
 ## Check with an ordinary customer
 
@@ -74,7 +75,7 @@ Use a customer account in the same organization, or the app's **Create account**
 
 Before signup or booking, configure the intended email/SMS routing for the exercise with the organization administrator. Both actions can request messages. Empty notification arrays do not disable delivery, and having no local provider does not necessarily prevent a shared-provider fallback. Use a deliberate test-delivery policy; a saved booking is not proof of delivered email.
 
-Run the app using the root README. Confirm both services appear, sign in normally, choose a future weekday in the business timezone, and select an actual returned slot. Complete the three intake answers, save, then reopen the appointment through **My bookings**. Check its actual status and reference. The staff reservation details can independently show the saved answers. Reschedule and reopen to verify the same reference with the new time.
+Run the app using the root README. Confirm both services appear, sign in normally, choose a future weekday in the business timezone, and select an actual returned slot. Complete the three intake answers, save, then reopen the appointment through **My bookings**. Check its actual status and reference. The implemented **Your project** section shows the saved answers using the current configured question titles; verify all three values. The staff reservation details can independently show those saved answers. Reschedule and reopen to verify the same reference with the new time.
 
 The connection uses distinct values:
 

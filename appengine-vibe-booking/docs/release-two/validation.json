@@ -1,26 +1,51 @@
 {
-  "baseCommit": "2c2b407",
-  "patchApplyCheckPassed": true,
-  "checks": [
+  "status": "implemented",
+  "baselineCommit": "b2c9788",
+  "verifiedAtUtc": "2026-10-26",
+  "files": [
     {
-      "file": "App.jsx",
-      "baseSha256": "8e9ca2b5ca632ab90b77c6efaad6bcb1a42ce8e0ac23cce94f959e64ca4fd7b1",
-      "proposedSha256": "123695ca3dc2bfb2225895568c6125eb708d2b7fc4d8806182a0966ff940d020",
-      "syntaxPassed": true,
-      "warningCount": 0
+      "file": "web/src/App.jsx",
+      "baselineSha256": "8e9ca2b5ca632ab90b77c6efaad6bcb1a42ce8e0ac23cce94f959e64ca4fd7b1",
+      "implementedSha256": "acb0d8e9de4a96403efbf16f88abd3e3b592cb37846c4efed94352957fbe626f",
+      "matchesActualVibeSavedSource": true,
+      "matchesDownloadedWorkspaceSource": true
     },
     {
-      "file": "styles.css",
-      "baseSha256": "b287de299e43fdc10da27df896b6ab4ec6fd95510a575d42087e6fc27bf95b7a",
-      "proposedSha256": "c98ddcb52383c30d1bac84c5c511f2999625b7fde5b95a729815c83158d28d24",
-      "syntaxPassed": true,
-      "warningCount": 0
+      "file": "web/src/styles.css",
+      "baselineSha256": "b287de299e43fdc10da27df896b6ab4ec6fd95510a575d42087e6fc27bf95b7a",
+      "implementedSha256": "a7d43bc2a4ce7a21d7bb4bd3ec84172b5cb43b126c37a7d82a39b2bea6eb544a",
+      "matchesActualVibeSavedSource": true,
+      "matchesDownloadedWorkspaceSource": true
     }
   ],
-  "setupSchemaAcceptedByActualRenderer": true,
-  "actualApplicationFilesUnchanged": true,
+  "checks": {
+    "independentSourceReview": "passed",
+    "downloadedArtifactCleanInstall": "passed: npm ci --include=dev",
+    "downloadedArtifactTypeCheck": "passed: npm run check",
+    "downloadedArtifactProductionBuild": "passed: npm run build",
+    "observedNodeVersion": "v24.21.0",
+    "downloadedArtifactReadOnlyServicesAndAssets": "passed",
+    "managedPreviewNormalCustomerSignIn": "passed",
+    "managedPreviewOwnedBookingAndSchemaRead": "passed",
+    "managedPreviewSavedAnswerLabelsAndValues": "passed",
+    "managedPreviewMobileViewportWidth": 390,
+    "managedPreviewMobileDocumentWidth": 390,
+    "managedPreviewMobileOverflow": false,
+    "temporaryVerificationServerStopped": true,
+    "managedFeaturePromotion": "passed",
+    "managedLiveNormalCustomerSignIn": "passed",
+    "managedLiveSavedAnswersAndReload": "passed"
+  },
+  "sourceReviewedBehavior": [
+    "Hook order remains unconditional.",
+    "Boolean false and numeric zero remain visible.",
+    "Missing/empty values and schema-error retry/sign-in are handled.",
+    "Dynamic intake validation and booking/reschedule controls are unchanged."
+  ],
   "limitations": [
-    "Static syntax, patch applicability and schema compatibility only.",
-    "No browser, API write, managed build, preview, production, promotion or rollback validation."
+    "Error/empty/zero/false handling was independently source-reviewed; those branches were not exercised with live failure injection in this validation.",
+    "The downloaded app was rebuilt and read locally; no second external-provider deployment was performed.",
+    "Fresh-organization setup and rollback were not independently completed here.",
+    "Existing dependency audit notices remain; no package upgrades were made."
   ]
 }

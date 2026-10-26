@@ -1,6 +1,6 @@
 # Atelier appointments — AppEngine + Vibe Studio
 
-A working customer appointment application: browse configured services, create an account or sign in, choose actual availability, complete the configured intake form, book, view your own appointments and reschedule. This is the companion project for the AppEngine platform deployment course. Its React frontend consumes AppEngine customer and Reservations APIs through a small Node HTTP gateway.
+A working customer appointment application: browse configured services, create an account or sign in, choose actual availability, complete the configured intake form, book, view your own appointments with their saved project answers, and reschedule. This is the companion project for the AppEngine platform deployment course. Its React frontend consumes AppEngine customer and Reservations APIs through a small Node HTTP gateway.
 
 ## Run locally
 
@@ -51,9 +51,9 @@ Add the actual preview and production HTTPS origins to `publicOrigins` before bu
 
 The build writes `appengine-vibe-booking/web/dist`. The Node server serves those assets and the `/api` gateway, binds `0.0.0.0`, and reads the platform's `PORT`. Static paths resolve relative to `server.mjs`. A static-only target cannot run this gateway.
 
-Open **Manage project → Build**, follow the job in **Builds**, and inspect its logs. After a successful build, open preview and check the real services, ordinary customer sign-in and saved-booking readback. A working `/healthz` only proves the process is listening. Then verify the checked build independently on the production address before calling a release complete. **Verified 26 October 2026:** a fresh managed build, ordinary customer sign-in and saved-booking reload passed on the SpinForge preview, then on the production address after promotion. This verifies the companion deployment, not AI authorship in Vibe Studio. The complete course and an independently hosted external-provider deployment remain pending.
+Open **Manage project → Build**, follow the job in **Builds**, and inspect its logs. After a successful build, open preview and check the real services, ordinary customer sign-in and saved-booking readback. A working `/healthz` only proves the process is listening. Then verify the checked build independently on the production address before calling a release complete. **Verified 26 October 2026:** a fresh managed build, ordinary customer sign-in and saved-booking reload passed on the SpinForge preview, then on the production address after promotion. Those checks establish the baseline deployment. The subsequent Vibe Studio refinement now implements **Your project** on appointment detail; its managed preview passed normal customer sign-in, saved-answer/schema-label readback and a 390px mobile check. The actual downloaded refinement also passed a clean rebuild and local services/assets check. The same feature build was then promoted and passed normal customer sign-in, saved-answer readback and reload on the live address. The complete course and an independently hosted external-provider deployment remain pending.
 
-Use the [setup recipe](docs/setup/README.md) for the supported intake schema and reservation-definition values. The [prepared release-two edit](docs/release-two/README.md) supplies the complete saved-answer summary patch and its limited static validation; it has not been applied to the application or verified on hosting.
+Use the [setup recipe](docs/setup/README.md) for the supported intake schema and reservation-definition values. The [implemented release-two feature](docs/release-two/README.md) explains the actual saved-answer summary, supplies its exact patch for the earlier baseline, and records the source, managed-preview/mobile and downloaded-artifact validation. Current source already includes the feature; do not apply that patch again.
 
 ## API boundary
 
